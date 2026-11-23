@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ur">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_tab" name="shell-type"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <title>صارف کا انتظام و ترجیحات | User Management & Profile</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  <!-- Top App Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-20 px-4 flex items-center justify-between gap-3 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+        </a>
+        <div class="flex flex-col">
+          <h1 class="font-bold text-on-surface text-[17px] leading-tight">صارف کا انتظام و پروفائل</h1>
+          <span class="font-urdu-body-md text-[13px] text-on-surface-variant leading-none">User Settings & Preferences</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <button aria-label="Listen page info" class="min-h-[44px] px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1.5 active:scale-95 transition-all" onclick="speakProfileInfo()" type="button">
+          <span class="material-symbols-outlined text-[20px]">volume_up</span>
+          <span class="font-label-md font-bold">سنیں</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-4 pt-24 pb-32 bg-surface flex-grow">
+    <div class="flex flex-col w-full gap-5">
+      
+      <!-- User Profile Header Card -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-16 h-16 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[28px] font-bold shadow-md">
+            <span class="material-symbols-outlined text-[36px]">person</span>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="font-bold text-on-surface text-[19px] leading-tight" id="profile-display-name">محمد افضل</h2>
+            <span class="font-mono text-xs text-on-surface-variant" id="profile-display-cnic">CNIC: 37405-1849201-3</span>
+            <span class="inline-flex items-center gap-1 mt-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold self-start" id="profile-role-badge">
+              شہری کھاتہ (Citizen)
+            </span>
+          </div>
+        </div>
+        
+        <div class="flex flex-col items-end gap-1">
+          <span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
+          <span class="text-xs text-primary font-bold">فعال شناختی تصدیق</span>
+        </div>
+      </section>
+
+      <!-- 1. ROLE SWITCHER (Citizen vs Field Operations Team) -->
+      <section class="bg-surface-container-low rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-3" dir="rtl">
+          <div>
+            <h3 class="font-urdu-headline-md text-primary font-bold text-[18px]">صارف کا کردار منتخب کریں (Select Role)</h3>
+            <p class="font-urdu-body-md text-xs text-on-surface-variant">عام شہری یا بلدیاتی فیلڈ انجینئرنگ ٹیم</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[28px]">switch_account</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Citizen Role Button -->
+          <button id="role-btn-citizen" onclick="switchRole('citizen')" class="min-h-[64px] p-3 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[22px]">person</span>
+              <span class="font-bold font-urdu-body-md text-[16px]">عام شہری</span>
+            </div>
+            <span class="text-xs text-on-surface-variant">شکایت و معلومات</span>
+          </button>
+
+          <!-- Field Operator Role Button -->
+          <button id="role-btn-field" onclick="switchRole('field_operator')" class="min-h-[64px] p-3 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[22px]">engineering</span>
+              <span class="font-bold font-urdu-body-md text-[16px]">فیلڈ آپریشنز</span>
+            </div>
+            <span class="text-xs text-on-surface-variant">مرمت و معائنہ ٹاسک</span>
+          </button>
+        </div>
+
+        <div id="field-role-alert" class="hidden mt-3 p-3 bg-secondary-fixed/50 rounded-xl text-on-secondary-fixed flex items-center justify-between text-xs" dir="rtl">
+          <span>فیلڈ موڈ فعال ہے۔ اب آپ کے نیچے مینو میں 'فیلڈ کام' کا ٹیب نمودار ہو گا۔</span>
+          <a href="field_tasks.html" class="px-3 py-1 bg-secondary text-on-secondary rounded-lg font-bold">ٹاسک دیکھیں</a>
+        </div>
+      </section>
+
+      <!-- 2. CITIZEN PROFILE FORM -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-4" dir="rtl">
+          <h3 class="font-urdu-headline-md text-on-surface font-bold text-[18px]">شہری شناختی معلومات (Citizen Credentials)</h3>
+          <span class="material-symbols-outlined text-secondary text-[24px]">badge</span>
+        </div>
+
+        <form onsubmit="handleProfileSave(event)" class="flex flex-col gap-4 text-right" dir="rtl">
+          <!-- Full Name -->
+          <div class="flex flex-col gap-1">
+            <label class="font-urdu-body-md font-bold text-sm text-on-surface">پورا نام (Full Name):</label>
+            <input type="text" id="input-name" required class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold focus:outline-none focus:bg-surface-container-lowest focus:border-primary"/>
+          </div>
+
+          <!-- CNIC -->
+          <div class="flex flex-col gap-1">
+            <label class="font-urdu-body-md font-bold text-sm text-on-surface">قومی شناختی کارڈ نمبر (CNIC):</label>
+            <input type="text" id="input-cnic" placeholder="37405-XXXXXXX-X" class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-mono font-bold focus:outline-none focus:bg-surface-container-lowest focus:border-primary"/>
+          </div>
+
+          <!-- Mobile Phone -->
+          <div class="flex flex-col gap-1">
+            <label class="font-urdu-body-md font-bold text-sm text-on-surface">موبائل فون نمبر (برائے ایس ایم ایس):</label>
+            <input type="tel" id="input-phone" placeholder="0300-XXXXXXX" class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-mono font-bold focus:outline-none focus:bg-surface-container-lowest focus:border-primary"/>
+          </div>
+
+          <!-- Tehsil & Village -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex flex-col gap-1">
+              <label class="font-urdu-body-md font-bold text-sm text-on-surface">تحصیل (Tehsil):</label>
+              <select id="select-tehsil" class="w-full h-12 px-3 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold focus:outline-none focus:border-primary">
+                <option value="Gujar Khan">گوجر خان (Gujar Khan)</option>
+                <option value="Rawalpindi City">راولپنڈی شہر (Rawalpindi City)</option>
+                <option value="Murree">مری کوہسار (Murree)</option>
+                <option value="Kahuta">کہوٹہ (Kahuta)</option>
+                <option value="Taxila">ٹیکسلا (Taxila)</option>
+                <option value="Kallar Syedan">کلر سیداں (Kallar Syedan)</option>
+              </select>
+            </div>
+            
+            <div class="flex flex-col gap-1">
+              <label class="font-urdu-body-md font-bold text-sm text-on-surface">گاؤں / چک / یونین کونسل:</label>
+              <input type="text" id="input-village" placeholder="مثلاً چک 18 ماندرہ" class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold focus:outline-none focus:border-primary"/>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <button type="submit" class="min-h-[56px] w-full mt-2 rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[22px]">save</span>
+            <span>معلومات محفوظ کریں (Save Profile)</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- 3. LANGUAGE & SPEECH RATE PREFERENCES -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-4" dir="rtl">
+          <h3 class="font-urdu-headline-md text-on-surface font-bold text-[18px]">صوتی اور زبان کی ترجیحات (Voice & Language)</h3>
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-secondary/15 text-secondary px-2 py-1 rounded shadow-sm">
+            <span>EN</span>
+            <span class="text-[10px] leading-none">⇄</span>
+            <span class="font-urdu leading-none text-[11px]">اردو</span>
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-4 text-right" dir="rtl">
+          <!-- Language Selector -->
+          <div class="flex flex-col gap-1.5">
+            <label class="font-urdu-body-md font-bold text-sm text-on-surface">گفتگو کی بنیادی زبان (صوتی شناخت):</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <button type="button" onclick="selectLang('ur-PK')" id="lang-btn-ur" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>اردو (Urdu)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">قومی زبان</span>
+              </button>
+              <button type="button" onclick="selectLang('pa-PK')" id="lang-btn-pa" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>پنجابی (Punjabi)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">پنجاب صوبہ</span>
+              </button>
+              <button type="button" onclick="selectLang('poth-PK')" id="lang-btn-poth" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>پوٹھوہاری (Potohari)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">پوٹھوہار بیلٹ</span>
+              </button>
+              <button type="button" onclick="selectLang('skr-PK')" id="lang-btn-skr" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>سرائیکی (Saraiki)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">ملتان و ڈیرہ جات</span>
+              </button>
+              <button type="button" onclick="selectLang('hnd-PK')" id="lang-btn-hnd" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>ہندکو (Hindko)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">ہزارہ و اٹک</span>
+              </button>
+              <button type="button" onclick="selectLang('sd-PK')" id="lang-btn-sd" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>سنڌي (Sindhi)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">سندھ صوبہ</span>
+              </button>
+              <button type="button" onclick="selectLang('ps-PK')" id="lang-btn-ps" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>پښتو (Pashto)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">خیبر پختونخوا</span>
+              </button>
+              <button type="button" onclick="selectLang('bal-PK')" id="lang-btn-bal" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold font-urdu-body-md text-xs p-2">
+                <span>بلوچی (Balochi)</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">بلوچستان صوبہ</span>
+              </button>
+              <button type="button" onclick="selectLang('en-US')" id="lang-btn-en" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold text-xs p-2">
+                <span>English</span>
+                <span class="text-[10px] text-on-surface-variant font-normal">Official</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Speech Rate Buttons -->
+          <div class="flex flex-col gap-1.5 pt-2">
+            <label class="font-urdu-body-md font-bold text-sm text-on-surface">آواز بولنے کی رفتار (TTS Speed for Elderly):</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" onclick="selectSpeed(0.8)" id="speed-btn-08" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold text-xs">
+                <span>0.8x آہستہ</span>
+                <span class="text-[10px] text-on-surface-variant">(بزرگوں کیلئے آسان)</span>
+              </button>
+              <button type="button" onclick="selectSpeed(1.0)" id="speed-btn-10" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold text-xs">
+                <span>1.0x عام</span>
+                <span class="text-[10px] text-on-surface-variant">(معمول کی رفتار)</span>
+              </button>
+              <button type="button" onclick="selectSpeed(1.2)" id="speed-btn-12" class="min-h-[48px] rounded-xl border-2 flex flex-col items-center justify-center font-bold text-xs">
+                <span>1.2x تیز</span>
+                <span class="text-[10px] text-on-surface-variant">(فوری جائزہ)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Voice Biometrics Toggle -->
+          <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+            <div class="flex flex-col">
+              <span class="font-urdu-body-md font-bold text-sm">صوتی شناخت و بائیو میٹرک تصدیق</span>
+              <span class="text-xs text-on-surface-variant">بغیر پاسورڈ آواز کے نمونے سے لاگ ان کریں</span>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="toggle-voice-bio" checked class="sr-only peer" onchange="toggleVoiceBio(this)"/>
+              <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. OFFLINE STORAGE & SYNC CONTROLS -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-3" dir="rtl">
+          <div>
+            <h3 class="font-urdu-headline-md text-on-surface font-bold text-[18px]">آف لائن اسٹوریج و مطابقت (Sync & Cache)</h3>
+            <p class="font-urdu-body-md text-xs text-on-surface-variant">انٹرنیٹ نہ ہونے پر لوکل میموری میں محفوظ ریکارڈز</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[24px]">cloud_sync</span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low" dir="rtl">
+            <div class="flex flex-col">
+              <span class="font-urdu-body-md font-bold text-sm">آف لائن آؤٹ باکس قطار:</span>
+              <span class="text-xs text-on-surface-variant" id="storage-queue-label">کوئی پینڈنگ ریکارڈ نہیں</span>
+            </div>
+            <button onclick="triggerSyncNow()" class="min-h-[44px] px-4 rounded-xl bg-primary text-on-primary font-urdu-body-md font-bold text-xs active:scale-95 transition-all shadow-sm">
+              ابھی سنک کریں
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low text-xs" dir="rtl">
+            <span class="text-on-surface font-bold">لوکل کیشے اسٹوریج:</span>
+            <span class="font-mono text-primary font-bold">18.4 MB / 500 MB</span>
+          </div>
+
+          <a href="offline_sync.html" class="min-h-[48px] rounded-xl bg-surface-container text-primary font-urdu-body-md font-bold flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors" dir="rtl">
+            <span>مکمل آف لائن سنک مینیجر کھولیں</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- 5. OPTIONAL FREE OPENROUTER API KEY CONFIGURATION -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-2" dir="rtl">
+          <div>
+            <h3 class="font-urdu-headline-md text-on-surface font-bold text-[17px]">مفت اوپن راؤٹر اے پی آئی کی (اختیاری)</h3>
+            <p class="font-urdu-body-md text-xs text-on-surface-variant">Free OpenRouter Key (Strict Zero-Cost)</p>
+          </div>
+          <span class="material-symbols-outlined text-outline text-[24px]">key</span>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-2" dir="rtl">
+          <input type="password" id="input-openrouter-key" placeholder="sk-or-v1-..." class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-mono text-left text-xs focus:outline-none focus:border-primary"/>
+          <button onclick="saveApiKey()" class="min-h-[44px] rounded-xl bg-surface-container-high text-primary font-bold text-xs hover:bg-surface-container transition-colors">
+            کی محفوظ کریں (Save Free Key)
+          </button>
+          <p class="text-[11px] text-on-surface-variant">
+            سسٹم صرف 100% مفت ماڈلز (openrouter/free, gemini-2.0-flash-exp:free) استعمال کرتا ہے۔
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div id="mobile-bottom-nav"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/logger.js"></script>
+  <script src="../shared/security.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProfileFields();
+    });
+
+    function loadProfileFields() {
+      const u = MobileApp.currentUser || AppSync.getUserProfile();
+      
+      const maskedCnic = typeof AppSecurity !== "undefined" ? AppSecurity.maskCNIC(u.cnic || '37405-XXXXXXX-X') : (u.cnic || '37405-XXXXXXX-X');
+      document.getElementById("profile-display-name").innerText = u.name || "شہری صارف";
+      document.getElementById("profile-display-cnic").innerText = `CNIC: ${maskedCnic}`;
+      
+      document.getElementById("input-name").value = u.name || "";
+      document.getElementById("input-cnic").value = u.cnic || "";
+      document.getElementById("input-phone").value = u.phone || "";
+      document.getElementById("select-tehsil").value = u.tehsil || "Gujar Khan";
+      document.getElementById("input-village").value = u.village || "";
+
+      // Set role buttons
+      updateRoleUI(u.role || "citizen");
+
+      // Set language & speed buttons
+      updateLangUI(u.preferredLanguage || "ur-PK");
+      updateSpeedUI(u.audioSpeed || 0.9);
+
+      // Storage queue label
+      const queue = AppSync.getQueue();
+      document.getElementById("storage-queue-label").innerText = queue.length > 0 ? `${queue.length} ریکارڈز مطابقت پذیری کیلئے تیار ہیں` : "سب ریکارڈز کلاؤڈ کے ساتھ مطابقت پذیر ہیں";
+
+      // Set saved API key if present
+      if (AppAIRouter.state.openRouterApiKey) {
+        document.getElementById("input-openrouter-key").value = AppAIRouter.state.openRouterApiKey;
+      }
+    }
+
+    function switchRole(role) {
+      MobileApp.currentUser.role = role;
+      AppSync.saveUserProfile(MobileApp.currentUser);
+      updateRoleUI(role);
+      
+      const roleBadge = document.getElementById("profile-role-badge");
+      if (role === "field_operator") {
+        roleBadge.innerText = "فیلڈ آپریشنز عملہ (Field Operator)";
+        roleBadge.className = "inline-flex items-center gap-1 mt-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold self-start";
+        document.getElementById("field-role-alert").classList.remove("hidden");
+        AppSpeech.speak("فیلڈ آپریشنز موڈ فعال ہو گیا ہے۔ آپ کو تفویض کردہ کام اب ظاہر ہوں گے۔");
+      } else {
+        roleBadge.innerText = "شہری کھاتہ (Citizen)";
+        roleBadge.className = "inline-flex items-center gap-1 mt-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold self-start";
+        document.getElementById("field-role-alert").classList.add("hidden");
+        AppSpeech.speak("شہری موڈ فعال ہو گیا ہے۔");
+      }
+
+      MobileApp.renderBottomNavigation();
+    }
+
+    function updateRoleUI(role) {
+      const btnCitizen = document.getElementById("role-btn-citizen");
+      const btnField = document.getElementById("role-btn-field");
+
+      if (role === "field_operator") {
+        btnField.className = "min-h-[64px] p-3 rounded-xl border-2 border-secondary bg-secondary-fixed/30 text-secondary font-bold flex flex-col items-center justify-center gap-1 shadow-sm";
+        btnCitizen.className = "min-h-[64px] p-3 rounded-xl border border-slate-200 bg-surface-container-lowest text-on-surface-variant flex flex-col items-center justify-center gap-1";
+        document.getElementById("field-role-alert").classList.remove("hidden");
+      } else {
+        btnCitizen.className = "min-h-[64px] p-3 rounded-xl border-2 border-primary bg-primary-fixed/30 text-primary font-bold flex flex-col items-center justify-center gap-1 shadow-sm";
+        btnField.className = "min-h-[64px] p-3 rounded-xl border border-slate-200 bg-surface-container-lowest text-on-surface-variant flex flex-col items-center justify-center gap-1";
+        document.getElementById("field-role-alert").classList.add("hidden");
+      }
+    }
+
+    function selectLang(code) {
+      MobileApp.currentUser.preferredLanguage = code;
+      AppSync.saveUserProfile(MobileApp.currentUser);
+      AppSpeech.setLanguage(code);
+      updateLangUI(code);
+      AppSpeech.speak("زبان کامیابی سے تبدیل ہو گئی۔");
+    }
+
+    function updateLangUI(code) {
+      const langs = [
+        { id: "ur", prefix: "ur" },
+        { id: "pa", prefix: "pa" },
+        { id: "poth", prefix: "poth" },
+        { id: "skr", prefix: "skr" },
+        { id: "hnd", prefix: "hnd" },
+        { id: "sd", prefix: "sd" },
+        { id: "ps", prefix: "ps" },
+        { id: "bal", prefix: "bal" },
+        { id: "en", prefix: "en" }
+      ];
+
+      langs.forEach(item => {
+        const btn = document.getElementById(`lang-btn-${item.id}`);
+        if (btn) {
+          if (code.startsWith(item.prefix) || (item.id === "pa" && code === "pa-PK") || (item.id === "poth" && code.includes("poth"))) {
+            btn.className = "min-h-[48px] rounded-xl border-2 border-primary bg-primary-fixed/40 text-primary font-bold flex flex-col items-center justify-center text-xs p-2 shadow-sm";
+          } else {
+            btn.className = "min-h-[48px] rounded-xl border border-slate-200 bg-surface-container-lowest text-on-surface-variant flex flex-col items-center justify-center text-xs p-2";
+          }
+        }
+      });
+    }
+
+    function selectSpeed(speed) {
+      MobileApp.currentUser.audioSpeed = speed;
+      AppSync.saveUserProfile(MobileApp.currentUser);
+      AppSpeech.setSpeed(speed);
+      updateSpeedUI(speed);
+      AppSpeech.speak(`آواز کی رفتار اب ${speed} ضرب ہو گئی ہے۔`);
+    }
+
+    function updateSpeedUI(speed) {
+      const speeds = [0.8, 1.0, 1.2];
+      speeds.forEach(s => {
+        const id = `speed-btn-${s.toString().replace('.', '')}`;
+        const btn = document.getElementById(id);
+        if (btn) {
+          if (Math.abs(speed - s) < 0.05) {
+            btn.className = "min-h-[48px] rounded-xl border-2 border-secondary bg-secondary-fixed/40 text-secondary font-bold flex flex-col items-center justify-center text-xs shadow-sm";
+          } else {
+            btn.className = "min-h-[48px] rounded-xl border border-slate-200 bg-surface-container-lowest text-on-surface-variant flex flex-col items-center justify-center text-xs";
+          }
+        }
+      });
+    }
+
+    function handleProfileSave(e) {
+      e.preventDefault();
+      const updated = {
+        name: typeof AppSecurity !== "undefined" ? AppSecurity.sanitize(document.getElementById("input-name").value.trim()) : document.getElementById("input-name").value.trim(),
+        cnic: document.getElementById("input-cnic").value.trim(),
+        phone: document.getElementById("input-phone").value.trim(),
+        tehsil: document.getElementById("select-tehsil").value,
+        village: typeof AppSecurity !== "undefined" ? AppSecurity.sanitize(document.getElementById("input-village").value.trim()) : document.getElementById("input-village").value.trim()
+      };
+
+      MobileApp.currentUser = AppSync.saveUserProfile(updated);
+      const maskedCnic = typeof AppSecurity !== "undefined" ? AppSecurity.maskCNIC(updated.cnic) : updated.cnic;
+      document.getElementById("profile-display-name").innerText = updated.name;
+      document.getElementById("profile-display-cnic").innerText = `CNIC: ${maskedCnic}`;
+      
+      if (typeof AppLogger !== "undefined") {
+        AppLogger.audit("PROFILE_UPDATE", `Citizen updated profile settings`, { tehsil: updated.tehsil });
+      }
+
+      AppSpeech.speak("آپ کا پروفائل کامیابی سے محفوظ ہو گیا ہے۔");
+      alert("پروفائل کامیابی سے اپ ڈیٹ ہو گیا!");
+    }
+
+    function saveApiKey() {
+      const key = document.getElementById("input-openrouter-key").value.trim();
+      AppAIRouter.setApiKey(key);
+      alert("اوپن راؤٹر اے پی آئی کی کامیابی سے محفوظ ہو گئی!");
+    }
+
+    function triggerSyncNow() {
+      AppSync.syncOutbox((pct, remaining) => {
+        if (remaining === 0) {
+          document.getElementById("storage-queue-label").innerText = "سب ریکارڈز کلاؤڈ کے ساتھ مطابقت پذیر ہو گئے";
+          AppSpeech.speak("تمام آف لائن ریکارڈز کامیابی سے کلاؤڈ پر منتقل ہو گئے ہیں۔");
+        }
+      });
+    }
+
+    function speakProfileInfo() {
+      const u = MobileApp.currentUser;
+      AppSpeech.speak(`صارف کا نام: ${u.name}۔ تحصیل: ${u.tehsil}۔ شناختی کارڈ نمبر: ${u.cnic}۔ موڈ: ${u.role === 'field_operator' ? 'فیلڈ انجینئر' : 'عام شہری'}۔`);
+    }
+
+    function toggleVoiceBio(cb) {
+      MobileApp.currentUser.voiceBiometricsEnabled = cb.checked;
+      AppSync.saveUserProfile(MobileApp.currentUser);
+    }
+  </script>
+</body>
+</html>

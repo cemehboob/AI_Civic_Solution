@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_tab" name="shell-type"/>
+  <title>Offline Sync & Storage | آف لائن ڈیٹا سنک</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  <!-- Top App Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-20 px-4 flex items-center justify-between gap-3 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+        </a>
+        <div class="flex flex-col">
+          <h1 class="font-bold text-on-surface text-[17px] leading-tight">Offline Storage & Sync</h1>
+          <span class="font-urdu-body-md text-[13px] text-on-surface-variant leading-none">آف لائن اسٹوریج و مطابقت</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
+          Local SQLite Ready
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="flex flex-col relative w-full pt-24 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-4">
+    <div class="flex flex-col w-full gap-5 pb-6">
+      
+      <!-- TOP CONNECTIVITY & SYNC HERO BANNER -->
+      <section class="bg-surface-container-high rounded-2xl p-5 shadow-sm border border-slate-200">
+        <!-- Status Strip -->
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">signal_cellular_alt_1_bar</span>
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="font-bold text-sm text-on-surface">2G / EDGE Rural Network</span>
+                <span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary text-[10px] font-bold">Low Bandwidth</span>
+              </div>
+              <p class="font-urdu-body-md text-[13px] leading-tight text-on-surface-variant truncate text-right" dir="rtl">
+                انٹرنیٹ کمزور ہے لیکن تمام ریکارڈز لوکل میموری میں محفوظ ہو رہے ہیں
+              </p>
+            </div>
+          </div>
+
+          <div class="shrink-0 text-right">
+            <span class="px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary text-xs font-bold shadow-sm inline-flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span id="queue-badge-count">Queue: 4</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Pending Queue Summary Metric -->
+        <div class="bg-surface-container-lowest rounded-xl p-4 mb-4 flex items-center justify-between shadow-sm border border-slate-100">
+          <div>
+            <span class="text-xs font-bold text-on-surface-variant block">Pending Outbox • زیر التواء ریکارڈز</span>
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-primary leading-tight" id="pending-tasks-text">4 Tasks</span>
+              <span class="text-xs font-bold text-secondary font-mono">(18.4 MB)</span>
+            </div>
+            <span class="font-urdu-body-md text-[13px] text-on-surface-variant block mt-0.5">چار معائنہ رپورٹیں کلاؤڈ پر بھیجنے کیلئے تیار</span>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0">
+            <span class="material-symbols-outlined text-[28px]">cloud_upload</span>
+          </div>
+        </div>
+
+        <!-- Sync Progress Bar (Active on Sync) -->
+        <div id="sync-progress-bar-container" class="hidden mb-3">
+          <div class="flex items-center justify-between text-xs mb-1">
+            <span class="font-bold text-primary" id="sync-progress-label">اپ لوڈ جاری ہے...</span>
+            <span class="font-mono font-bold text-primary" id="sync-progress-pct">45%</span>
+          </div>
+          <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+            <div id="sync-progress-fill" class="bg-primary h-full transition-all duration-300" style="width: 45%;"></div>
+          </div>
+        </div>
+
+        <!-- Main Action CTA Button -->
+        <button class="w-full min-h-[56px] px-4 py-3 rounded-xl bg-primary text-on-primary font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-95 transition-all" id="syncNowBtn" onclick="runSyncProcess()" type="button">
+          <span class="material-symbols-outlined text-[24px]">sync</span>
+          <div class="flex flex-col items-center">
+            <span class="leading-tight">Sync Now to Cloud</span>
+            <span class="font-urdu-body-md text-[12px] leading-none text-primary-fixed">ابھی اپ لوڈ و مطابقت کریں</span>
+          </div>
+        </button>
+
+        <!-- WiFi Only Toggle Setting -->
+        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-200">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">wifi</span>
+            <div>
+              <span class="text-xs font-bold text-on-surface block leading-tight">Force Wi-Fi Only Mode</span>
+              <span class="font-urdu-body-md text-[11px] text-on-surface-variant block leading-tight">صرف وائی فائی کنکشن پر اپ لوڈ کریں</span>
+            </div>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input type="checkbox" checked class="sr-only peer" id="wifiToggle"/>
+            <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+          </label>
+        </div>
+      </section>
+
+      <!-- ON-DEVICE STORAGE & LOCAL SQLITE BREAKDOWN -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="font-bold text-on-surface text-[16px]">Device Storage & Local SQLite</h2>
+            <p class="font-urdu-body-md text-xs text-on-surface-variant">مقامی موبائل اسٹوریج اور کیشے کی تفصیل</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-surface-container-high text-primary text-xs font-bold">
+            18.4 / 500 MB
+          </span>
+        </div>
+
+        <!-- Segmented Bar Gauge -->
+        <div class="w-full bg-surface-container rounded-full h-4 flex overflow-hidden my-2">
+          <div class="bg-primary h-full" style="width: 77%;" title="Photos: 14.2 MB"></div>
+          <div class="bg-secondary-container h-full" style="width: 17%;" title="Audio: 3.1 MB"></div>
+          <div class="bg-primary-container h-full" style="width: 6%;" title="SQLite: 1.1 MB"></div>
+        </div>
+
+        <!-- Category Legend Cards -->
+        <div class="grid grid-cols-3 gap-2 pt-1 text-xs">
+          <div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+            <div class="flex items-center gap-1 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary shrink-0"></span>
+              <span class="font-bold text-on-surface truncate">Geo-Photos</span>
+            </div>
+            <span class="font-mono text-primary font-bold">14.2 MB</span>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+            <div class="flex items-center gap-1 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary-container shrink-0"></span>
+              <span class="font-bold text-on-surface truncate">Audio</span>
+            </div>
+            <span class="font-mono text-secondary font-bold">3.1 MB</span>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+            <div class="flex items-center gap-1 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary-container shrink-0"></span>
+              <span class="font-bold text-on-surface truncate">SQLite DB</span>
+            </div>
+            <span class="font-mono text-primary font-bold">1.1 MB</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDING OUTBOX QUEUE LIST -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between" dir="rtl">
+          <h3 class="font-urdu-headline-md font-bold text-on-surface text-[17px]">آؤٹ باکس میں محفوظ رپورٹس (Pending Items)</h3>
+          <span class="text-xs text-on-surface-variant font-mono">Total: 4</span>
+        </div>
+
+        <div class="flex flex-col gap-2.5 text-xs">
+          <div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">photo_camera</span>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface">Inspection Photos (Token #PK-94021)</span>
+                <span class="text-[10px] text-on-surface-variant">2 Geo-photos • Chak 18 Water Works</span>
+              </div>
+            </div>
+            <span class="font-mono text-primary font-bold">7.1 MB</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[20px]">mic</span>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface">Citizen Audio Note (M. Afzal)</span>
+                <span class="text-[10px] text-on-surface-variant">Potohari dialect • 0:14 audio</span>
+              </div>
+            </div>
+            <span class="font-mono text-primary font-bold">1.2 MB</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface">Repair Sign-off Checklist (#PK-7821)</span>
+                <span class="text-[10px] text-on-surface-variant">C&W Road Asphalting Compliance</span>
+              </div>
+            </div>
+            <span class="font-mono text-primary font-bold">0.4 MB</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div id="mobile-bottom-nav"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    function runSyncProcess() {
+      const barContainer = document.getElementById("sync-progress-bar-container");
+      const fill = document.getElementById("sync-progress-fill");
+      const pctLabel = document.getElementById("sync-progress-pct");
+      const btn = document.getElementById("syncNowBtn");
+
+      barContainer.classList.remove("hidden");
+      btn.disabled = true;
+      btn.classList.add("opacity-60");
+
+      AppSync.syncOutbox((pct, remaining) => {
+        fill.style.width = `${pct}%`;
+        pctLabel.innerText = `${pct}%`;
+
+        if (pct >= 100) {
+          setTimeout(() => {
+            barContainer.classList.add("hidden");
+            btn.disabled = false;
+            btn.classList.remove("opacity-60");
+            document.getElementById("pending-tasks-text").innerText = "0 Tasks (Synced)";
+            document.getElementById("queue-badge-count").innerText = "Queue: 0";
+            AppSpeech.playChime("success");
+            AppSpeech.speak("تمام آف لائن معائنہ رپورٹیں اور تصاویر کلاؤڈ سرور پر کامیابی سے اپ لوڈ ہو گئی ہیں۔");
+            alert("کلاؤڈ مطابقت پذیری مکمل ہو گئی! تمام 4 ٹاسک اپ لوڈ ہو گئے۔");
+          }, 600);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

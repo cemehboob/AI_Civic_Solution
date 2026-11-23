@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_tab" name="shell-type"/>
+  <title>On-Site Inspection & Evidence | موقع پر معائنہ</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  <!-- Top App Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-20 px-4 flex items-center justify-between gap-3 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="field_tasks.html" aria-label="Go back to tasks" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+        </a>
+        <div class="flex flex-col">
+          <h1 class="font-bold text-on-surface text-[17px] leading-tight">On-Site Inspection</h1>
+          <span class="font-urdu-body-md text-[13px] text-on-surface-variant leading-none">موقع پر تصدیق و تصویری ثبوت</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
+          ENG-742
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="flex flex-col relative w-full pt-24 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-4">
+    <div class="flex flex-col w-full gap-4 pb-6">
+      
+      <!-- GEO-FENCE REAL-TIME VALIDATION BANNER -->
+      <div class="w-full bg-primary text-on-primary rounded-2xl p-4 shadow-md flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">verified</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="font-bold text-sm tracking-tight">GPS Match Verified</span>
+              <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">15m Precision</span>
+            </div>
+            <span class="text-xs opacity-90 truncate font-mono">33.2641° N, 73.2392° E • موقع کی تصدیق شدہ</span>
+          </div>
+        </div>
+        <span class="inline-flex w-3.5 h-3.5 rounded-full bg-primary-fixed animate-ping shrink-0"></span>
+      </div>
+
+      <!-- SITE & TOKEN CONTEXT CARD -->
+      <div class="w-full bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-mono text-xs font-bold" id="inspect-token">PK-94021</span>
+            <span class="text-xs text-on-surface-variant font-medium">Community Well & RO</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-surface-container text-primary text-xs font-bold">SDO Field Ticket</span>
+        </div>
+        <div>
+          <h2 class="font-bold text-on-surface text-[18px]">Chak 18 Water Filtration Plant</h2>
+          <p class="font-urdu-body-md text-on-surface-variant text-sm text-right" dir="rtl">چک نمبر 18 ماندرہ، تحصیل گوجر خان، ضلع راولپنڈی</p>
+        </div>
+        <div class="pt-2 flex items-center justify-between text-xs text-on-surface-variant border-t border-slate-100">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-secondary">person_pin</span> Complainant: M. Afzal</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">water_drop</span> Tube-well #4</span>
+        </div>
+      </div>
+
+      <!-- BEFORE & AFTER PHOTO EVIDENCE SECTION -->
+      <div class="w-full bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-[22px]">photo_camera</span>
+              <span class="font-bold text-on-surface text-[16px]">Photo Evidence</span>
+            </div>
+            <span class="font-urdu-body-md text-xs text-on-surface-variant">تصویری ثبوت (قبل اور بعد مرمت)</span>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">2 Photos Attached</span>
+        </div>
+
+        <!-- Cards Split -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <!-- Card: Before Repair -->
+          <div class="relative flex flex-col rounded-xl overflow-hidden bg-surface-container border border-slate-200">
+            <div class="relative w-full h-40 bg-slate-200 flex items-center justify-center">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80" alt="Burnt Motor Before Repair" class="w-full h-full object-cover"/>
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-error text-on-error text-xs font-bold flex items-center gap-1 shadow-sm">
+                <span class="material-symbols-outlined text-[14px]">history</span> BEFORE (پہلے)
+              </div>
+              <div class="absolute bottom-1 inset-x-1 px-2 py-1 rounded bg-black/70 backdrop-blur text-white text-[10px] leading-tight">
+                <span>GPS: 33.2641° N, 73.2392° E • 25 Feb 11:20 AM</span>
+              </div>
+            </div>
+            <div class="p-2.5 flex items-center justify-between text-xs">
+              <span class="font-bold text-on-surface">Burned Stator & Valve</span>
+              <span class="material-symbols-outlined text-on-surface-variant text-[18px]">lock</span>
+            </div>
+          </div>
+
+          <!-- Card: After Repair (Current Live Evidence) -->
+          <div class="relative flex flex-col rounded-xl overflow-hidden bg-surface-container border border-slate-200">
+            <div class="relative w-full h-40 bg-slate-200 flex items-center justify-center">
+              <img id="after-repair-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80" alt="New Motor After Repair" class="w-full h-full object-cover"/>
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary-container text-on-primary text-xs font-bold flex items-center gap-1 shadow-sm">
+                <span class="material-symbols-outlined text-[14px]">check_circle</span> AFTER (مرمت شدہ)
+              </div>
+              <div class="absolute bottom-1 inset-x-1 px-2 py-1 rounded bg-black/70 backdrop-blur text-white text-[10px] leading-tight">
+                <span class="text-primary-fixed font-bold">GPS: Verified • Today 02:44 PM PKT</span>
+              </div>
+            </div>
+            <div class="p-2.5 flex items-center justify-between text-xs">
+              <span class="font-bold text-on-surface">New 7.5HP Motor Installed</span>
+              <button class="px-2 py-1 rounded bg-surface-container-high text-on-surface font-bold text-[11px] flex items-center gap-1 hover:bg-surface-container" onclick="triggerCameraCapture()" type="button">
+                <span class="material-symbols-outlined text-[14px]">cached</span> Retake
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPARES & COMPLIANCE CHECKLIST -->
+      <div class="w-full bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between" dir="rtl">
+          <div>
+            <h3 class="font-urdu-headline-md text-on-surface font-bold text-[17px]">تکمیل معائنہ چیک لسٹ (Compliance Checklist)</h3>
+            <p class="font-urdu-body-md text-xs text-on-surface-variant">تمام مراحل کی تصدیق لازمی ہے</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[24px]">checklist</span>
+        </div>
+
+        <div class="flex flex-col gap-2.5 text-right" dir="rtl">
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low cursor-pointer">
+            <input type="checkbox" checked class="w-5 h-5 rounded text-primary focus:ring-0"/>
+            <div class="flex flex-col">
+              <span class="font-bold text-xs text-on-surface">نئی 7.5HP موٹر اور پمپ نصب کر دیا گیا</span>
+              <span class="text-[11px] text-on-surface-variant">New heavy-duty motor fitted and tested</span>
+            </div>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low cursor-pointer">
+            <input type="checkbox" checked class="w-5 h-5 rounded text-primary focus:ring-0"/>
+            <div class="flex flex-col">
+              <span class="font-bold text-xs text-on-surface">پائپ لائن لیکیج اور پریشر والو سیل کر دیا گیا</span>
+              <span class="text-[11px] text-on-surface-variant">Pressure test passed at 4.2 Bar</span>
+            </div>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low cursor-pointer">
+            <input type="checkbox" checked class="w-5 h-5 rounded text-primary focus:ring-0"/>
+            <div class="flex flex-col">
+              <span class="font-bold text-xs text-on-surface">پانی کے کلورین ٹیسٹ کے نمونے محفوظ کیے گئے</span>
+              <span class="text-[11px] text-on-surface-variant">Water clarity & chlorine level compliant</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- CITIZEN SATISFACTION AUDIO VERIFICATION -->
+      <div class="w-full bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between" dir="rtl">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[22px]">record_voice_over</span>
+            <span class="font-bold text-on-surface text-sm">شہری تصدیقی آڈیو نوٹ (Complainant Sign-off)</span>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">تسلی بخش</span>
+        </div>
+
+        <p class="font-urdu-body-md text-xs text-on-surface-variant text-right" dir="rtl">
+          شہری سے موقع پر تصدیق کروائیں کہ پانی کی سپلائی بحال ہو گئی ہے۔
+        </p>
+
+        <button onclick="recordCitizenSatisfaction()" class="min-h-[48px] rounded-xl bg-secondary-fixed text-on-secondary-fixed font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">mic</span>
+          <span>شہری کی اطمینان بخش آواز ریکارڈ کریں (Record Voice Note)</span>
+        </button>
+      </div>
+
+      <!-- SUBMIT RESOLUTION BUTTON -->
+      <button onclick="submitResolution()" class="min-h-[56px] w-full rounded-2xl bg-primary text-on-primary font-urdu-headline-md font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-primary-container active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-[24px]">task_alt</span>
+        <span>مرمت مکمل اور رپورٹ جمع کریں (Sign Off Case)</span>
+      </button>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div id="mobile-bottom-nav"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token") || "PK-94021";
+      document.getElementById("inspect-token").innerText = token;
+    });
+
+    function triggerCameraCapture() {
+      alert("کیمرہ ایکٹو: موقع کی تازہ ترین مرمت شدہ تصویر جی پی ایس واٹر مارک کے ساتھ محفوظ کی جا رہی ہے۔");
+    }
+
+    function recordCitizenSatisfaction() {
+      AppSpeech.startListening((transcript, isFinal) => {
+        if (isFinal) {
+          alert(`شہری کی تصدیقی آواز محفوظ ہو گئی: "${transcript}"`);
+          AppSpeech.speak("شہری کا آڈیو نوٹ کامیابی سے محفوظ ہو گیا ہے۔");
+        }
+      });
+    }
+
+    function submitResolution() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token") || "PK-94021";
+
+      const complaint = AppSync.getComplaints().find(c => c.token === token);
+      if (complaint) {
+        complaint.status = "resolved";
+        complaint.statusUrdu = "مکمل حل شدہ (Resolved)";
+        complaint.timeline.push({
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          stepUrdu: "فیلڈ معائنہ اور مرمت مکمل",
+          stepEnglish: "Inspection & Repair Completed",
+          done: true
+        });
+        AppSync.saveComplaint(complaint);
+      }
+
+      AppSpeech.playChime("success");
+      AppSpeech.speak("معائنہ رپورٹ اور تصویری ثبوت کامیابی سے جمع کر لیے گئے۔ یہ کیس اب حل شدہ مارک ہو گیا ہے۔");
+      alert("شکایت حل شدہ رپورٹ کامیابی سے جمع ہو گئی!");
+      window.location.href = `complaint_tracking.html?token=${token}`;
+    }
+  </script>
+</body>
+</html>

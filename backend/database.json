@@ -1,0 +1,90 @@
+{
+  "system": {
+    "version": "1.0.0",
+    "deployment": "Rural Pakistan Pilot - Rawalpindi Division",
+    "zeroPaidPolicy": true,
+    "lastUpdated": "2026-11-23T22:00:00Z"
+  },
+  "metrics": {
+    "totalInflowToday": 284,
+    "audioRecordedPercent": 92,
+    "pendingTriage": 38,
+    "activeFieldTeams": 64,
+    "slaBreachesRisk": 7,
+    "aiPipelineAccuracy": 96.4
+  },
+  "users": [
+    {
+      "id": "USR-001",
+      "name": "محمد افضل (Muhammad Afzal)",
+      "cnic": "37405-1849201-3",
+      "phone": "0300-5849120",
+      "role": "citizen",
+      "district": "Rawalpindi",
+      "tehsil": "Gujar Khan",
+      "village": "Chak 18",
+      "language": "ur-PK",
+      "audioSpeed": 0.9,
+      "registeredAt": "2026-05-10"
+    },
+    {
+      "id": "USR-002",
+      "name": "چوہدری بشیر احمد (Ch. Bashir Ahmad)",
+      "cnic": "37405-9921443-1",
+      "phone": "0302-8419200",
+      "role": "citizen",
+      "district": "Rawalpindi",
+      "tehsil": "Gujar Khan",
+      "village": "Mandra",
+      "language": "pa-PK",
+      "audioSpeed": 0.8,
+      "registeredAt": "2026-08-14"
+    },
+    {
+      "id": "STAFF-101",
+      "name": "Engr. Tariq Mehmood (انجینئر طارق محمود)",
+      "cnic": "37405-2210491-9",
+      "phone": "0300-5551234",
+      "role": "admin",
+      "designation": "Deputy Director Local Government",
+      "district": "Rawalpindi",
+      "tehsil": "All Division",
+      "active": true
+    },
+    {
+      "id": "STAFF-102",
+      "name": "Asma Bibi (عاصمہ بی بی)",
+      "cnic": "37405-7718290-2",
+      "phone": "0312-5554321",
+      "role": "triage_officer",
+      "designation": "Senior Audio Triage Analyst",
+      "district": "Rawalpindi",
+      "tehsil": "Rawalpindi City",
+      "active": true
+    },
+    {
+      "id": "STAFF-201",
+      "name": "Engr. Asim Raza (اسسٹنٹ انجینئر عاصم)",
+      "cnic": "37405-3382910-5",
+      "phone": "0301-5918234",
+      "role": "field_operator",
+      "designation": "SDO PHED Gujar Khan Team 2",
+      "district": "Rawalpindi",
+      "tehsil": "Gujar Khan",
+      "assignedTasks": ["PK-94021"],
+      "active": true
+    },
+    {
+      "id": "STAFF-202",
+      "name": "Supervisor Nadeem (سپروائزر ندیم چوہدری)",
+      "cnic": "37405-4491023-7",
+      "phone": "0312-5819022",
+      "role": "field_operator",
+      "designation": "C&W Road Resurfacing Team 4",
+      "district": "Rawalpindi",
+      "tehsil": "Rawalpindi Rural",
+      "assignedTasks": ["PK-7821"],
+      "active": true
+    }
+  ]
+}

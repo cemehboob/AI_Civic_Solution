@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ur">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <title>عوامی آواز | Awami Voice Citizen Portal</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "outline": "#707a70",
+            "outline-variant": "#bfc9be",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+  <!-- Government Provincial Top Strip -->
+  <div class="bg-primary text-on-primary text-xs py-1.5 px-4 sm:px-8 border-b border-primary-container">
+    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+        <span class="font-bold tracking-wide" id="gov-strip-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ای گورننس نظام</span>
+      </div>
+      
+      <!-- Top Action Controls Strip -->
+      <div class="flex items-center gap-3">
+        <!-- Persistent Top Header Language Toggle Button (Urdu <-> English Conversion - No Chinese Glyphs) -->
+        <button id="header-lang-switcher" onclick="WebPortal.toggleLanguage()" class="px-3 py-1 rounded-full bg-primary-container hover:bg-primary-fixed hover:text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 cursor-pointer shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-white/20 text-white px-1.5 py-0.5 rounded shadow-sm">
+            <span>EN</span>
+            <span class="text-[10px] leading-none">⇄</span>
+            <span class="font-urdu leading-none text-[11px]">اردو</span>
+          </span>
+          <span id="top-lang-text">English</span>
+        </button>
+
+        <span class="text-primary-fixed/40">|</span>
+        <button onclick="WebPortal.togglePageNarration()" class="hover:underline flex items-center gap-1 cursor-pointer">
+          <span class="material-symbols-outlined text-[16px]">volume_up</span>
+          <span id="gov-audio-guide-text">آواز رہنمائی (Audio Guide)</span>
+        </button>
+        <span class="text-primary-fixed/40">|</span>
+        <a href="admin/index.html" class="hover:underline flex items-center gap-1 font-bold">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span id="gov-admin-link-text">ایڈمن پورٹل (Admin Portal)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Header & Global Navigation Strip -->
+  <header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <!-- Pakistan Monument National Emblem Icon -->
+        <div class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5" title="Pakistan Monument (اسلام آباد)">
+          <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="#004423" stroke="#ffdcc3" stroke-width="1.5"/>
+            <!-- 4 Provinces Blooming Petals -->
+            <path d="M24 6 C28 14 34 18 38 24 C34 26 28 25 24 20 Z" fill="#ffffff" opacity="0.95"/>
+            <path d="M24 6 C20 14 14 18 10 24 C14 26 20 25 24 20 Z" fill="#ffffff" opacity="0.95"/>
+            <path d="M42 24 C34 26 30 32 24 42 C24 36 27 30 33 26 Z" fill="#ffffff" opacity="0.9"/>
+            <path d="M6 24 C14 26 18 32 24 42 C24 36 21 30 15 26 Z" fill="#ffffff" opacity="0.9"/>
+            <!-- Central Star & Crescent -->
+            <circle cx="24" cy="24" r="5" fill="#fe932c"/>
+            <path d="M22 21 C23.5 21 25 22 25 24 C25 26 23.5 27 22 27 C20.5 27 19.5 25.5 19.5 24 C19.5 22.5 20.5 21 22 21 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]" id="brand-portal-name">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-xs text-on-surface-variant" id="brand-portal-sub">عوامی شکایات و صوتی رہنمائی پورٹل</span>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-bold">
+        <a href="index.html" class="min-h-[44px] px-4 py-2 rounded-xl transition-colors flex items-center bg-primary-container text-on-primary shadow-sm">
+          مرکزی صفحہ (Home)
+        </a>
+        <a href="register.html" class="min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">
+          شکایت درج کروائیں (Register)
+        </a>
+        <a href="track.html" class="min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">
+          شکایات کا حال (Track)
+        </a>
+        <a href="healthcare.html" class="min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">
+          ہسپتال و صحت (Healthcare)
+        </a>
+        <a href="subsidies.html" class="min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">
+          امداد و وظائف (Subsidies)
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="../mobileApp/index.html" class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-high text-on-surface flex items-center gap-1.5 hover:bg-surface-container font-bold text-xs border border-slate-200">
+          <span class="material-symbols-outlined text-[18px] text-primary">smartphone</span>
+          <span id="gov-mobile-link-text">موبائل ایپ دیکھیں</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport (Full Screen Responsive Layout) -->
+  <main class="w-full flex-grow bg-surface py-6">
+    <div class="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <!-- Audio Accessibility & Screen Narrator Bar -->
+      <div class="w-full bg-surface-container-high rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 border border-slate-200">
+        <div class="flex items-center gap-3 w-full md:w-auto">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">record_voice_over</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-on-surface text-[16px]" id="narrator-bar-title">صفحہ کی خودکار آواز رہنمائی (Audio Narration)</span>
+            <span class="text-xs text-on-surface-variant flex items-center gap-1.5 mt-0.5" id="narrator-bar-sub">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse inline-block"></span>
+              براؤزر مائیک فعال ہے • آن لائن آواز شناخت (Shruti-ONNX / Whisper ASR Ready)
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap justify-end w-full md:w-auto">
+          <button class="min-h-[44px] px-4 py-2 rounded-xl bg-surface-container-lowest text-primary font-bold hover:bg-primary-container hover:text-on-primary transition-all flex items-center gap-1.5 shadow-sm border border-slate-200" id="narrateBtn" onclick="WebPortal.togglePageNarration()" type="button">
+            <span class="material-symbols-outlined text-[22px]" id="narrateIcon">play_circle</span>
+            <span id="narrateText">یہ صفحہ سنیں (Listen)</span>
+          </button>
+          
+          <div class="flex items-center bg-surface-container-lowest rounded-xl p-1 shadow-sm border border-slate-200">
+            <span class="text-xs text-on-surface-variant px-2" id="narrator-speed-label">رفتار:</span>
+            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors" onclick="WebPortal.setSpeed(0.8, this)" type="button">0.8x</button>
+            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs bg-primary text-on-primary font-bold transition-colors ml-1" onclick="WebPortal.setSpeed(1.0, this)" type="button">1.0x</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Interactive Voice Assistance Bento Section (Full Width Grid) -->
+      <section class="w-full rounded-3xl bg-gradient-to-b from-surface-container-lowest to-surface-container-low p-6 sm:p-10 shadow-sm border border-slate-200 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left/Center 8 Columns: Giant Microphone & Spoken Interface -->
+          <div class="lg:col-span-8 flex flex-col items-center text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-fixed/60 text-on-primary-fixed mb-3">
+              <span class="material-symbols-outlined text-[20px]">hearing</span>
+              <span class="font-bold text-sm" id="hero-badge-text">قومی صوتی شکایات و رہنمائی پورٹل (حکومتِ پاکستان)</span>
+            </div>
+
+            <h1 class="font-urdu-headline-lg text-primary text-[28px] sm:text-[36px] font-bold mb-2 leading-tight" id="hero-headline-text">
+              مائیک دبائیں اور بلا جھجھک اپنی زبان میں بتائیں
+            </h1>
+            
+            <p class="font-urdu-body-lg text-on-surface-variant mb-6 max-w-2xl leading-relaxed text-sm sm:text-base font-bold" id="hero-sub-text">
+              Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)
+            </p>
+
+            <!-- Central Giant Voice Button Orb -->
+            <div class="relative flex flex-col items-center justify-center my-4">
+              <div class="absolute w-44 h-44 rounded-full bg-secondary-container/20 transition-all pointer-events-none scale-100" id="micPulse1"></div>
+              <div class="absolute w-56 h-56 rounded-full bg-primary-fixed/20 transition-all pointer-events-none scale-100" id="micPulse2"></div>
+              
+              <button aria-label="مائیک دبائیں اور بولیں" class="relative z-20 min-w-[124px] min-h-[124px] rounded-full bg-primary-container text-on-primary hover:bg-primary shadow-2xl flex flex-col items-center justify-center transition-all duration-300 transform active:scale-95 cursor-pointer border-4 border-white" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
+                <span class="material-symbols-outlined text-[56px]" id="micGlyph">mic</span>
+                <span class="font-urdu-body-md text-xs font-bold text-on-primary mt-1" id="micStatusText">Speak in English or Local Language</span>
+              </button>
+
+              <!-- Frequency Wave Visualizer -->
+              <div class="hidden flex items-end gap-1.5 h-8 mt-4" id="soundWaveVisualizer">
+                <div class="w-1.5 bg-secondary rounded-full animate-bounce h-4"></div>
+                <div class="w-1.5 bg-secondary rounded-full animate-bounce h-8 [animation-delay:150ms]"></div>
+                <div class="w-1.5 bg-secondary rounded-full animate-bounce h-6 [animation-delay:300ms]"></div>
+                <div class="w-1.5 bg-secondary rounded-full animate-bounce h-7 [animation-delay:75ms]"></div>
+                <div class="w-1.5 bg-secondary rounded-full animate-bounce h-3 [animation-delay:200ms]"></div>
+              </div>
+            </div>
+
+            <!-- Spoken Prompt Suggestion Chips (Covering all regional accents: Sindhi, Pashto, Balochi, Saraiki, Hindko, Punjabi, Potohari, Urdu) -->
+            <div class="w-full mt-4">
+              <span class="font-urdu-body-md text-xs sm:text-sm text-on-surface-variant block mb-2 font-bold" id="chips-header-text">
+                عام بولے جانے والے فقرے (فوری مدد کیلئے کسی پر کلک کریں):
+              </span>
+              <div class="flex flex-wrap items-center justify-center gap-2">
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                  <span id="chip-road-text">"کھیتوں کی سڑک ٹوٹی ہوئی ہے"</span>
+                </button>
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('قریبی بنیادی مرکز صحت بی ایچ یو کہاں واقع ہے؟')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                  <span id="chip-hospital-text">"قریبی ہسپتال (BHU)"</span>
+                </button>
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('بے نظیر انکم سپورٹ کفالت وظیفہ کب ملے گا؟')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                  <span id="chip-bisp-text">"بے نظیر وظیفہ"</span>
+                </button>
+                <!-- Saraiki Dialect Chip -->
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-primary-fixed/30 text-primary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-primary-fixed/50 transition-colors flex items-center gap-1.5 border border-primary-fixed" onclick="WebPortal.playVoiceHint('ساڈے پنڈ وچ پاݨی دا فلٹر خراب ہے، گندا پاݨی آندا پیا اے')" type="button">
+                  <span class="material-symbols-outlined text-primary text-[18px]">volume_up</span>
+                  <span id="chip-saraiki-text">"پاݨی دا فلٹر بند ہے (سرائیکی)"</span>
+                </button>
+                <!-- Hindko Dialect Chip -->
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-secondary-fixed/40 text-secondary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-secondary-fixed/60 transition-colors flex items-center gap-1.5 border border-secondary-fixed" onclick="WebPortal.playVoiceHint('ساڈے محلے دی سڑک ٹٹی ہوئی اے، ٹریکٹر نئیں لنگ سکدا')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                  <span id="chip-hindko-text">"سڑک ٹٹی ہوئی اے (ہندکو)"</span>
+                </button>
+                <!-- Sindhi Dialect Chip -->
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-teal-50 text-teal-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-teal-100 transition-colors flex items-center gap-1.5 border border-teal-200" onclick="WebPortal.playVoiceHint('اسان جي علائقي ۾ پاڻي جو مسئلو آهي')" type="button">
+                  <span class="material-symbols-outlined text-teal-700 text-[18px]">volume_up</span>
+                  <span id="chip-sindhi-text">"پاڻي جو مسئلو (سنڌي)"</span>
+                </button>
+                <!-- Pashto Dialect Chip -->
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-cyan-50 text-cyan-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-cyan-100 transition-colors flex items-center gap-1.5 border border-cyan-200" onclick="WebPortal.playVoiceHint('زمونږ په کلي کښې د اوبو مسئله ده')" type="button">
+                  <span class="material-symbols-outlined text-cyan-700 text-[18px]">volume_up</span>
+                  <span id="chip-pashto-text">"د اوبو مسئله (پښتو)"</span>
+                </button>
+                <!-- Balochi Dialect Chip -->
+                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-orange-50 text-orange-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-orange-100 transition-colors flex items-center gap-1.5 border border-orange-200" onclick="WebPortal.playVoiceHint('مئے میتگ ءَ آپ نیست')" type="button">
+                  <span class="material-symbols-outlined text-orange-700 text-[18px]">volume_up</span>
+                  <span id="chip-balochi-text">"آپ نیست (بلوچی)"</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 4 Columns: Executive Telemetry & Dialect Status Bento Cards -->
+          <div class="lg:col-span-4 flex flex-col gap-3.5">
+            <!-- Bento Card 1: Dialect Support -->
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-primary-fixed text-primary flex items-center justify-center shrink-0 font-bold text-xs" title="Urdu & English Conversion">
+                <span class="inline-flex items-center gap-0.5 text-[9px] font-bold tracking-tight">
+                  <span>EN</span>
+                  <span class="text-[9px]">⇄</span>
+                  <span class="font-urdu text-[10px]">اردو</span>
+                </span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface text-sm" id="side-dialects-title">تمام علاقائی صوتی لہجے میسر ہیں</span>
+                <span class="text-xs text-on-surface-variant mt-0.5" id="side-dialects-desc">Urdu, Punjabi, Potohari, Saraiki, Hindko, Sindhi, Pashto, Balochi, English</span>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span class="px-2 py-0.5 rounded bg-surface-container text-[11px] font-bold text-primary">Urdu</span>
+                  <span class="px-2 py-0.5 rounded bg-surface-container text-[11px] font-bold text-primary">Punjabi</span>
+                  <span class="px-2 py-0.5 rounded bg-surface-container text-[11px] font-bold text-primary">Potohari</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-100 text-[11px] font-bold text-emerald-800">Saraiki</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-100 text-[11px] font-bold text-amber-800">Hindko</span>
+                  <span class="px-2 py-0.5 rounded bg-teal-100 text-[11px] font-bold text-teal-800">Sindhi</span>
+                  <span class="px-2 py-0.5 rounded bg-cyan-100 text-[11px] font-bold text-cyan-800">Pashto</span>
+                  <span class="px-2 py-0.5 rounded bg-orange-100 text-[11px] font-bold text-orange-800">Balochi</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bento Card 2: Zero-Cost Sovereign AI -->
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">verified_user</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface text-sm" id="side-zeropaid-title">100% مفت سرکاری سروس</span>
+                <span class="text-xs text-on-surface-variant mt-0.5" id="side-zeropaid-desc">زیرو پیڈ اے آئی لاک فعال ہے ($0.00 Cost Guarantee)</span>
+                <span class="text-[11px] text-emerald-700 font-bold mt-1">OpenRouter Free & Local Deterministic RAG</span>
+              </div>
+            </div>
+
+            <!-- Bento Card 3: Offline Storage Resiliency -->
+            <div class="p-4 rounded-2xl bg-surface-container-lowest border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">cloud_sync</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-bold text-on-surface text-sm" id="side-offline-title">آف لائن ریکارڈنگ کی سہولت</span>
+                <span class="text-xs text-on-surface-variant mt-0.5" id="side-offline-desc">انٹرنیٹ بند ہونے پر بھی شکایت محفوظ ہوگی</span>
+                <span class="text-[11px] text-secondary font-bold mt-1">IndexedDB Auto-Sync Queue Ready</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Live Spoken Feedback Notification Tray -->
+      <div class="hidden w-full mb-6 bg-secondary-fixed text-on-secondary-fixed rounded-2xl p-4 shadow-md flex items-center justify-between gap-3 border border-secondary" id="dictationAlert">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-[32px]">hearing</span>
+          <div>
+            <div class="font-urdu-headline-md font-bold text-sm">آواز موصول ہوئی (Voice Detected):</div>
+            <div class="font-urdu-body-lg text-[17px] font-bold text-primary" id="dictatedQuery">"کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے"</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="min-h-[44px] px-4 bg-primary text-on-primary rounded-xl font-bold text-sm hover:bg-primary-container transition-colors shadow" onclick="WebPortal.submitSpokenQuery()" type="button">
+            شکایت درج کریں (Proceed)
+          </button>
+          <button class="min-h-[44px] min-w-[44px] flex items-center justify-center text-on-secondary-fixed hover:bg-secondary-fixed-dim rounded-lg" onclick="WebPortal.dismissDictationAlert()" type="button">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Four Key Civic Service Gateways (Expansive 4-Column Responsive Grid) -->
+      <section class="w-full mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="font-urdu-headline-lg font-bold text-on-surface text-[24px]" id="gateways-section-title">اہم حکومتی و شہری خدمات (Citizen Gateways)</h2>
+            <p class="font-urdu-body-md text-sm text-on-surface-variant" id="gateways-section-sub">اپنی ضرورت کے مطابق شعبہ منتخب کریں یا اس کا آڈیو کارڈ سنیں</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[32px]">touch_app</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Gateway 1: Register Complaint (Featuring Minar-e-Pakistan Lahore) -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Minar-e-Pakistan Pictorial Monument Icon -->
+                <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Minar-e-Pakistan (لاہور)">
+                  <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" fill="#004423"/>
+                    <!-- Base Floral Petals -->
+                    <path d="M12 40 C16 34 32 34 36 40 Z" fill="#ffffff" opacity="0.85"/>
+                    <path d="M15 38 L33 38 L31 32 L17 32 Z" fill="#e2e7ff"/>
+                    <!-- Main Fluted Tower Shaft -->
+                    <path d="M19 32 L20 18 L28 18 L29 32 Z" fill="#ffffff"/>
+                    <line x1="22" y1="32" x2="22.5" y2="18" stroke="#004423" stroke-width="0.8"/>
+                    <line x1="24" y1="32" x2="24" y2="18" stroke="#004423" stroke-width="0.8"/>
+                    <line x1="26" y1="32" x2="25.5" y2="18" stroke="#004423" stroke-width="0.8"/>
+                    <!-- Balcony Gallery -->
+                    <rect x="18" y="17" width="12" height="2" rx="0.5" fill="#fe932c"/>
+                    <!-- Upper Dome & Spire -->
+                    <path d="M21 17 C21 13 27 13 27 17 Z" fill="#ffffff"/>
+                    <line x1="24" y1="13" x2="24" y2="8" stroke="#ffffff" stroke-width="1.5"/>
+                    <circle cx="24" cy="7" r="1.5" fill="#ffdcc3"/>
+                  </svg>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-bold" id="gw-complaint-badge">فوری ایکشن</span>
+                  <span class="text-[10px] font-bold text-primary font-urdu-body-md mt-0.5">مینارِ پاکستان • لاہور</span>
+                </div>
+              </div>
+              <h3 class="font-urdu-headline-md font-bold text-primary text-[18px] mb-1" id="gw-complaint-title">
+                عوامی شکایت درج کروائیں (Register Complaint)
+              </h3>
+              <p class="font-urdu-body-md text-xs text-on-surface-variant mb-4 leading-relaxed" id="gw-complaint-desc">
+                ٹوٹی گلیاں، سڑکیں، پینے کا ناپید پانی، واٹر فلٹریشن پلانٹ کی بندش اور صفائی کے مسائل۔
+              </p>
+            </div>
+            <a href="register.html" class="w-full min-h-[48px] rounded-xl bg-primary text-on-primary hover:bg-primary-container font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
+              <span id="gw-complaint-btn-text">شکایت درج کریں (File Complaint)</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            </a>
+          </div>
+
+          <!-- Gateway 2: Track Complaint Status (Featuring Pakistan Monument Islamabad) -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Pakistan Monument Pictorial Icon -->
+                <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Pakistan Monument (اسلام آباد)">
+                  <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" fill="#904d00"/>
+                    <!-- 4 Province Petals -->
+                    <path d="M24 7 C28 14 34 18 38 24 C34 26 28 25 24 20 Z" fill="#ffdcc3"/>
+                    <path d="M24 7 C20 14 14 18 10 24 C14 26 20 25 24 20 Z" fill="#ffdcc3"/>
+                    <path d="M41 24 C34 26 30 32 24 41 C24 36 27 30 33 26 Z" fill="#ffffff" opacity="0.9"/>
+                    <path d="M7 24 C14 26 18 32 24 41 C24 36 21 30 15 26 Z" fill="#ffffff" opacity="0.9"/>
+                    <!-- Central Golden Dome -->
+                    <circle cx="24" cy="24" r="4.5" fill="#fe932c"/>
+                    <circle cx="24" cy="24" r="2" fill="#ffffff"/>
+                  </svg>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold" id="gw-track-badge">ٹوکن تلاش</span>
+                  <span class="text-[10px] font-bold text-secondary font-urdu-body-md mt-0.5">پاکستان مانومنٹ • اسلام آباد</span>
+                </div>
+              </div>
+              <h3 class="font-urdu-headline-md font-bold text-secondary text-[18px] mb-1" id="gw-track-title">
+                شکایات کا حال معلوم کریں (Track Complaints)
+              </h3>
+              <p class="font-urdu-body-md text-xs text-on-surface-variant mb-4 leading-relaxed" id="gw-track-desc">
+                ٹوکن نمبر، شناختی کارڈ یا براہِ راست صوتی سوال کے ذریعے پیشرفت اور فیلڈ ٹیم کی جائے وقوعہ پر روانگی دیکھیں۔
+              </p>
+            </div>
+            <a href="track.html" class="w-full min-h-[48px] rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
+              <span id="gw-track-btn-text">سٹیٹس معلوم کریں (Track Status)</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            </a>
+          </div>
+
+          <!-- Gateway 3: Healthcare & BHU (Featuring Faisal Mosque Islamabad) -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Faisal Mosque Pictorial Icon -->
+                <div class="w-14 h-14 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Faisal Mosque (اسلام آباد)">
+                  <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" fill="#ba1a1a"/>
+                    <!-- Mountain Backdrop -->
+                    <path d="M4 36 L16 26 L26 34 L36 24 L44 36 Z" fill="#800000" opacity="0.4"/>
+                    <!-- Bedouin Tent Sharp Main Roof -->
+                    <polygon points="24,14 12,32 36,32" fill="#ffffff"/>
+                    <polygon points="24,14 24,32 36,32" fill="#e2e7ff"/>
+                    <line x1="24" y1="14" x2="24" y2="10" stroke="#ffdcc3" stroke-width="1.5"/>
+                    <circle cx="24" cy="9" r="1.2" fill="#fe932c"/>
+                    <!-- 4 Slender Turkish Minarets -->
+                    <line x1="11" y1="36" x2="11" y2="10" stroke="#ffffff" stroke-width="1.8"/>
+                    <line x1="37" y1="36" x2="37" y2="10" stroke="#ffffff" stroke-width="1.8"/>
+                    <polygon points="11,10 9.5,14 12.5,14" fill="#ffdcc3"/>
+                    <polygon points="37,10 35.5,14 38.5,14" fill="#ffdcc3"/>
+                  </svg>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="px-2 py-0.5 rounded bg-red-100 text-red-800 text-[10px] font-bold" id="gw-health-badge">24 گھنٹے اوپن</span>
+                  <span class="text-[10px] font-bold text-error font-urdu-body-md mt-0.5">فیصل مسجد • اسلام آباد</span>
+                </div>
+              </div>
+              <h3 class="font-urdu-headline-md font-bold text-error text-[18px] mb-1" id="gw-health-title">
+                ہسپتال و بنیادی مراکز صحت (Healthcare)
+              </h3>
+              <p class="font-urdu-body-md text-xs text-on-surface-variant mb-4 leading-relaxed" id="gw-health-desc">
+                قریبی بی ایچ یو (BHU)، دیہی مراکز صحت (RHC)، ڈاکٹروں کی دستیابی، ادویات اور ریسکیو 1122 ایمبولینس۔
+              </p>
+            </div>
+            <a href="healthcare.html" class="w-full min-h-[48px] rounded-xl bg-error text-on-error hover:bg-red-700 font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
+              <span id="gw-health-btn-text">ہسپتال تلاش کریں (Find Hospital)</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            </a>
+          </div>
+
+          <!-- Gateway 4: Subsidies & BISP (Featuring Mazar-e-Quaid Karachi) -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <!-- Mazar-e-Quaid Pictorial Icon -->
+                <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Mazar-e-Quaid (کراچی)">
+                  <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="22" fill="#0b5e34"/>
+                    <!-- Step Pedestal -->
+                    <rect x="10" y="36" width="28" height="4" rx="1" fill="#e2e7ff"/>
+                    <!-- White Marble Cuboid Body -->
+                    <rect x="13" y="24" width="22" height="12" fill="#ffffff"/>
+                    <!-- Iconic Moorish Pointed Arches -->
+                    <path d="M19 36 L19 28 C19 25 24 23 24 23 C24 23 29 25 29 28 L29 36 Z" fill="#004423"/>
+                    <!-- Grand White Marble Dome -->
+                    <path d="M14 24 C14 14 34 14 34 24 Z" fill="#ffffff"/>
+                    <line x1="24" y1="14" x2="24" y2="10" stroke="#fe932c" stroke-width="1.5"/>
+                    <circle cx="24" cy="9" r="1.2" fill="#fe932c"/>
+                  </svg>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-bold" id="gw-subsidy-badge">تصدیق شدہ</span>
+                  <span class="text-[10px] font-bold text-primary font-urdu-body-md mt-0.5">مزارِ قائد • کراچی</span>
+                </div>
+              </div>
+              <h3 class="font-urdu-headline-md font-bold text-primary text-[18px] mb-1" id="gw-subsidy-title">
+                امداد، وظائف و کسان کارڈ (Subsidies & BISP)
+              </h3>
+              <p class="font-urdu-body-md text-xs text-on-surface-variant mb-4 leading-relaxed" id="gw-subsidy-desc">
+                بینظیر کفالت وظیفہ 10,500، 8171 ایس ایم ایس اہلیت، کسان کارڈ اور تعلیمی وظائف کے متعلق تصدیق شدہ رہنمائی۔
+              </p>
+            </div>
+            <a href="subsidies.html" class="w-full min-h-[48px] rounded-xl bg-surface-container text-primary hover:bg-surface-container-high font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors border border-slate-200 text-xs">
+              <span id="gw-subsidy-btn-text">وظائف کی معلومات (Check Schemes)</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer (Full Width) -->
+  <footer class="bg-surface-container-high py-8 border-t border-slate-200 text-center text-xs text-on-surface-variant mt-auto">
+    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-8 flex flex-col items-center gap-2">
+      <div class="flex items-center gap-2 flex-wrap justify-center">
+        <span class="font-bold text-primary" id="footer-gov-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ڈیجیٹل سروسز</span>
+        <span>•</span>
+        <span id="footer-div-text">عوامی آواز - قومی عوامی خدمت پورٹل (All Pakistan Provinces & Territories)</span>
+      </div>
+      <p id="footer-tech-text">صوتی شناخت: Shruti-ONNX & Whisper v3 • ماڈل روٹنگ: OpenRouter Free & Local Zero-Cost Policy</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/logger.js"></script>
+  <script src="../shared/security.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="web.js"></script>
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <title>Awami Voice Admin Portal | عوامی آواز ایڈمن پورٹل</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "outline": "#707a70",
+            "outline-variant": "#bfc9be",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+  <!-- Executive Command Header (Fixed Sticky Responsive Navigation without Overlap) -->
+  <header class="sticky top-0 z-50 bg-surface-container-lowest/98 backdrop-blur-xl shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
+        <!-- Brand / Identity with Pakistan Monument Crest -->
+        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5">
+            <!-- Pakistan Monument National Crest SVG -->
+            <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" fill="#004423" stroke="#ffdcc3" stroke-width="1.5"/>
+              <!-- 4 Blooming Province Petals -->
+              <path d="M24 6 C28 14 34 18 38 24 C34 26 28 25 24 20 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M24 6 C20 14 14 18 10 24 C14 26 20 25 24 20 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M42 24 C34 26 30 32 24 42 C24 36 27 30 33 26 Z" fill="#ffffff" opacity="0.9"/>
+              <path d="M6 24 C14 26 18 32 24 42 C24 36 21 30 15 26 Z" fill="#ffffff" opacity="0.9"/>
+              <!-- Central Star & Crescent -->
+              <circle cx="24" cy="24" r="5" fill="#fe932c"/>
+              <path d="M22 21 C23.5 21 25 22 25 24 C25 26 23.5 27 22 27 C20.5 27 19.5 25.5 19.5 24 C19.5 22.5 20.5 21 22 21 Z" fill="#ffffff"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="font-bold text-primary text-base sm:text-[18px] tracking-tight">Awami Voice Admin</span>
+              <span class="text-slate-300 hidden sm:inline">|</span>
+              <span class="font-urdu-headline-md text-primary font-bold text-sm sm:text-[16px]">عوامی آواز ایڈمن پورٹل</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center px-2 py-0.2 rounded bg-surface-container text-on-surface-variant text-[11px] font-bold">
+                National Civic Administration - All Provinces & Territories (حکومتِ پاکستان)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time Telemetry Summary Pills -->
+        <div class="hidden xl:flex items-center gap-3.5 bg-surface-container-low px-3.5 py-1.5 rounded-xl border border-slate-200">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+            <span class="text-xs font-bold text-on-surface">All Services Live</span>
+          </div>
+          <span class="text-slate-300">•</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs text-on-surface-variant font-bold">AI Router: Zero-Paid Locked</span>
+          </div>
+          <span class="text-slate-300">•</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs text-secondary font-bold">Open Cases: 142</span>
+          </div>
+        </div>
+
+        <!-- Right User Actions -->
+        <div class="flex items-center gap-2.5 shrink-0">
+          <a href="../index.html" class="h-9 px-3 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high flex items-center gap-1 text-xs font-bold transition-colors">
+            <span class="material-symbols-outlined text-[16px]">public</span>
+            <span>Citizen Portal</span>
+          </a>
+          
+          <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+            <div class="text-right hidden sm:block">
+              <div class="text-xs font-bold text-on-surface leading-tight">Engr. Tariq Mehmood</div>
+              <div class="text-[10px] text-on-surface-variant leading-tight">Deputy Director</div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+              <span class="material-symbols-outlined text-[16px]">person</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs Strip (Clean, Icon-Driven, Non-Overlapping) -->
+      <nav class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs font-bold scroll-smooth">
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-sm whitespace-nowrap shrink-0 transition-all" data-tab="triage" onclick="AdminPortal.switchTab('triage')">
+          <span class="material-symbols-outlined text-[17px]">fact_check</span>
+          <span>Triage & Audio</span>
+          <span class="opacity-80 text-[11px]">(شکایات جائزہ)</span>
+        </button>
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="dispatch" onclick="AdminPortal.switchTab('dispatch')">
+          <span class="material-symbols-outlined text-[17px]">local_shipping</span>
+          <span>Field Dispatch</span>
+          <span class="opacity-80 text-[11px]">(فیلڈ روانگی)</span>
+        </button>
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="ai-telemetry" onclick="AdminPortal.switchTab('ai-telemetry')">
+          <span class="material-symbols-outlined text-[17px]">neurology</span>
+          <span>AI Router & Telemetry</span>
+          <span class="opacity-80 text-[11px]">(ماڈل مانیٹرنگ)</span>
+        </button>
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="users" onclick="AdminPortal.switchTab('users')">
+          <span class="material-symbols-outlined text-[17px]">groups</span>
+          <span>Users & Staff</span>
+          <span class="opacity-80 text-[11px]">(صارفین و عملہ)</span>
+        </button>
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="knowledge" onclick="AdminPortal.switchTab('knowledge')">
+          <span class="material-symbols-outlined text-[17px]">menu_book</span>
+          <span>Verified RAG</span>
+          <span class="opacity-80 text-[11px]">(معلومات)</span>
+        </button>
+        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="logs" onclick="AdminPortal.switchTab('logs')">
+          <span class="material-symbols-outlined text-[17px]">receipt_long</span>
+          <span>Audit & Logs</span>
+          <span class="opacity-80 text-[11px]">(سسٹم لاگز)</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Viewport (Natural vertical spacing without fixed top overlap) -->
+  <main class="w-full py-6 bg-surface min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 space-y-6">
+      
+      <!-- EXECUTIVE METRICS RIBBON (BENTO HIGHLIGHTS) -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <!-- Metric 1: Total Inflow -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px] text-primary">record_voice_over</span>
+              Total Inflow Today
+            </span>
+            <span class="text-primary font-bold text-xs bg-primary-fixed/40 px-2 py-0.5 rounded">+18%</span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-on-surface tracking-tight leading-none">284</span>
+              <span class="text-outline text-xs">Complaints</span>
+            </div>
+            <div class="flex items-center justify-between text-outline text-[11px] mt-1">
+              <span>92% Audio Recorded</span>
+              <span class="font-bold text-primary font-urdu-body-md text-xs">کل وصولی</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 2: Pending Human Triage -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px] text-secondary">fact_check</span>
+              Pending Triage
+            </span>
+            <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-secondary tracking-tight leading-none">38</span>
+              <span class="text-secondary text-xs font-bold">Needs Review</span>
+            </div>
+            <div class="flex items-center justify-between text-outline text-[11px] mt-1">
+              <span>Manual verification pool</span>
+              <span class="font-bold text-secondary font-urdu-body-md text-xs">زیرِ جائزہ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Active Field Dispatches -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px] text-primary">local_shipping</span>
+              Active Field Teams
+            </span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-bold">4 Tehsils</span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-primary tracking-tight leading-none">64</span>
+              <span class="text-on-surface-variant text-xs">On Ground</span>
+            </div>
+            <div class="flex items-center justify-between text-outline text-[11px] mt-1">
+              <span>Gujar Khan, Murree, Kahuta</span>
+              <span class="font-bold text-primary font-urdu-body-md text-xs">فیلڈ ٹیمیں</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Critical SLA Breaches Warning -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-red-200 flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-error text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px]">warning</span>
+              SLA At Risk (&lt;4h)
+            </span>
+            <span class="px-1.5 py-0.5 rounded bg-error-container text-on-error font-bold text-[10px]">Urgent</span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-error tracking-tight leading-none">07</span>
+              <span class="text-error text-xs font-bold">Escalate AC Office</span>
+            </div>
+            <div class="flex items-center justify-between text-on-surface-variant text-[11px] mt-1">
+              <span>Auto-escalate pending</span>
+              <span class="font-bold text-error font-urdu-body-md text-xs">خطرہ تاخیر</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 5: AI Pipeline Accuracy -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-on-surface-variant text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px] text-primary">neurology</span>
+              Free AI Accuracy
+            </span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-bold">Zero-Cost</span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-[28px] font-bold text-primary tracking-tight leading-none">96.4%</span>
+              <span class="text-primary text-xs font-bold">Whisper/Shruti</span>
+            </div>
+            <div class="flex items-center justify-between text-outline text-[11px] mt-1">
+              <span>Potohari/Urdu Speech</span>
+              <span class="font-bold text-primary font-urdu-body-md text-xs">درستگی شرح</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. TRIAGE WORKSPACE VIEW (DEFAULT) -->
+      <div id="view-triage" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT COLUMN: TRIAGE QUEUE & FILTER SYSTEM -->
+        <aside class="lg:col-span-5 space-y-4">
+          <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="font-bold text-on-surface text-base flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">inbox</span>
+                Triage Queue (شکایات قطار)
+              </h2>
+              <span class="px-2 py-0.5 rounded bg-surface-container font-mono text-xs font-bold">Live</span>
+            </div>
+
+            <!-- Integrated Search Field -->
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[20px]">search</span>
+              <input class="w-full h-10 pl-9 pr-4 rounded-xl bg-surface-container-low text-on-surface text-xs font-bold placeholder:text-outline focus:outline-none focus:bg-surface-container border border-slate-200" placeholder="Search Token, CNIC, Village..." type="text" oninput="AdminPortal.renderQueue()"/>
+            </div>
+
+            <!-- Quick Filters Horizontal Scroll Pills -->
+            <div class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
+              <button onclick="AdminPortal.renderQueue('all')" class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-bold whitespace-nowrap shadow-sm">
+                All (تمام)
+              </button>
+              <button onclick="AdminPortal.renderQueue('urgent')" class="px-3 py-1.5 rounded-lg bg-error-container text-on-error font-bold whitespace-nowrap">
+                Urgent SLA (&lt;4h)
+              </button>
+              <button onclick="AdminPortal.renderQueue('water')" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
+                Water PHED
+              </button>
+              <button onclick="AdminPortal.renderQueue('roads')" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
+                Roads C&W
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Complaint Cards List -->
+          <div id="admin-queue-list" class="space-y-3 max-h-[620px] overflow-y-auto pr-1">
+            <!-- Populated from AdminPortal.renderQueue() -->
+          </div>
+        </aside>
+
+        <!-- RIGHT COLUMN: TRIAGE CONSOLE & ACTION DECK -->
+        <section class="lg:col-span-7 bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+          <!-- Case Header Strip -->
+          <div class="flex items-start justify-between pb-4 border-b border-slate-200 flex-wrap gap-2">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xl font-bold text-primary" id="detail-token">#PK-94021</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold" id="detail-status">
+                  ٹیم جائے وقوعہ پر روانہ
+                </span>
+                <span class="px-2 py-0.5 rounded bg-error-container text-on-error text-xs font-bold font-mono" id="detail-sla">
+                  3h 15m remaining
+                </span>
+              </div>
+              <h3 class="font-bold text-on-surface text-xl mt-1" id="detail-title">فلٹریشن پلانٹ کی موٹر جل جانا اور گندا پانی</h3>
+              <p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+                <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+                <span id="detail-location">چک نمبر 18 ماندرہ روڈ، تحصیل گوجر خان</span>
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button id="btn-play-case-audio" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary font-bold text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[20px]">volume_up</span>
+                <span>Play Voice Recording</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Citizen Speech & AI Extraction Transcript -->
+          <div class="bg-surface-container-low rounded-xl p-4 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary text-[18px]">record_voice_over</span>
+                <span>Potohari Speech Transcript (Whisper ASR):</span>
+              </span>
+              <span class="font-mono text-primary font-bold">Accuracy: 97.8%</span>
+            </div>
+            <p class="font-urdu-body-md text-on-surface leading-loose text-right text-[17px]" dir="rtl" id="detail-transcript">
+              “ہمارے گاؤں چک 18 میں پینے کے پانی کا فلٹر پچھلے دو ہفتے سے بند ہے، گندا پانی آ رہا ہے”
+            </p>
+          </div>
+
+          <!-- Complainant & Field Team Context Bento -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <!-- Complainant Card -->
+            <div class="p-3.5 rounded-xl bg-surface-container border border-slate-200 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-on-surface-variant font-bold block">Citizen Reporter (درخواست گزار):</span>
+                <span class="inline-flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold" title="PECA 2016 Data Protection Active">
+                  <span class="material-symbols-outlined text-[12px]">verified_user</span> PECA Masked
+                </span>
+              </div>
+              <div class="font-bold text-on-surface text-sm" id="detail-complainant">محمد افضل (Muhammad Afzal)</div>
+              <div class="text-on-surface-variant font-mono" id="detail-cnic">CNIC: 37405-*******-3</div>
+              <div class="text-primary font-bold font-mono" id="detail-phone">Phone: 0300-***9120</div>
+            </div>
+
+            <!-- Assigned Team Card -->
+            <div class="p-3.5 rounded-xl bg-surface-container border border-slate-200 space-y-1">
+              <span class="text-on-surface-variant font-bold block">Assigned Response Team:</span>
+              <div class="font-bold text-primary text-sm" id="detail-team">SDO PHED Gujar Khan Team 2</div>
+              <div class="text-on-surface-variant">Team Lead: Engr. Asim Raza</div>
+              <div class="text-secondary font-bold font-mono">Mobile: 0301-5918234</div>
+            </div>
+          </div>
+
+          <!-- Triage Decision Actions -->
+          <div class="pt-4 border-t border-slate-200 space-y-3">
+            <span class="font-bold text-xs text-on-surface block">Executive Triage Actions:</span>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <button onclick="AdminPortal.approveAndDispatch()" class="min-h-[48px] rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-primary-container active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                <span>Approve & Dispatch</span>
+              </button>
+
+              <button onclick="AdminPortal.escalateCase()" class="min-h-[48px] rounded-xl bg-error text-on-error font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-red-700 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">warning</span>
+                <span>Escalate to AC Office</span>
+              </button>
+
+              <button onclick="AppSpeech.speak('شہری سے فون پر رابطہ کیا جا رہا ہے'); alert('Connecting VoIP line to 0300-5849120...')" class="min-h-[48px] rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors">
+                <span class="material-symbols-outlined text-[18px]">call</span>
+                <span>Call Complainant</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- 2. FIELD DISPATCH & TEAMS MAP VIEW -->
+      <div id="view-dispatch" class="hidden bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+          <div>
+            <h2 class="font-bold text-on-surface text-lg">Field Dispatch & Mobile Units (فیلڈ آپریشنز کنٹرول)</h2>
+            <p class="text-xs text-on-surface-variant">Real-time GPS status and work orders across all Provinces & Territories of Pakistan</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">National Provincial Grid</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 space-y-2">
+            <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-bold">Punjab (Gujar Khan / Rawalpindi)</span>
+            <h4 class="font-bold text-sm text-primary">PHED Water Unit 2</h4>
+            <p class="text-xs text-on-surface-variant">Lead: Engr. Asim (0301-5918234)</p>
+            <div class="text-xs font-bold text-secondary">Active Work: RO Plant & Filtration</div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 space-y-2">
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">Sindh (Karachi / Hyderabad)</span>
+            <h4 class="font-bold text-sm text-primary">KWSB / SSWMB Rapid Team</h4>
+            <p class="text-xs text-on-surface-variant">Lead: Engr. Ali Bux (0300-1122334)</p>
+            <div class="text-xs font-bold text-secondary">Active Work: Water Siphon & Sanitation</div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 space-y-2">
+            <span class="px-2 py-0.5 rounded bg-cyan-100 text-cyan-800 text-[10px] font-bold">KPK (Peshawar / Swat)</span>
+            <h4 class="font-bold text-sm text-on-surface">WSSP Sanitation Unit 3</h4>
+            <p class="text-xs text-on-surface-variant">Lead: Insp. Gul Khan (0333-4455667)</p>
+            <div class="text-xs font-bold text-primary">Available for Emergency Dispatch</div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 space-y-2">
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold">Balochistan (Quetta / Gwadar)</span>
+            <h4 class="font-bold text-sm text-error">WASA & QESCO Squad</h4>
+            <p class="text-xs text-on-surface-variant">Lead: Engr. Mir Hasil (0345-7788990)</p>
+            <div class="text-xs font-bold text-error">Critical SLA: Tube Well & Feeder Wire</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. AI MODEL ROUTER & TELEMETRY VIEW -->
+      <div id="view-ai-telemetry" class="hidden bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-200 flex-wrap gap-2">
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-bold text-on-surface text-lg">AI Model Router & Telemetry Switchboard</h2>
+              <span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
+                Zero-Paid Policy Enforced
+              </span>
+            </div>
+            <p class="text-xs text-on-surface-variant">Monitoring OpenRouter Free Router, CPU Edge Fallback, Quotas, and Circuit Breakers</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-on-surface-variant">Circuit Breaker:</span>
+            <span id="telemetry-circuit-badge" class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">HEALTHY</span>
+          </div>
+        </div>
+
+        <!-- Quota Gauges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200">
+            <span class="text-xs font-bold text-on-surface-variant block">Daily Free Model Requests:</span>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-[28px] font-bold text-primary font-mono" id="telemetry-daily-count">14</span>
+              <span class="text-xs text-outline font-mono">/ <span id="telemetry-daily-limit">50</span> Max Limit</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden mt-2">
+              <div id="telemetry-quota-bar" class="bg-primary h-full" style="width: 28%;"></div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200">
+            <span class="text-xs font-bold text-on-surface-variant block">Fallback Chain:</span>
+            <div class="text-xs mt-1.5 font-bold space-y-1">
+              <div class="text-primary">Tier 1: openrouter/free</div>
+              <div class="text-on-surface-variant">Tier 2: gemini-2.0-flash-exp:free</div>
+              <div class="text-on-surface-variant">Tier 3: Local CPU Ollama (qwen2.5:1.5b)</div>
+              <div class="text-on-surface-variant">Tier 4: Deterministic RAG Rules</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200">
+            <span class="text-xs font-bold text-on-surface-variant block">Hard Safety Lock:</span>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="material-symbols-outlined text-primary text-[24px]">lock</span>
+              <span class="text-xs font-bold text-primary">No Paid Fallback Enabled ($0.00 Guaranteed)</span>
+            </div>
+            <p class="text-[11px] text-on-surface-variant mt-1">If hosted quotas exhaust, auto-downgrades to local CPU or deterministic rules.</p>
+          </div>
+        </div>
+
+        <!-- Live Telemetry Logs Table -->
+        <div class="space-y-2">
+          <span class="font-bold text-xs text-on-surface block">Recent AI Requests Log:</span>
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left border-collapse">
+              <thead class="bg-surface-container text-xs font-bold text-on-surface">
+                <tr>
+                  <th class="p-2.5">Time</th>
+                  <th class="p-2.5">Model Dispatched</th>
+                  <th class="p-2.5">Detected Intent</th>
+                  <th class="p-2.5">Latency</th>
+                  <th class="p-2.5">Status</th>
+                </tr>
+              </thead>
+              <tbody id="telemetry-logs-table">
+                <!-- Populated from AdminPortal.renderTelemetry() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. USER & STAFF MANAGEMENT VIEW -->
+      <div id="view-users" class="hidden bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+          <div>
+            <h2 class="font-bold text-on-surface text-lg">User & Staff Management (صارفین و عملہ)</h2>
+            <p class="text-xs text-on-surface-variant">Manage Authorized Officers, SDOs, Triage Analysts & Registered Citizens</p>
+          </div>
+          <button onclick="alert('نیا عملہ شامل کرنے کا فارم کھولا جا رہا ہے...')" class="min-h-[40px] px-4 rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center gap-1 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">person_add</span>
+            <span>Add New Staff</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-surface-container text-xs font-bold text-on-surface">
+              <tr>
+                <th class="p-3">User ID</th>
+                <th class="p-3">Name</th>
+                <th class="p-3">Role</th>
+                <th class="p-3">Designation</th>
+                <th class="p-3">Tehsil</th>
+                <th class="p-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-table">
+              <!-- Populated from AdminPortal.renderUsersTable() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 5. VERIFIED CIVIC KNOWLEDGE BASE VIEW -->
+      <div id="view-knowledge" class="hidden bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+          <div>
+            <h2 class="font-bold text-on-surface text-lg">Verified Civic Knowledge Base / RAG</h2>
+            <p class="text-xs text-on-surface-variant">Authoritative information repositories for Hospitals, Subsidies & Municipal SOPs</p>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">100% Verified</span>
+        </div>
+
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-surface-container text-xs font-bold text-on-surface">
+              <tr>
+                <th class="p-3">Record ID</th>
+                <th class="p-3">Service Name</th>
+                <th class="p-3">Type</th>
+                <th class="p-3">Authority / Tehsil</th>
+                <th class="p-3">Verified Date</th>
+                <th class="p-3">Source URL</th>
+              </tr>
+            </thead>
+            <tbody id="admin-knowledge-table">
+              <!-- Populated from AdminPortal.renderKnowledgeTable() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. AUDIT & DIAGNOSTIC LOGS VIEW (ENTERPRISE LOGGING & SECURITY) -->
+      <div id="view-logs" class="hidden space-y-6">
+        
+        <!-- SECURITY & CITIZEN DATA PROTECTION BANNER -->
+        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-emerald-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-[28px]">security</span>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="font-bold text-on-surface text-base">Enterprise Security & Citizen Privacy Hardening</h3>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">PECA 2016 Compliant</span>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-0.5">Automated PII Masking (CNIC/Phone), Client & Server XSS Sanitization, Zero Commercial Data Leakage Guarantee</p>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              PII Masking Active
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold">
+              <span class="material-symbols-outlined text-[15px]">verified</span>
+              XSS Defense Active
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 font-bold">
+              <span class="material-symbols-outlined text-[15px]">timer</span>
+              15m Session Guard
+            </span>
+          </div>
+        </div>
+
+        <!-- DIAGNOSTIC TELEMETRY KPI COUNTERS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          <div class="bg-surface-container-lowest p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-on-surface-variant font-bold block">Total Log Events</span>
+            <div class="text-2xl font-bold text-on-surface mt-1" id="kpi-total-logs">0</div>
+            <span class="text-[11px] text-outline">In-memory ring buffer</span>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-xl border border-red-200 shadow-sm">
+            <span class="text-xs text-error font-bold block flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">error</span>
+              Error & Critical
+            </span>
+            <div class="text-2xl font-bold text-error mt-1" id="kpi-error-logs">0</div>
+            <span class="text-[11px] text-on-surface-variant">Diagnostics tracked</span>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-primary font-bold block flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">policy</span>
+              Security Audits
+            </span>
+            <div class="text-2xl font-bold text-primary mt-1" id="kpi-audit-logs">0</div>
+            <span class="text-[11px] text-outline">Access & modifications</span>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-secondary font-bold block flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">neurology</span>
+              AI Router & Speech
+            </span>
+            <div class="text-2xl font-bold text-secondary mt-1" id="kpi-ai-logs">0</div>
+            <span class="text-[11px] text-outline">Whisper / Fallbacks</span>
+          </div>
+        </div>
+
+        <!-- LOG SEARCH, FILTER & ACTION BAR -->
+        <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+          <div class="flex flex-1 flex-wrap items-center gap-2.5">
+            <!-- Search Text -->
+            <div class="relative flex-1 min-w-[200px]">
+              <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">search</span>
+              <input id="log-search-input" oninput="AdminPortal.filterLogs()" type="text" placeholder="Search logs (message, category, token)..." class="w-full h-10 pl-9 pr-3 rounded-xl border border-slate-200 bg-surface text-xs focus:ring-2 focus:ring-primary focus:outline-none"/>
+            </div>
+
+            <!-- Severity Dropdown -->
+            <select id="log-severity-select" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+              <option value="ALL">All Severities</option>
+              <option value="ERROR">Error / Critical</option>
+              <option value="WARN">Warnings</option>
+              <option value="INFO">Informational</option>
+              <option value="AUDIT">Security Audit</option>
+              <option value="DEBUG">Debug</option>
+            </select>
+
+            <!-- Category Dropdown -->
+            <select id="log-category-select" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+              <option value="ALL">All Categories</option>
+              <option value="SYSTEM">SYSTEM</option>
+              <option value="SECURITY">SECURITY</option>
+              <option value="AI_ROUTER">AI_ROUTER</option>
+              <option value="SPEECH_ASR">SPEECH_ASR</option>
+              <option value="SPEECH_TTS">SPEECH_TTS</option>
+              <option value="STORAGE_SYNC">STORAGE_SYNC</option>
+              <option value="AUDIT">AUDIT</option>
+            </select>
+          </div>
+
+          <!-- Action Buttons (Responsive Wrapping) -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="AdminPortal.exportLogsJSON()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Download Complete Log Dump (JSON)">
+              <span class="material-symbols-outlined text-[16px]">file_download</span>
+              <span>Export JSON</span>
+            </button>
+            <button onclick="AdminPortal.exportLogsCSV()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Export as CSV for Excel">
+              <span class="material-symbols-outlined text-[16px]">table_chart</span>
+              <span>Export CSV</span>
+            </button>
+            <button onclick="AdminPortal.simulateTestError()" class="h-10 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1 transition-colors" title="Simulate an AI Gateway Error to verify log capture">
+              <span class="material-symbols-outlined text-[16px]">bug_report</span>
+              <span>Simulate Error</span>
+            </button>
+            <button onclick="AdminPortal.clearLogs()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-red-50 text-error text-xs font-bold flex items-center gap-1 transition-colors" title="Clear current log buffer">
+              <span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+              <span>Clear</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- LIVE STREAM LOGS TABLE -->
+        <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h3 class="font-bold text-on-surface text-sm">Real-Time Diagnostic & Audit Event Stream</h3>
+              <span class="px-2 py-0.5 rounded bg-surface-container font-mono text-[11px]" id="logs-showing-count">Showing 0 logs</span>
+            </div>
+            <button onclick="AdminPortal.refreshLogsTable()" class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+              <span class="material-symbols-outlined text-[16px]">refresh</span>
+              <span>Refresh Stream</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="bg-surface-container text-on-surface font-bold">
+                <tr>
+                  <th class="p-3 w-40">Timestamp</th>
+                  <th class="p-3 w-28">Severity</th>
+                  <th class="p-3 w-36">Category</th>
+                  <th class="p-3">Log Message & Diagnostic Context</th>
+                  <th class="p-3 w-24 text-right">Inspect</th>
+                </tr>
+              </thead>
+              <tbody id="admin-logs-table-body" class="divide-y divide-slate-100 font-sans">
+                <!-- Dynamically generated rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- LOG INSPECTION MODAL -->
+        <div id="log-detail-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+          <div class="bg-surface-container-lowest max-w-2xl w-full rounded-2xl p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[22px]">code</span>
+                <h3 class="font-bold text-on-surface text-base">Sanitized Log Event Details</h3>
+              </div>
+              <button onclick="document.getElementById('log-detail-modal').classList.add('hidden')" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-outline">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+              </button>
+            </div>
+            <div>
+              <pre id="log-modal-content" class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs font-mono overflow-auto max-h-96 leading-relaxed"></pre>
+            </div>
+            <div class="flex justify-end pt-2">
+              <button onclick="document.getElementById('log-detail-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold shadow-sm">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../../shared/civic_data.js"></script>
+  <script src="../../shared/logger.js"></script>
+  <script src="../../shared/security.js"></script>
+  <script src="../../shared/ai_router.js"></script>
+  <script src="../../shared/speech_engine.js"></script>
+  <script src="../../shared/storage_sync.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

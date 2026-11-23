@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ur">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_stack" name="shell-type"/>
+  <title>شکایت کی تصدیق | Complaint Confirmation</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  <!-- Top Header Bar -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-20 px-4 flex items-center justify-between gap-3 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+        </a>
+        <div class="flex flex-col">
+          <h1 class="font-bold text-on-surface text-[17px] leading-tight">شکایت تصدیق رسید</h1>
+          <span class="font-urdu-body-md text-[13px] text-on-surface-variant leading-none">واپسی کیلئے تیر دبائیں</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <button aria-label="Hear current screen details out loud" class="min-h-[48px] px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1.5 active:scale-95 transition-all" onclick="speakConfirmationFull()" type="button">
+          <span class="material-symbols-outlined text-[20px]">volume_up</span>
+          <span class="font-label-md text-label-md font-bold">سنیں</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Viewport -->
+  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-4 pt-24 pb-28 bg-surface flex-grow">
+    <div class="flex flex-col w-full pb-6">
+      
+      <!-- Success Celebration Banner -->
+      <div class="relative overflow-hidden rounded-2xl bg-surface-container-low p-6 mb-5 shadow-sm text-center flex flex-col items-center border border-slate-200">
+        <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary-fixed/30 pointer-events-none blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-secondary-fixed/20 pointer-events-none blur-2xl"></div>
+
+        <!-- Animated Green Check Shield Icon -->
+        <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-primary-fixed animate-ping opacity-25"></div>
+          <div class="relative w-20 h-20 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+            <span class="material-symbols-outlined text-[44px]">check_circle</span>
+          </div>
+        </div>
+
+        <!-- Urdu Main Success Headline -->
+        <h2 class="font-urdu-headline-md text-primary font-bold mb-1">
+          آپ کی شکایت کامیابی سے درج کر لی گئی ہے!
+        </h2>
+        <p class="font-body-md text-on-surface-variant mb-4">
+          Your complaint has been successfully recorded in the central civic registry.
+        </p>
+
+        <!-- Audio Announcement Pill Button -->
+        <button class="min-h-[56px] px-5 py-2.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center gap-2 active:scale-95 shadow-sm transition-transform cursor-pointer" onclick="speakConfirmationFull()" type="button">
+          <span class="material-symbols-outlined text-[24px]">volume_up</span>
+          <span class="font-label-lg font-bold">رسید کی آواز سنیں (Listen Audio)</span>
+        </button>
+      </div>
+
+      <!-- Complaint Reference & Tracking Card -->
+      <div class="rounded-2xl bg-surface-container-lowest p-5 mb-5 shadow-md flex flex-col border border-slate-200">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md flex items-center gap-1.5 font-bold">
+            <span class="material-symbols-outlined text-[18px]">verified</span>
+            سرکاری تصدیق شدہ رسید
+          </span>
+          <span class="font-body-md text-on-surface-variant font-medium" id="confirm-date">24 مئی 2024</span>
+        </div>
+
+        <div class="text-center py-4 bg-surface-container-low rounded-xl mb-4 border border-slate-100">
+          <span class="font-urdu-body-md text-on-surface-variant block mb-1">آپ کا ٹریکنگ ریفرنس نمبر</span>
+          <div class="flex items-center justify-center gap-2">
+            <span class="text-[34px] font-bold text-primary tracking-widest select-all font-mono" id="confirm-token">PK-94021</span>
+          </div>
+          <p class="font-body-md text-outline mt-1 font-mono text-xs">Official Civic Token ID</p>
+        </div>
+
+        <!-- Voice Readout Trigger for Reference ID -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-4">
+          <button class="flex-1 min-h-[56px] px-4 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center gap-2 active:bg-surface-container transition-colors cursor-pointer" onclick="speakToken()" type="button">
+            <span class="material-symbols-outlined text-primary text-[24px]">record_voice_over</span>
+            <span class="font-urdu-body-md font-bold">نمبر کی آواز سنیں</span>
+          </button>
+          
+          <button class="min-h-[56px] px-4 rounded-xl bg-surface-container text-on-surface flex items-center justify-center gap-2 active:bg-surface-container-high transition-colors cursor-pointer" onclick="copyToken()" type="button">
+            <span class="material-symbols-outlined text-[22px]">content_copy</span>
+            <span class="font-label-md font-bold" id="copy-label">کاپی کریں</span>
+          </button>
+        </div>
+
+        <!-- Khidmat Markaz QR Code & Instructions -->
+        <div class="rounded-xl bg-surface-container p-4 flex items-center gap-4">
+          <!-- High Contrast QR SVG -->
+          <div class="w-24 h-24 min-w-[96px] bg-surface-container-lowest p-2 rounded-lg flex items-center justify-center shadow-sm">
+            <svg class="w-full h-full text-on-surface" fill="currentColor" viewbox="0 0 100 100">
+              <rect height="30" rx="4" width="30" x="0" y="0"></rect>
+              <rect fill="#ffffff" height="18" rx="2" width="18" x="6" y="6"></rect>
+              <rect height="10" rx="1" width="10" x="10" y="10"></rect>
+              <rect height="30" rx="4" width="30" x="70" y="0"></rect>
+              <rect fill="#ffffff" height="18" rx="2" width="18" x="76" y="6"></rect>
+              <rect height="10" rx="1" width="10" x="80" y="10"></rect>
+              <rect height="30" rx="4" width="30" x="0" y="70"></rect>
+              <rect fill="#ffffff" height="18" rx="2" width="18" x="6" y="76"></rect>
+              <rect height="10" rx="1" width="10" x="10" y="80"></rect>
+              <rect height="8" width="8" x="36" y="10"></rect>
+              <rect height="8" width="14" x="48" y="10"></rect>
+              <rect height="8" width="26" x="36" y="24"></rect>
+              <rect height="24" width="8" x="10" y="38"></rect>
+              <rect height="10" width="14" x="24" y="38"></rect>
+              <rect height="14" width="14" x="44" y="38"></rect>
+              <rect height="24" width="12" x="64" y="38"></rect>
+              <rect height="10" width="10" x="82" y="38"></rect>
+              <rect height="10" width="18" x="36" y="58"></rect>
+              <rect height="18" width="12" x="36" y="74"></rect>
+              <rect height="8" width="16" x="54" y="68"></rect>
+            </svg>
+          </div>
+          <div class="flex flex-col text-right flex-1" dir="rtl">
+            <span class="font-urdu-headline-md text-[17px] font-bold text-primary">خدمت مرکز کیو آر کوڈ</span>
+            <span class="font-urdu-body-md text-[14px] text-on-surface-variant leading-snug">
+              یہ بار کوڈ تحصیل خدمت مرکز یا فیلڈ ٹیم کو دکھا کر فوری تصدیق کروائی جا سکتی ہے۔
+            </span>
+          </div>
+        </div>
+
+        <!-- Notification Details Strip -->
+        <div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant text-xs border-t border-slate-100">
+          <span class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px] text-primary">sms</span>
+            تصدیقی ایس ایم ایس بھیج دیا گیا
+          </span>
+          <span class="font-bold text-primary" id="confirm-phone">0300-5849120</span>
+        </div>
+      </div>
+
+      <!-- Action CTAs -->
+      <div class="flex flex-col gap-3">
+        <a id="btn-track-this" href="complaint_tracking.html" class="min-h-[56px] w-full bg-primary text-on-primary rounded-xl flex items-center justify-center gap-2 font-urdu-headline-md font-bold shadow-md hover:bg-primary-container active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[22px]">manage_search</span>
+          <span>اس شکایت کا احوال دیکھیں (Track Status)</span>
+        </a>
+        <a href="index.html" class="min-h-[56px] w-full bg-surface-container text-on-surface rounded-xl flex items-center justify-center gap-2 font-urdu-body-md font-bold hover:bg-surface-container-high active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">home</span>
+          <span>مرکزی صفحہ پر جائیں (Home)</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div id="mobile-bottom-nav"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    let currentToken = "PK-94021";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = urlParams.get("token") || sessionStorage.getItem("awami_latest_token") || "PK-94021";
+      currentToken = tokenFromUrl;
+
+      document.getElementById("confirm-token").innerText = currentToken;
+      document.getElementById("confirm-date").innerText = new Date().toLocaleDateString("ur-PK");
+      document.getElementById("btn-track-this").href = `complaint_tracking.html?token=${currentToken}`;
+
+      if (MobileApp.currentUser && MobileApp.currentUser.phone) {
+        document.getElementById("confirm-phone").innerText = MobileApp.currentUser.phone;
+      }
+
+      // Auto play celebration audio
+      setTimeout(() => {
+        speakConfirmationFull();
+      }, 500);
+    });
+
+    function speakConfirmationFull() {
+      const tokenDigits = currentToken.replace("PK-", "پی کے ");
+      const msg = `مبارک ہو! آپ کی شکایت کامیابی سے درج کر لی گئی ہے۔ آپ کا ٹریکنگ ریفرنس نمبر ہے ${tokenDigits}۔ اس نمبر کے ذریعے آپ کسی بھی وقت اپنی شکایت کا حال معلوم کر سکتے ہیں۔`;
+      AppSpeech.speak(msg);
+    }
+
+    function speakToken() {
+      const tokenDigits = currentToken.replace("PK-", "پی کے ");
+      AppSpeech.speak(`آپ کا ٹوکن نمبر ہے: ${tokenDigits}`);
+    }
+
+    function copyToken() {
+      navigator.clipboard.writeText(currentToken);
+      const label = document.getElementById("copy-label");
+      label.innerText = "کاپی ہو گیا!";
+      setTimeout(() => label.innerText = "کاپی کریں", 2000);
+    }
+  </script>
+</body>
+</html>

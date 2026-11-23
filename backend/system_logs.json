@@ -1,0 +1,152 @@
+[
+  {
+    "id": "log-srv-1001",
+    "timestamp": "2026-11-23T21:00:15.120Z",
+    "level": "INFO",
+    "category": "SYSTEM",
+    "message": "Awami Voice Civic Backend initialized on port 8000. Zero-Paid Policy Lock: ACTIVE.",
+    "details": {
+      "host": "0.0.0.0",
+      "port": 8000,
+      "environment": "production-pilot",
+      "pid": 4821
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1002",
+    "timestamp": "2026-11-23T21:01:04.450Z",
+    "level": "INFO",
+    "category": "SECURITY",
+    "message": "Security middleware active. HTTP security headers (CSP, nosniff, SAMEORIGIN, XSS-Protection) injected.",
+    "details": {
+      "csp": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;",
+      "xFrameOptions": "SAMEORIGIN",
+      "pecaCompliance": "Active"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1003",
+    "timestamp": "2026-11-23T21:05:22.310Z",
+    "level": "INFO",
+    "category": "SPEECH_ASR",
+    "message": "Speech recognition processed Potohari audio stream (audio_dur=6.4s). Dialect recognized: poth-PK.",
+    "details": {
+      "model": "whisper-small-punjabi-potohari",
+      "durationSec": 6.4,
+      "confidence": 0.942,
+      "transcriptLength": 58
+    },
+    "ip": "192.168.1.104",
+    "source": "client"
+  },
+  {
+    "id": "log-srv-1004",
+    "timestamp": "2026-11-23T21:05:23.015Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Free AI Router dispatched triage classification for Potohari complaint to Gemini 2.0 Flash (Free Tier).",
+    "details": {
+      "provider": "google-free",
+      "model": "gemini-2.0-flash-exp:free",
+      "costUSD": 0.0,
+      "latencyMs": 480,
+      "predictedCategory": "water_supply",
+      "urgency": "high"
+    },
+    "ip": "192.168.1.104",
+    "source": "ai_router"
+  },
+  {
+    "id": "log-srv-1005",
+    "timestamp": "2026-11-23T21:12:40.820Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "Citizen record accessed in Admin Triage Console. CNIC and Phone masked per PECA 2016.",
+    "details": {
+      "adminUser": "STAFF-101 (Engr. Tariq Mehmood)",
+      "targetCitizenToken": "PK-94021",
+      "maskedCNIC": "37405-*******-3",
+      "maskedPhone": "0300-***9120"
+    },
+    "ip": "192.168.1.50",
+    "source": "admin"
+  },
+  {
+    "id": "log-srv-1006",
+    "timestamp": "2026-11-23T21:25:11.200Z",
+    "level": "WARN",
+    "category": "AI_ROUTER",
+    "message": "External free API gateway latency spike (>1800ms). Falling back to OpenRouter DeepSeek R1 Free.",
+    "details": {
+      "primaryProvider": "google-free",
+      "fallbackProvider": "openrouter/free:deepseek-r1-distill-llama-70b",
+      "retryCount": 1,
+      "zeroCostMaintained": true
+    },
+    "ip": "127.0.0.1",
+    "source": "ai_router"
+  },
+  {
+    "id": "log-srv-1007",
+    "timestamp": "2026-11-23T21:40:05.150Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Free API upstream HTTP 429 Rate Limit encountered. Circuit breaker engaged. Seamlessly routed to Local Deterministic Fallback Engine.",
+    "details": {
+      "circuitBreaker": "TRIPPED_TO_OFFLINE",
+      "activeTier": "Tier 4: Local Regex & Knowledge Base",
+      "errorReason": "HTTP 429 Too Many Requests on free gateway",
+      "citizenImpact": "Zero downtime - deterministic categorization returned in 12ms",
+      "zeroCostMaintained": true
+    },
+    "ip": "127.0.0.1",
+    "source": "ai_router"
+  },
+  {
+    "id": "log-srv-1008",
+    "timestamp": "2026-11-23T21:45:30.900Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "MobileApp background service synchronized 3 offline complaints from SQLite/IndexedDB to central store.",
+    "details": {
+      "device": "Android MobileApp (PWA)",
+      "batchSize": 3,
+      "tokens": ["PK-84011", "PK-84012", "PK-84013"],
+      "networkType": "2G/EDGE (Simulated)"
+    },
+    "ip": "192.168.1.112",
+    "source": "sync_worker"
+  },
+  {
+    "id": "log-srv-1009",
+    "timestamp": "2026-11-23T22:10:14.600Z",
+    "level": "AUDIT",
+    "category": "AUDIT",
+    "message": "Complaint #PK-94021 status updated to 'dispatched'. Field team assigned: PHED Gujar Khan Team 2.",
+    "details": {
+      "operator": "STAFF-102 (Asma Bibi)",
+      "token": "PK-94021",
+      "priority": "Critical SLA < 4h",
+      "assignedTo": "Engr. Asim Raza"
+    },
+    "ip": "192.168.1.52",
+    "source": "admin"
+  },
+  {
+    "id": "log-srv-1010",
+    "timestamp": "2026-11-23T22:30:00.000Z",
+    "level": "INFO",
+    "category": "SYSTEM",
+    "message": "Saraiki (skr-PK) and Hindko (hnd-PK) dialect lexicon bundles loaded successfully into ASR & AI triage pipeline.",
+    "details": {
+      "dialectsLoaded": ["ur-PK", "pa-PK", "poth-PK", "skr-PK", "hnd-PK", "en-US"],
+      "lexiconEntries": 1420
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  }
+]

@@ -1,0 +1,25 @@
+Role: You are a requirements analyst and technical architect specializing in ICT4D, with deep experience in South Asian rural contexts (low literacy, intermittent internet, multilingual coexistence).
+
+Project Background:
+We are building a "Voice-First E-Governance" platform for rural and remote areas of Pakistan (basic internet available). Target users are semi-literate or illiterate, speaking Urdu, Punjabi, and potentially other local languages. Users should report complaints, check hospital information, and inquire about subsidies through natural speech—no menu navigation, no text input.
+
+Constraints:
+1. Lightweight frontend (mobile + web), suitable for low-end Android and slow networks.
+2. Lightweight backend.
+3. AI capabilities must use free models only.
+4. When a free model's tokens are exhausted, the system must switch to another free model—no paid fallback.
+5. Must support Urdu and Punjabi (ASR + TTS).
+
+Verified Technical Facts (must be reflected in your recommendations):
+- OpenRouter's openrouter/free router automatically selects among free models but only falls back to other free models. If paid models are added to the fallback array, they will be billed.
+- OpenRouter free models have rate limits: accounts without any top-up history are limited to 50 requests/day; after purchasing $10 in credits once, the limit increases to 1,000 requests/day.
+- Shruti-ONNX supports Urdu and Punjabi, with an int8 version requiring approximately 1GB of memory, suitable for offline deployment.
+- Libra-TTS supports Urdu and Punjabi, has an ONNX version that can run on CPU, and is suitable for lightweight deployment.
+- Whisper supports Urdu and Punjabi, but zero-shot performance on low-resource languages is limited; fine-tuning can significantly reduce WER.
+
+Please deliver:
+A. Functional requirements list for mobile and web (with emphasis on voice interaction flow for illiterate users)
+B. Recommended lightweight frontend tech stack (with justification)
+C. Recommended lightweight backend tech stack (with justification)
+D. Free AI model selection for ASR, TTS, and LLM (Urdu/Punjabi support), with a concrete model-switching architecture design. The architecture must address the fact that OpenRouter free models have a daily request cap.
+E. Key risks and mitigation

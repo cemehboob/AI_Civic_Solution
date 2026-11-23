@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ur">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>حکومتی امداد و وظائف | Subsidies & BISP - Awami Voice</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+  <!-- Top Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+    <div class="h-20 max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
+          <span class="material-symbols-outlined text-[30px]">account_balance</span>
+        </a>
+        <div class="flex flex-col">
+          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-xs text-on-surface-variant">حکومتی امدادی اسکیمیں و وظائف</span>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">مرکزی صفحہ (Home)</a>
+        <a href="register.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایت درج کروائیں (Register)</a>
+        <a href="track.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایات کا حال (Track)</a>
+        <a href="healthcare.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">ہسپتال و صحت (Healthcare)</a>
+        <a href="subsidies.html" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">امداد و وظائف (Subsidies)</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="lang-toggle-btn" onclick="WebPortal.toggleLanguage()" class="min-h-[40px] px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm">
+            <span>EN</span>
+            <span class="text-[10px] leading-none">⇄</span>
+            <span class="font-urdu leading-none text-[11px]">اردو</span>
+          </span>
+          <span id="top-lang-text">English</span>
+        </button>
+
+        <a href="index.html" class="min-h-[44px] px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high">
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          <span>واپسی (Back)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-4">
+      <div class="flex flex-col w-full gap-6">
+        
+        <!-- Interactive Eligibility Voice Assistant -->
+        <div class="bg-gradient-to-r from-secondary-fixed/50 to-primary-fixed/40 p-6 rounded-3xl border border-secondary/30 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-4 text-right" dir="rtl">
+            <div class="w-14 h-14 rounded-2xl bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-md">
+              <span class="material-symbols-outlined text-[32px]">payments</span>
+            </div>
+            <div>
+              <h2 class="font-bold text-on-surface text-[20px]">صوتی اہلیت چیکر (Voice Eligibility Assistant)</h2>
+              <p class="font-urdu-body-md text-xs text-on-surface-variant mt-0.5">
+                مائیک دبائیں اور بولیں: "کیا میں بینظیر کفالت یا کسان کارڈ کا اہل ہوں؟"
+              </p>
+            </div>
+          </div>
+          <button onclick="startSubsidyVoiceQuery()" class="min-h-[52px] px-6 rounded-xl bg-secondary text-on-secondary font-bold text-sm flex items-center gap-2 shadow-md active:scale-95 transition-all shrink-0">
+            <span class="material-symbols-outlined text-[24px]">mic</span>
+            <span>اہلیت معلوم کریں (Ask via Voice)</span>
+          </button>
+        </div>
+
+        <!-- 8171 SMS Quick Verification Strip -->
+        <div class="bg-surface-container-high p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]">sms</span>
+            <span class="font-bold text-sm text-on-surface">فوری 8171 ایس ایم ایس پورٹل:</span>
+            <span class="text-xs text-on-surface-variant">اپنا شناختی کارڈ نمبر 8171 پر میسج بھیج کر بینظیر کفالت کی رقم معلوم کریں۔</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-surface-container-lowest text-primary font-mono text-xs font-bold shadow-sm">
+            Toll-Free 8171
+          </span>
+        </div>
+
+        <!-- Schemes Grid -->
+        <section class="flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="font-urdu-headline-lg font-bold text-on-surface text-[22px]">فعال حکومتی پروگرامز (Active Verified Schemes)</h2>
+              <p class="text-xs text-on-surface-variant">تمام معلومات متعلقہ محکموں سے تصدیق شدہ ہیں</p>
+            </div>
+            <span class="material-symbols-outlined text-primary text-[28px]">verified</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="subsidies-grid">
+            <!-- Populated from CivicData.subsidies -->
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="web.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSubsidies();
+    });
+
+    function renderSubsidies() {
+      const container = document.getElementById("subsidies-grid");
+      const list = CivicData.subsidies || [];
+
+      container.innerHTML = list.map(s => `
+        <article class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col justify-between gap-3">
+          <div>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
+                ${s.status}
+              </span>
+              <div class="text-right flex-1" dir="rtl">
+                <h3 class="font-bold text-primary text-[19px]">${s.nameUrdu}</h3>
+                <span class="text-xs text-on-surface-variant">${s.authority}</span>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[28px]">savings</span>
+              </div>
+            </div>
+
+            <!-- Amount Badge -->
+            <div class="p-3 rounded-xl bg-secondary-fixed/30 border border-secondary/20 mb-3 text-right" dir="rtl">
+              <span class="text-xs text-on-surface-variant block">امداد کی رقم / مراعات:</span>
+              <strong class="font-bold text-secondary text-[16px]">${s.amountUrdu}</strong>
+            </div>
+
+            <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-1.5 text-xs text-right" dir="rtl">
+              <div><strong class="text-on-surface">کون اہل ہے؟</strong> <span class="text-on-surface-variant">${s.eligibilityUrdu}</span></div>
+              <div class="mt-1"><strong class="text-on-surface">طریقہ کار:</strong> <span class="text-on-surface-variant">${s.procedureUrdu}</span></div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+            <span class="text-on-surface-variant">تصدیق: ${s.verifiedDate}</span>
+            <button onclick="speakScheme('${s.id}')" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary flex items-center gap-1.5 font-bold hover:bg-secondary-container transition-colors shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">volume_up</span>
+              <span>تفصیل سنیں</span>
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function speakScheme(id) {
+      const s = CivicData.subsidies.find(x => x.id === id);
+      if (s) {
+        AppSpeech.speak(`${s.nameUrdu}۔ امداد کی رقم: ${s.amountUrdu}۔ اہلیت: ${s.eligibilityUrdu}۔ درخواست کا طریقہ: ${s.procedureUrdu}۔`);
+      }
+    }
+
+    function startSubsidyVoiceQuery() {
+      AppSpeech.startListening((transcript, isFinal) => {
+        if (isFinal) {
+          AppAIRouter.processQuery(transcript).then(res => {
+            AppSpeech.speak(res.responseUrdu);
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

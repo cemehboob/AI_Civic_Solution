@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ur">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_tab" name="shell-type"/>
+  <title>شکایات کا حال | Complaint Tracking</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="../shared/styles.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004423",
+            "primary-container": "#0b5e34",
+            "primary-fixed": "#a7f4bc",
+            "on-primary": "#ffffff",
+            "secondary": "#904d00",
+            "secondary-container": "#fe932c",
+            "secondary-fixed": "#ffdcc3",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#404941",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  <!-- Top Header Bar -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
+    <div class="h-20 px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2">
+        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+        </a>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1">
+            <span class="font-bold text-primary leading-tight tracking-tight text-[18px]">Awami Voice</span>
+            <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+          </div>
+          <span class="font-urdu-body-md text-[13px] leading-none text-on-surface-variant font-medium">شکایات ٹریکنگ و تفتیش</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <button aria-label="Change audio language" class="min-h-[44px] px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface flex items-center gap-1.5 hover:bg-surface-variant active:scale-95 transition-all" onclick="MobileApp.switchLanguagePrompt()" type="button">
+          <span class="material-symbols-outlined text-secondary text-[20px]">volume_up</span>
+          <span class="font-label-md text-[13px] font-bold">اردو / پنجابی</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Area -->
+  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-4 pt-24 pb-32 bg-surface flex-grow">
+    <div class="flex flex-col w-full space-y-4">
+      
+      <!-- Friendly Top Audio Guidance Strip -->
+      <section class="bg-surface-container-high rounded-xl p-4 shadow-sm flex items-center justify-between gap-3 border border-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shrink-0 text-on-primary shadow-sm">
+            <span class="material-symbols-outlined text-[26px]">hearing</span>
+          </div>
+          <div class="flex flex-col text-right" dir="rtl">
+            <h1 class="font-urdu-headline-md text-on-surface leading-tight font-bold">شکایات کا حال معلوم کریں</h1>
+            <p class="font-body-md text-on-surface-variant text-xs">اپنی درج شدہ شکایت کا احوال اور فیلڈ ٹیم پیشرفت سنیں</p>
+          </div>
+        </div>
+        <button aria-label="Listen to audio instructions in Urdu" class="min-h-[56px] px-4 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-2 active:scale-95 transition-transform shrink-0 shadow-sm" onclick="speakTrackingOverview()" type="button">
+          <span class="material-symbols-outlined text-[24px]">volume_up</span>
+          <span class="font-label-md font-bold">سٹیٹس سنیں</span>
+        </button>
+      </section>
+
+      <!-- Voice-First Direct Search Banner -->
+      <section class="bg-primary rounded-2xl p-5 text-on-primary shadow-md relative overflow-hidden">
+        <div class="relative z-10 flex flex-col gap-3">
+          <div class="flex items-center justify-between" dir="rtl">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary-fixed text-[26px]">record_voice_over</span>
+              <span class="font-urdu-headline-md font-bold text-on-primary">بول کر شکایت تلاش کریں</span>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary-fixed font-label-md text-[13px] font-bold">آواز سے تلاش</span>
+          </div>
+          
+          <p class="font-urdu-body-md text-primary-fixed leading-relaxed text-right" dir="rtl">
+            کہیں: "میری پانی والی شکایت کا کیا بنا؟" یا اپنا ٹوکن نمبر / شناختی کارڈ بولیں۔
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mt-1">
+            <button class="min-h-[56px] px-5 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md font-label-lg font-bold" onclick="startVoiceTrackingSearch()" type="button">
+              <span class="material-symbols-outlined text-[28px]">mic</span>
+              <span>ابھی بولیں (Tap & Speak)</span>
+            </button>
+            
+            <button class="min-h-[56px] px-4 rounded-xl bg-surface text-on-surface flex items-center justify-center gap-2 active:scale-95 transition-transform font-label-md font-bold shadow-sm" onclick="simulateQRScanner()" type="button">
+              <span class="material-symbols-outlined text-secondary text-[24px]">qr_code_scanner</span>
+              <span>QR کوڈ پرچی دکھائیں</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search Input Bar -->
+      <div class="flex items-center gap-2 bg-surface-container-lowest p-2 rounded-xl shadow-sm border border-slate-200">
+        <div class="relative flex-1">
+          <input type="text" id="token-input" placeholder="ٹوکن نمبر درج کریں مثلاً PK-94021" class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface font-mono font-bold text-left focus:outline-none focus:bg-surface-container-lowest"/>
+        </div>
+        <button onclick="searchByToken()" class="h-12 px-5 rounded-lg bg-primary text-on-primary font-urdu-body-md font-bold hover:bg-primary-container active:scale-95 transition-all">
+          تلاش کریں
+        </button>
+      </div>
+
+      <!-- Live Complaint Cards Stack -->
+      <div class="flex flex-col space-y-4 pt-1">
+        <div class="flex items-center justify-between px-1" dir="rtl">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">pending_actions</span>
+            <h2 class="font-urdu-headline-md text-on-surface font-bold" id="complaints-count-title">آپ کی شکایات</h2>
+          </div>
+          <span class="font-label-md text-on-surface-variant">تازہ ترین پیشرفت</span>
+        </div>
+
+        <!-- Rendered Complaints Container -->
+        <div id="complaints-cards-list" class="flex flex-col gap-4">
+          <!-- Dynamically populated from CivicData & LocalStorage -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <div id="mobile-bottom-nav"></div>
+
+  <!-- Scripts -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchToken = urlParams.get("token");
+      if (searchToken) {
+        document.getElementById("token-input").value = searchToken;
+      }
+      renderComplaintsList(searchToken);
+    });
+
+    function renderComplaintsList(filterToken = null) {
+      const container = document.getElementById("complaints-cards-list");
+      const list = AppSync.getComplaints();
+      
+      const filtered = filterToken 
+        ? list.filter(c => c.token.toLowerCase().includes(filterToken.toLowerCase()))
+        : list;
+
+      document.getElementById("complaints-count-title").innerText = `آپ کی شکایات (${filtered.length})`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-surface-container-lowest rounded-xl border border-slate-200">
+            <span class="material-symbols-outlined text-[48px] text-outline">search_off</span>
+            <p class="font-urdu-headline-md text-on-surface font-bold mt-2">کوئی شکایت نہیں ملی</p>
+            <p class="font-urdu-body-md text-on-surface-variant">براہ کرم ٹوکن نمبر درست درج کریں</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => `
+        <article class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+          <!-- Top Badges & ID -->
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-surface-container font-mono font-bold text-primary tracking-wide text-[16px]">
+                #${c.token}
+              </span>
+              <span class="px-3 py-1 rounded-full ${c.status === 'resolved' ? 'bg-primary-fixed text-on-primary-fixed' : 'bg-secondary-fixed text-on-secondary-fixed'} flex items-center gap-1.5 font-label-md text-xs font-bold">
+                <span class="w-2.5 h-2.5 rounded-full ${c.status === 'resolved' ? 'bg-primary' : 'bg-secondary animate-pulse'}"></span>
+                ${c.statusUrdu || 'زیر کاروائی'}
+              </span>
+            </div>
+            
+            <button onclick="speakComplaintDetail('${c.token}')" class="min-h-[44px] px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary flex items-center gap-1 active:scale-95 transition-all" type="button">
+              <span class="material-symbols-outlined text-[18px]">volume_up</span>
+              <span class="font-urdu-body-md text-xs font-bold">احوال سنیں</span>
+            </button>
+          </div>
+
+          <!-- Problem Title -->
+          <div class="text-right" dir="rtl">
+            <h3 class="font-urdu-headline-md text-on-surface font-bold text-[19px] leading-snug">
+              ${c.titleUrdu}
+            </h3>
+            <span class="font-body-md text-[13px] text-on-surface-variant flex items-center gap-1 mt-1 justify-end">
+              <span>${c.location}</span>
+              <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+            </span>
+          </div>
+
+          <!-- Step Progress Timeline -->
+          <div class="bg-surface-container-low rounded-xl p-3 my-1 border border-slate-100">
+            <div class="flex flex-col gap-2.5 text-right" dir="rtl">
+              ${(c.timeline || []).map((step, idx) => `
+                <div class="flex items-start gap-2.5">
+                  <div class="w-6 h-6 rounded-full ${step.done ? 'bg-primary text-on-primary' : 'bg-slate-200 text-slate-500'} flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
+                    ${step.done ? '✓' : idx + 1}
+                  </div>
+                  <div class="flex flex-col flex-1">
+                    <div class="flex items-center justify-between">
+                      <span class="font-urdu-body-md text-[14px] ${step.done ? 'font-bold text-primary' : 'text-slate-500'}">${step.stepUrdu}</span>
+                      <span class="text-[11px] text-slate-400 font-mono">${step.time}</span>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Footer: Assigned Team & Action -->
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+            <span class="text-on-surface-variant">
+              فیلڈ ٹیم: <strong class="text-primary">${c.assignedTeam || 'اسسٹنٹ انجینئر ڈیسک'}</strong>
+            </span>
+            <span class="font-mono text-secondary font-bold">
+              ${c.slaRemaining || '24h SLA'}
+            </span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function searchByToken() {
+      const val = document.getElementById("token-input").value.trim();
+      renderComplaintsList(val || null);
+    }
+
+    function startVoiceTrackingSearch() {
+      AppSpeech.startListening(
+        (transcript, isFinal) => {
+          if (isFinal) {
+            document.getElementById("token-input").value = transcript;
+            AppAIRouter.processQuery(transcript).then(res => {
+              AppSpeech.speak(res.responseUrdu);
+              if (res.extractedData && res.extractedData.token) {
+                renderComplaintsList(res.extractedData.token);
+              }
+            });
+          }
+        }
+      );
+    }
+
+    function simulateQRScanner() {
+      alert("کیمرہ سکینر ایکٹو: رسید پر موجود کیو آر کوڈ سکین کیا جا رہا ہے...");
+      renderComplaintsList("PK-94021");
+      AppSpeech.speak("پرچی کا ٹوکن نمبر پی کے 94021 شناخت کر لیا گیا ہے۔ احوال سامنے موجود ہے۔");
+    }
+
+    function speakTrackingOverview() {
+      const list = AppSync.getComplaints();
+      AppSpeech.speak(`آپ کے رجسٹرڈ کھاتے میں کل ${list.length} شکایات موجود ہیں۔ ان کی تفصیلی پیشرفت نیچے درج ہے۔`);
+    }
+
+    function speakComplaintDetail(token) {
+      const item = AppSync.getComplaints().find(c => c.token === token);
+      if (item) {
+        AppSpeech.speak(`شکایت نمبر ${token.replace('PK-', 'پی کے ')}۔ مسئلہ: ${item.titleUrdu}۔ سٹیٹس: ${item.statusUrdu}۔ تفویض کردہ عملہ: ${item.assignedTeam}۔`);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-error":"#ffffff","surface-bright":"#faf8ff","primary-container":"#0b5e34","secondary":"#904d00","surface":"#faf8ff","on-primary-fixed-variant":"#00522b","surface-container-high":"#e2e7ff","on-tertiary-fixed":"#001551","tertiary":"#002f99","inverse-primary":"#8cd7a2","tertiary-fixed-dim":"#b7c4ff","surface-container-low":"#f2f3ff","surface-container":"#eaedff","on-error-container":"#93000a","outline":"#707a70","surface-container-highest":"#dae2fd","inverse-surface":"#283044","error-container":"#ffdad6","surface-dim":"#d2d9f4","on-secondary":"#ffffff","on-surface-variant":"#404941","secondary-fixed-dim":"#ffb77d","tertiary-container":"#0242cd","on-primary-container":"#8ad5a0","surface-tint":"#1f6b40","primary-fixed-dim":"#8cd7a2","on-surface":"#131b2e","tertiary-fixed":"#dce1ff","on-secondary-container":"#663500","outline-variant":"#bfc9be","on-secondary-fixed":"#2f1500","on-tertiary-container":"#b5c2ff","background":"#faf8ff","inverse-on-surface":"#eef0ff","on-primary-fixed":"#00210e","on-tertiary-fixed-variant":"#0039b5","on-secondary-fixed-variant":"#6e3900","error":"#ba1a1a","surface-variant":"#dae2fd","secondary-container":"#fe932c","primary":"#004423","on-tertiary":"#ffffff","secondary-fixed":"#ffdcc3","on-background":"#131b2e","surface-container-lowest":"#ffffff","primary-fixed":"#a7f4bc","on-primary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.5rem","space-sm":"0.75rem","margin-tablet":"2rem","gutter-desktop":"2rem","space-xl":"2.5rem","space-lg":"1.75rem","margin-desktop":"3rem","gutter":"1rem","gutter-tablet":"1.5rem","margin":"1rem","space-md":"1.25rem"},"fontFamily":{"urdu-body-lg":["Noto Sans"],"title-lg":["Noto Sans"],"label-lg":["Noto Sans"],"body-md":["Noto Sans"],"display-hero":["Noto Sans"],"headline-md":["Noto Sans"],"label-md":["Noto Sans"],"urdu-body-md":["Noto Sans"],"body-lg":["Noto Sans"],"headline-lg":["Noto Sans"],"headline-md-mobile":["Noto Sans"],"headline-lg-mobile":["Noto Sans"],"urdu-headline-md":["Noto Sans"],"urdu-headline-lg":["Noto Sans"],"display-hero-mobile":["Noto Sans"],"body-xl":["Noto Sans"]},"fontSize":{"urdu-body-lg":["20px",{"lineHeight":"40px","fontWeight":"400"}],"title-lg":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-lg":["18px",{"lineHeight":"26px","fontWeight":"600"}],"body-md":["16px",{"lineHeight":"26px","fontWeight":"400"}],"display-hero":["40px",{"lineHeight":"52px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"34px","fontWeight":"600"}],"label-md":["15px",{"lineHeight":"22px","fontWeight":"600"}],"urdu-body-md":["18px",{"lineHeight":"36px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"44px","fontWeight":"700"}],"headline-md-mobile":["20px",{"lineHeight":"30px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"34px","fontWeight":"700"}],"urdu-headline-md":["22px",{"lineHeight":"44px","fontWeight":"700"}],"urdu-headline-lg":["28px",{"lineHeight":"52px","fontWeight":"700"}],"display-hero-mobile":["30px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-xl":["20px",{"lineHeight":"32px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 max-w-7xl mx-auto px-6 lg:px-12 flex flex-col justify-between py-2"><div class="flex items-center justify-between gap-4"><div class="flex items-center gap-3"><div class="w-11 h-11 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_2px_6px_rgba(0,0,0,0.08)]"><span class="material-symbols-outlined text-[28px]">account_balance</span></div><div><div class="flex items-center gap-2"><span class="font-title-lg text-title-lg text-primary tracking-tight">Awami Voice Admin</span><span class="text-outline-variant">|</span><span class="font-urdu-headline-md text-urdu-headline-md text-primary">عوامی آواز ایڈمن پورٹل</span></div><div class="flex items-center gap-2"><span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">District Administration - Rawalpindi Division / ضلع راولپنڈی</span></div></div></div><div class="hidden xl:flex items-center gap-4 bg-surface-container-low px-4 py-1.5 rounded-lg"><div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface-variant">All Services Live</span></div><span class="text-outline-variant">•</span><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md text-on-surface-variant">AI Router: Normal</span></div><span class="text-outline-variant">•</span><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md text-secondary font-bold">Open Cases: 142</span></div></div><div class="flex items-center gap-3"><div class="relative hidden sm:flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">search</span><input class="w-56 h-10 pl-9 pr-3 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest" placeholder="Search cases, citizen CNIC..." type="text"/></div><button class="h-9 px-3 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest hover:text-on-surface flex items-center gap-1.5 font-label-md text-label-md transition-colors"><span class="material-symbols-outlined text-[18px]">translate</span><span>English / اردو</span></button><div class="flex items-center gap-2.5 pl-2"><div class="text-right hidden md:block"><div class="font-label-md text-label-md text-on-surface font-bold leading-tight">Engr. Tariq Mehmood</div><div class="font-label-md text-label-md text-on-surface-variant text-[13px] leading-tight">Deputy Director</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><nav class="flex items-center gap-1 overflow-x-auto pt-1" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg shadow-[0_1px_4px_rgba(0,0,0,0.08)]"><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" data-path="dashboard-and-overview" href="#">Dashboard &amp; Overview (مرکزی جائزہ)</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" data-path="triage-and-audio-review" href="#">Triage &amp; Audio Review (شکایات و آڈیو جائزہ)</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" data-path="field-dispatch-and-assignments" href="#">Field Dispatch &amp; Assignments (فیلڈ ٹیمیں و روانگی)</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" data-path="citizen-sla-and-escalations" href="#">Citizen SLA &amp; Escalations (معیار و اپیلیں)</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" data-path="ai-router-and-health-telemetry" href="#">AI Router &amp; Health Telemetry (ماڈل و سسٹم مانیٹرنگ)</a></nav></div></header><main class="w-full pt-28 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- Subtle decorative ambient background elements -->
+<div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+<!-- EXECUTIVE METRICS RIBBON (BENTO HIGHLIGHTS) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+<!-- Metric 1: Total Inflow -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-primary/5 group-hover:scale-110 transition-transform duration-300"></div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">record_voice_over</span>
+            Total Inflow Today
+          </span>
+<span class="inline-flex items-center text-primary-container font-label-md text-[13px] bg-primary-fixed/30 px-2 py-0.5 rounded font-bold">+18%</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">284</span>
+<span class="text-outline font-body-md text-[14px]">Complaints</span>
+</div>
+<div class="flex items-center justify-between text-outline font-label-md text-[12px] mt-1">
+<span>92% Audio Recorded</span>
+<span class="font-urdu-body-md text-[13px] text-primary">کل وصولی</span>
+</div>
+</div>
+</div>
+<!-- Metric 2: Pending Human Triage -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-secondary-container/10 group-hover:scale-110 transition-transform duration-300"></div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">fact_check</span>
+            Pending Triage
+          </span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-secondary font-bold tracking-tight">38</span>
+<span class="text-secondary font-label-md text-[13px]">Needs Officer Review</span>
+</div>
+<div class="flex items-center justify-between text-outline font-label-md text-[12px] mt-1">
+<span>Manual verification pool</span>
+<span class="font-urdu-body-md text-[13px] text-secondary">زیرِ جائزہ</span>
+</div>
+</div>
+</div>
+<!-- Metric 3: Active Field Dispatches -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-tertiary/5 group-hover:scale-110 transition-transform duration-300"></div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">local_shipping</span>
+            Active Field Teams
+          </span>
+<span class="font-label-md text-[12px] px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-bold">4 Tehsils</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-tertiary font-bold tracking-tight">64</span>
+<span class="text-on-surface-variant font-body-md text-[14px]">On Ground</span>
+</div>
+<div class="flex items-center justify-between text-outline font-label-md text-[12px] mt-1">
+<span>Gujar Khan, Murree, Kahuta</span>
+<span class="font-urdu-body-md text-[13px] text-tertiary">فیلڈ ٹیمیں</span>
+</div>
+</div>
+</div>
+<!-- Metric 4: Critical SLA Breaches Warning -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-error-container group-hover:scale-110 transition-transform duration-300"></div>
+<div class="flex items-center justify-between">
+<span class="text-error font-label-md text-label-md flex items-center gap-1.5 font-bold">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+            SLA At Risk (&lt;4h)
+          </span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-md text-[12px] font-bold">Urgent</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-error font-bold tracking-tight">07</span>
+<span class="text-error font-label-md text-[13px]">Escalation Imminent</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-[12px] mt-1">
+<span>Auto-escalate to AC office</span>
+<span class="font-urdu-body-md text-[13px] text-error">خطرہ تاخیر</span>
+</div>
+</div>
+</div>
+<!-- Metric 5: Whisper/Shruti AI Pipeline Accuracy -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300"></div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">neurology</span>
+            ASR &amp; Router Acc.
+          </span>
+<span class="font-label-md text-[12px] px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-bold">Whisper v3</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">96.4%</span>
+<span class="text-primary font-label-md text-[13px]">Zero-Cost</span>
+</div>
+<div class="flex items-center justify-between text-outline font-label-md text-[12px] mt-1">
+<span>Potohari/Urdu Speech</span>
+<span class="font-urdu-body-md text-[13px] text-primary">درستگی شرح</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TWO-COLUMN WORKSPACE: QUEUE (35%) + TRIAGE CONSOLE (65%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: TRIAGE QUEUE & FILTER SYSTEM (lg:col-span-4 or 5) -->
+<aside class="lg:col-span-4 space-y-4">
+<!-- Search & Control Header Card -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">inbox</span>
+              Triage Queue
+            </h2>
+<span class="font-urdu-headline-md text-urdu-headline-md text-on-surface-variant">شکایات قطار</span>
+</div>
+<!-- Integrated Multimodal Search Field -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-0 focus:bg-surface-container" placeholder="Search Token, CNIC, Village..." type="text" value="Chak 18"/>
+<button class="absolute right-2 top-2 p-1.5 rounded text-outline hover:text-on-surface" title="Audio Filter Voice Command">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+</div>
+<!-- Quick Filters Horizontal Scroll Pills -->
+<div class="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-[13px] whitespace-nowrap shadow-sm">
+              All Pending (38)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-[13px] whitespace-nowrap">
+              Water / PHED (12)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-[13px] whitespace-nowrap">
+              Roads C&amp;W (9)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-[13px] whitespace-nowrap">
+              IESCO (11)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-error-container text-on-error-container font-label-md text-[13px] whitespace-nowrap font-bold">
+              Escalated (6)
+            </button>
+</div>
+</div>
+<!-- Complaints Interactive Stack -->
+<div class="space-y-2.5">
+<!-- Card 1: ACTIVE / SELECTED CASE -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-md cursor-pointer transition-all duration-150 transform hover:-translate-y-0.5 bg-gradient-to-r from-primary-fixed/20 via-surface-container-lowest to-surface-container-lowest">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container font-label-md text-[12px] font-bold">
+                  #PK-94021
+                </span>
+<span class="text-outline font-label-md text-[12px]">14 mins ago</span>
+</div>
+<span class="inline-flex items-center gap-1 text-primary font-label-md text-[12px] bg-primary-fixed/40 px-2 py-0.5 rounded-full font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Active Review
+              </span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-md-mobile text-headline-md-mobile text-on-surface font-bold line-clamp-1">
+                واٹر فلٹریشن پلانٹ کی بندش و گندا پانی
+              </div>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                Village Chak 18, Mandra • Gujar Khan
+              </p>
+</div>
+<!-- Audio snippet & AI metadata pill -->
+<div class="mt-3 pt-3 flex items-center justify-between bg-surface-container-low p-2 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</span>
+<div>
+<div class="font-label-md text-[12px] text-on-surface font-bold">Voice: 0:14s</div>
+<div class="text-[11px] text-outline">Potohari / Punjabi</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-[12px] text-primary-container font-bold bg-primary-fixed px-1.5 py-0.5 rounded">
+                  98% AI Match
+                </span>
+<div class="text-[11px] text-on-surface-variant mt-0.5">PHED Routing</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Road Repair Priority High -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm hover:bg-surface-container-low cursor-pointer transition-all duration-150">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-md text-[12px] font-bold">
+                  #PK-94035
+                </span>
+<span class="text-outline font-label-md text-[12px]">32 mins ago</span>
+</div>
+<span class="inline-flex items-center gap-1 text-secondary font-label-md text-[12px] bg-secondary-fixed/50 px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+                18h SLA
+              </span>
+</div>
+<div class="space-y-1">
+<div class="font-title-lg text-title-lg text-on-surface font-semibold line-clamp-1">
+                سڑک پر کھلا مین ہول اور حادثات کا خدشہ
+              </div>
+<p class="font-body-md text-[14px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                Mandra Main Bazaar, Tehsil Gujar Khan
+              </p>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-[12px] font-label-md text-on-surface-variant">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[15px]">engineering</span>
+                C&amp;W Highway Team 2 Assigned
+              </span>
+<span class="text-outline">Voice (0:22)</span>
+</div>
+</div>
+<!-- Card 3: Solid Waste Accumulation -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm hover:bg-surface-container-low cursor-pointer transition-all duration-150">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-md text-[12px] font-bold">
+                  #PK-93988
+                </span>
+<span class="text-outline font-label-md text-[12px]">1h ago</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-[12px] bg-surface-container px-2 py-0.5 rounded-full">
+                Normal SLA (72h)
+              </span>
+</div>
+<div class="space-y-1">
+<div class="font-title-lg text-title-lg text-on-surface font-semibold line-clamp-1">
+                ہسپتال لنک روڈ پر کوڑے کے ڈھیر
+              </div>
+<p class="font-body-md text-[14px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                THQ Hospital Link Road, Kahuta
+              </p>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-[12px] font-label-md text-on-surface-variant">
+<span class="text-outline">Rawalpindi Waste Mgmt (RWMC)</span>
+<span class="text-outline">Voice (0:19)</span>
+</div>
+</div>
+<!-- Card 4: Critical Transformer Sparking -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm hover:bg-surface-container-low cursor-pointer transition-all duration-150">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-md text-[12px] font-bold">
+                  #PK-93910
+                </span>
+<span class="text-outline font-label-md text-[12px]">2h ago</span>
+</div>
+<span class="inline-flex items-center gap-1 text-on-error-container font-label-md text-[12px] bg-error-container px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[13px]">emergency</span>
+                Critical Escalation
+              </span>
+</div>
+<div class="space-y-1">
+<div class="font-title-lg text-title-lg text-error font-bold line-clamp-1">
+                ٹرانسفارمر میں آگ کے شعلے اور شارٹ سرکٹ
+              </div>
+<p class="font-body-md text-[14px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                Union Council 4, Sukho, Rawalpindi
+              </p>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-[12px] font-label-md">
+<span class="text-error font-semibold">IESCO Rapid Sub-Division</span>
+<span class="text-outline font-label-md">2h remaining</span>
+</div>
+</div>
+</div>
+<!-- Queue Footnote Indicator -->
+<div class="bg-surface-container-low p-3 rounded-lg flex items-center justify-between text-on-surface-variant font-label-md text-[12px]">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            Live ASR Stream Syncing (Websocket)
+          </span>
+<button class="text-primary font-bold hover:underline">View 34 more →</button>
+</div>
+</aside>
+<!-- RIGHT COLUMN: DETAILED INVESTIGATION & DISPATCH CONSOLE (lg:col-span-8) -->
+<main class="lg:col-span-8 space-y-5">
+<!-- Case Header & Citizen Metadata Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="px-2.5 py-1 rounded bg-primary text-on-primary font-label-md text-label-md font-bold tracking-wide">
+                  Token #PK-94021
+                </span>
+<span class="px-2.5 py-0.5 rounded bg-surface-container-high text-on-surface font-label-md text-[13px]">
+                  Category: Public Water Supply (پبلک ہیلتھ)
+                </span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-md text-[12px] font-bold">
+                  SLA: 24h Remaining
+                </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold mt-2 tracking-tight">
+                پینے کا صاف پانی / واٹر فلٹریشن پلانٹ کی بندش
+              </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_city</span>
+                Village Chak 18, Mandra Road, Tehsil Gujar Khan, District Rawalpindi
+              </p>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
+<span class="text-outline font-label-md text-[12px]">Dispute Confidence Score</span>
+<div class="flex items-center gap-2 bg-primary-fixed/30 px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-primary text-[22px]">verified</span>
+<div class="text-right">
+<div class="font-title-lg text-title-lg text-primary font-bold leading-none">98.2%</div>
+<div class="text-[11px] text-primary-container font-semibold">High Credibility</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Citizen Identity & Biometrics Banner -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 bg-surface-container-low p-3.5 rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">
+                MA
+              </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold">Muhammad Afzal</div>
+<div class="font-body-md text-[13px] text-outline">0300-5849120 • Chak 18</div>
+</div>
+</div>
+<div>
+<div class="text-outline font-label-md text-[11px] uppercase tracking-wider">NADRA Citizen Registry</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1 mt-0.5">
+<span>38403-XXXXXXX-1</span>
+<span class="material-symbols-outlined text-primary text-[16px]" title="Valid Citizen CNIC Linked">check_circle</span>
+</div>
+</div>
+<div>
+<div class="text-outline font-label-md text-[11px] uppercase tracking-wider">Voice Biometric &amp; GPS</div>
+<div class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+<span>Lat: 33.2641, Lon: 73.2392 (±8m)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- DUAL AUDIO PLAYER & AI EXTRACTION TELEMETRY -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">graphic_eq</span>
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold">Citizen Voice Master &amp; ASR Telemetry</h2>
+</div>
+<div class="flex items-center gap-1">
+<button class="h-8 px-2.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-[12px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                Master WAV
+              </button>
+<button class="h-8 px-2.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-secondary font-label-md text-[12px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+                Flag Spam
+              </button>
+</div>
+</div>
+<!-- Waveform Player Surface -->
+<div class="bg-inverse-surface text-inverse-on-surface p-4 rounded-xl space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Large Play/Pause Toggle -->
+<button class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined text-[28px]">pause</span>
+</button>
+<div>
+<div class="font-label-md text-label-md text-inverse-on-surface font-bold">Raw Audio Capture #PK-94021.ogg</div>
+<div class="text-[12px] text-inverse-on-surface/70">Recorded: 10:14 AM • Duration: 0:14s • Stereo 48kHz</div>
+</div>
+</div>
+<!-- Speed & Scrub Controls -->
+<div class="flex items-center gap-2">
+<button class="px-2 py-1 rounded bg-surface-container/20 text-inverse-on-surface font-label-md text-[12px] font-bold hover:bg-surface-container/30">
+                  0.8x (Elderly/Slow)
+                </button>
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary font-label-md text-[12px] font-bold">
+                  1.0x Normal
+                </button>
+</div>
+</div>
+<!-- Visual Frequency Spectrum Simulator (Inline SVG) -->
+<div class="h-16 w-full flex items-center gap-1 pt-2 px-1">
+<!-- SVG Waveform Simulation with theme colors -->
+<svg class="w-full h-full text-inverse-primary" fill="currentColor" preserveaspectratio="none" viewbox="0 0 600 60">
+<!-- Played section (0% - 65%) -->
+<rect class="text-primary-fixed" height="12" rx="2" width="4" x="0" y="24"></rect>
+<rect class="text-primary-fixed" height="28" rx="2" width="4" x="8" y="16"></rect>
+<rect class="text-primary-fixed" height="44" rx="2" width="4" x="16" y="8"></rect>
+<rect class="text-primary-fixed" height="20" rx="2" width="4" x="24" y="20"></rect>
+<rect class="text-primary-fixed" height="36" rx="2" width="4" x="32" y="12"></rect>
+<rect class="text-primary-fixed" height="52" rx="2" width="4" x="40" y="4"></rect>
+<rect class="text-primary-fixed" height="24" rx="2" width="4" x="48" y="18"></rect>
+<rect class="text-primary-fixed" height="16" rx="2" width="4" x="56" y="22"></rect>
+<rect class="text-primary-fixed" height="40" rx="2" width="4" x="64" y="10"></rect>
+<rect class="text-primary-fixed" height="48" rx="2" width="4" x="72" y="6"></rect>
+<rect class="text-primary-fixed" height="32" rx="2" width="4" x="80" y="14"></rect>
+<rect class="text-primary-fixed" height="56" rx="2" width="4" x="88" y="2"></rect>
+<rect class="text-primary-fixed" height="24" rx="2" width="4" x="96" y="18"></rect>
+<rect class="text-primary-fixed" height="8" rx="2" width="4" x="104" y="26"></rect>
+<rect class="text-primary-fixed" height="36" rx="2" width="4" x="112" y="12"></rect>
+<rect class="text-primary-fixed" height="52" rx="2" width="4" x="120" y="4"></rect>
+<rect class="text-primary-fixed" height="28" rx="2" width="4" x="128" y="16"></rect>
+<rect class="text-primary-fixed" height="40" rx="2" width="4" x="136" y="10"></rect>
+<rect class="text-primary-fixed" height="56" rx="2" width="4" x="144" y="2"></rect>
+<rect class="text-primary-fixed" height="44" rx="2" width="4" x="152" y="8"></rect>
+<rect class="text-primary-fixed" height="32" rx="2" width="4" x="160" y="14"></rect>
+<rect class="text-primary-fixed" height="16" rx="2" width="4" x="168" y="22"></rect>
+<rect class="text-primary-fixed" height="48" rx="2" width="4" x="176" y="6"></rect>
+<rect class="text-primary-fixed" height="36" rx="2" width="4" x="184" y="12"></rect>
+<rect class="text-primary-fixed" height="24" rx="2" width="4" x="192" y="18"></rect>
+<rect class="text-primary-fixed" height="52" rx="2" width="4" x="200" y="4"></rect>
+<rect class="text-primary-fixed" height="40" rx="2" width="4" x="208" y="10"></rect>
+<rect class="text-primary-fixed" height="28" rx="2" width="4" x="216" y="16"></rect>
+<rect class="text-primary-fixed" height="56" rx="2" width="4" x="224" y="2"></rect>
+<rect class="text-primary-fixed" height="32" rx="2" width="4" x="232" y="14"></rect>
+<rect class="text-primary-fixed" height="20" rx="2" width="4" x="240" y="20"></rect>
+<rect class="text-primary-fixed" height="44" rx="2" width="4" x="248" y="8"></rect>
+<rect class="text-primary-fixed" height="24" rx="2" width="4" x="256" y="18"></rect>
+<rect class="text-primary-fixed" height="48" rx="2" width="4" x="264" y="6"></rect>
+<rect class="text-primary-fixed" height="36" rx="2" width="4" x="272" y="12"></rect>
+<rect class="text-primary-fixed" height="12" rx="2" width="4" x="280" y="24"></rect>
+<rect class="text-primary-fixed" height="28" rx="2" width="4" x="288" y="16"></rect>
+<rect class="text-primary-fixed" height="52" rx="2" width="4" x="296" y="4"></rect>
+<rect class="text-primary-fixed" height="40" rx="2" width="4" x="304" y="10"></rect>
+<rect class="text-primary-fixed" height="32" rx="2" width="4" x="312" y="14"></rect>
+<rect class="text-primary-fixed" height="56" rx="2" width="4" x="320" y="2"></rect>
+<rect class="text-primary-fixed" height="44" rx="2" width="4" x="328" y="8"></rect>
+<rect class="text-primary-fixed" height="24" rx="2" width="4" x="336" y="18"></rect>
+<rect class="text-primary-fixed" height="16" rx="2" width="4" x="344" y="22"></rect>
+<rect class="text-primary-fixed" height="40" rx="2" width="4" x="352" y="10"></rect>
+<rect class="text-primary-fixed" height="48" rx="2" width="4" x="360" y="6"></rect>
+<rect class="text-primary-fixed" height="32" rx="2" width="4" x="368" y="14"></rect>
+<rect class="text-primary-fixed" height="56" rx="2" width="4" x="376" y="2"></rect>
+<!-- Playhead cursor marker -->
+<line stroke="#ffdcc3" stroke-width="3" x1="384" x2="384" y1="0" y2="60"></line>
+<!-- Unplayed section -->
+<rect class="opacity-30" height="20" rx="2" width="4" x="390" y="20"></rect>
+<rect class="opacity-30" height="32" rx="2" width="4" x="398" y="14"></rect>
+<rect class="opacity-30" height="44" rx="2" width="4" x="406" y="8"></rect>
+<rect class="opacity-30" height="28" rx="2" width="4" x="414" y="16"></rect>
+<rect class="opacity-30" height="12" rx="2" width="4" x="422" y="24"></rect>
+<rect class="opacity-30" height="40" rx="2" width="4" x="430" y="10"></rect>
+<rect class="opacity-30" height="52" rx="2" width="4" x="438" y="4"></rect>
+<rect class="opacity-30" height="24" rx="2" width="4" x="446" y="18"></rect>
+<rect class="opacity-30" height="36" rx="2" width="4" x="454" y="12"></rect>
+<rect class="opacity-30" height="16" rx="2" width="4" x="462" y="22"></rect>
+<rect class="opacity-30" height="48" rx="2" width="4" x="470" y="6"></rect>
+<rect class="opacity-30" height="32" rx="2" width="4" x="478" y="14"></rect>
+<rect class="opacity-30" height="56" rx="2" width="4" x="486" y="2"></rect>
+<rect class="opacity-30" height="28" rx="2" width="4" x="494" y="16"></rect>
+<rect class="opacity-30" height="20" rx="2" width="4" x="502" y="20"></rect>
+<rect class="opacity-30" height="44" rx="2" width="4" x="510" y="8"></rect>
+<rect class="opacity-30" height="12" rx="2" width="4" x="518" y="24"></rect>
+<rect class="opacity-30" height="40" rx="2" width="4" x="526" y="10"></rect>
+<rect class="opacity-30" height="32" rx="2" width="4" x="534" y="14"></rect>
+<rect class="opacity-30" height="24" rx="2" width="4" x="542" y="18"></rect>
+<rect class="opacity-30" height="52" rx="2" width="4" x="550" y="4"></rect>
+<rect class="opacity-30" height="36" rx="2" width="4" x="558" y="12"></rect>
+<rect class="opacity-30" height="16" rx="2" width="4" x="566" y="22"></rect>
+<rect class="opacity-30" height="48" rx="2" width="4" x="574" y="6"></rect>
+<rect class="opacity-30" height="32" rx="2" width="4" x="582" y="14"></rect>
+<rect class="opacity-30" height="8" rx="2" width="4" x="590" y="26"></rect>
+</svg>
+</div>
+<div class="flex items-center justify-between text-[12px] text-inverse-on-surface/80">
+<span>0:09 / 0:14 sec (Seekable)</span>
+<span class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-[14px]">hearing</span>
+                Potohari Speech Codec Active
+              </span>
+</div>
+</div>
+<!-- Bilingual Transcript Box -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Raw Urdu/Punjabi Transcript -->
+<div class="bg-surface-container-low p-4 rounded-xl space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-label-md text-label-md font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">translate</span>
+                  اصل آڈیو کی نقل (Raw Transcript)
+                </span>
+<span class="text-[12px] text-outline font-label-md">Whisper-Urdu v3</span>
+</div>
+<p class="font-urdu-body-lg text-urdu-body-lg text-on-surface leading-loose text-right" dir="rtl">
+                "ہمارے گاؤں چک 18 وچ پینے دے پانی دا فلٹر پچھلے دو ہفتے توں بند اے، تے نلکے توں گندا پانی آ رہیا اے، سارے بال بیمار ہو رہے نیں، مہربانی کر کے ٹیم بھیجو۔"
+              </p>
+<div class="flex items-center gap-2 pt-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-md text-[11px]">Dialect: Potohari Rural</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-md text-[11px] font-bold">Confidence: 97.8%</span>
+</div>
+</div>
+<!-- AI Extracted Entity Graph -->
+<div class="bg-surface-container-low p-4 rounded-xl space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-label-md text-label-md font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">psychology</span>
+                  AI Extracted Attributes (خلاصہ معلومات)
+                </span>
+<span class="text-[12px] text-primary font-bold">Llama-3-Router</span>
+</div>
+<div class="space-y-1.5 text-on-surface font-body-md text-[14px]">
+<div class="flex justify-between py-1 border-b border-surface-container-high/60">
+<span class="text-outline">Root Cause:</span>
+<span class="font-bold text-error">Filtration Motor Burnout / Clogged Filter</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-container-high/60">
+<span class="text-outline">Impact Area:</span>
+<span class="font-semibold">Village Chak 18, UC-09 Mandra</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-container-high/60">
+<span class="text-outline">Population Impact:</span>
+<span class="font-bold text-primary">~350 Rural Households</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-outline">Health Risk Level:</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-md text-[11px] font-bold">
+                    Waterborne Disease Hazard
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- GIS GEOLOCATION & FIELD SATELLITE DISPATCH MAP -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">map</span>
+                GIS Spatial Verification &amp; Municipal Units
+              </h2>
+<p class="font-body-md text-[13px] text-outline">Geo-tagged coordinates confirmed from citizen cellular tower &amp; device GPS</p>
+</div>
+<span class="font-urdu-body-md text-[14px] text-primary font-bold">مقام و قریبی ٹیمیں</span>
+</div>
+<!-- Embedded Static Map Widget -->
+<div class="w-full h-56 rounded-xl relative overflow-hidden bg-surface-container-high flex flex-col justify-end p-4 shadow-inner" data-alt="Satellite map view of rural Punjab Pakistan showing green agricultural land, village roads, Chak 18 Mandra water tank site with GIS coordinate overlays, municipal service pins in deep civic green and amber highlighting dispatch radius" data-location="Village Chak 18 Mandra Gujar Khan Pakistan" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyPFibqjo2Thc6PaVMSxi773rEs5Z6_Jmf8i1IQxhAy06WQaVSKFXQbtE1VAE8mdJR_jpNX6yqcHGPlBgU4EuNIX_2-IYOFGS-qiL6Yz-ytTd8gq2nOCWA4z8kApcd9D924qqtACZ2zOngOH2TzbEvu46JQSj9KDdZWfaS7kx7ZS969W6W8PdEeuTLT2AtxVygFwtgGJLaH7C-uBAzF6wfkHH_EFkY3M0Zu0Iqga2Q')">
+<!-- Map Overlay Badges -->
+<div class="absolute top-3 left-3 flex flex-wrap gap-2">
+<span class="bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-lg text-on-surface font-label-md text-[12px] font-bold shadow-sm flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+                Incident: Chak 18 Water Plant
+              </span>
+<span class="bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-lg text-primary font-label-md text-[12px] font-bold shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">directions_car</span>
+                PHED Unit 3: 3.4 km Away
+              </span>
+</div>
+<!-- Bottom Floating Location Banner -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-2.5 rounded-lg flex items-center justify-between shadow-md">
+<div class="flex items-center gap-2 text-[13px]">
+<span class="material-symbols-outlined text-primary text-[18px]">fmd_good</span>
+<span class="font-semibold text-on-surface">Chak 18 Mandra Access Road</span>
+<span class="text-outline">| Elevation: 492m</span>
+</div>
+<span class="text-primary font-label-md text-[12px] font-bold cursor-pointer hover:underline">
+                Open in Punjab GIS Portal →
+              </span>
+</div>
+</div>
+</div>
+<!-- DEPARTMENT TRIAGE & FIELD DISPATCH FORM -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm space-y-5">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-3">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">
+                Field Assignment &amp; Work Order Generation
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">فیلڈ ٹیم کی نامزدگی و حکمنامہ جاری کریں</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-bold">
+              Target SLA: 24 Hours
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Target Department Routing -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-bold">
+                Responsible Civic Department / متعلقہ محکمہ
+              </label>
+<div class="relative">
+<select class="w-full h-12 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container">
+<option selected="">Public Health Engineering Dept (PHED) - واٹر سپلائی</option>
+<option>Communication &amp; Works (C&amp;W) - سڑکیں و پل</option>
+<option>Rawalpindi Waste Management Company (RWMC) - صفائی</option>
+<option>IESCO - بجلی و ٹرانسفارمر</option>
+<option>Local Government &amp; Community Development (LG&amp;CD)</option>
+</select>
+</div>
+</div>
+<!-- Assigned Field Officer -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-bold">
+                Assigned Officer / تفویض کردہ اہلکار
+              </label>
+<div class="relative">
+<select class="w-full h-12 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container">
+<option selected="">Engr. Rizwan Qureshi (SDO, PHED Gujar Khan - 3.4km)</option>
+<option>Sub-Engineer Tariq Aziz (Mandra Municipal Zone)</option>
+<option>Rapid Response Unit #4 (Tehsil Gujar Khan Depot)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Equipment & Work Order Specs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-bold">
+                Equipment &amp; Spares Requisition
+              </label>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-primary">check_box</span>
+                  Water Testing Kit
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-primary">check_box</span>
+                  Heavy Flush Pump
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-primary">check_box</span>
+                  Replacement Membrane
+                </span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-bold">
+                Priority Tier Selector
+              </label>
+<div class="grid grid-cols-3 gap-2">
+<button class="h-11 rounded-lg bg-surface-container-high text-on-surface font-label-md text-[13px] hover:bg-surface-container-highest">
+                  Standard (72h)
+                </button>
+<button class="h-11 rounded-lg bg-secondary text-on-secondary font-label-md text-[13px] font-bold shadow-sm">
+                  High (48h)
+                </button>
+<button class="h-11 rounded-lg bg-error text-on-error font-label-md text-[13px] font-bold shadow-sm">
+                  Critical (24h)
+                </button>
+</div>
+</div>
+</div>
+<!-- Officer Directive Instructions Note -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-bold flex items-center justify-between">
+<span>Official Work Order Directive / فیلڈ افسر کو ہدایات</span>
+<span class="text-outline font-body-md text-[12px]">Auto-translated to Urdu for field app</span>
+</label>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container" rows="3">Urgent: Inspect secondary filter membrane and primary motor at Chak 18 plant. Clean sediment chamber and submit geotagged pre/post repair photos within 24h. Notify citizen Muhammad Afzal upon arrival.</textarea>
+</div>
+<!-- Bilingual Voice SMS Notification Trigger -->
+<div class="bg-primary-fixed/30 p-3.5 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-primary-fixed font-bold">
+                  Send Potohari/Urdu Voice Call &amp; SMS Receipt to Citizen
+                </div>
+<div class="text-[12px] text-on-surface-variant">
+                  شہری کو فیلڈ روانگی اور ٹیم نمبر کی خودکار آڈیو کال موصول ہوگی
+                </div>
+</div>
+</div>
+<input checked="" class="w-5 h-5 accent-primary cursor-pointer rounded" type="checkbox"/>
+</div>
+<!-- Triage Action Buttons Group -->
+<div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<!-- Re-route Department Button -->
+<button class="h-12 px-4 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 w-full sm:w-auto transition-colors">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+                Re-route Dept
+              </button>
+<!-- Additional Citizen Info Audio Call Button -->
+<button class="h-12 px-4 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim font-label-md text-label-md flex items-center justify-center gap-1.5 w-full sm:w-auto transition-colors">
+<span class="material-symbols-outlined text-[20px]">contact_phone</span>
+                مزید معلومات کی کال
+              </button>
+<!-- Reject Case Button -->
+<button class="h-12 px-3.5 rounded-lg bg-error-container text-on-error-container hover:bg-error/20 font-label-md text-label-md flex items-center justify-center gap-1 w-full sm:w-auto transition-colors" title="Reject with recorded justification">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+                Reject
+              </button>
+</div>
+<!-- Primary Dispatch CTA -->
+<button class="h-14 px-8 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-md-mobile text-headline-md-mobile font-bold flex items-center justify-center gap-2.5 w-full sm:w-auto shadow-lg hover:shadow-xl active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[24px]">send</span>
+<span>Confirm Triage &amp; Dispatch Team (منظوری و روانگی)</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+<!-- BOTTOM TRIAGE SLA LIFECYCLE TRACKER -->
+<section class="bg-surface-container-lowest p-5 rounded-xl shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">linear_scale</span>
+<span class="font-headline-md-mobile text-headline-md-mobile text-on-surface font-bold">
+            Live Escalation Timeline (کیس ٹائم لائن و معیارِ سروس)
+          </span>
+</div>
+<span class="text-outline font-label-md text-[13px]">Citizen Token: #PK-94021</span>
+</div>
+<!-- Linear Stepper Track -->
+<div class="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-2">
+<!-- Step 1: Voice Recorded -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold">10:14 AM</div>
+<div class="text-[12px] text-outline">Voice Inflow Captured</div>
+<div class="font-urdu-body-md text-[11px] text-primary font-bold">آڈیو وصول ہوئی</div>
+</div>
+</div>
+<!-- Step 2: AI Analyzed -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold">10:15 AM (1 min)</div>
+<div class="text-[12px] text-outline">AI Extraction &amp; Dialect Detection</div>
+<div class="font-urdu-body-md text-[11px] text-primary font-bold">تجزیہ مکمل</div>
+</div>
+</div>
+<!-- Step 3: Current State (Officer Review) -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 animate-pulse">
+<span class="material-symbols-outlined text-[20px]">person_check</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-secondary font-bold">10:28 AM (In Progress)</div>
+<div class="text-[12px] text-on-surface font-semibold">Admin Officer Reviewing</div>
+<div class="font-urdu-body-md text-[11px] text-secondary font-bold">افسر کا جائزہ جاری</div>
+</div>
+</div>
+<!-- Step 4: Field Dispatch Target -->
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">rv_hookup</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold">Target: 11:00 AM</div>
+<div class="text-[12px] text-outline">Field Crew In Transit</div>
+<div class="font-urdu-body-md text-[11px] text-outline">روانگی کا ہدف</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(0,0,0,0.03)] py-6 mt-12"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-on-surface-variant font-label-md text-label-md"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]">verified_user</span><span>Government of Punjab - Local Government &amp; Community Development Department | E-Governance Administration Suite</span></div><div class="flex items-center gap-3 text-outline"><span class="inline-flex items-center gap-1.5 bg-surface-container px-2.5 py-1 rounded text-[13px] font-label-md text-label-md text-on-surface"><span class="w-2 h-2 rounded-full bg-primary-container"></span>Session: SEC-PK-9821-ACTIVE</span><span>TLS 1.3 Certified</span></div></div></footer></body></html>

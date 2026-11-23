@@ -1,0 +1,1607 @@
+# Project: Voice-First AI-Powered E-Governance Platform for Rural Pakistan
+
+## 1. Role and Expertise
+
+Act as a Senior ICT4D (Information and Communication Technology for Development) Requirements Analyst, Solution Architect, AI Engineer, UX/UI Designer, and Full-Stack Software Architect.
+
+You must have deep practical knowledge and experience in:
+
+- Digital public service delivery and e-governance platforms.
+- ICT4D solutions for rural, underserved, and low-income communities in South Asia, particularly Pakistan.
+- Designing technology solutions for illiterate, semi-literate, elderly, and digitally inexperienced users.
+- Voice-first human-computer interaction and conversational AI.
+- Urdu, Punjabi, and other low-resource South Asian languages.
+- Speech-to-text (ASR), text-to-speech (TTS), multilingual LLMs, and speech processing.
+- Lightweight web and mobile applications suitable for low-end Android devices.
+- Edge AI, offline AI, low-bandwidth application design, and efficient cloud deployment.
+- Open-source and genuinely free AI technologies.
+- Privacy, security, scalability, accessibility, and cost-effective infrastructure.
+
+Your objective is to design a technically realistic, affordable, scalable, secure, and user-friendly Voice-First E-Governance platform for rural and remote communities in Pakistan.
+
+Do not provide a generic AI chatbot architecture. Design a practical implementation-oriented solution specifically for rural Pakistani users with limited digital literacy, limited resources, and unreliable connectivity.
+
+---
+
+## 2. Project Background and Vision
+
+We intend to develop a Voice-First E-Governance platform that enables rural and remote communities in Pakistan to access essential public services through natural spoken conversation.
+
+The application should allow users to communicate with the system in their own language without requiring them to navigate menus, type text, understand complicated forms, or possess advanced smartphone skills.
+
+The platform should act as a voice-based public service information and complaint assistance system.
+
+The initial platform should focus on the following services:
+
+1. Public complaint registration and complaint status inquiry.
+2. Hospital, healthcare facility, doctor, and emergency service information.
+3. Government subsidy, welfare scheme, and public assistance inquiries.
+4. General public service information.
+5. Guidance regarding government procedures, eligibility, documents, application steps, and relevant departments.
+
+The platform should initially be designed as a pilot project for rural Pakistan, with the architecture allowing future expansion to additional districts, provinces, departments, services, and languages.
+
+---
+
+## 3. Target Users
+
+The primary users are:
+
+- Illiterate and semi-literate individuals.
+- Rural residents with limited digital literacy.
+- Individuals who cannot comfortably read or write Urdu.
+- People who primarily communicate through spoken language.
+- Users with low-end Android smartphones.
+- Users with limited mobile data and intermittent internet connectivity.
+- Elderly people and users with disabilities who may find traditional interfaces difficult to use.
+
+The initial language requirements are:
+
+- Urdu.
+- Punjabi.
+
+The architecture should support future addition of other Pakistani languages, including Saraiki, Pashto, Sindhi, Balochi, and other languages, without requiring a complete redesign.
+
+The application must account for the coexistence of multiple languages, regional accents, dialects, informal expressions, mixed Urdu/Punjabi conversations, and commonly spoken English terminology.
+
+---
+
+## 4. Core User Experience Principles
+
+The application must be designed around the principle:
+
+"Speak naturally, listen to the response, and complete the service without requiring reading, writing, or menu navigation."
+
+The following UX principles are mandatory:
+
+### 4.1 Voice-First Interaction
+
+- The primary interaction method must be voice.
+- Users should not need to type questions.
+- Users should not be required to navigate traditional menus.
+- The application must support spoken questions, follow-up questions, clarification, confirmation, and completion of tasks.
+- The interface should provide a single prominent microphone interaction control.
+- Users should be able to initiate and continue conversations naturally.
+- The application should support conversational interaction rather than a rigid command-based system.
+
+### 4.2 Minimal Visual Interface
+
+Design the interface for users who cannot read or have limited literacy.
+
+Use:
+
+- Large icons.
+- Large microphone controls.
+- Visual status indicators.
+- Simple illustrations.
+- Audio instructions.
+- Minimal text.
+- Easy-to-understand confirmation indicators.
+- Simple error recovery controls.
+- Clear visual indication of listening, processing, and speaking states.
+
+Avoid:
+
+- Complex navigation.
+- Long forms.
+- Dense text.
+- Technical terminology.
+- Small buttons.
+- Multiple layers of navigation.
+- Interfaces that require users to understand application settings.
+
+### 4.3 Conversational Interaction
+
+The system must be capable of handling conversational examples such as:
+
+- "Mujhe apne gaon ki sadak ke bare mein shikayat karni hai."
+- "Mere qareeb koi sarkari hospital hai?"
+- "BISP ki payment kab milegi?"
+- "Meri pehli shikayat ka kya hua?"
+- "Mujhe subsidy ke liye apply karna hai."
+- "Punjab mein kis scheme ke tehat ghareeb logon ko madad milti hai?"
+
+The system must understand conversational intent, context, incomplete statements, and follow-up questions.
+
+The system should not force users to repeat all information during the same conversation.
+
+---
+
+## 5. Scope of the Initial MVP
+
+Design the first version of the platform with the following modules.
+
+### Module 1: Voice-Based Public Complaint Registration
+
+Users must be able to verbally report issues such as:
+
+- Road damage.
+- Water supply problems.
+- Electricity-related public complaints.
+- Sanitation and waste management.
+- Public health concerns.
+- Government service delays.
+- Other predefined public service issues.
+
+The system should:
+
+1. Understand the spoken complaint.
+2. Identify the complaint category.
+3. Extract relevant details.
+4. Identify the location, if available.
+5. Ask for missing information conversationally.
+6. Confirm the complaint details through audio.
+7. Allow the user to correct information.
+8. Register the complaint only after confirmation.
+9. Generate a complaint reference number.
+10. Communicate the reference number through speech.
+11. Optionally generate a QR code or visual reference.
+12. Allow future complaint status inquiries through voice.
+
+The system must not fabricate complaint registration, complaint IDs, department responses, or complaint status.
+
+If the platform is not integrated with a real government complaint system, it must clearly identify the complaint as recorded within the pilot platform rather than claiming it has been officially submitted to a government department.
+
+### Module 2: Hospital and Healthcare Information
+
+Users should be able to ask spoken questions about:
+
+- Nearby hospitals.
+- Government hospitals.
+- Basic healthcare facility information.
+- Hospital addresses.
+- Available contact numbers.
+- Operating hours, where verified.
+- Available services, where verified.
+- Emergency services.
+- Directions, where supported.
+
+Examples:
+
+- "Mere qareeb government hospital kahan hai?"
+- "Is hospital mein emergency available hai?"
+- "Hospital ka phone number kya hai?"
+- "Mujhe nearest maternity hospital batao."
+
+The architecture should support location-based services when location permissions are granted.
+
+If location access is unavailable, the system should conversationally ask the user for their village, town, district, or nearest landmark.
+
+Healthcare information must be handled responsibly. The system must distinguish between general healthcare information and medical diagnosis.
+
+Emergency scenarios should trigger appropriate emergency guidance using verified local information where available.
+
+### Module 3: Subsidy and Welfare Information
+
+Users should be able to ask conversational questions about:
+
+- Government subsidies.
+- Social welfare schemes.
+- Eligibility criteria.
+- Required documents.
+- Application procedures.
+- Application deadlines.
+- Payment information.
+- Relevant government departments.
+- Verified official application channels.
+
+The platform should retrieve information from trusted sources.
+
+Government schemes should not be presented as active unless their status has been verified through an authoritative source or the system's designated information repository.
+
+The architecture must support information freshness, verification dates, and source tracking.
+
+### Module 4: General Public Information
+
+The platform should support additional public information inquiries, including:
+
+- Public service procedures.
+- Government offices.
+- Local public services.
+- Basic administrative information.
+- Citizen guidance.
+
+This module should be designed for future expansion.
+
+---
+
+## 6. Voice Interaction Workflow
+
+Design a complete voice interaction workflow for both mobile and web applications.
+
+The interaction should generally follow this sequence:
+
+1. User opens the application.
+2. The application presents a simple voice-enabled welcome experience.
+3. The welcome message is played in the selected or detected language.
+4. The user speaks.
+5. Audio is captured through the device microphone.
+6. Audio is processed using an appropriate ASR solution.
+7. The recognized speech is converted into text internally.
+8. The system identifies the user's language, intent, entities, and conversational context.
+9. The system determines whether the request can be answered immediately or requires clarification.
+10. The system retrieves relevant information from an appropriate verified data source, where required.
+11. The LLM or conversational processing layer generates a response.
+12. The response is converted into speech using the selected TTS engine.
+13. The user hears the response.
+14. The user can continue the conversation, ask a follow-up, correct information, or terminate the interaction.
+
+The application must not expose the text-processing steps as a requirement for the user.
+
+The user should experience the system as a natural spoken conversation.
+
+### Conversation State
+
+Design a conversation-state mechanism that maintains relevant context during the session.
+
+For example:
+
+User: "Mujhe hospital ka pata batao."
+
+Assistant: "Aap kis ilaqay mein hospital dhoond rahe hain?"
+
+User: "Rawalpindi ke qareeb."
+
+Assistant: "Rawalpindi mein aap government hospital dhoond rahe hain ya koi bhi hospital?"
+
+User: "Government hospital."
+
+The system should retain the context without unnecessarily restarting the conversation.
+
+Conversation history should be controlled, limited, and privacy-aware.
+
+### Voice Interaction Modes
+
+Evaluate and recommend:
+
+- Push-to-talk.
+- Automatic speech detection.
+- Continuous conversational mode.
+- Short audio recording mode.
+- Streaming audio processing.
+
+Recommend the most suitable approach for the MVP, considering battery usage, privacy, connectivity, low-end devices, and user experience.
+
+---
+
+## 7. Functional Requirements
+
+Prepare a detailed functional requirements specification for the platform.
+
+Requirements must be categorized into:
+
+### 7.1 Mobile Application
+
+Include:
+
+- First-time onboarding.
+- Language selection through voice or simple visual controls.
+- Voice-based user interaction.
+- Microphone permissions.
+- Audio capture.
+- Voice activity detection.
+- ASR integration.
+- Conversational processing.
+- TTS integration.
+- Complaint registration.
+- Complaint confirmation.
+- Complaint reference retrieval.
+- Hospital information.
+- Welfare and subsidy inquiries.
+- Conversation continuation.
+- Audio replay.
+- Conversation interruption and recovery.
+- Low-connectivity handling.
+- Offline capabilities.
+- Location permissions.
+- Privacy controls.
+- Session management.
+- Accessibility.
+- Basic security.
+- Minimal storage requirements.
+- Battery optimization.
+- Error handling.
+
+### 7.2 Web Application
+
+Include:
+
+- Responsive design.
+- Voice-first interaction.
+- Browser microphone access.
+- Urdu and Punjabi support.
+- Complaint registration.
+- Complaint status inquiry.
+- Hospital information.
+- Welfare information.
+- Audio playback.
+- Connection status.
+- User-friendly error handling.
+- Accessibility.
+- Low-bandwidth optimization.
+- Security.
+- Compatibility with modern browsers.
+
+### 7.3 Administrative Interface
+
+Design a lightweight administrative dashboard for authorized administrators.
+
+It should support:
+
+- Complaint monitoring.
+- Complaint categorization.
+- Complaint status management.
+- Complaint assignment.
+- Complaint search.
+- Complaint reporting.
+- Hospital information management.
+- Welfare and subsidy information management.
+- Information source management.
+- Content verification.
+- Content update timestamps.
+- Language configuration.
+- AI model configuration.
+- Model availability monitoring.
+- AI request monitoring.
+- Usage monitoring.
+- Daily quota monitoring.
+- System health monitoring.
+- Error monitoring.
+- Basic analytics.
+- User feedback management.
+
+Administrative functions should not be included in the public voice interface.
+
+### 7.4 Backend and API Requirements
+
+Define the APIs and services required for:
+
+- Voice input.
+- ASR processing.
+- Conversational processing.
+- LLM interaction.
+- Retrieval of verified information.
+- TTS processing.
+- Complaint registration.
+- Complaint status inquiry.
+- Hospital lookup.
+- Welfare lookup.
+- Conversation management.
+- Language detection.
+- Model routing.
+- Model quota monitoring.
+- Administrative operations.
+- Logging.
+- Monitoring.
+
+Provide API design examples, request/response structures, and recommended API security controls.
+
+---
+
+## 8. Frontend Technology Stack
+
+Recommend a lightweight frontend technology stack for both mobile and web.
+
+The recommendation must consider:
+
+- Low-end Android devices.
+- Slow networks.
+- Limited device memory.
+- Minimal installation size.
+- Audio recording.
+- Audio playback.
+- Microphone access.
+- Urdu and Punjabi support.
+- RTL layout for Urdu.
+- LTR and mixed-script content.
+- Accessibility.
+- Offline or partially offline operation.
+- Maintainability.
+- Future scalability.
+
+Evaluate suitable technologies such as:
+
+- Progressive Web Application (PWA).
+- React.
+- Vue.
+- Svelte.
+- Vanilla JavaScript.
+- Ionic.
+- Capacitor.
+- Flutter.
+- React Native.
+
+Do not recommend a technology merely because it is popular.
+
+Compare the options and recommend a practical implementation strategy.
+
+The frontend architecture should avoid unnecessary frameworks, large bundles, excessive dependencies, and complex animations.
+
+Provide a recommended architecture for:
+
+- Public mobile interface.
+- Public web interface.
+- Administrative dashboard.
+
+Explain whether a shared codebase is appropriate.
+
+---
+
+## 9. Backend Technology Stack
+
+Recommend a lightweight, cost-effective, maintainable backend.
+
+Evaluate suitable technologies such as:
+
+- Python FastAPI.
+- Flask.
+- Node.js.
+- Express.
+- NestJS.
+- Other appropriate lightweight technologies.
+
+Consider:
+
+- AI model integration.
+- ASR integration.
+- TTS integration.
+- LLM routing.
+- API management.
+- Database integration.
+- Authentication.
+- Conversation state.
+- Background processing.
+- Audio processing.
+- Deployment simplicity.
+- Low-resource server environments.
+- Maintainability.
+
+Recommend the most appropriate backend technology and explain why.
+
+### Database
+
+Recommend an appropriate database for:
+
+- Complaint records.
+- Complaint status.
+- Hospital information.
+- Welfare information.
+- Verified content.
+- User preferences.
+- Conversation state.
+- AI usage logs.
+- System configuration.
+- Model usage statistics.
+- Administrative audit records.
+
+Evaluate lightweight and production-ready options.
+
+Clearly distinguish between development, pilot, and production recommendations.
+
+---
+
+## 10. AI Architecture: ASR, LLM, and TTS
+
+AI functionality must prioritize free, open-source, self-hostable, and genuinely free-to-use inference options.
+
+Do not recommend paid APIs as a fallback.
+
+Distinguish between:
+
+- Free model weights.
+- Free local inference.
+- Free hosted inference.
+- Free API quotas.
+- Open-source licensing.
+- Models that require GPU resources.
+- Models that can operate on CPU.
+- Models requiring cloud infrastructure.
+- Models suitable for offline deployment.
+
+Do not assume that a model is free merely because its weights are publicly available.
+
+Evaluate license restrictions, deployment requirements, hardware needs, API quotas, and practical performance.
+
+### 10.1 ASR (Automatic Speech Recognition)
+
+Evaluate and recommend ASR solutions for Urdu and Punjabi.
+
+Candidates may include:
+
+- Whisper.
+- Whisper variants.
+- Shruti-ONNX.
+- Other appropriate open-source multilingual or South Asian speech recognition models.
+
+The evaluation must consider:
+
+- Urdu recognition.
+- Punjabi recognition.
+- Punjabi dialects.
+- Accent diversity.
+- Urdu/Punjabi code-switching.
+- English terminology.
+- Low-resource language performance.
+- Model size.
+- CPU inference.
+- Memory requirements.
+- Offline operation.
+- Latency.
+- Accuracy.
+- Licensing.
+- Deployment complexity.
+- Fine-tuning requirements.
+
+Reflect the following verified technical fact:
+
+Shruti-ONNX supports Urdu and Punjabi. Its int8 version requires approximately 1 GB of memory and may be suitable for offline deployment.
+
+Reflect the following verified technical fact:
+
+Whisper supports Urdu and Punjabi, but zero-shot performance on low-resource languages may be limited. Fine-tuning can significantly reduce Word Error Rate (WER).
+
+Provide a comparative assessment.
+
+Recommend:
+
+- Primary ASR solution.
+- Secondary ASR solution.
+- Offline ASR option.
+- Cloud ASR option, if appropriate and genuinely free.
+- ASR switching strategy.
+- Language detection strategy.
+- Audio quality handling.
+- Error recovery.
+
+Do not assume that a model's listed language support guarantees reliable performance in rural dialects.
+
+### 10.2 TTS (Text-to-Speech)
+
+Evaluate TTS solutions that support Urdu and Punjabi.
+
+Candidates may include:
+
+- Libra-TTS.
+- Other appropriate open-source TTS engines.
+- ONNX-based deployment options.
+- CPU-based inference options.
+
+Reflect the following verified technical fact:
+
+Libra-TTS supports Urdu and Punjabi and has an ONNX version that can run on CPU, making it a potentially suitable lightweight deployment option.
+
+Evaluate:
+
+- Naturalness.
+- Urdu pronunciation.
+- Punjabi pronunciation.
+- Dialect limitations.
+- Voice quality.
+- Model size.
+- CPU requirements.
+- Memory requirements.
+- Offline deployment.
+- Latency.
+- Licensing.
+- Stability.
+- Ease of integration.
+
+Recommend:
+
+- Primary TTS solution.
+- Secondary TTS solution.
+- Offline TTS option.
+- Fallback TTS strategy.
+- Audio caching strategy.
+- Speech generation strategy.
+- Urdu/Punjabi voice selection.
+- Handling of English words and abbreviations.
+
+The platform must be able to speak responses clearly and slowly enough for the target users.
+
+### 10.3 LLM (Large Language Model)
+
+Recommend appropriate free LLM options that can support:
+
+- Urdu.
+- Punjabi.
+- Roman Urdu.
+- Mixed Urdu/Punjabi/English input.
+- Conversational context.
+- Intent identification.
+- Entity extraction.
+- Clarification questions.
+- Structured output.
+- Summarization.
+- Public service information.
+- Retrieval-augmented generation (RAG).
+
+Evaluate free models available through:
+
+- OpenRouter.
+- Other free hosted inference providers.
+- Self-hosted open-weight models.
+
+Do not assume that every model advertised as multilingual performs well in Urdu or Punjabi.
+
+Assess the models based on:
+
+- Language quality.
+- Urdu conversational quality.
+- Punjabi conversational quality.
+- Roman Urdu understanding.
+- Code-switching.
+- Structured output reliability.
+- Tool calling capability.
+- Context length.
+- Inference latency.
+- Model availability.
+- Free usage restrictions.
+- API rate limits.
+- Licensing.
+- CPU/GPU requirements.
+- Operational complexity.
+
+Recommend an appropriate primary and secondary LLM strategy.
+
+---
+
+## 11. Free LLM Routing and Model Switching Architecture
+
+This section is mandatory and must be designed in detail.
+
+The platform must never switch to a paid model when free model limits are exhausted.
+
+### 11.1 OpenRouter Free Model Router
+
+Reflect the following verified facts:
+
+- OpenRouter's openrouter/free router automatically selects among eligible free models.
+- It can fall back among eligible free models.
+- It is not a guarantee of unlimited availability.
+- Free models can have individual provider limits, availability limitations, and performance variation.
+- If paid models are added to the fallback array, they may be billed.
+- Accounts without any top-up history are limited to 50 requests per day for free models.
+- After purchasing $10 in credits once, the free-model daily request limit increases to 1,000 requests per day, based on the stated verified information.
+- Purchasing credits to increase the quota is not considered a requirement for this project, because the platform's operating principle is zero paid AI usage.
+
+The system must not rely on an assumption of unlimited free OpenRouter inference.
+
+The architecture must explicitly address daily request caps and provider availability.
+
+### 11.2 Model Router
+
+Design a centralized LLM model router that:
+
+1. Maintains a configurable list of approved free models.
+2. Tracks model availability.
+3. Tracks daily usage.
+4. Tracks per-model quotas where observable.
+5. Tracks global provider limits.
+6. Detects HTTP 429 errors.
+7. Detects provider capacity errors.
+8. Detects model unavailable errors.
+9. Detects API failures.
+10. Detects timeout conditions.
+11. Detects invalid responses.
+12. Implements controlled retry logic.
+13. Implements exponential backoff.
+14. Implements circuit breakers.
+15. Implements model health monitoring.
+16. Selects the next eligible free model.
+17. Avoids repeatedly calling exhausted models.
+18. Maintains a hard prohibition on paid fallback.
+19. Handles OpenRouter's free router correctly.
+20. Supports additional free inference providers.
+21. Supports local LLM inference.
+22. Logs model selection and failure reasons.
+23. Respects provider terms of service.
+24. Avoids exposing provider API keys to frontend clients.
+
+### 11.3 Multi-Level Free Model Fallback
+
+Design the fallback architecture using a hierarchy such as:
+
+Tier 1: Primary free hosted model.
+
+Tier 2: Alternative free hosted model.
+
+Tier 3: Another approved free model/provider.
+
+Tier 4: Locally hosted open-weight LLM.
+
+Tier 5: Deterministic rule-based responses for supported service inquiries.
+
+Tier 6: Graceful degradation, including informing the user that conversational AI is temporarily unavailable while offering limited supported services.
+
+The architecture must explain the practical requirements, limitations, and trade-offs of each tier.
+
+Do not assume that local inference is free from hardware, electricity, maintenance, or operational costs.
+
+### 11.4 OpenRouter Safety Configuration
+
+Recommend a safe OpenRouter configuration that ensures:
+
+- Only free models are eligible.
+- No paid model is silently selected.
+- Paid fallback arrays are not configured.
+- No accidental billing is possible through model routing.
+- Free-model identifiers are explicitly controlled.
+- Router configuration is auditable.
+- Provider selection is restricted where possible.
+- Configuration changes require administrative review.
+
+Explain how to prevent accidental use of paid models.
+
+### 11.5 Daily Quota Management
+
+Design a quota-management system that handles:
+
+- Daily request limits.
+- Per-provider limits.
+- Per-model limits.
+- Concurrent requests.
+- User abuse.
+- Request prioritization.
+- Quota exhaustion.
+- Temporary outages.
+- Usage monitoring.
+- Quota reset times.
+- Administrative alerts.
+
+The architecture should estimate the maximum number of supported conversations per day based on the LLM request budget.
+
+Consider reducing the number of LLM calls through:
+
+- Intent classification.
+- Rule-based processing.
+- Structured conversation flows.
+- Caching.
+- RAG.
+- Local inference.
+- Request batching where appropriate.
+- Short context windows.
+- Conversation summarization.
+- Simple deterministic responses.
+
+Do not use an LLM for tasks that can be performed reliably using rules, database queries, or deterministic processing.
+
+### 11.6 LLM Fallback Decision Logic
+
+Provide a detailed decision flow and pseudocode.
+
+Example:
+
+Request received
+    |
+    v
+Identify intent
+    |
+    +--> Deterministic service request?
+    |         |
+    |         +--> Handle through API/database/rules
+    |
+    +--> Requires conversational LLM?
+              |
+              v
+       Check global quota
+              |
+              +--> Quota unavailable?
+              |         |
+              |         +--> Select local/free alternative
+              |
+              v
+       Check primary free model
+              |
+              +--> Available?
+              |         |
+              |         +--> Execute request
+              |
+              +--> Unavailable?
+                        |
+                        v
+                 Select next eligible free model
+                        |
+                        +--> Repeat controlled fallback
+                        |
+                        +--> No free model available
+                                  |
+                                  v
+                         Local inference / rules
+                                  |
+                                  v
+                         Graceful degradation
+
+Provide production-oriented pseudocode and a sequence diagram or architecture diagram.
+
+---
+
+## 12. Retrieval-Augmented Generation and Verified Information
+
+The platform must prioritize factual accuracy when responding to government, hospital, welfare, and public service inquiries.
+
+Design a RAG architecture that can retrieve information from:
+
+- Official government websites.
+- Government departments.
+- Verified hospital databases.
+- Official public service documentation.
+- Approved government notifications.
+- Verified public information repositories.
+- Locally maintained and reviewed datasets.
+
+The system must:
+
+- Identify authoritative information sources.
+- Maintain source URLs.
+- Maintain verification dates.
+- Maintain update timestamps.
+- Maintain information expiry rules where appropriate.
+- Support Urdu and Punjabi content.
+- Support English source documents.
+- Support multilingual retrieval.
+- Support semantic search.
+- Support keyword search.
+- Support structured databases.
+- Prevent hallucination.
+- Avoid presenting outdated schemes as current.
+- Provide a conversational response based on retrieved information.
+- Escalate uncertainty appropriately.
+
+Evaluate whether the MVP should use:
+
+- A lightweight relational database.
+- Full-text search.
+- Embeddings.
+- Vector search.
+- Hybrid retrieval.
+
+Recommend the simplest viable architecture and explain when more advanced RAG capabilities become necessary.
+
+---
+
+## 13. Offline and Low-Connectivity Architecture
+
+The platform must be designed for intermittent internet connectivity.
+
+Analyze the following scenarios:
+
+### Scenario A: Internet Available
+
+- Cloud ASR, if available and free.
+- Free hosted LLM.
+- Cloud-based information retrieval.
+- Cloud or local TTS.
+
+### Scenario B: Internet Slow or Unstable
+
+- Local audio capture.
+- Audio compression.
+- Retry mechanisms.
+- Short audio segments.
+- Cached content.
+- Local TTS.
+- Offline intent handling.
+- Delayed synchronization.
+
+### Scenario C: Internet Unavailable
+
+Evaluate whether the mobile application or local infrastructure can support:
+
+- Offline ASR.
+- Offline TTS.
+- Basic public service information.
+- Cached hospital information.
+- Offline FAQ.
+- Complaint draft storage.
+- Pending complaint synchronization.
+- Local rule-based responses.
+
+Clarify that official complaint submission and current public information retrieval may not be possible during complete connectivity loss unless a local integration or offline submission mechanism exists.
+
+Recommend an appropriate offline capability for the MVP rather than attempting to implement all AI models locally.
+
+---
+
+## 14. Lightweight Infrastructure and Deployment
+
+Recommend a lightweight deployment architecture.
+
+Evaluate:
+
+- Single-server deployment.
+- Docker-based deployment.
+- Containerized backend.
+- Reverse proxy.
+- PostgreSQL.
+- SQLite for specific scenarios.
+- Redis, if genuinely necessary.
+- Background processing.
+- Local AI inference.
+- Cloud AI inference.
+- Object storage for audio.
+- Audio caching.
+- Monitoring.
+- Logging.
+- Backup.
+- Disaster recovery.
+
+Avoid unnecessary microservices for the initial pilot.
+
+Prefer a modular monolith unless there is a strong architectural justification for a more complex deployment.
+
+Provide a recommended deployment architecture for:
+
+1. Prototype.
+2. Rural pilot.
+3. Production-scale deployment.
+
+Explain minimum practical server specifications, including:
+
+- CPU.
+- RAM.
+- Storage.
+- Network.
+- GPU requirements, if applicable.
+
+Provide realistic hardware estimates and distinguish between estimates and verified requirements.
+
+---
+
+## 15. Security, Privacy, and Data Protection
+
+The platform may process personal information and sensitive public complaints.
+
+Design a privacy-conscious architecture.
+
+Include:
+
+- Data minimization.
+- User consent.
+- Microphone permission handling.
+- Audio retention policies.
+- Transcription retention policies.
+- Complaint data retention.
+- Encryption in transit.
+- Encryption at rest.
+- Authentication.
+- Administrative access control.
+- Role-based access control.
+- API protection.
+- Rate limiting.
+- Input validation.
+- Secure session management.
+- Secrets management.
+- Audit logging.
+- Abuse prevention.
+- Data deletion.
+- Backup security.
+- Protection against prompt injection.
+- Protection against malicious input.
+- Protection against AI-generated misinformation.
+- Protection against unauthorized complaint access.
+
+Do not store raw audio unless it is necessary and the user has been appropriately informed.
+
+Do not expose personal information in LLM prompts unnecessarily.
+
+Do not send sensitive complaint information to third-party AI providers unless the privacy, consent, and operational requirements are appropriately addressed.
+
+Provide a practical privacy and security architecture suitable for an initial pilot.
+
+---
+
+## 16. Reliability, Monitoring, and Observability
+
+Design a monitoring framework that tracks:
+
+- ASR availability.
+- ASR latency.
+- ASR failures.
+- Language recognition failures.
+- TTS availability.
+- TTS latency.
+- TTS failures.
+- LLM availability.
+- LLM latency.
+- LLM quota usage.
+- Provider failures.
+- Model switching.
+- Daily free-model requests.
+- Complaint registration failures.
+- Database health.
+- API response times.
+- Application errors.
+- Network failures.
+- User session failures.
+
+Define useful operational metrics and dashboards.
+
+Recommend an alerting strategy that does not depend on paid monitoring services where avoidable.
+
+---
+
+## 17. Testing and Evaluation
+
+Design a comprehensive testing strategy.
+
+### 17.1 Functional Testing
+
+Test:
+
+- Complaint registration.
+- Complaint status inquiries.
+- Hospital inquiries.
+- Subsidy inquiries.
+- Follow-up questions.
+- Clarification.
+- Audio replay.
+- Language switching.
+- Conversation interruption.
+- Error recovery.
+
+### 17.2 Language Testing
+
+Evaluate:
+
+- Urdu.
+- Punjabi.
+- Roman Urdu.
+- Roman Punjabi.
+- Mixed-language speech.
+- English terminology.
+- Regional accents.
+- Background noise.
+- Slow speech.
+- Fast speech.
+- Elderly voices.
+- Male and female voices.
+- Different microphone qualities.
+
+### 17.3 ASR Testing
+
+Define an evaluation methodology using:
+
+- Word Error Rate.
+- Sentence accuracy.
+- Intent recognition accuracy.
+- Entity extraction accuracy.
+- Language identification accuracy.
+- Dialect-specific performance.
+- Background noise performance.
+
+Recommend creating a locally collected and consented test dataset.
+
+Do not rely solely on benchmark scores published by model developers.
+
+### 17.4 TTS Testing
+
+Evaluate:
+
+- Pronunciation.
+- Naturalness.
+- Speech clarity.
+- Intelligibility.
+- Response speed.
+- Urdu pronunciation.
+- Punjabi pronunciation.
+- Numbers.
+- Dates.
+- Government abbreviations.
+- Hospital names.
+- Local place names.
+
+### 17.5 AI Response Testing
+
+Evaluate:
+
+- Factual accuracy.
+- Hallucination rate.
+- Response relevance.
+- Conversational consistency.
+- Safety.
+- Language quality.
+- Appropriate clarification.
+- Correct handling of uncertainty.
+
+### 17.6 Field Testing
+
+Recommend a pilot test with real rural users.
+
+Include:
+
+- User observation.
+- Usability testing.
+- Audio interaction testing.
+- User comprehension.
+- Task completion rates.
+- Complaint registration success.
+- Satisfaction.
+- Accessibility.
+- Network performance.
+- Device performance.
+
+Provide a measurable pilot evaluation framework.
+
+---
+
+## 18. Key Risks and Mitigation
+
+Prepare a detailed risk register covering:
+
+- Poor Urdu ASR accuracy.
+- Poor Punjabi ASR accuracy.
+- Regional dialect variation.
+- Code-switching.
+- Background noise.
+- Low-quality microphones.
+- Free LLM quota exhaustion.
+- Free model availability.
+- Provider outages.
+- Paid fallback risk.
+- LLM hallucination.
+- Outdated government information.
+- TTS pronunciation problems.
+- Limited server resources.
+- Offline limitations.
+- Slow internet.
+- User privacy.
+- Complaint data sensitivity.
+- Government integration challenges.
+- Scalability.
+- Operational sustainability.
+- Abuse and spam.
+- AI model licensing.
+- Lack of local language datasets.
+
+For each risk, provide:
+
+- Risk description.
+- Probability.
+- Impact.
+- Severity.
+- Mitigation.
+- Contingency.
+- Monitoring approach.
+
+---
+
+## 19. Recommended Architecture Deliverables
+
+Provide the following outputs in a structured, professional technical architecture document.
+
+### Deliverable A: Executive Summary
+
+Explain:
+
+- Project vision.
+- Target audience.
+- Main objectives.
+- Recommended architecture.
+- Key technologies.
+- Implementation priorities.
+- Expected benefits.
+- Major limitations.
+
+### Deliverable B: Functional Requirements
+
+Prepare a categorized and detailed functional requirements specification for:
+
+- Mobile application.
+- Web application.
+- Voice interaction.
+- Complaint services.
+- Hospital services.
+- Subsidy and welfare services.
+- Administrative dashboard.
+- Backend.
+- APIs.
+- AI integrations.
+
+Use unique requirement IDs, such as:
+
+- FR-MOB-001.
+- FR-WEB-001.
+- FR-VOICE-001.
+- FR-COMP-001.
+- FR-HOSP-001.
+- FR-WEL-001.
+- FR-ADMIN-001.
+- FR-AI-001.
+
+### Deliverable C: Non-Functional Requirements
+
+Define:
+
+- Performance.
+- Availability.
+- Reliability.
+- Scalability.
+- Security.
+- Privacy.
+- Accessibility.
+- Maintainability.
+- Portability.
+- Low-bandwidth performance.
+- Offline capability.
+- Usability.
+- Language support.
+
+Use unique IDs such as NFR-001, NFR-002, etc.
+
+### Deliverable D: Technology Stack Comparison
+
+Provide a comparison table of the shortlisted technologies.
+
+Include:
+
+- Technology.
+- Role.
+- Advantages.
+- Disadvantages.
+- Resource requirements.
+- Cost.
+- Licensing.
+- Urdu/Punjabi compatibility.
+- Recommendation.
+
+### Deliverable E: AI Model Comparison
+
+Provide comparative tables for:
+
+- ASR.
+- TTS.
+- LLM.
+
+Include:
+
+- Model name.
+- Languages supported.
+- Urdu capability.
+- Punjabi capability.
+- Roman Urdu capability, where applicable.
+- CPU requirements.
+- RAM requirements.
+- Model size.
+- Offline capability.
+- Hosted inference availability.
+- Free usage limitations.
+- Licensing.
+- Strengths.
+- Weaknesses.
+- Recommended use.
+
+Do not fabricate benchmark scores, availability, pricing, model specifications, or licensing information.
+
+Clearly mark any unverified information.
+
+### Deliverable F: AI Model Switching Architecture
+
+Provide:
+
+- Architecture diagram.
+- Model router design.
+- Quota management.
+- Model health monitoring.
+- Free-model selection.
+- OpenRouter configuration.
+- Provider fallback.
+- Local inference fallback.
+- Rule-based fallback.
+- Pseudocode.
+- Sequence diagram.
+- Error handling.
+
+### Deliverable G: System Architecture
+
+Provide a complete system architecture diagram showing:
+
+- Mobile application.
+- Web application.
+- Backend APIs.
+- ASR.
+- Language detection.
+- Intent classification.
+- LLM router.
+- Free hosted LLMs.
+- Local LLM.
+- TTS.
+- RAG.
+- Database.
+- Government information sources.
+- Complaint management.
+- Hospital database.
+- Welfare database.
+- Administrative dashboard.
+- Monitoring.
+- Logging.
+
+### Deliverable H: Data Architecture
+
+Define:
+
+- Database entities.
+- Tables.
+- Relationships.
+- Key fields.
+- Complaint data.
+- Hospital data.
+- Welfare information.
+- Conversation metadata.
+- AI model usage.
+- Administrative data.
+- Audit data.
+
+Provide a preliminary ER diagram and schema recommendations.
+
+### Deliverable I: API Design
+
+Provide:
+
+- API endpoints.
+- HTTP methods.
+- Authentication requirements.
+- Request structures.
+- Response structures.
+- Error handling.
+- API versioning.
+- Security controls.
+
+### Deliverable J: UI/UX Design
+
+Provide:
+
+- Mobile screen structure.
+- Web screen structure.
+- Voice interaction screen.
+- Listening state.
+- Processing state.
+- Speaking state.
+- Error state.
+- Complaint confirmation state.
+- Language selection.
+- Accessibility considerations.
+
+The UI must be designed for users who cannot read or write.
+
+### Deliverable K: Deployment Architecture
+
+Provide:
+
+- Prototype deployment.
+- Pilot deployment.
+- Production deployment.
+- Server specifications.
+- Container strategy.
+- Network architecture.
+- Security.
+- Monitoring.
+- Backup.
+- Deployment procedure.
+
+### Deliverable L: Risk Register
+
+Provide a comprehensive risk register with severity and mitigation.
+
+### Deliverable M: Development Roadmap
+
+Prepare a phased implementation roadmap:
+
+Phase 1: Requirements validation and technology feasibility.
+
+Phase 2: Language and speech feasibility testing.
+
+Phase 3: Voice-first prototype.
+
+Phase 4: Complaint management MVP.
+
+Phase 5: Hospital and welfare information integration.
+
+Phase 6: Free LLM router and quota management.
+
+Phase 7: Offline and low-connectivity enhancements.
+
+Phase 8: Administrative dashboard.
+
+Phase 9: Security and performance testing.
+
+Phase 10: Rural field pilot.
+
+Phase 11: Pilot evaluation and improvement.
+
+Phase 12: Production deployment and expansion.
+
+For each phase, provide:
+
+- Objectives.
+- Tasks.
+- Deliverables.
+- Dependencies.
+- Risks.
+- Acceptance criteria.
+- Estimated duration.
+- Required skills.
+
+### Deliverable N: MVP Definition
+
+Clearly define:
+
+- Features included in the first MVP.
+- Features deferred.
+- Minimum infrastructure.
+- Minimum AI capabilities.
+- Minimum supported languages.
+- Minimum supported services.
+- MVP success criteria.
+
+### Deliverable O: Cost and Sustainability Analysis
+
+Provide a realistic cost analysis for:
+
+- Hosting.
+- Server infrastructure.
+- Local AI inference.
+- Free hosted AI inference.
+- Storage.
+- Monitoring.
+- Development.
+- Maintenance.
+- Network.
+- Data collection.
+- Language model fine-tuning.
+
+Separate:
+
+- Software costs.
+- Infrastructure costs.
+- Operational costs.
+- Development costs.
+
+Do not assume that free AI APIs eliminate all project costs.
+
+Provide a cost-conscious strategy for maintaining sustainability without introducing paid AI API dependencies.
+
+---
+
+## 20. Architecture Design Principles
+
+The architecture must follow these principles:
+
+1. Voice-first, not text-first.
+2. Human-centered design.
+3. Designed for rural Pakistani communities.
+4. Low-literacy accessibility.
+5. Urdu and Punjabi from the beginning.
+6. Lightweight frontend.
+7. Lightweight backend.
+8. Modular monolithic architecture for the MVP.
+9. Free AI models only.
+10. No paid AI fallback.
+11. Local inference where practical.
+12. Offline capabilities where practical.
+13. Low-bandwidth operation.
+14. Privacy by design.
+15. Secure architecture.
+16. Verified public information.
+17. AI-assisted, not AI-dependent, public service delivery.
+18. Deterministic processing wherever practical.
+19. Explainable fallback mechanisms.
+20. Cost-conscious scalability.
+21. Maintainability.
+22. Open-source and licensing awareness.
+23. Extensibility to additional languages.
+24. Extensibility to additional government departments.
+25. Practical implementation rather than theoretical recommendations.
+
+---
+
+## 21. Research and Recommendation Standards
+
+Before making technical recommendations:
+
+- Verify the current status of relevant AI models.
+- Verify Urdu and Punjabi support.
+- Verify current model licensing.
+- Verify free inference availability.
+- Verify current provider restrictions.
+- Verify OpenRouter free model routing behavior.
+- Verify rate limits and quotas where publicly documented.
+- Verify deployment requirements.
+- Verify ONNX support.
+- Verify CPU inference suitability.
+- Verify whether models are actively maintained.
+- Verify relevant security and privacy considerations.
+
+Prioritize:
+
+1. Official documentation.
+2. Official GitHub repositories.
+3. Model cards.
+4. Technical documentation.
+5. Reputable research publications.
+6. Independent technical evaluations.
+
+Distinguish verified facts from assumptions and estimates.
+
+Do not fabricate:
+
+- Model performance.
+- WER scores.
+- Model availability.
+- Free quotas.
+- API limits.
+- Hardware requirements.
+- Licensing.
+- Costs.
+- Government integrations.
+- Hospital data.
+- Subsidy information.
+
+If a technology cannot be verified, clearly state that it requires validation.
+
+---
+
+## 22. Final Output Format
+
+Produce a comprehensive professional architecture and requirements report using the following structure:
+
+1. Executive Summary.
+2. Project Vision and Objectives.
+3. Target Users and Context.
+4. User Personas.
+5. User Journey.
+6. Voice Interaction Design.
+7. Functional Requirements.
+8. Non-Functional Requirements.
+9. Mobile and Web Frontend Architecture.
+10. Backend Architecture.
+11. Database Architecture.
+12. ASR Evaluation and Recommendation.
+13. TTS Evaluation and Recommendation.
+14. LLM Evaluation and Recommendation.
+15. Free AI Model Routing Architecture.
+16. Quota Management Architecture.
+17. RAG and Information Verification.
+18. Offline and Low-Connectivity Strategy.
+19. Security and Privacy Architecture.
+20. Infrastructure and Deployment.
+21. API Specification.
+22. UI/UX Design.
+23. Monitoring and Observability.
+24. Testing and Evaluation.
+25. Risk Register.
+26. Cost and Sustainability.
+27. Implementation Roadmap.
+28. MVP Scope.
+29. Acceptance Criteria.
+30. Final Technology Stack Recommendation.
+
+Use professional technical language while keeping the report understandable to a non-specialist project owner.
+
+Include tables, diagrams, pseudocode, practical examples, architecture decisions, and implementation recommendations where appropriate.
+
+Do not stop at high-level recommendations. Provide sufficient technical detail to enable a development team to begin implementation and prepare a pilot deployment.
+
+When multiple technologies are suitable, compare them and make one clearly justified primary recommendation.
+
+The final architecture must be realistic, implementable, cost-conscious, and suitable for a rural Pakistan pilot project.
