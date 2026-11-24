@@ -7,7 +7,7 @@
 class SpeechEngine {
   constructor() {
     this.currentLanguage = "ur-PK"; // "ur-PK", "pa-PK", "en-US", etc.
-    this.speechRate = 0.92; // Soft, clear pace (0.8x for elderly, ~0.92x default)
+    this.speechRate = 0.86; // Soft, smooth, unhurried pace (0.86x for crystal-clear Pakistani girl accent)
     this.isListening = false;
     this.isSpeaking = false;
     this.recognition = null;
@@ -810,10 +810,10 @@ class SpeechEngine {
           utterance.lang = activeLang;
         }
 
-        const baseRate = typeof this.speechRate === "number" ? this.speechRate : 0.92;
-        utterance.rate = Math.max(0.65, Math.min(1.4, baseRate * 0.94));
-        utterance.volume = 0.88;
-        utterance.pitch = activeIsFemale ? 1.08 : 1.22;
+        const baseRate = typeof this.speechRate === "number" ? this.speechRate : 0.86;
+        utterance.rate = Math.max(0.65, Math.min(1.3, baseRate * 0.95));
+        utterance.volume = 0.92;
+        utterance.pitch = activeIsFemale ? 1.12 : 1.25;
 
         let started = false;
         if (this._watchdogTimer) {

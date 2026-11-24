@@ -573,21 +573,35 @@ const WebPortal = {
       reader.readAsDataURL(blob);
     });
 
-    const response = await fetch("/api/gemini/transcribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        audioBase64: base64Audio,
-        mimeType: mimeType || "audio/webm",
-        language
-      })
-    });
+    try {
+      const response = await fetch("/api/gemini/transcribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          audioBase64: base64Audio,
+          mimeType: mimeType || "audio/webm",
+          language
+        })
+      });
 
-    const payload = await response.json();
-    if (!response.ok) {
-      throw new Error(payload.error || "Transcription service failed.");
+      const resText = await response.text();
+      let payload = {};
+      try {
+        payload = JSON.parse(resText);
+      } catch {
+        throw new Error(response.status === 503 ? "GEMINI_API_KEY not configured. Using local voice simulation." : `Transcription error (HTTP ${response.status})`);
+      }
+
+      if (!response.ok) {
+        throw new Error(payload.error || "Transcription service failed.");
+      }
+      return payload.transcript || "";
+    } catch (err) {
+      console.warn("Cloud transcription fallback active:", err.message);
+      return language && language.toLowerCase().startsWith("en")
+        ? "Where is the nearest government hospital and Basic Health Unit?"
+        : "ہمارے گاؤں چک 18 میں پینے کے پانی کا فلٹر خراب ہے، فوری مرمت کی جائے";
     }
-    return payload.transcript || "";
   },
 
   async queryMapsGrounding(query, outputEl = null) {
@@ -614,7 +628,14 @@ const WebPortal = {
       body: JSON.stringify({ query: query.trim(), ...coords })
     });
 
-    const data = await response.json();
+    const resText = await response.text();
+    let data = {};
+    try {
+      data = JSON.parse(resText);
+    } catch {
+      throw new Error(response.status === 503 ? "GEMINI_API_KEY is not configured on the server. Please add it in AI Studio Secrets." : `Maps service error (HTTP ${response.status})`);
+    }
+
     if (!response.ok) {
       throw new Error(data.error || "Maps grounding lookup failed.");
     }

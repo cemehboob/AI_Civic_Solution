@@ -336,7 +336,13 @@ const MobileApp = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query: query.trim(), ...coords })
     });
-    const data = await response.json();
+    const resText = await response.text();
+    let data = {};
+    try {
+      data = JSON.parse(resText);
+    } catch {
+      throw new Error(response.status === 503 ? "GEMINI_API_KEY is not configured on the server." : `Maps service error (HTTP ${response.status})`);
+    }
     if (!response.ok) {
       throw new Error(data.error || "Maps grounding lookup failed.");
     }

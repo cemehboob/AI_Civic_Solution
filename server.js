@@ -693,8 +693,8 @@ app.post("/api/gemini/tts", async (req, res) => {
   const langHint = typeof language === "string" && language.trim() ? language.trim() : "ur-PK";
   const isEnglish = langHint.toLowerCase().startsWith("en");
   const style = isEnglish
-    ? "Soft, warm, gentle young lady's voice speaking clearly and kindly in English"
-    : "Soft, warm, gentle young lady's voice speaking clearly, naturally, and kindly in Urdu";
+    ? "Warm, crystal-clear, friendly Pakistani young woman narrator speaking fluent English with natural polite cadence and perfect clarity"
+    : "Warm, crystal-clear, gentle Pakistani young woman narrator speaking fluent, natural, native Urdu with soft pleasant cadence, warm hospitality, and zero distortion";
 
   try {
     const response = await ai.models.generateContent({
