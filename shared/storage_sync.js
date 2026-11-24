@@ -17,31 +17,35 @@ class StorageSyncManager {
 
   initDatabase() {
     // Seed initial complaints if not present
-    if (typeof localStorage !== "undefined") {
-      const existing = localStorage.getItem(this.complaintsKey);
-      if (!existing && typeof CivicData !== "undefined") {
-        localStorage.setItem(this.complaintsKey, JSON.stringify(CivicData.initialComplaints));
-      }
+    try {
+      if (typeof localStorage !== "undefined") {
+        const existing = localStorage.getItem(this.complaintsKey);
+        if (!existing && typeof CivicData !== "undefined") {
+          localStorage.setItem(this.complaintsKey, JSON.stringify(CivicData.initialComplaints));
+        }
 
-      // Default user profile
-      const user = localStorage.getItem(this.userKey);
-      if (!user) {
-        const defaultUser = {
-          name: "محمد افضل (Muhammad Afzal)",
-          cnic: "37405-1849201-3",
-          phone: "0300-5849120",
-          district: "Rawalpindi / راولپنڈی",
-          tehsil: "Gujar Khan / گوجر خان",
-          village: "Chak 18 / چک نمبر 18",
-          preferredLanguage: "ur-PK", // Urdu
-          audioSpeed: 0.9,
-          role: "citizen", // "citizen" | "field_operator" | "admin"
-          offlineModeOnly: false,
-          wifiOnlySync: true,
-          voiceBiometricsEnabled: true
-        };
-        localStorage.setItem(this.userKey, JSON.stringify(defaultUser));
+        // Default user profile
+        const user = localStorage.getItem(this.userKey);
+        if (!user) {
+          const defaultUser = {
+            name: "محمد افضل (Muhammad Afzal)",
+            cnic: "37405-1849201-3",
+            phone: "0300-5849120",
+            district: "Rawalpindi / راولپنڈی",
+            tehsil: "Gujar Khan / گوجر خان",
+            village: "Chak 18 / چک نمبر 18",
+            preferredLanguage: "ur-PK", // Urdu
+            audioSpeed: 0.9,
+            role: "citizen", // "citizen" | "field_operator" | "admin"
+            offlineModeOnly: false,
+            wifiOnlySync: true,
+            voiceBiometricsEnabled: true
+          };
+          localStorage.setItem(this.userKey, JSON.stringify(defaultUser));
+        }
       }
+    } catch (e) {
+      console.warn("[StorageSync] LocalStorage restricted, using in-memory defaults", e);
     }
   }
 
@@ -175,6 +179,11 @@ class StorageSyncManager {
 
 // Global Singleton Instance
 const AppSync = new StorageSyncManager();
+
+if (typeof window !== "undefined") {
+  window.StorageSyncManager = StorageSyncManager;
+  window.AppSync = AppSync;
+}
 
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { StorageSyncManager, AppSync };

@@ -6,14 +6,19 @@
 
 const MobileApp = {
   currentUser: null,
-  currentLang: localStorage.getItem("awami_app_lang") || "ur",
+  currentLang: "ur",
 
   init() {
-    if (typeof AppSecurity !== "undefined") {
+    try {
+      this.currentLang = localStorage.getItem("awami_app_lang") || "ur";
+    } catch (e) {
+      this.currentLang = "ur";
+    }
+    if (typeof AppSecurity !== "undefined" && typeof AppSecurity.init === "function") {
       AppSecurity.init();
     }
     if (typeof AppLogger !== "undefined") {
-      AppLogger.info(AppLogger.CATEGORIES.SYSTEM, "Citizen MobileApp initialized", { lang: this.currentLang });
+      AppLogger.info("SYSTEM", "Citizen MobileApp initialized", { lang: this.currentLang });
     }
     this.currentUser = AppSync.getUserProfile();
     this.applyLanguage(this.currentLang);

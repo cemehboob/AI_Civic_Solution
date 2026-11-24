@@ -7,16 +7,21 @@
 const WebPortal = {
   narrating: false,
   narrationSpeed: 1.0,
-  currentLang: localStorage.getItem("awami_app_lang") || "ur",
+  currentLang: "ur",
   lastAiResponse: null,
   lastUserQuery: null,
 
   init() {
-    if (typeof AppSecurity !== "undefined") {
+    try {
+      this.currentLang = localStorage.getItem("awami_app_lang") || "ur";
+    } catch (e) {
+      this.currentLang = "ur";
+    }
+    if (typeof AppSecurity !== "undefined" && typeof AppSecurity.init === "function") {
       AppSecurity.init();
     }
     if (typeof AppLogger !== "undefined") {
-      AppLogger.info(AppLogger.CATEGORIES.SYSTEM, "Citizen WebPortal initialized", { lang: this.currentLang });
+      AppLogger.info("SYSTEM", "Citizen WebPortal initialized", { lang: this.currentLang });
     }
     this.applyLanguage(this.currentLang);
     this.highlightActiveNav();
@@ -489,7 +494,10 @@ const WebPortal = {
 
   dismissDictationAlert() {
     const alertBox = document.getElementById("dictationAlert");
-    if (alertBox) alertBox.classList.add("hidden");
+    if (alertBox) {
+      alertBox.classList.add("hidden");
+      alertBox.style.display = "none";
+    }
   }
 };
 
@@ -500,21 +508,4 @@ if (typeof window !== "undefined") {
 
 document.addEventListener("DOMContentLoaded", () => {
   WebPortal.init();
-
-  // Attach explicit direct event listeners to ensure click events never fail
-  const langBtn = document.getElementById("header-lang-switcher") || document.getElementById("lang-toggle-btn");
-  if (langBtn) {
-    langBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      WebPortal.toggleLanguage();
-    });
-  }
-
-  const micBtn = document.getElementById("mainVoiceMic");
-  if (micBtn) {
-    micBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      WebPortal.triggerMainMic();
-    });
-  }
 });

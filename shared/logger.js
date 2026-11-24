@@ -18,6 +18,15 @@ class EnterpriseLogger {
       CRITICAL: 4,
       AUDIT: 5
     };
+    this.CATEGORIES = {
+      SYSTEM: "SYSTEM",
+      SECURITY: "SECURITY",
+      SPEECH: "SPEECH",
+      AI_ROUTER: "AI_ROUTER",
+      SYNC: "SYNC",
+      AUDIT: "AUDIT",
+      UI: "UI"
+    };
     this.currentLevel = 0; // Log everything by default
     this.loadLogs();
   }
@@ -241,6 +250,11 @@ class EnterpriseLogger {
 
 // Global Singleton Instance
 const AppLogger = new EnterpriseLogger();
+
+if (typeof window !== "undefined") {
+  window.EnterpriseLogger = EnterpriseLogger;
+  window.AppLogger = AppLogger;
+}
 
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { EnterpriseLogger, AppLogger };

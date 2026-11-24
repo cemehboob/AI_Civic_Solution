@@ -7,6 +7,13 @@ const AppSecurity = {
   sessionTimeoutMinutes: 15,
   lastActivityTimestamp: Date.now(),
 
+  init() {
+    this.recordActivity();
+    if (typeof AppLogger !== "undefined") {
+      AppLogger.info("SECURITY", "AppSecurity PECA 2016 & XSS protection initialized");
+    }
+  },
+
   /**
    * Masks National Identity Card (CNIC) according to PECA 2016 privacy standard
    * Example: 37401-9921443-1 -> 37401-*******-1
@@ -133,6 +140,7 @@ const AppSecurity = {
 
 // Activity event listeners on window
 if (typeof window !== "undefined") {
+  window.AppSecurity = AppSecurity;
   ["click", "keydown", "touchstart"].forEach(evt => {
     window.addEventListener(evt, () => AppSecurity.recordActivity(), { passive: true });
   });

@@ -467,20 +467,34 @@ const AdminPortal = {
 
   exportLogsJSON() {
     if (typeof AppLogger !== "undefined") {
-      AppLogger.exportJSON();
+      const data = AppLogger.exportJSON();
+      const blob = new Blob([data], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `awami_logs_${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
     }
   },
 
   exportLogsCSV() {
     if (typeof AppLogger !== "undefined") {
-      AppLogger.exportCSV();
+      const data = AppLogger.exportCSV();
+      const blob = new Blob([data], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `awami_logs_${Date.now()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
     }
   },
 
   clearLogs() {
     if (confirm("کیا آپ واقعی تمام عارضی لاگز صاف کرنا چاہتے ہیں؟ (Are you sure you want to clear all logs?)")) {
       if (typeof AppLogger !== "undefined") {
-        AppLogger.clear();
+        AppLogger.clearLogs();
         this.renderLogsView();
       }
     }
