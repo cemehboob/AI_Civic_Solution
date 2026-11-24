@@ -570,6 +570,11 @@ Never recommend paid services. Keep replyUrdu conversational and easy to underst
 // Global Singleton Instance
 const AppAIRouter = new FreeAIRouter();
 
+if (typeof window !== "undefined") {
+  window.AppAIRouter = AppAIRouter;
+  window.FreeAIRouter = FreeAIRouter;
+}
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { FreeAIRouter, AppAIRouter };
 }

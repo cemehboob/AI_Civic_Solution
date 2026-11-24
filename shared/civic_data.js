@@ -757,7 +757,10 @@ const CivicData = {
   }
 };
 
-// Export for module/browser environments
+// Export for browser & module environments
+if (typeof window !== "undefined") {
+  window.CivicData = CivicData;
+}
 if (typeof module !== "undefined" && module.exports) {
   module.exports = CivicData;
 }

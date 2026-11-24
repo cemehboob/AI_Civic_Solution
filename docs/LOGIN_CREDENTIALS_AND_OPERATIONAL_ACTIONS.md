@@ -77,7 +77,7 @@ It is designed for municipal administrators, triage supervisors, field inspectio
 ### ACTION 0: Instant Language Switching via Top Header Toggle (Urdu $\leftrightarrow$ English)
 1. **Locate Header Switcher:** Look at the top-right header strip of the Citizen Web Portal ([webApp/index.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/index.html)) or top bar of the Mobile App ([mobileApp/index.html](file:///c:/AI_Practice/AI_Civic_Solution/mobileApp/index.html)).
 2. **Switching to English:** 
-   - Click the button labeled **`English`** (translate icon).
+   - Click the button labeled **`English`** (bilingual badge `[EN ⇄ اردو]`).
    - **System Reaction:** The application changes layout direction to Left-to-Right (`dir="ltr"`), dynamically replaces **100% of all page options, menus, cards, badges, buttons, prompt chips, and bottom navigation labels** with comprehensive English translations, and changes the toggle label to **`اردو`**.
 3. **Switching to Urdu:**
    - Click the button labeled **`اردو`**.

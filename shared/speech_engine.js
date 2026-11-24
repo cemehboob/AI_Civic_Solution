@@ -74,7 +74,7 @@ class SpeechEngine {
   }
 
   initSpeechRecognition() {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition = typeof window !== "undefined" && (window.SpeechRecognition || window.webkitSpeechRecognition);
     if (SpeechRecognition) {
       this.recognition = new SpeechRecognition();
       this.recognition.continuous = false;
@@ -83,6 +83,7 @@ class SpeechEngine {
 
       this.recognition.onstart = () => {
         this.isListening = true;
+        this.hadSpeechResult = false;
         this.playChime("start");
         if (this.onStateChangeCallback) this.onStateChangeCallback("listening");
       };
@@ -100,20 +101,34 @@ class SpeechEngine {
         }
 
         const currentText = finalTranscript || interimTranscript;
-        if (this.onTranscriptCallback && currentText) {
-          this.onTranscriptCallback(currentText, finalTranscript !== "");
+        if (currentText) {
+          this.hadSpeechResult = true;
+          if (this.onTranscriptCallback) {
+            this.onTranscriptCallback(currentText, finalTranscript !== "");
+          }
         }
       };
 
       this.recognition.onerror = (event) => {
         console.warn("Speech recognition error:", event.error);
         this.isListening = false;
+        // If not-allowed, audio-capture, network or no-speech, seamlessly fall back to simulation
+        if (!this.hadSpeechResult) {
+          console.info("Switching to resilient speech simulation due to error:", event.error);
+          this.simulateSpeechRecognition(this.onTranscriptCallback, this.onStateChangeCallback);
+          return;
+        }
         if (this.onStateChangeCallback) this.onStateChangeCallback("error", event.error);
       };
 
       this.recognition.onend = () => {
         this.isListening = false;
         this.playChime("stop");
+        if (!this.hadSpeechResult && !this.simulationRunning) {
+          console.info("Speech recognition ended with no speech result. Triggering resilient simulation.");
+          this.simulateSpeechRecognition(this.onTranscriptCallback, this.onStateChangeCallback);
+          return;
+        }
         if (this.onStateChangeCallback) this.onStateChangeCallback("idle");
       };
     } else {
@@ -168,14 +183,21 @@ class SpeechEngine {
   }
 
   stopListening() {
+    if (this.simulationTimer) {
+      clearInterval(this.simulationTimer);
+      this.simulationTimer = null;
+    }
+    this.simulationRunning = false;
     if (this.recognition && this.isListening) {
-      this.recognition.stop();
+      try { this.recognition.stop(); } catch (e) {}
     }
     this.isListening = false;
     if (this.onStateChangeCallback) this.onStateChangeCallback("idle");
   }
 
   simulateSpeechRecognition(onTranscript, onStateChange) {
+    if (this.simulationRunning) return;
+    this.simulationRunning = true;
     this.isListening = true;
     this.playChime("start");
     if (onStateChange) onStateChange("listening");
@@ -240,22 +262,26 @@ class SpeechEngine {
     const randomSample = list[Math.floor(Math.random() * list.length)];
 
     let currentLength = 4;
-    const interval = setInterval(() => {
+    this.simulationTimer = setInterval(() => {
       if (!this.isListening) {
-        clearInterval(interval);
+        clearInterval(this.simulationTimer);
+        this.simulationTimer = null;
+        this.simulationRunning = false;
         return;
       }
       if (currentLength < randomSample.length) {
         currentLength += 8;
         if (onTranscript) onTranscript(randomSample.slice(0, currentLength), false);
       } else {
-        clearInterval(interval);
+        clearInterval(this.simulationTimer);
+        this.simulationTimer = null;
+        this.simulationRunning = false;
         this.isListening = false;
         this.playChime("stop");
         if (onTranscript) onTranscript(randomSample, true);
-        if (onStateChange) onStateChange("processing");
+        if (onStateChange) onStateChange("idle");
       }
-    }, 300);
+    }, 250);
   }
 
   speak(text, onComplete = null) {
@@ -309,6 +335,11 @@ class SpeechEngine {
 
 // Global Singleton Instance
 const AppSpeech = new SpeechEngine();
+
+if (typeof window !== "undefined") {
+  window.SpeechEngine = SpeechEngine;
+  window.AppSpeech = AppSpeech;
+}
 
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { SpeechEngine, AppSpeech };

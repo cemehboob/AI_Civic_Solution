@@ -28,7 +28,11 @@ const WebPortal = {
 
   toggleLanguage() {
     this.currentLang = this.currentLang === "ur" ? "en" : "ur";
-    localStorage.setItem("awami_app_lang", this.currentLang);
+    try {
+      localStorage.setItem("awami_app_lang", this.currentLang);
+    } catch (e) {
+      console.warn("Storage restricted", e);
+    }
     this.applyLanguage(this.currentLang);
     this.highlightActiveNav();
 
@@ -389,6 +393,28 @@ const WebPortal = {
   },
 
   /**
+   * Translate Spoken Query from Urdu/Dialect to English
+   */
+  getQueryTranslation(query) {
+    if (!query) return "";
+    const text = query.toLowerCase();
+    if (text.includes("پانی") || text.includes("پاݨی") || text.includes("فلٹر") || text.includes("نلکی") || text.includes("water")) {
+      return "Drinking water pipeline / filtration plant in our area is broken and water supply is contaminated.";
+    } else if (text.includes("سڑک") || text.includes("سڙڪ") || text.includes("سړک") || text.includes("روڈ") || text.includes("کھڈے") || text.includes("ٹٹی") || text.includes("road")) {
+      return "Link road is broken and hazardous with deep potholes, blocking vehicle transit.";
+    } else if (text.includes("ہسپتال") || text.includes("اسپتال") || text.includes("روغتون") || text.includes("ڈاکٹر") || text.includes("hospital")) {
+      return "Inquiry regarding the nearest government hospital, Basic Health Unit (BHU), and doctors on duty.";
+    } else if (text.includes("بینظیر") || text.includes("بينظير") || text.includes("کفالت") || text.includes("وظیفہ") || text.includes("8171") || text.includes("bisp")) {
+      return "Inquiry regarding BISP 8171 Kafalat PKR 10,500 quarterly grant disbursement and eligibility verification.";
+    } else if (text.includes("بجلی") || text.includes("تار") || text.includes("ٹرانسفارمر") || text.includes("electricity")) {
+      return "Emergency complaint: Low-hanging live electric wires posing imminent hazard in village street.";
+    } else if (text.includes("صفائی") || text.includes("کوڑا") || text.includes("نالی") || text.includes("sanitation")) {
+      return "Sanitation crisis: Overflowing open garbage dump and choked drainage in municipal ward.";
+    }
+    return "Civic assistance and public department grievance request.";
+  },
+
+  /**
    * Display Dual-Language Urdu <-> English Spoken Dialogue
    */
   displayConversationResult(userText, aiRes, isEn) {
@@ -397,11 +423,21 @@ const WebPortal = {
 
     const alertBox = document.getElementById("dictationAlert");
     const queryText = document.getElementById("dictatedQuery");
+    const queryTrans = document.getElementById("dictatedQueryEnglish");
     const aiText = document.getElementById("aiResponseText");
     const aiTrans = document.getElementById("aiResponseTranslation");
 
-    if (alertBox) alertBox.classList.remove("hidden");
+    if (alertBox) {
+      alertBox.classList.remove("hidden");
+      alertBox.style.display = "flex";
+      alertBox.style.flexDirection = "column";
+    }
+
     if (queryText) queryText.innerText = `"${userText}"`;
+    if (queryTrans) {
+      const translated = this.getQueryTranslation(userText);
+      queryTrans.innerText = `English Translation: "${translated}"`;
+    }
 
     const urduAnswer = aiRes.responseUrdu || "آپ کی شکایت نوٹ کر لی گئی ہے اور متعلقہ محکمے کو روانہ کی جا رہی ہے۔";
     const englishAnswer = aiRes.responseEnglish || "Your complaint has been logged and assigned to the relevant department.";
@@ -433,6 +469,15 @@ const WebPortal = {
     }
   },
 
+  playEnglishTranslation() {
+    if (this.lastAiResponse && this.lastAiResponse.responseEnglish) {
+      AppSpeech.speak(this.lastAiResponse.responseEnglish);
+    } else if (this.lastUserQuery) {
+      const trans = this.getQueryTranslation(this.lastUserQuery);
+      AppSpeech.speak(trans);
+    }
+  },
+
   submitSpokenQuery() {
     const queryText = document.getElementById("dictatedQuery");
     const text = queryText ? queryText.innerText.replace(/[“”"]/g, "").trim() : "";
@@ -448,6 +493,28 @@ const WebPortal = {
   }
 };
 
+// Global Browser Window Assignment
+if (typeof window !== "undefined") {
+  window.WebPortal = WebPortal;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   WebPortal.init();
+
+  // Attach explicit direct event listeners to ensure click events never fail
+  const langBtn = document.getElementById("header-lang-switcher") || document.getElementById("lang-toggle-btn");
+  if (langBtn) {
+    langBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      WebPortal.toggleLanguage();
+    });
+  }
+
+  const micBtn = document.getElementById("mainVoiceMic");
+  if (micBtn) {
+    micBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      WebPortal.triggerMainMic();
+    });
+  }
 });

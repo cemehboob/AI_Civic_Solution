@@ -31,7 +31,11 @@ const MobileApp = {
 
   toggleLanguage() {
     this.currentLang = this.currentLang === "ur" ? "en" : "ur";
-    localStorage.setItem("awami_app_lang", this.currentLang);
+    try {
+      localStorage.setItem("awami_app_lang", this.currentLang);
+    } catch (e) {
+      console.warn("Storage restricted", e);
+    }
     this.applyLanguage(this.currentLang);
     this.renderBottomNavigation();
 
@@ -280,6 +284,10 @@ const MobileApp = {
     AppSpeech.speak(text);
   }
 };
+
+if (typeof window !== "undefined") {
+  window.MobileApp = MobileApp;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   MobileApp.init();

@@ -352,6 +352,10 @@
             <div class="font-urdu-body-lg text-[16px] sm:text-[18px] font-bold text-on-surface" id="dictatedQuery">
               "کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے"
             </div>
+            <div class="text-xs text-primary font-semibold border-t border-slate-200/60 pt-1 mt-1 font-sans flex items-center gap-1" id="dictatedQueryEnglishBox">
+              <span class="text-slate-400 font-normal">English Translation:</span>
+              <span id="dictatedQueryEnglish" class="italic">"Farm link road is broken and hazardous"</span>
+            </div>
           </div>
 
           <!-- AI System Response (Bilingual Urdu & English) -->
@@ -369,8 +373,12 @@
             <div class="font-urdu-body-lg text-[15px] sm:text-[16px] font-bold text-emerald-950 leading-relaxed" id="aiResponseText">
               آپ کی سڑک اور گلی کی مرمت سے متعلق شکایت نوٹ کر لی گئی ہے۔ محکمہ مواصلات و تعمیرات (C&W) کی فیلڈ ٹیم کو مطلع کیا جا رہا ہے۔
             </div>
-            <div class="text-xs text-slate-600 italic border-t border-emerald-200/60 pt-1 mt-1 font-sans" id="aiResponseTranslation">
-              Your road infrastructure complaint has been registered for the C&W department.
+            <div class="text-xs text-slate-700 italic border-t border-emerald-200/60 pt-1 mt-1 font-sans flex items-center justify-between" id="aiResponseTranslationBox">
+              <span id="aiResponseTranslation">Your road infrastructure complaint has been registered for the C&W department.</span>
+              <button onclick="WebPortal.playEnglishTranslation()" class="text-[11px] text-emerald-800 hover:underline font-bold flex items-center gap-0.5 ml-2 shrink-0 cursor-pointer" title="Listen English">
+                <span class="material-symbols-outlined text-[14px]">volume_up</span>
+                <span>Listen EN</span>
+              </button>
             </div>
           </div>
         </div>

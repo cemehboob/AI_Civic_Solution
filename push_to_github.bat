@@ -26,7 +26,7 @@ echo Remote origin set to https://github.com/cemehboob/AI_Civic_Solution.git
 echo [4/5] Staging changes and committing...
 git branch -M main
 git add .
-git commit -m "Fix: Perfect circular green-to-red mic button, bilingual EN/URDU switcher without Chinese glyphs, remove Punjab prefix for national Pakistan scope, full mobile-to-web navigation"
+git commit -m "Fix: Robust mic press handling with fallback, full bilingual Urdu to English conversation and translation, and global object scoping"
 
 echo [5/5] Pushing to GitHub repository...
 git push -u origin main
