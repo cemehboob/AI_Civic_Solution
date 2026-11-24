@@ -44,32 +44,32 @@
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
   <!-- Top App Bar -->
-  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-20 px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
-      <div class="flex items-center gap-2">
-        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
-          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200/70 pt-safe">
+    <div class="min-h-[68px] py-2 px-3 sm:px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
+        <a href="index.html" aria-label="Go home" class="min-h-[44px] min-w-[44px] sm:min-h-[52px] sm:min-w-[52px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[28px]">arrow_back</span>
         </a>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1">
-            <span class="font-bold text-error leading-tight tracking-tight text-[18px]">ہسپتال و ایمرجنسی</span>
-            <span class="material-symbols-outlined text-error text-[18px]">local_hospital</span>
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-1 min-w-0">
+            <span class="font-bold text-error leading-snug tracking-tight text-base sm:text-[18px] truncate">ہسپتال و ایمرجنسی</span>
+            <span class="material-symbols-outlined text-error text-[18px] shrink-0">local_hospital</span>
           </div>
-          <span class="font-urdu-body-md text-[13px] leading-none text-on-surface-variant font-medium">ریسکیو 1122 و بنیادی مراکز صحت</span>
+          <span class="text-xs leading-snug text-on-surface-variant font-medium truncate">ریسکیو 1122 و بنیادی مراکز صحت</span>
         </div>
       </div>
       
-      <div class="flex items-center gap-2">
-        <button aria-label="Listen page info" class="min-h-[44px] px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1.5 active:scale-95 transition-all" onclick="speakEmergencyHelp()" type="button">
+      <div class="flex items-center gap-2 shrink-0">
+        <button aria-label="Listen page info" class="min-h-[40px] sm:min-h-[44px] px-3 sm:px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1.5 active:scale-95 transition-all whitespace-nowrap shrink-0" onclick="speakEmergencyHelp()" type="button">
           <span class="material-symbols-outlined text-secondary text-[20px]">volume_up</span>
-          <span class="font-label-md font-bold">سنیں</span>
+          <span class="text-xs font-bold">سنیں</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Main Viewport -->
-  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-4 pt-24 pb-32 bg-surface flex-grow">
+  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-3 sm:px-4 pt-5 pb-32 bg-surface flex-grow">
     <div class="flex flex-col w-full gap-5 pb-6">
       
       <!-- Section 1: Urgent Emergency Hotlines -->
@@ -142,10 +142,28 @@
           کہیں: "میرے قریب سرکاری ہسپتال کہاں ہے؟" یا "کیا بی ایچ یو چک 18 میں ڈاکٹر موجود ہے؟"
         </p>
 
-        <button onclick="startVoiceHospitalQuery()" class="w-full min-h-[56px] bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center gap-2 font-urdu-headline-md font-bold active:scale-95 transition-all shadow-md">
-          <span class="material-symbols-outlined text-[26px]">mic</span>
+        <button type="button" onclick="startVoiceHospitalQuery()" aria-label="آواز سے قریبی ہسپتال تلاش کریں" class="w-full min-h-[56px] bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center gap-2 font-urdu-headline-md font-bold active:scale-95 transition-all shadow-md">
+          <span class="material-symbols-outlined text-[26px]" aria-hidden="true">mic</span>
           <span>مائیک دبائیں اور پوچھیں</span>
         </button>
+      </div>
+
+      <!-- Section 2B: Google Maps Grounded Nearby Hospitals Search -->
+      <div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col gap-3" dir="rtl">
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-urdu-headline-md font-bold text-primary text-[16px]">گوگل میپس پر قریبی ہسپتال تلاش کریں</span>
+          <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">Google Maps</span>
+        </div>
+        <form onsubmit="runMobileHospitalMaps(event)" class="flex flex-col sm:flex-row gap-2">
+          <label for="mobile-maps-query" class="sr-only">علاقہ یا ہسپتال لکھیں</label>
+          <input id="mobile-maps-query" type="text" value="Nearest emergency hospitals and Basic Health Units in Gujar Khan, Rawalpindi" placeholder="شہر یا علاقہ لکھیں..." class="flex-1 h-11 px-3 rounded-xl bg-surface-container-low border border-slate-200 text-xs font-bold text-on-surface focus:outline-none focus:border-primary"/>
+          <button id="mobile-maps-btn" type="submit" aria-label="گوگل میپس سے قریبی ہسپتال تلاش کریں" class="min-h-[44px] px-4 rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-1.5 shrink-0">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">location_on</span>
+            <span>میپس تلاش</span>
+          </button>
+        </form>
+        <p id="mobile-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-2.5 rounded-xl"></p>
+        <div id="mobile-maps-results" aria-live="polite" class="hidden bg-surface-container-low p-3 rounded-xl border border-slate-200"></div>
       </div>
 
       <!-- Section 3: Verified Healthcare Facilities Directory -->
@@ -257,6 +275,34 @@
           }
         }
       );
+    }
+
+    async function runMobileHospitalMaps(e) {
+      e.preventDefault();
+      const inputEl = document.getElementById("mobile-maps-query");
+      const resultsEl = document.getElementById("mobile-maps-results");
+      const errorEl = document.getElementById("mobile-maps-error");
+      const btnEl = document.getElementById("mobile-maps-btn");
+      const query = inputEl ? inputEl.value.trim() : "";
+      if (!query || typeof MobileApp === "undefined") return;
+
+      if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+      }
+      if (btnEl) btnEl.disabled = true;
+
+      try {
+        await MobileApp.queryMapsGrounding(query, resultsEl);
+      } catch (err) {
+        if (resultsEl) resultsEl.classList.add("hidden");
+        if (errorEl) {
+          errorEl.textContent = err.message;
+          errorEl.classList.remove("hidden");
+        }
+      } finally {
+        if (btnEl) btnEl.disabled = false;
+      }
     }
   </script>
 </body>

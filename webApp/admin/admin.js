@@ -20,6 +20,43 @@ const AdminPortal = {
     this.renderSelectedCase("PK-94021");
     this.renderTelemetry();
     this.initSecurityAndLogging();
+    this.setupKeyboardNavigation();
+  },
+
+  setupKeyboardNavigation() {
+    const tabs = Array.from(document.querySelectorAll(".admin-nav-item"));
+    tabs.forEach((tabBtn, idx) => {
+      tabBtn.addEventListener("keydown", (e) => {
+        let nextIdx = -1;
+        if (e.key === "ArrowRight") nextIdx = idx + 1;
+        if (e.key === "ArrowLeft") nextIdx = idx - 1;
+        if (e.key === "Home") nextIdx = 0;
+        if (e.key === "End") nextIdx = tabs.length - 1;
+        if (nextIdx >= 0 && nextIdx < tabs.length) {
+          e.preventDefault();
+          tabs[nextIdx].focus();
+          const tabId = tabs[nextIdx].dataset.tab;
+          if (tabId) this.switchTab(tabId);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const modal = document.getElementById("log-detail-modal");
+        if (modal && !modal.classList.contains("hidden")) {
+          this.closeLogModal();
+        }
+      }
+    });
+  },
+
+  closeLogModal() {
+    const modal = document.getElementById("log-detail-modal");
+    if (modal) {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
   },
 
   initSecurityAndLogging() {
@@ -58,7 +95,9 @@ const AdminPortal = {
   switchTab(tabId) {
     this.currentTab = tabId;
     document.querySelectorAll(".admin-nav-item").forEach(item => {
-      if (item.dataset.tab === tabId) {
+      const isSelected = item.dataset.tab === tabId;
+      item.setAttribute("aria-selected", isSelected ? "true" : "false");
+      if (isSelected) {
         item.className = "admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-sm whitespace-nowrap shrink-0 transition-all";
       } else {
         item.className = "admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all";
@@ -102,7 +141,7 @@ const AdminPortal = {
     }
 
     container.innerHTML = complaints.map(c => `
-      <div onclick="AdminPortal.selectCase('${c.token}')" class="p-3.5 rounded-xl border ${c.token === this.selectedComplaintToken ? 'border-primary bg-primary-fixed/20 shadow-sm' : 'border-slate-200 bg-surface-container-lowest hover:bg-surface-container-low'} cursor-pointer transition-all flex flex-col gap-2">
+      <div role="button" tabindex="0" aria-pressed="${c.token === this.selectedComplaintToken ? "true" : "false"}" aria-label="Inspect complaint #${c.token}: ${c.titleUrdu}" onclick="AdminPortal.selectCase('${c.token}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();AdminPortal.selectCase('${c.token}');}" class="p-3.5 rounded-xl border ${c.token === this.selectedComplaintToken ? 'border-primary bg-primary-fixed/20 shadow-sm' : 'border-slate-200 bg-surface-container-lowest hover:bg-surface-container-low'} cursor-pointer transition-all flex flex-col gap-2">
         <div class="flex items-center justify-between">
           <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-surface-container text-on-surface">#${c.token}</span>
           <span class="px-2 py-0.5 rounded-full ${c.status === 'resolved' ? 'bg-primary-fixed text-on-primary-fixed' : (c.status === 'dispatched' ? 'bg-secondary-fixed text-on-secondary-fixed' : 'bg-amber-100 text-amber-800')} text-[11px] font-bold">
@@ -115,11 +154,11 @@ const AdminPortal = {
         </div>
         <div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-1 border-t border-slate-100">
           <span class="flex items-center gap-1 font-bold text-secondary">
-            <span class="material-symbols-outlined text-[14px]">timer</span>
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">timer</span>
             <span>${c.slaRemaining || '24h SLA'}</span>
           </span>
-          <button onclick="event.stopPropagation(); AppSpeech.speak('${c.audioNote || c.titleUrdu}')" class="flex items-center gap-0.5 text-primary font-bold hover:underline">
-            <span class="material-symbols-outlined text-[14px]">volume_up</span>
+          <button type="button" aria-label="Play audio for complaint #${c.token}" onclick="event.stopPropagation(); AppSpeech.speak('${c.audioNote || c.titleUrdu}')" class="flex items-center gap-0.5 text-primary font-bold hover:underline">
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">volume_up</span>
             <span>آڈیو</span>
           </button>
         </div>
@@ -441,8 +480,8 @@ const AdminPortal = {
             ` : ''}
           </td>
           <td class="p-3 text-right">
-            <button onclick="AdminPortal.inspectLog('${l.id}')" class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-bold text-[11px] inline-flex items-center gap-0.5">
-              <span class="material-symbols-outlined text-[13px]">visibility</span>
+            <button type="button" aria-label="Inspect log ${l.id}" onclick="AdminPortal.inspectLog('${l.id}')" class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-bold text-[11px] inline-flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[13px]" aria-hidden="true">visibility</span>
               <span>View</span>
             </button>
           </td>
@@ -510,6 +549,91 @@ const AdminPortal = {
       zeroPaidPolicy: "Preserved - 0 USD cost"
     });
     this.renderLogsView();
+  },
+
+  async lookupDispatchMaps(e) {
+    if (e) e.preventDefault();
+    const inputEl = document.getElementById("admin-maps-query");
+    const resultsEl = document.getElementById("admin-maps-results");
+    const errorEl = document.getElementById("admin-maps-error");
+    const btnEl = document.getElementById("admin-maps-btn");
+    const query = inputEl ? inputEl.value.trim() : "";
+    if (!query) return;
+
+    if (errorEl) {
+      errorEl.textContent = "";
+      errorEl.classList.add("hidden");
+    }
+    if (btnEl) btnEl.disabled = true;
+
+    try {
+      const response = await fetch("/api/gemini/maps-grounding", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Maps grounding lookup failed.");
+      }
+
+      if (resultsEl) {
+        resultsEl.innerHTML = "";
+        resultsEl.classList.remove("hidden");
+
+        const p = document.createElement("p");
+        p.className = "text-xs text-on-surface leading-relaxed whitespace-pre-line";
+        p.textContent = data.text || "";
+        resultsEl.appendChild(p);
+
+        const places = Array.isArray(data.places) ? data.places : [];
+        if (places.length > 0) {
+          const ul = document.createElement("ul");
+          ul.className = "space-y-2 pt-2";
+          places.forEach((place) => {
+            const li = document.createElement("li");
+            li.className = "p-2.5 rounded-xl bg-surface-container-low border border-slate-200 flex flex-col gap-1";
+            if (place.uri && /^https?:\/\//i.test(place.uri)) {
+              const a = document.createElement("a");
+              a.href = place.uri;
+              a.target = "_blank";
+              a.rel = "noopener noreferrer";
+              a.className = "text-xs font-bold text-primary hover:underline";
+              a.textContent = place.title || place.uri;
+              li.appendChild(a);
+            } else {
+              const span = document.createElement("span");
+              span.className = "text-xs font-bold text-on-surface";
+              span.textContent = place.title || "Place";
+              li.appendChild(span);
+            }
+            if (Array.isArray(place.reviewSnippets)) {
+              place.reviewSnippets.forEach((snippet) => {
+                const txt = typeof snippet === "string"
+                  ? snippet
+                  : (snippet?.review || snippet?.text || snippet?.title || "");
+                if (txt) {
+                  const sp = document.createElement("p");
+                  sp.className = "text-[11px] text-on-surface-variant";
+                  sp.textContent = txt;
+                  li.appendChild(sp);
+                }
+              });
+            }
+            ul.appendChild(li);
+          });
+          resultsEl.appendChild(ul);
+        }
+      }
+    } catch (err) {
+      if (resultsEl) resultsEl.classList.add("hidden");
+      if (errorEl) {
+        errorEl.textContent = err.message;
+        errorEl.classList.remove("hidden");
+      }
+    } finally {
+      if (btnEl) btnEl.disabled = false;
+    }
   }
 };
 

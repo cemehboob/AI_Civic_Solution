@@ -7,6 +7,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -233,11 +234,15 @@ class FreeAIRouterBackend {
       }
 
       const resData = await response.json();
-      const content = resData?.choices?.[0]?.message?.content || "";
+      const content = (resData?.choices?.[0]?.message?.content || "").trim();
+      if (!content) {
+        throw new Error("Empty completion content from OpenRouter");
+      }
       try {
         const parsed = JSON.parse(content.replace(/```json|```/g, "").trim());
+        const replyUrdu = (parsed.replyUrdu || "").trim() || content;
         return {
-          replyUrdu: parsed.replyUrdu || content,
+          replyUrdu,
           replyEnglish: parsed.replyEnglish || "",
           intent: parsed.intent || "general_help",
           extractedData: parsed
@@ -322,8 +327,23 @@ class FreeAIRouterBackend {
 const aiRouter = new FreeAIRouterBackend();
 loadInitialData();
 
+function getGeminiClient() {
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+  return new GoogleGenAI({
+    apiKey,
+    httpOptions: {
+      headers: {
+        "User-Agent": "aistudio-build"
+      }
+    }
+  });
+}
+
 // Middleware: JSON body parsing & PECA 2016 security headers
-app.use(express.json({ limit: "2mb" }));
+app.use(express.json({ limit: "12mb" }));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
@@ -351,6 +371,7 @@ app.get("/api/health", (req, res) => {
   res.json({
     status: "healthy",
     service: "Awami Voice Civic API",
+    geminiConfigured: Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY),
     zeroPaidPolicy: true,
     aiRouterStatus: "Active (Zero-Cost Models Only)",
     quotaToday: `${aiRouter.dailyCount}/${aiRouter.dailyLimit}`,
@@ -516,6 +537,212 @@ app.post("/api/logs", (req, res) => {
   }
   persistLogsBestEffort();
   res.json({ success: true, ingested: ingestedCount });
+});
+
+// Server-side Gemini Audio Transcription (gemini-3.5-transcribe)
+app.post("/api/gemini/transcribe", async (req, res) => {
+  const ai = getGeminiClient();
+  if (!ai) {
+    return res.status(503).json({
+      error: "GEMINI_API_KEY is not configured on the server. Please add it in Settings > Secrets."
+    });
+  }
+
+  const { audioBase64, mimeType, language } = req.body || {};
+  if (typeof audioBase64 !== "string" || audioBase64.trim().length === 0) {
+    return res.status(400).json({ error: "Missing required audioBase64 payload." });
+  }
+
+  const allowedMimeTypes = new Set([
+    "audio/webm",
+    "audio/mp3",
+    "audio/mpeg",
+    "audio/wav",
+    "audio/ogg",
+    "audio/mp4",
+    "audio/aac",
+    "audio/flac"
+  ]);
+  const cleanMime = typeof mimeType === "string" ? mimeType.split(";")[0].trim().toLowerCase() : "audio/webm";
+  if (!allowedMimeTypes.has(cleanMime)) {
+    return res.status(400).json({ error: "Unsupported audio mimeType." });
+  }
+
+  const langHint = typeof language === "string" && language.trim() ? language.trim() : "ur-PK";
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-transcribe",
+      contents: {
+        parts: [
+          {
+            inlineData: {
+              mimeType: cleanMime,
+              data: audioBase64.trim()
+            }
+          },
+          {
+            text: `Transcribe this spoken audio accurately. The speaker may speak Urdu, Punjabi, Potohari, Saraiki, Hindko, Sindhi, Pashto, Balochi, or English (language hint: ${langHint}). Return only the exact transcription.`
+          }
+        ]
+      }
+    });
+
+    const transcript = (response.text || "").trim();
+    appendServerLog("INFO", "SPEECH_ASR", "Audio transcribed via gemini-3.5-transcribe", {
+      mimeType: cleanMime,
+      language: langHint,
+      transcriptLength: transcript.length
+    }, req.ip);
+
+    res.json({
+      transcript,
+      model: "gemini-3.5-transcribe"
+    });
+  } catch (err) {
+    console.error("[Gemini Transcribe Error]:", err);
+    appendServerLog("ERROR", "SPEECH_ASR", `Gemini transcription failed: ${err.message}`, null, req.ip);
+    res.status(err.status || 502).json({
+      error: err.message || "Audio transcription failed."
+    });
+  }
+});
+
+// Server-side Gemini Maps Grounding (gemini-4-hydrogen with googleMaps tool)
+app.post("/api/gemini/maps-grounding", async (req, res) => {
+  const ai = getGeminiClient();
+  if (!ai) {
+    return res.status(503).json({
+      error: "GEMINI_API_KEY is not configured on the server. Please add it in Settings > Secrets."
+    });
+  }
+
+  const { query, lat, lng } = req.body || {};
+  if (typeof query !== "string" || query.trim().length === 0) {
+    return res.status(400).json({ error: "Missing required query string." });
+  }
+
+  const config = {
+    tools: [{ googleMaps: {} }]
+  };
+
+  if (typeof lat === "number" && typeof lng === "number" && Number.isFinite(lat) && Number.isFinite(lng)) {
+    config.toolConfig = {
+      retrievalConfig: {
+        latLng: {
+          latitude: lat,
+          longitude: lng
+        }
+      }
+    };
+  }
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-4-hydrogen",
+      contents: query.trim(),
+      config
+    });
+
+    const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
+    const places = groundingChunks
+      .filter((chunk) => chunk && chunk.maps)
+      .map((chunk) => ({
+        title: chunk.maps.title || "View on Google Maps",
+        uri: chunk.maps.uri || "",
+        reviewSnippets: Array.isArray(chunk.maps.placeAnswerSources?.reviewSnippets)
+          ? chunk.maps.placeAnswerSources.reviewSnippets
+          : []
+      }))
+      .filter((p) => p.uri || p.title);
+
+    appendServerLog("INFO", "AI_ROUTER", "Maps grounding query completed via gemini-4-hydrogen", {
+      placesCount: places.length
+    }, req.ip);
+
+    res.json({
+      text: (response.text || "").trim(),
+      places,
+      groundingChunks,
+      model: "gemini-4-hydrogen"
+    });
+  } catch (err) {
+    console.error("[Gemini Maps Grounding Error]:", err);
+    appendServerLog("ERROR", "AI_ROUTER", `Gemini Maps grounding failed: ${err.message}`, null, req.ip);
+    res.status(err.status || 502).json({
+      error: err.message || "Maps grounding lookup failed."
+    });
+  }
+});
+
+// Server-side Gemini Text-to-Speech (gemini-3.8-flash-lite-tts, soft female voice)
+app.post("/api/gemini/tts", async (req, res) => {
+  const ai = getGeminiClient();
+  if (!ai) {
+    return res.status(503).json({
+      error: "GEMINI_API_KEY is not configured on the server. Please add it in Settings > Secrets."
+    });
+  }
+
+  const { text, language } = req.body || {};
+  if (typeof text !== "string" || text.trim().length === 0) {
+    return res.status(400).json({ error: "Missing required text payload." });
+  }
+
+  const cleanText = text.trim().slice(0, 2000);
+  const langHint = typeof language === "string" && language.trim() ? language.trim() : "ur-PK";
+  const isEnglish = langHint.toLowerCase().startsWith("en");
+  const style = isEnglish
+    ? "Soft, warm, gentle young lady's voice speaking clearly and kindly in English"
+    : "Soft, warm, gentle young lady's voice speaking clearly, naturally, and kindly in Urdu";
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3.8-flash-lite-tts",
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              text: cleanText,
+              speechMetadata: { style }
+            }
+          ]
+        }
+      ],
+      config: {
+        responseModalities: ["AUDIO"],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName: "Kore" }
+          }
+        }
+      }
+    });
+
+    const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+    if (!base64Audio) {
+      throw new Error("TTS response did not contain audio data.");
+    }
+
+    appendServerLog("INFO", "SPEECH_TTS", "Generated soft female TTS audio via gemini-3.8-flash-lite-tts", {
+      language: langHint,
+      textLength: cleanText.length
+    }, req.ip);
+
+    res.json({
+      audioBase64: base64Audio,
+      mimeType: "audio/wav",
+      voiceName: "Kore",
+      model: "gemini-3.8-flash-lite-tts"
+    });
+  } catch (err) {
+    console.error("[Gemini TTS Error]:", err);
+    appendServerLog("ERROR", "SPEECH_TTS", `Gemini TTS failed: ${err.message}`, null, req.ip);
+    res.status(err.status || 502).json({
+      error: err.message || "Text-to-speech generation failed."
+    });
+  }
 });
 
 // Clean route redirects matching vercel.json

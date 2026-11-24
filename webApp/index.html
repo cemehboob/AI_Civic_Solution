@@ -45,19 +45,20 @@
   </script>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+  <a href="#main-content" class="skip-link">مرکزی مواد پر جائیں (Skip to main content)</a>
   <!-- Government Provincial Top Strip -->
-  <div class="bg-primary text-on-primary text-xs py-1.5 px-4 sm:px-8 border-b border-primary-container">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
-        <span class="font-bold tracking-wide" id="gov-strip-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ای گورننس نظام</span>
+  <div class="bg-primary text-on-primary text-xs py-2 px-3 sm:px-8 border-b border-primary-container" role="region" aria-label="Government banner and quick controls">
+    <div class="w-full max-w-[1780px] mx-auto px-1 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-2">
+      <div class="flex items-center justify-center md:justify-start gap-2 min-w-0">
+        <span class="inline-block w-2 h-2 rounded-full bg-primary-fixed animate-pulse shrink-0" aria-hidden="true"></span>
+        <span class="font-bold tracking-wide text-[11px] sm:text-xs leading-snug text-center md:text-start" id="gov-strip-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ای گورننس نظام</span>
       </div>
       
       <!-- Top Action Controls Strip -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center md:justify-end flex-wrap gap-2 shrink-0">
         <!-- Persistent Top Header Language Toggle Button (Urdu <-> English Conversion - No Chinese Glyphs) -->
-        <button id="header-lang-switcher" onclick="WebPortal.toggleLanguage()" class="px-3 py-1 rounded-full bg-primary-container hover:bg-primary-fixed hover:text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 cursor-pointer shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
-          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-white/20 text-white px-1.5 py-0.5 rounded shadow-sm">
+        <button id="header-lang-switcher" onclick="WebPortal.toggleLanguage()" type="button" aria-label="Switch language between Urdu and English" aria-pressed="false" class="min-h-[36px] px-2.5 sm:px-3 py-1 rounded-full bg-primary-container hover:bg-primary-fixed hover:text-primary transition-all text-[11px] sm:text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 cursor-pointer shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-white/20 text-white px-1.5 py-0.5 rounded shadow-sm" aria-hidden="true">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
             <span class="font-urdu leading-none text-[11px]">اردو</span>
@@ -65,14 +66,14 @@
           <span id="top-lang-text">English</span>
         </button>
 
-        <span class="text-primary-fixed/40">|</span>
-        <button onclick="WebPortal.togglePageNarration()" class="hover:underline flex items-center gap-1 cursor-pointer">
-          <span class="material-symbols-outlined text-[16px]">volume_up</span>
+        <span class="text-primary-fixed/40 hidden sm:inline" aria-hidden="true">|</span>
+        <button onclick="WebPortal.togglePageNarration()" type="button" aria-label="Listen to audio guide for this page" class="min-h-[36px] px-2 py-1 rounded-lg hover:bg-primary-container/60 hover:underline flex items-center gap-1 cursor-pointer text-[11px] sm:text-xs whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">volume_up</span>
           <span id="gov-audio-guide-text">آواز رہنمائی (Audio Guide)</span>
         </button>
-        <span class="text-primary-fixed/40">|</span>
-        <a href="admin/index.html" class="hover:underline flex items-center gap-1 font-bold">
-          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+        <span class="text-primary-fixed/40 hidden sm:inline" aria-hidden="true">|</span>
+        <a href="admin/index.html" aria-label="Open Administrative Command Portal" class="min-h-[36px] px-2 py-1 rounded-lg hover:bg-primary-container/60 hover:underline flex items-center gap-1 font-bold text-[11px] sm:text-xs whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">admin_panel_settings</span>
           <span id="gov-admin-link-text">ایڈمن پورٹل (Admin Portal)</span>
         </a>
       </div>
@@ -81,10 +82,10 @@
 
   <!-- Primary Header & Global Navigation Strip -->
   <header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-sm border-b border-slate-200">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 min-h-[72px] py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
         <!-- Pakistan Monument National Emblem Icon -->
-        <div class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5" title="Pakistan Monument (اسلام آباد)">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5" title="Pakistan Monument (اسلام آباد)">
           <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="24" cy="24" r="22" fill="#004423" stroke="#ffdcc3" stroke-width="1.5"/>
             <!-- 4 Provinces Blooming Petals -->
@@ -97,14 +98,14 @@
             <path d="M22 21 C23.5 21 25 22 25 24 C25 26 23.5 27 22 27 C20.5 27 19.5 25.5 19.5 24 C19.5 22.5 20.5 21 22 21 Z" fill="#ffffff"/>
           </svg>
         </div>
-        <div class="flex flex-col">
-          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]" id="brand-portal-name">عوامی آواز | Awami Voice</span>
-          <span class="font-label-md text-xs text-on-surface-variant" id="brand-portal-sub">عوامی شکایات و صوتی رہنمائی پورٹل</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-primary tracking-tight text-base sm:text-[22px] leading-snug truncate" id="brand-portal-name">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-[11px] sm:text-xs text-on-surface-variant leading-snug line-clamp-1" id="brand-portal-sub">عوامی شکایات و صوتی رہنمائی پورٹل</span>
         </div>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-1 text-sm font-bold">
-        <a href="index.html" class="min-h-[44px] px-4 py-2 rounded-xl transition-colors flex items-center bg-primary-container text-on-primary shadow-sm">
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-bold" aria-label="Main navigation">
+        <a href="index.html" class="min-h-[44px] px-4 py-2 rounded-xl transition-colors flex items-center bg-primary-container text-on-primary shadow-sm" aria-current="page">
           مرکزی صفحہ (Home)
         </a>
         <a href="register.html" class="min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">
@@ -121,64 +122,72 @@
         </a>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <a href="../mobileApp/index.html" class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-high text-on-surface flex items-center gap-1.5 hover:bg-surface-container font-bold text-xs border border-slate-200">
-          <span class="material-symbols-outlined text-[18px] text-primary">smartphone</span>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="../mobileApp/index.html" aria-label="Open Mobile App view" class="min-h-[40px] sm:min-h-[42px] px-3 sm:px-3.5 py-1.5 rounded-xl bg-surface-container-high text-on-surface flex items-center gap-1.5 hover:bg-surface-container font-bold text-xs border border-slate-200 whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[18px] text-primary shrink-0" aria-hidden="true">smartphone</span>
           <span id="gov-mobile-link-text">موبائل ایپ دیکھیں</span>
         </a>
       </div>
     </div>
+    <!-- Mobile Compact Navigation Links -->
+    <nav class="flex lg:hidden items-center gap-1.5 px-3 pb-2.5 overflow-x-auto no-scrollbar border-t border-slate-100 text-xs font-bold" aria-label="Mobile navigation">
+      <a href="index.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-primary-container text-on-primary whitespace-nowrap shrink-0 flex items-center" aria-current="page">مرکزی صفحہ (Home)</a>
+      <a href="register.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">شکایت درج (Register)</a>
+      <a href="track.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ٹریکنگ (Track)</a>
+      <a href="healthcare.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ہسپتال (Healthcare)</a>
+      <a href="subsidies.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">امداد (Subsidies)</a>
+    </nav>
   </header>
 
   <!-- Main Viewport (Full Screen Responsive Layout) -->
-  <main class="w-full flex-grow bg-surface py-8">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 space-y-8">
+  <main id="main-content" tabindex="-1" class="w-full flex-grow bg-surface py-5 sm:py-8">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 space-y-6 sm:space-y-8">
       
       <!-- Audio Accessibility & Screen Narrator Bar -->
-      <div class="w-full bg-surface-container-high rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 border border-slate-200">
-        <div class="flex items-center gap-3 w-full md:w-auto">
-          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[24px]">record_voice_over</span>
+      <div class="w-full bg-surface-container-high rounded-2xl p-3.5 sm:p-4 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3 border border-slate-200" role="region" aria-label="Audio accessibility narrator controls">
+        <div class="flex items-center gap-3 w-full md:w-auto min-w-0">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0" aria-hidden="true">
+            <span class="material-symbols-outlined text-[22px] sm:text-[24px]">record_voice_over</span>
           </div>
-          <div class="flex flex-col">
-            <span class="font-bold text-on-surface text-[16px]" id="narrator-bar-title">صفحہ کی خودکار آواز رہنمائی (Audio Narration)</span>
-            <span class="text-xs text-on-surface-variant flex items-center gap-1.5 mt-0.5" id="narrator-bar-sub">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse inline-block"></span>
-              براؤزر مائیک فعال ہے • آن لائن آواز شناخت (Shruti-ONNX / Whisper ASR Ready)
+          <div class="flex flex-col min-w-0 flex-1">
+            <span class="font-bold text-on-surface text-sm sm:text-[16px] leading-snug" id="narrator-bar-title">صفحہ کی خودکار آواز رہنمائی (Audio Narration)</span>
+            <span class="text-[11px] sm:text-xs text-on-surface-variant flex items-center gap-1.5 mt-0.5 leading-snug" id="narrator-bar-sub">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse inline-block shrink-0" aria-hidden="true"></span>
+              <span>براؤزر مائیک فعال ہے • آن لائن آواز شناخت (Gemini 3.5 Transcribe / ASR Ready)</span>
             </span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2 flex-wrap justify-end w-full md:w-auto">
-          <button class="min-h-[44px] px-4 py-2 rounded-xl bg-surface-container-lowest text-primary font-bold hover:bg-primary-container hover:text-on-primary transition-all flex items-center gap-1.5 shadow-sm border border-slate-200" id="narrateBtn" onclick="WebPortal.togglePageNarration()" type="button">
-            <span class="material-symbols-outlined text-[22px]" id="narrateIcon">play_circle</span>
+        <div class="flex items-center gap-2 flex-wrap justify-between sm:justify-end w-full md:w-auto shrink-0">
+          <button class="min-h-[44px] flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-surface-container-lowest text-primary font-bold hover:bg-primary-container hover:text-on-primary transition-all flex items-center justify-center gap-1.5 shadow-sm border border-slate-200 text-xs sm:text-sm whitespace-nowrap" id="narrateBtn" onclick="WebPortal.togglePageNarration()" aria-label="Listen to this page in audio" aria-pressed="false" type="button">
+            <span class="material-symbols-outlined text-[20px] sm:text-[22px] shrink-0" id="narrateIcon" aria-hidden="true">play_circle</span>
             <span id="narrateText">یہ صفحہ سنیں (Listen)</span>
           </button>
           
-          <div class="flex items-center bg-surface-container-lowest rounded-xl p-1 shadow-sm border border-slate-200">
-            <span class="text-xs text-on-surface-variant px-2" id="narrator-speed-label">رفتار:</span>
-            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors" onclick="WebPortal.setSpeed(0.8, this)" type="button">0.8x</button>
-            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs bg-primary text-on-primary font-bold transition-colors ml-1" onclick="WebPortal.setSpeed(1.0, this)" type="button">1.0x</button>
+          <div class="flex items-center bg-surface-container-lowest rounded-xl p-1 shadow-sm border border-slate-200 shrink-0" role="group" aria-label="Audio playback speed">
+            <span class="text-xs text-on-surface-variant px-2 whitespace-nowrap" id="narrator-speed-label">رفتار:</span>
+            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" onclick="WebPortal.setSpeed(0.8, this)" aria-label="Set speech speed to 0.8x slow" aria-pressed="false" type="button">0.8x</button>
+            <button class="min-h-[34px] px-3 py-1 rounded-lg text-xs bg-primary text-on-primary font-bold transition-colors ml-1 whitespace-nowrap" onclick="WebPortal.setSpeed(1.0, this)" aria-label="Set speech speed to 1.0x normal" aria-pressed="true" type="button">1.0x</button>
           </div>
         </div>
       </div>
 
       <!-- Hero Interactive Voice Assistance Bento Section (Full Width Grid) -->
-      <section class="w-full rounded-3xl bg-gradient-to-b from-surface-container-lowest to-surface-container-low p-6 sm:p-10 shadow-sm border border-slate-200 overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <section class="w-full rounded-3xl bg-gradient-to-b from-surface-container-lowest to-surface-container-low p-4 sm:p-10 shadow-sm border border-slate-200 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           
           <!-- Left/Center 8 Columns: Giant Microphone & Spoken Interface -->
-          <div class="lg:col-span-8 flex flex-col items-center text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-fixed/60 text-on-primary-fixed mb-3">
-              <span class="material-symbols-outlined text-[20px]">hearing</span>
-              <span class="font-bold text-sm" id="hero-badge-text">قومی صوتی شکایات و رہنمائی پورٹل (حکومتِ پاکستان)</span>
+          <div class="lg:col-span-8 flex flex-col items-center text-center min-w-0">
+            <div class="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-primary-fixed/60 text-on-primary-fixed mb-3 max-w-full">
+              <span class="material-symbols-outlined text-[18px] sm:text-[20px] shrink-0" aria-hidden="true">hearing</span>
+              <span class="font-bold text-xs sm:text-sm leading-snug text-center" id="hero-badge-text">قومی صوتی شکایات و رہنمائی پورٹل (حکومتِ پاکستان)</span>
             </div>
 
-            <h1 class="font-urdu-headline-lg text-primary text-[28px] sm:text-[36px] font-bold mb-2 leading-tight" id="hero-headline-text">
+            <h1 class="font-bold text-primary text-xl sm:text-[34px] mb-2 leading-snug sm:leading-tight" id="hero-headline-text">
               مائیک دبائیں اور بلا جھجھک اپنی زبان میں بتائیں
             </h1>
             
-            <p class="font-urdu-body-lg text-on-surface-variant mb-6 max-w-2xl leading-relaxed text-sm sm:text-base font-bold" id="hero-sub-text">
+            <p class="text-on-surface-variant mb-5 sm:mb-6 max-w-2xl leading-relaxed text-xs sm:text-base font-bold" id="hero-sub-text">
               Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)
             </p>
 
@@ -190,30 +199,30 @@
               <div class="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full studio-mic-ring-3 blur-md pointer-events-none"></div>
               
               <!-- Perfect Circular Glowing Studio Microphone Button (Green by default, dynamically changes to Red upon click) -->
-              <button aria-label="مائیک دبائیں اور بولیں" class="studio-mic-btn relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full text-white ring-4 ring-white/95 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shrink-0 aspect-square select-none group border-2" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
+              <button aria-label="مائیک دبائیں اور بولیں — Activate voice microphone and transcribe audio" aria-pressed="false" aria-describedby="mic-instruction-title mic-instruction-sub" class="studio-mic-btn relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full text-white ring-4 ring-white/95 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shrink-0 aspect-square select-none group border-2" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
                 <!-- Glowing Ambient Inner Ring -->
-                <div class="absolute inset-1.5 rounded-full border border-white/35 pointer-events-none group-hover:border-white/70 transition-colors"></div>
+                <div class="absolute inset-1.5 rounded-full border border-white/35 pointer-events-none group-hover:border-white/70 transition-colors" aria-hidden="true"></div>
                 <!-- Studio Mic Icon with Pulsing Animation -->
-                <span class="material-symbols-outlined text-[62px] sm:text-[68px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform" id="micGlyph">mic</span>
+                <span class="material-symbols-outlined text-[62px] sm:text-[68px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform" id="micGlyph" aria-hidden="true">mic</span>
                 <!-- Animated Equalizer Bars inside button -->
-                <div class="flex items-center gap-1 mt-0.5">
+                <div class="flex items-center gap-1 mt-0.5" aria-hidden="true">
                   <span class="w-1 bg-white/90 rounded-full eq-bar-1"></span>
                   <span class="w-1 bg-white/90 rounded-full eq-bar-2"></span>
                   <span class="w-1 bg-white/90 rounded-full eq-bar-3"></span>
                   <span class="w-1 bg-white/90 rounded-full eq-bar-4"></span>
                 </div>
                 <!-- Compact Internal Action Label (Strictly short: Speak / بولیں) -->
-                <span class="font-urdu-body-md text-[13px] font-bold text-white/95 leading-none mt-1 drop-shadow" id="micStatusText">بولیں</span>
+                <span class="text-xs font-bold text-white/95 leading-none mt-1 drop-shadow" id="micStatusText" role="status" aria-live="polite">بولیں</span>
               </button>
 
               <!-- Dedicated Voice Instruction Below the Button (Never deforms the circular orb) -->
-              <div class="flex flex-col items-center gap-1 mt-4">
-                <span class="font-urdu-headline-md font-bold text-primary text-xl sm:text-2xl" id="mic-instruction-title">مائیک دبائیں اور بولیں</span>
-                <span class="font-bold text-xs sm:text-sm text-on-surface-variant max-w-xl text-center" id="mic-instruction-sub">Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)</span>
+              <div class="flex flex-col items-center gap-1 mt-4 px-2">
+                <span class="font-bold text-primary text-lg sm:text-2xl leading-snug" id="mic-instruction-title">مائیک دبائیں اور بولیں</span>
+                <span class="font-bold text-xs sm:text-sm text-on-surface-variant max-w-xl text-center leading-relaxed" id="mic-instruction-sub">Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)</span>
               </div>
 
               <!-- Frequency Wave Visualizer -->
-              <div class="hidden flex items-end gap-1.5 h-8 mt-3" id="soundWaveVisualizer">
+              <div class="hidden flex items-end gap-1.5 h-8 mt-3" id="soundWaveVisualizer" aria-hidden="true">
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-4"></div>
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-8 [animation-delay:150ms]"></div>
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-6 [animation-delay:300ms]"></div>
@@ -223,46 +232,46 @@
             </div>
 
             <!-- Spoken Prompt Suggestion Chips (Covering all regional accents: Sindhi, Pashto, Balochi, Saraiki, Hindko, Punjabi, Potohari, Urdu) -->
-            <div class="w-full mt-4">
+            <div class="w-full mt-4" role="region" aria-label="Quick voice prompt suggestions">
               <span class="font-urdu-body-md text-xs sm:text-sm text-on-surface-variant block mb-2 font-bold" id="chips-header-text">
                 عام بولے جانے والے فقرے (فوری مدد کیلئے کسی پر کلک کریں):
               </span>
               <div class="flex flex-wrap items-center justify-center gap-2">
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے')" type="button">
-                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt: Farm link road is broken and damaged (Urdu)" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-road-text">"کھیتوں کی سڑک ٹوٹی ہوئی ہے"</span>
                 </button>
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('قریبی بنیادی مرکز صحت بی ایچ یو کہاں واقع ہے؟')" type="button">
-                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt: Where is the nearest Basic Health Unit hospital?" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('قریبی بنیادی مرکز صحت بی ایچ یو کہاں واقع ہے؟')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-hospital-text">"قریبی ہسپتال (BHU)"</span>
                 </button>
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('بے نظیر انکم سپورٹ کفالت وظیفہ کب ملے گا؟')" type="button">
-                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt: When will Benazir Income Support stipend be available?" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-surface-container-lowest text-on-surface font-urdu-body-md text-xs shadow-sm hover:bg-surface-container transition-colors flex items-center gap-1.5 border border-slate-200" onclick="WebPortal.playVoiceHint('بے نظیر انکم سپورٹ کفالت وظیفہ کب ملے گا؟')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-bisp-text">"بے نظیر وظیفہ"</span>
                 </button>
                 <!-- Saraiki Dialect Chip -->
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-primary-fixed/30 text-primary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-primary-fixed/50 transition-colors flex items-center gap-1.5 border border-primary-fixed" onclick="WebPortal.playVoiceHint('ساڈے پنڈ وچ پاݨی دا فلٹر خراب ہے، گندا پاݨی آندا پیا اے')" type="button">
-                  <span class="material-symbols-outlined text-primary text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt in Saraiki: Water filter is broken in our village" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-primary-fixed/30 text-primary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-primary-fixed/50 transition-colors flex items-center gap-1.5 border border-primary-fixed" onclick="WebPortal.playVoiceHint('ساڈے پنڈ وچ پاݨی دا فلٹر خراب ہے، گندا پاݨی آندا پیا اے')" type="button">
+                  <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-saraiki-text">"پاݨی دا فلٹر بند ہے (سرائیکی)"</span>
                 </button>
                 <!-- Hindko Dialect Chip -->
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-secondary-fixed/40 text-secondary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-secondary-fixed/60 transition-colors flex items-center gap-1.5 border border-secondary-fixed" onclick="WebPortal.playVoiceHint('ساڈے محلے دی سڑک ٹٹی ہوئی اے، ٹریکٹر نئیں لنگ سکدا')" type="button">
-                  <span class="material-symbols-outlined text-secondary text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt in Hindko: Street road is broken" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-secondary-fixed/40 text-secondary font-urdu-body-md text-xs font-bold shadow-sm hover:bg-secondary-fixed/60 transition-colors flex items-center gap-1.5 border border-secondary-fixed" onclick="WebPortal.playVoiceHint('ساڈے محلے دی سڑک ٹٹی ہوئی اے، ٹریکٹر نئیں لنگ سکدا')" type="button">
+                  <span class="material-symbols-outlined text-secondary text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-hindko-text">"سڑک ٹٹی ہوئی اے (ہندکو)"</span>
                 </button>
                 <!-- Sindhi Dialect Chip -->
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-teal-50 text-teal-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-teal-100 transition-colors flex items-center gap-1.5 border border-teal-200" onclick="WebPortal.playVoiceHint('اسان جي علائقي ۾ پاڻي جو مسئلو آهي')" type="button">
-                  <span class="material-symbols-outlined text-teal-700 text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt in Sindhi: Water problem in our area" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-teal-50 text-teal-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-teal-100 transition-colors flex items-center gap-1.5 border border-teal-200" onclick="WebPortal.playVoiceHint('اسان جي علائقي ۾ پاڻي جو مسئلو آهي')" type="button">
+                  <span class="material-symbols-outlined text-teal-700 text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-sindhi-text">"پاڻي جو مسئلو (سنڌي)"</span>
                 </button>
                 <!-- Pashto Dialect Chip -->
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-cyan-50 text-cyan-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-cyan-100 transition-colors flex items-center gap-1.5 border border-cyan-200" onclick="WebPortal.playVoiceHint('زمونږ په کلي کښې د اوبو مسئله ده')" type="button">
-                  <span class="material-symbols-outlined text-cyan-700 text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt in Pashto: Water issue in our village" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-cyan-50 text-cyan-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-cyan-100 transition-colors flex items-center gap-1.5 border border-cyan-200" onclick="WebPortal.playVoiceHint('زمونږ په کلي کښې د اوبو مسئله ده')" type="button">
+                  <span class="material-symbols-outlined text-cyan-700 text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-pashto-text">"د اوبو مسئله (پښتو)"</span>
                 </button>
                 <!-- Balochi Dialect Chip -->
-                <button class="min-h-[42px] px-3.5 py-1.5 rounded-xl bg-orange-50 text-orange-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-orange-100 transition-colors flex items-center gap-1.5 border border-orange-200" onclick="WebPortal.playVoiceHint('مئے میتگ ءَ آپ نیست')" type="button">
-                  <span class="material-symbols-outlined text-orange-700 text-[18px]">volume_up</span>
+                <button aria-label="Voice prompt in Balochi: No water in our settlement" class="voice-suggestion-chip min-h-[42px] px-3.5 py-1.5 rounded-xl bg-orange-50 text-orange-800 font-urdu-body-md text-xs font-bold shadow-sm hover:bg-orange-100 transition-colors flex items-center gap-1.5 border border-orange-200" onclick="WebPortal.playVoiceHint('مئے میتگ ءَ آپ نیست')" type="button">
+                  <span class="material-symbols-outlined text-orange-700 text-[18px]" aria-hidden="true">volume_up</span>
                   <span id="chip-balochi-text">"آپ نیست (بلوچی)"</span>
                 </button>
               </div>
@@ -325,14 +334,14 @@
       </section>
 
       <!-- Live Voice Conversation & AI Assistance Box (Urdu <-> English Dual Dialogue) -->
-      <div class="hidden w-full mb-8 bg-surface-container-lowest rounded-2xl p-5 shadow-lg border-2 border-emerald-500/30 flex flex-col gap-4 transition-all" id="dictationAlert">
+      <div class="hidden w-full mb-8 bg-surface-container-lowest rounded-2xl p-5 shadow-lg border-2 border-emerald-500/30 flex flex-col gap-4 transition-all" id="dictationAlert" role="region" aria-live="polite" aria-labelledby="convo-status-title">
         <div class="flex items-center justify-between border-b border-slate-200 pb-3">
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
             <span class="font-bold text-sm text-primary" id="convo-status-title">صوتی مکالمہ و رہنمائی (Voice Conversation & AI Response)</span>
           </div>
-          <button class="min-h-[36px] min-w-[36px] rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition-colors" onclick="WebPortal.dismissDictationAlert()" type="button">
-            <span class="material-symbols-outlined text-[20px]">close</span>
+          <button aria-label="Close voice conversation panel" class="min-h-[36px] min-w-[36px] rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition-colors" onclick="WebPortal.dismissDictationAlert()" type="button">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">close</span>
           </button>
         </div>
 
@@ -341,11 +350,11 @@
           <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 flex flex-col gap-1.5">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-secondary uppercase tracking-wider flex items-center gap-1">
-                <span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">record_voice_over</span>
                 <span id="convo-user-label">آپ کا بولا گیا فقرہ (Your Spoken Input):</span>
               </span>
-              <button onclick="WebPortal.replayUserQuery()" class="text-xs text-secondary hover:underline font-bold flex items-center gap-0.5" title="Replay">
-                <span class="material-symbols-outlined text-[16px]">volume_up</span>
+              <button type="button" onclick="WebPortal.replayUserQuery()" aria-label="Replay your spoken query audio" class="text-xs text-secondary hover:underline font-bold flex items-center gap-0.5" title="Replay">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">volume_up</span>
                 <span id="convo-replay-btn">سنیں</span>
               </button>
             </div>
@@ -362,11 +371,11 @@
           <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-col gap-1.5">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
-                <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">smart_toy</span>
                 <span id="convo-ai-label">عوامی آواز رہنمائی (AI Response & Action):</span>
               </span>
-              <button onclick="WebPortal.replayAiResponse()" class="text-xs text-emerald-800 hover:underline font-bold flex items-center gap-0.5" title="Listen AI Response">
-                <span class="material-symbols-outlined text-[16px]">volume_up</span>
+              <button type="button" onclick="WebPortal.replayAiResponse()" aria-label="Listen to AI guidance response" class="text-xs text-emerald-800 hover:underline font-bold flex items-center gap-0.5" title="Listen AI Response">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">volume_up</span>
                 <span id="convo-listen-ai-btn">جواب سنیں</span>
               </button>
             </div>
@@ -375,39 +384,46 @@
             </div>
             <div class="text-xs text-slate-700 italic border-t border-emerald-200/60 pt-1 mt-1 font-sans flex items-center justify-between" id="aiResponseTranslationBox">
               <span id="aiResponseTranslation">Your road infrastructure complaint has been registered for the C&W department.</span>
-              <button onclick="WebPortal.playEnglishTranslation()" class="text-[11px] text-emerald-800 hover:underline font-bold flex items-center gap-0.5 ml-2 shrink-0 cursor-pointer" title="Listen English">
-                <span class="material-symbols-outlined text-[14px]">volume_up</span>
+              <button type="button" onclick="WebPortal.playEnglishTranslation()" aria-label="Listen to English translation" class="text-[11px] text-emerald-800 hover:underline font-bold flex items-center gap-0.5 ml-2 shrink-0 cursor-pointer" title="Listen English">
+                <span class="material-symbols-outlined text-[14px]" aria-hidden="true">volume_up</span>
                 <span>Listen EN</span>
               </button>
             </div>
           </div>
         </div>
 
-        <div class="flex items-center justify-end gap-3 pt-2">
-          <button class="min-h-[44px] px-5 bg-primary text-on-primary rounded-xl font-bold text-xs sm:text-sm hover:bg-primary-container transition-all shadow flex items-center gap-2 cursor-pointer" onclick="WebPortal.submitSpokenQuery()" type="button">
-            <span class="material-symbols-outlined text-[18px]">post_add</span>
+        <div class="flex flex-wrap items-center justify-end gap-3 pt-2">
+          <button id="convo-maps-btn" aria-label="Find nearby places and links on Google Maps for this query" class="min-h-[44px] px-4 bg-surface-container text-primary border border-primary/20 rounded-xl font-bold text-xs sm:text-sm hover:bg-surface-container-high transition-all flex items-center gap-2 cursor-pointer" onclick="WebPortal.lookupMapsForConversation()" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">location_on</span>
+            <span>گوگل میپس پر دیکھیں (Check Google Maps)</span>
+          </button>
+          <button aria-label="Proceed to register official grievance with this spoken query" class="min-h-[44px] px-5 bg-primary text-on-primary rounded-xl font-bold text-xs sm:text-sm hover:bg-primary-container transition-all shadow flex items-center gap-2 cursor-pointer" onclick="WebPortal.submitSpokenQuery()" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">post_add</span>
             <span id="convo-proceed-btn">اس پر باقاعدہ شکایت درج کروائیں (Register Official Grievance)</span>
           </button>
         </div>
+
+        <p id="convo-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-3 rounded-xl"></p>
+        <div id="convo-maps-results" aria-live="polite" class="hidden bg-surface-container-low p-4 rounded-xl border border-slate-200"></div>
       </div>
 
       <!-- Four Key Civic Service Gateways (Expansive 4-Column Responsive Grid) -->
-      <section class="w-full mb-8">
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <h2 class="font-urdu-headline-lg font-bold text-on-surface text-[24px]" id="gateways-section-title">اہم حکومتی و شہری خدمات (Citizen Gateways)</h2>
-            <p class="font-urdu-body-md text-sm text-on-surface-variant" id="gateways-section-sub">اپنی ضرورت کے مطابق شعبہ منتخب کریں یا اس کا آڈیو کارڈ سنیں</p>
+      <section class="w-full mb-8" aria-labelledby="gateways-section-title">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="min-w-0">
+            <h2 class="font-bold text-on-surface text-lg sm:text-[24px] leading-snug" id="gateways-section-title">اہم حکومتی و شہری خدمات (Citizen Gateways)</h2>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed mt-0.5" id="gateways-section-sub">اپنی ضرورت کے مطابق شعبہ منتخب کریں یا اس کا آڈیو کارڈ سنیں</p>
           </div>
-          <span class="material-symbols-outlined text-primary text-[32px]">touch_app</span>
+          <span class="material-symbols-outlined text-primary text-[28px] sm:text-[32px] shrink-0" aria-hidden="true">touch_app</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" role="list" aria-label="Citizen service gateway cards">
           <!-- Gateway 1: Register Complaint (Featuring Minar-e-Pakistan Lahore) -->
-          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+          <article role="listitem" aria-labelledby="gw-complaint-title" class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
             <div>
               <div class="flex items-start justify-between gap-3 mb-3">
                 <!-- Minar-e-Pakistan Pictorial Monument Icon -->
-                <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Minar-e-Pakistan (لاہور)">
+                <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Minar-e-Pakistan (لاہور)" aria-hidden="true">
                   <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="22" fill="#004423"/>
                     <!-- Base Floral Petals -->
@@ -438,18 +454,23 @@
                 ٹوٹی گلیاں، سڑکیں، پینے کا ناپید پانی، واٹر فلٹریشن پلانٹ کی بندش اور صفائی کے مسائل۔
               </p>
             </div>
-            <a href="register.html" class="w-full min-h-[48px] rounded-xl bg-primary text-on-primary hover:bg-primary-container font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
-              <span id="gw-complaint-btn-text">شکایت درج کریں (File Complaint)</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-            </a>
-          </div>
+            <div class="flex items-center gap-2">
+              <a id="gw-complaint-link" href="register.html" role="button" aria-label="عوامی شکایت درج کروائیں (Register Complaint)" class="gateway-action-link flex-1 min-h-[48px] px-3 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs sm:text-sm leading-snug text-center">
+                <span id="gw-complaint-btn-text">شکایت درج کریں (File Complaint)</span>
+                <span class="material-symbols-outlined text-[18px] shrink-0" aria-hidden="true">arrow_back</span>
+              </a>
+              <button type="button" onclick="WebPortal.speakLocalized('عوامی شکایت درج کروائیں۔ ٹوٹی گلیاں، سڑکیں، پینے کا پانی اور صفائی کے مسائل درج کریں۔', 'Register an official complaint. Report broken roads, water leaks, power hazards, or sanitation issues.')" aria-label="Listen to Register Complaint gateway card" class="min-h-[48px] min-w-[48px] rounded-xl bg-surface-container text-primary hover:bg-surface-container-high flex items-center justify-center border border-slate-200">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
+              </button>
+            </div>
+          </article>
 
           <!-- Gateway 2: Track Complaint Status (Featuring Pakistan Monument Islamabad) -->
-          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+          <article role="listitem" aria-labelledby="gw-track-title" class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
             <div>
               <div class="flex items-start justify-between gap-3 mb-3">
                 <!-- Pakistan Monument Pictorial Icon -->
-                <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Pakistan Monument (اسلام آباد)">
+                <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Pakistan Monument (اسلام آباد)" aria-hidden="true">
                   <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="22" fill="#904d00"/>
                     <!-- 4 Province Petals -->
@@ -474,18 +495,23 @@
                 ٹوکن نمبر، شناختی کارڈ یا براہِ راست صوتی سوال کے ذریعے پیشرفت اور فیلڈ ٹیم کی جائے وقوعہ پر روانگی دیکھیں۔
               </p>
             </div>
-            <a href="track.html" class="w-full min-h-[48px] rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
-              <span id="gw-track-btn-text">سٹیٹس معلوم کریں (Track Status)</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-            </a>
-          </div>
+            <div class="flex items-center gap-2">
+              <a id="gw-track-link" href="track.html" role="button" aria-label="شکایات کا حال معلوم کریں (Track Complaints)" class="gateway-action-link flex-1 min-h-[48px] px-3 rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs sm:text-sm leading-snug text-center">
+                <span id="gw-track-btn-text">سٹیٹس معلوم کریں (Track Status)</span>
+                <span class="material-symbols-outlined text-[18px] shrink-0" aria-hidden="true">arrow_back</span>
+              </a>
+              <button type="button" onclick="WebPortal.speakLocalized('شکایات کا حال معلوم کریں۔ ٹوکن نمبر، شناختی کارڈ یا آواز کے ذریعے اپنی شکایت کی پیشرفت دیکھیں۔', 'Track filed complaints. Check real-time status and assigned field team progress using your token number, CNIC, or voice.')" aria-label="Listen to Track Complaints gateway card" class="min-h-[48px] min-w-[48px] rounded-xl bg-surface-container text-secondary hover:bg-surface-container-high flex items-center justify-center border border-slate-200">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
+              </button>
+            </div>
+          </article>
 
           <!-- Gateway 3: Healthcare & BHU (Featuring Faisal Mosque Islamabad) -->
-          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+          <article role="listitem" aria-labelledby="gw-health-title" class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
             <div>
               <div class="flex items-start justify-between gap-3 mb-3">
                 <!-- Faisal Mosque Pictorial Icon -->
-                <div class="w-14 h-14 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Faisal Mosque (اسلام آباد)">
+                <div class="w-14 h-14 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Faisal Mosque (اسلام آباد)" aria-hidden="true">
                   <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="22" fill="#ba1a1a"/>
                     <!-- Mountain Backdrop -->
@@ -514,18 +540,23 @@
                 قریبی بی ایچ یو (BHU)، دیہی مراکز صحت (RHC)، ڈاکٹروں کی دستیابی، ادویات اور ریسکیو 1122 ایمبولینس۔
               </p>
             </div>
-            <a href="healthcare.html" class="w-full min-h-[48px] rounded-xl bg-error text-on-error hover:bg-red-700 font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs">
-              <span id="gw-health-btn-text">ہسپتال تلاش کریں (Find Hospital)</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-            </a>
-          </div>
+            <div class="flex items-center gap-2">
+              <a id="gw-health-link" href="healthcare.html" role="button" aria-label="ہسپتال و بنیادی مراکز صحت (Healthcare & BHU Finder)" class="gateway-action-link flex-1 min-h-[48px] px-3 rounded-xl bg-error text-on-error hover:bg-red-700 font-bold flex items-center justify-center gap-2 transition-colors shadow text-xs sm:text-sm leading-snug text-center">
+                <span id="gw-health-btn-text">ہسپتال تلاش کریں (Find Hospital)</span>
+                <span class="material-symbols-outlined text-[18px] shrink-0" aria-hidden="true">arrow_back</span>
+              </a>
+              <button type="button" onclick="WebPortal.speakLocalized('ہسپتال و بنیادی مراکز صحت۔ قریبی بی ایچ یو، ڈاکٹروں کی دستیابی اور ریسکیو 1122 ایمبولینس کی معلومات دیکھیں۔', 'Hospitals and Basic Health Units. Find nearby clinics, doctors on duty, and Rescue 1122 ambulance emergency services.')" aria-label="Listen to Healthcare gateway card" class="min-h-[48px] min-w-[48px] rounded-xl bg-red-50 text-error hover:bg-red-100 flex items-center justify-center border border-red-200">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
+              </button>
+            </div>
+          </article>
 
           <!-- Gateway 4: Subsidies & BISP (Featuring Mazar-e-Quaid Karachi) -->
-          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
+          <article role="listitem" aria-labelledby="gw-subsidy-title" class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between border border-slate-200 hover:shadow-md transition-shadow group">
             <div>
               <div class="flex items-start justify-between gap-3 mb-3">
                 <!-- Mazar-e-Quaid Pictorial Icon -->
-                <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Mazar-e-Quaid (کراچی)">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center p-1.5 shrink-0 shadow-sm" title="Mazar-e-Quaid (کراچی)" aria-hidden="true">
                   <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="22" fill="#0b5e34"/>
                     <!-- Step Pedestal -->
@@ -552,11 +583,16 @@
                 بینظیر کفالت وظیفہ 10,500، 8171 ایس ایم ایس اہلیت، کسان کارڈ اور تعلیمی وظائف کے متعلق تصدیق شدہ رہنمائی۔
               </p>
             </div>
-            <a href="subsidies.html" class="w-full min-h-[48px] rounded-xl bg-surface-container text-primary hover:bg-surface-container-high font-urdu-headline-md font-bold flex items-center justify-center gap-2 transition-colors border border-slate-200 text-xs">
-              <span id="gw-subsidy-btn-text">وظائف کی معلومات (Check Schemes)</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-            </a>
-          </div>
+            <div class="flex items-center gap-2">
+              <a id="gw-subsidy-link" href="subsidies.html" role="button" aria-label="امداد، وظائف و کسان کارڈ (Subsidies & BISP Schemes)" class="gateway-action-link flex-1 min-h-[48px] px-3 rounded-xl bg-surface-container text-primary hover:bg-surface-container-high font-bold flex items-center justify-center gap-2 transition-colors border border-slate-200 text-xs sm:text-sm leading-snug text-center">
+                <span id="gw-subsidy-btn-text">وظائف کی معلومات (Check Schemes)</span>
+                <span class="material-symbols-outlined text-[18px] shrink-0" aria-hidden="true">arrow_back</span>
+              </a>
+              <button type="button" onclick="WebPortal.speakLocalized('امداد، وظائف و کسان کارڈ۔ بینظیر کفالت 8171 اور کسان کارڈ کی تصدیق شدہ رہنمائی سنیں۔', 'Subsidies, welfare, and Kisan Card. Hear verified guidance on BISP Kafalat 8171 stipends and agricultural grants.')" aria-label="Listen to Subsidies and BISP gateway card" class="min-h-[48px] min-w-[48px] rounded-xl bg-surface-container text-primary hover:bg-surface-container-high flex items-center justify-center border border-slate-200">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
+              </button>
+            </div>
+          </article>
 
         </div>
       </section>

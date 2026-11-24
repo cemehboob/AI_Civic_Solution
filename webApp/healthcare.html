@@ -41,30 +41,31 @@
   </script>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
+  <a href="#main-content" class="skip-link">مرکزی مواد پر جائیں (Skip to main content)</a>
   <!-- Header -->
-  <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-    <div class="h-20 w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
-          <span class="material-symbols-outlined text-[30px]">account_balance</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200">
+    <div class="min-h-[72px] py-2.5 w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+        <a href="index.html" aria-label="عوامی آواز مرکزی صفحہ | Awami Voice Home" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[30px]" aria-hidden="true">account_balance</span>
         </a>
-        <div class="flex flex-col">
-          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]">عوامی آواز | Awami Voice</span>
-          <span class="font-label-md text-xs text-on-surface-variant">ہسپتال اور بنیادی مراکز صحت گائیڈ</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-primary tracking-tight text-base sm:text-[22px] leading-snug truncate">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-[11px] sm:text-xs text-on-surface-variant leading-snug truncate">ہسپتال اور بنیادی مراکز صحت گائیڈ</span>
         </div>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
         <a href="index.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">مرکزی صفحہ (Home)</a>
         <a href="register.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایت درج کروائیں (Register)</a>
         <a href="track.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایات کا حال (Track)</a>
-        <a href="healthcare.html" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">ہسپتال و صحت (Healthcare)</a>
+        <a href="healthcare.html" aria-current="page" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">ہسپتال و صحت (Healthcare)</a>
         <a href="subsidies.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">امداد و وظائف (Subsidies)</a>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <button id="lang-toggle-btn" onclick="WebPortal.toggleLanguage()" class="min-h-[40px] px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
-          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="lang-toggle-btn" type="button" onclick="WebPortal.toggleLanguage()" aria-pressed="false" aria-label="انگریزی زبان میں تبدیل کریں (Switch language to English)" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm" aria-hidden="true">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
             <span class="font-urdu leading-none text-[11px]">اردو</span>
@@ -72,49 +73,58 @@
           <span id="top-lang-text">English</span>
         </button>
 
-        <a href="index.html" class="min-h-[44px] px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high">
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-          <span>واپسی (Back)</span>
+        <a href="index.html" aria-label="مرکزی صفحہ پر واپس جائیں (Back to Home)" class="min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+          <span class="hidden sm:inline">واپسی (Back)</span>
+          <span class="sm:hidden">واپسی</span>
         </a>
       </div>
     </div>
+    <!-- Mobile Compact Navigation Links -->
+    <nav class="flex lg:hidden items-center gap-1.5 px-3 pb-2.5 overflow-x-auto no-scrollbar border-t border-slate-100 text-xs font-bold" aria-label="Mobile navigation">
+      <a href="index.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">مرکزی صفحہ (Home)</a>
+      <a href="register.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">شکایت درج (Register)</a>
+      <a href="track.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ٹریکنگ (Track)</a>
+      <a href="healthcare.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-primary-container text-on-primary whitespace-nowrap shrink-0 flex items-center" aria-current="page">ہسپتال (Healthcare)</a>
+      <a href="subsidies.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">امداد (Subsidies)</a>
+    </nav>
   </header>
 
   <!-- Main Viewport -->
-  <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
+  <main id="main-content" tabindex="-1" class="w-full pt-5 sm:pt-8 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 py-4 sm:py-6">
       <div class="flex flex-col w-full gap-6">
         
         <!-- Urgent Hotlines Ribbon -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- 1122 Card -->
-          <div class="bg-error text-on-error rounded-2xl p-5 shadow-lg flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-[36px] animate-bounce">emergency</span>
-              <div class="flex flex-col">
-                <span class="font-bold text-lg">قومی ایمرجنسی ریسکیو سروس 1122</span>
-                <span class="text-xs opacity-90">مفت ایمبولینس، آگ، ریسکیو و حادثات (All Pakistan)</span>
+          <div class="bg-error text-on-error rounded-2xl p-4 sm:p-5 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="material-symbols-outlined text-[32px] sm:text-[36px] animate-bounce shrink-0">emergency</span>
+              <div class="flex flex-col min-w-0">
+                <span class="font-bold text-base sm:text-lg leading-snug">قومی ایمرجنسی ریسکیو سروس 1122</span>
+                <span class="text-xs opacity-90 leading-snug">مفت ایمبولینس، آگ، ریسکیو و حادثات (All Pakistan)</span>
               </div>
             </div>
-            <a href="tel:1122" class="min-h-[48px] px-5 rounded-xl bg-surface text-error font-bold flex items-center gap-2 shadow-md active:scale-95 transition-all">
-              <span class="material-symbols-outlined text-[22px]">phone_in_talk</span>
+            <a href="tel:1122" aria-label="ریسکیو ایمرجنسی 1122 پر کال ملائیں (Call Rescue 1122)" class="min-h-[44px] sm:min-h-[48px] px-5 rounded-xl bg-surface text-error font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">phone_in_talk</span>
               <span>1122 ملائیں</span>
             </a>
           </div>
 
           <!-- 1033 Card -->
-          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
-                <span class="material-symbols-outlined text-[28px]">medical_services</span>
+          <div class="bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[28px]" aria-hidden="true">medical_services</span>
               </div>
-              <div class="flex flex-col">
-                <span class="font-bold text-primary text-lg">قومی صحت ہیلپ لائن 1033</span>
-                <span class="text-xs text-on-surface-variant">مفت طبی مشورے و رہنمائی</span>
+              <div class="flex flex-col min-w-0">
+                <span class="font-bold text-primary text-base sm:text-lg leading-snug">قومی صحت ہیلپ لائن 1033</span>
+                <span class="text-xs text-on-surface-variant leading-snug">مفت طبی مشورے و رہنمائی</span>
               </div>
             </div>
-            <a href="tel:1033" class="min-h-[48px] px-5 rounded-xl bg-primary text-on-primary font-bold flex items-center gap-2 shadow-md active:scale-95 transition-all">
-              <span class="material-symbols-outlined text-[22px]">call</span>
+            <a href="tel:1033" aria-label="قومی صحت ہیلپ لائن 1033 پر کال ملائیں (Call Health Helpline 1033)" class="min-h-[44px] sm:min-h-[48px] px-5 rounded-xl bg-primary text-on-primary font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">call</span>
               <span>1033 ملائیں</span>
             </a>
           </div>
@@ -124,18 +134,41 @@
         <div class="bg-surface-container-low p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-3 text-right" dir="rtl">
             <div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[28px]">mic</span>
+              <span class="material-symbols-outlined text-[28px]" aria-hidden="true">mic</span>
             </div>
             <div>
               <h3 class="font-bold text-on-surface text-[17px]">بول کر قریبی ہسپتال یا بی ایچ یو معلوم کریں</h3>
               <p class="text-xs text-on-surface-variant">مثال: "گوجر خان میں ٹی ایچ کیو ہسپتال کا فون نمبر اور ایمرجنسی"</p>
             </div>
           </div>
-          <button onclick="startHospitalVoiceQuery()" class="min-h-[48px] px-6 rounded-xl bg-secondary text-on-secondary font-bold text-sm flex items-center gap-2 shadow-md active:scale-95 transition-all shrink-0">
-            <span class="material-symbols-outlined text-[22px]">record_voice_over</span>
+          <button type="button" onclick="startHospitalVoiceQuery()" aria-label="آواز سے قریبی ہسپتال تلاش کریں (Search hospitals by voice)" class="min-h-[48px] px-6 rounded-xl bg-secondary text-on-secondary font-bold text-sm flex items-center gap-2 shadow-md active:scale-95 transition-all shrink-0">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">record_voice_over</span>
             <span>مائیک دبائیں اور پوچھیں</span>
           </button>
         </div>
+
+        <!-- Nearby Facilities Search (Gemini Maps Grounding) -->
+        <section aria-labelledby="maps-grounding-heading" class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h2 id="maps-grounding-heading" class="font-bold text-on-surface text-[18px]">گوگل میپس سے قریبی ہسپتال و مراکزِ صحت تلاش کریں (Maps Grounding)</h2>
+              <p class="text-xs text-on-surface-variant">شہر یا علاقے کا نام لکھیں تاکہ گوگل میپس سے تصدیق شدہ مقامات اور لنکس حاصل ہوں</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">Gemini Maps Grounding</span>
+          </div>
+
+          <form onsubmit="runFacilityMapsSearch(event)" class="flex flex-col sm:flex-row gap-3">
+            <label for="maps-grounding-query" class="sr-only">قریبی ہسپتال یا علاقہ درج کریں (Enter hospital or area query)</label>
+            <input id="maps-grounding-query" type="text" placeholder="مثال: THQ Hospital Gujar Khan or emergency clinics in Rawalpindi" value="Government hospitals and Basic Health Units near Gujar Khan, Rawalpindi" class="flex-1 h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-sm font-bold text-on-surface focus:outline-none focus:border-primary"/>
+            <button id="maps-grounding-btn" type="submit" aria-label="گوگل میپس پر قریبی ہسپتال تلاش کریں (Search nearby facilities on Google Maps)" class="min-h-[48px] px-6 rounded-xl bg-primary text-on-primary font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary-container transition-colors shadow-sm shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">travel_explore</span>
+              <span>تلاش کریں (Find Places)</span>
+            </button>
+          </form>
+
+          <p id="maps-grounding-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-3 rounded-xl"></p>
+          <div id="maps-grounding-results" aria-live="polite" class="hidden bg-surface-container-low p-4 rounded-xl border border-slate-200"></div>
+        </section>
 
         <!-- Hospital Directory Grid -->
         <section class="flex flex-col gap-4">
@@ -197,12 +230,12 @@
           </div>
 
           <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
-            <a href="tel:${h.phone}" class="flex-1 min-h-[44px] rounded-xl bg-primary text-on-primary flex items-center justify-center gap-2 text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">
-              <span class="material-symbols-outlined text-[18px]">call</span>
+            <a href="tel:${h.phone}" aria-label="${isEn ? `Call ${h.nameEnglish} at ${h.phone}` : `${h.nameUrdu} پر کال ملائیں (${h.phone})`}" class="flex-1 min-h-[44px] rounded-xl bg-primary text-on-primary flex items-center justify-center gap-2 text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
               <span>${isEn ? `Call (${h.phone})` : `کال ملائیں (${h.phone})`}</span>
             </a>
-            <button onclick="speakHosp('${h.id}')" class="min-h-[44px] px-4 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 text-xs font-bold hover:bg-secondary-container transition-colors">
-              <span class="material-symbols-outlined text-[18px]">volume_up</span>
+            <button type="button" onclick="speakHosp('${h.id}')" aria-label="${isEn ? `Listen to details for ${h.nameEnglish}` : `${h.nameUrdu} کی تفصیل سنیں`}" class="min-h-[44px] px-4 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 text-xs font-bold hover:bg-secondary-container transition-colors">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">volume_up</span>
               <span>${isEn ? "Listen" : "تفصیل سنیں"}</span>
             </button>
           </div>
@@ -213,7 +246,10 @@
     function speakHosp(id) {
       const h = CivicData.hospitals.find(x => x.id === id);
       if (h) {
-        AppSpeech.speak(`${h.nameUrdu}۔ فاصلہ ${h.distanceKm} کلومیٹر۔ اوقات کار: ${h.operatingHoursUrdu}۔ فون نمبر: ${h.phone}۔ دستیاب سہولیات: ${h.services.join(', ')}۔`);
+        WebPortal.speakLocalized(
+          `${h.nameUrdu}۔ فاصلہ ${h.distanceKm} کلومیٹر۔ اوقات کار: ${h.operatingHoursUrdu}۔ فون نمبر: ${h.phone}۔ دستیاب سہولیات: ${h.services.join(', ')}۔`,
+          `${h.nameEnglish}. Distance: ${h.distanceKm} kilometers. Operating hours: ${h.operatingHoursEnglish}. Phone: ${h.phone}. Available services: ${h.services.join(', ')}.`
+        );
       }
     }
 
@@ -221,10 +257,38 @@
       AppSpeech.startListening((transcript, isFinal) => {
         if (isFinal) {
           AppAIRouter.processQuery(transcript).then(res => {
-            AppSpeech.speak(res.responseUrdu);
+            WebPortal.speakLocalized(res.responseUrdu, res.responseEnglish || res.responseUrdu);
           });
         }
       });
+    }
+
+    async function runFacilityMapsSearch(e) {
+      e.preventDefault();
+      const inputEl = document.getElementById("maps-grounding-query");
+      const resultsEl = document.getElementById("maps-grounding-results");
+      const errorEl = document.getElementById("maps-grounding-error");
+      const btnEl = document.getElementById("maps-grounding-btn");
+      const query = inputEl ? inputEl.value.trim() : "";
+      if (!query) return;
+
+      if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+      }
+      if (btnEl) btnEl.disabled = true;
+
+      try {
+        await WebPortal.queryMapsGrounding(query, resultsEl);
+      } catch (err) {
+        if (resultsEl) resultsEl.classList.add("hidden");
+        if (errorEl) {
+          errorEl.textContent = err.message;
+          errorEl.classList.remove("hidden");
+        }
+      } finally {
+        if (btnEl) btnEl.disabled = false;
+      }
     }
   </script>
 </body>

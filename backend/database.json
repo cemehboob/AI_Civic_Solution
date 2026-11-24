@@ -71,7 +71,9 @@
       "designation": "SDO PHED Gujar Khan Team 2",
       "district": "Rawalpindi",
       "tehsil": "Gujar Khan",
-      "assignedTasks": ["PK-94021"],
+      "assignedTasks": [
+        "PK-94021"
+      ],
       "active": true
     },
     {
@@ -83,8 +85,94 @@
       "designation": "C&W Road Resurfacing Team 4",
       "district": "Rawalpindi",
       "tehsil": "Rawalpindi Rural",
-      "assignedTasks": ["PK-7821"],
+      "assignedTasks": [
+        "PK-7821"
+      ],
       "active": true
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-007"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-008"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-009"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-010"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-011"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-012"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-013"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-014"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-015"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-016"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-017"
+    },
+    {
+      "name": "QA Smoke Citizen",
+      "role": "citizen",
+      "cnic": "37405-*******-1",
+      "phone": "0300-***4567",
+      "id": "USR-018"
     }
   ]
 }

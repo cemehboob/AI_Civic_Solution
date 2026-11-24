@@ -35,6 +35,12 @@ const MobileApp = {
   },
 
   toggleLanguage() {
+    if (typeof AppSpeech !== "undefined" && AppSpeech.isSpeaking) {
+      AppSpeech.stopSpeaking();
+      const waveBar = document.getElementById("audio-wave-bar");
+      if (waveBar) waveBar.classList.add("hidden");
+    }
+
     this.currentLang = this.currentLang === "ur" ? "en" : "ur";
     try {
       localStorage.setItem("awami_app_lang", this.currentLang);
@@ -194,11 +200,15 @@ const MobileApp = {
 
   applyUserPreferences() {
     if (!this.currentUser) return;
-    if (this.currentUser.preferredLanguage) {
-      AppSpeech.setLanguage(this.currentUser.preferredLanguage);
-    }
-    if (this.currentUser.audioSpeed) {
-      AppSpeech.setSpeed(this.currentUser.audioSpeed);
+    if (typeof AppSpeech !== "undefined") {
+      if (this.currentLang === "en") {
+        AppSpeech.setLanguage("en-US");
+      } else if (this.currentUser.preferredLanguage) {
+        AppSpeech.setLanguage(this.currentUser.preferredLanguage);
+      }
+      if (this.currentUser.audioSpeed) {
+        AppSpeech.setSpeed(this.currentUser.audioSpeed);
+      }
     }
   },
 
@@ -285,8 +295,113 @@ const MobileApp = {
     `;
   },
 
-  speakText(text) {
-    AppSpeech.speak(text);
+  speakText(text, englishText = null, onComplete = null) {
+    if (englishText !== null) {
+      return this.speakLocalized(text, englishText, onComplete);
+    }
+    const isEn = this.currentLang === "en";
+    const targetLang = isEn ? "en-US" : "ur-PK";
+    AppSpeech.setLanguage(targetLang);
+    AppSpeech.speak(text, onComplete, { lang: targetLang });
+  },
+
+  speakLocalized(urduText, englishText, onComplete = null) {
+    const isEn = this.currentLang === "en";
+    const targetLang = isEn ? "en-US" : "ur-PK";
+    const spoken = isEn ? (englishText || urduText) : (urduText || englishText);
+    AppSpeech.setLanguage(targetLang);
+    AppSpeech.speak(spoken, onComplete, { lang: targetLang });
+  },
+
+  async queryMapsGrounding(query, outputEl = null) {
+    if (!query || !query.trim()) return null;
+
+    let coords = {};
+    if (typeof navigator !== "undefined" && navigator.geolocation) {
+      try {
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 4000 });
+        });
+        coords = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        };
+      } catch {
+        // Proceed without coordinates if geolocation is unavailable or denied
+      }
+    }
+
+    const response = await fetch("/api/gemini/maps-grounding", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: query.trim(), ...coords })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || "Maps grounding lookup failed.");
+    }
+    if (outputEl) {
+      this.renderMapsGroundingResults(outputEl, data);
+    }
+    return data;
+  },
+
+  renderMapsGroundingResults(container, data) {
+    if (!container) return;
+    container.innerHTML = "";
+    container.classList.remove("hidden");
+
+    const textPara = document.createElement("p");
+    textPara.className = "text-xs text-on-surface leading-relaxed whitespace-pre-line";
+    textPara.textContent = data.text || "";
+    container.appendChild(textPara);
+
+    const places = Array.isArray(data.places) ? data.places : [];
+    if (places.length > 0) {
+      const heading = document.createElement("h4");
+      heading.className = "text-xs font-bold text-primary mt-2.5 mb-1.5";
+      heading.textContent = this.currentLang === "en" ? "Google Maps Links:" : "گوگل میپس لنکس:";
+      container.appendChild(heading);
+
+      const list = document.createElement("ul");
+      list.className = "space-y-1.5";
+
+      places.forEach((place) => {
+        const li = document.createElement("li");
+        li.className = "p-2 rounded-xl bg-surface-container-lowest border border-slate-200 flex flex-col gap-1";
+
+        if (place.uri && /^https?:\/\//i.test(place.uri)) {
+          const link = document.createElement("a");
+          link.href = place.uri;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.className = "text-xs font-bold text-primary hover:underline";
+          link.textContent = place.title || place.uri;
+          li.appendChild(link);
+        } else {
+          const span = document.createElement("span");
+          span.className = "text-xs font-bold text-on-surface";
+          span.textContent = place.title || "Place";
+          li.appendChild(span);
+        }
+
+        if (Array.isArray(place.reviewSnippets)) {
+          place.reviewSnippets.forEach((snippet) => {
+            const snippetText = typeof snippet === "string"
+              ? snippet
+              : (snippet?.review || snippet?.text || snippet?.title || "");
+            if (snippetText) {
+              const snp = document.createElement("p");
+              snp.className = "text-[11px] text-on-surface-variant";
+              snp.textContent = snippetText;
+              li.appendChild(snp);
+            }
+          });
+        }
+        list.appendChild(li);
+      });
+      container.appendChild(list);
+    }
   }
 };
 

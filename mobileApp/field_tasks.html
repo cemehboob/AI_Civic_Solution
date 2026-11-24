@@ -42,35 +42,35 @@
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
   <!-- Top App Bar -->
-  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-20 px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
-          <span class="material-symbols-outlined text-[24px]">engineering</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200/70 pt-safe">
+    <div class="min-h-[68px] py-2 px-3 sm:px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2.5 min-w-0 flex-1">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[22px] sm:text-[24px]">engineering</span>
         </div>
         <div class="flex flex-col min-w-0">
-          <div class="flex items-center gap-1.5">
-            <span class="font-bold text-on-surface text-[16px] truncate">Assigned Tasks</span>
-            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[11px] font-bold">ENG-742</span>
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="font-bold text-on-surface text-sm sm:text-[16px] truncate">Assigned Tasks</span>
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] sm:text-[11px] font-bold shrink-0">ENG-742</span>
           </div>
-          <div class="flex items-center gap-1 text-on-surface-variant text-xs">
-            <span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
+          <div class="flex items-center gap-1 text-on-surface-variant text-xs min-w-0">
+            <span class="material-symbols-outlined text-[14px] text-primary shrink-0">location_on</span>
             <span class="truncate">Gujar Khan & Rawalpindi Rural</span>
           </div>
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <a href="../webApp/index.html" class="min-h-[36px] px-3 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm" title="Web Portal">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <a href="../webApp/index.html" aria-label="Open Web Portal" class="min-h-[36px] px-2.5 sm:px-3 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm whitespace-nowrap shrink-0" title="Web Portal">
           <span class="material-symbols-outlined text-[16px]">desktop_windows</span>
-          <span>ویب پورٹل</span>
+          <span class="hidden sm:inline">ویب پورٹل</span>
         </a>
-        <a href="offline_sync.html" class="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface">
-          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-          <span class="material-symbols-outlined text-[16px] text-primary">cloud_done</span>
+        <a href="offline_sync.html" class="flex items-center gap-1 bg-surface-container-high px-2 sm:px-2.5 py-1 rounded-full text-on-surface whitespace-nowrap shrink-0">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+          <span class="material-symbols-outlined text-[16px] text-primary shrink-0">cloud_done</span>
           <span class="text-[11px] font-bold">Sync OK</span>
         </a>
-        <a href="user_management.html" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+        <a href="user_management.html" aria-label="User profile" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0">
           <span class="material-symbols-outlined text-[18px]">person</span>
         </a>
       </div>
@@ -78,7 +78,7 @@
   </header>
 
   <!-- Main Viewport -->
-  <main class="flex flex-col relative w-full pt-24 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-4">
+  <main class="flex flex-col relative w-full pt-5 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-3 sm:px-4">
     <div class="flex flex-col w-full pb-6">
       
       <!-- Network Status Banner -->
@@ -196,11 +196,13 @@
               </div>
             </div>
 
-            <button class="min-h-[44px] px-3 bg-surface-container-lowest text-primary font-bold text-xs rounded-lg shadow-sm flex items-center gap-1 shrink-0 active:scale-95" onclick="alert('GPS Navigation opening: Chak 18 Tube-well station')">
-              <span class="material-symbols-outlined text-[18px]">directions</span>
+            <button type="button" aria-label="Open Google Maps data for Chak 18, Mandra Road" class="min-h-[44px] px-3 bg-surface-container-lowest text-primary font-bold text-xs rounded-lg shadow-sm flex items-center gap-1 shrink-0 active:scale-95" onclick="lookupTaskMaps('task1', 'Chak 18, Mandra Road, Tehsil Gujar Khan, Rawalpindi')">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">directions</span>
               <span>Map (نقشہ)</span>
             </button>
           </div>
+          <p id="task1-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-2.5 rounded-xl"></p>
+          <div id="task1-maps-results" aria-live="polite" class="hidden bg-surface-container-low p-3 rounded-xl border border-slate-200"></div>
 
           <!-- Problem Breakdown Visual Details -->
           <div class="flex flex-col gap-1 text-on-surface-variant text-xs">
@@ -253,12 +255,20 @@
             </div>
             <span class="px-2.5 py-1 rounded-full bg-surface-container text-primary text-xs font-bold">28h SLA</span>
           </div>
-          <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs gap-2 flex-wrap">
             <span class="text-on-surface-variant">Supervisor Nadeem • C&W Machinery Unit</span>
-            <a href="field_inspection.html?token=PK-7821" class="text-primary font-bold flex items-center gap-1">
-              معائنہ کھولیں <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </a>
+            <div class="flex items-center gap-2">
+              <button type="button" aria-label="Open Google Maps data for Kalu Mor, Mandra Road" class="px-2.5 py-1.5 rounded-lg bg-surface-container text-primary font-bold flex items-center gap-1" onclick="lookupTaskMaps('task2', 'Kalu Mor, Mandra Road, Gujar Khan, Rawalpindi')">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">directions</span>
+                <span>Map</span>
+              </button>
+              <a href="field_inspection.html?token=PK-7821" class="text-primary font-bold flex items-center gap-1">
+                معائنہ کھولیں <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
           </div>
+          <p id="task2-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-2.5 rounded-xl"></p>
+          <div id="task2-maps-results" aria-live="polite" class="hidden bg-surface-container-low p-3 rounded-xl border border-slate-200"></div>
         </div>
 
       </div>
@@ -275,5 +285,28 @@
   <script src="../shared/speech_engine.js"></script>
   <script src="../shared/storage_sync.js"></script>
   <script src="mobile.js"></script>
+  <script>
+    async function lookupTaskMaps(taskId, locationQuery) {
+      const resultsEl = document.getElementById(`${taskId}-maps-results`);
+      const errorEl = document.getElementById(`${taskId}-maps-error`);
+      if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+      }
+      if (typeof MobileApp === "undefined") return;
+      try {
+        await MobileApp.queryMapsGrounding(
+          `Provide Google Maps location and nearby landmarks for field inspection at: ${locationQuery}`,
+          resultsEl
+        );
+      } catch (err) {
+        if (resultsEl) resultsEl.classList.add("hidden");
+        if (errorEl) {
+          errorEl.textContent = err.message;
+          errorEl.classList.remove("hidden");
+        }
+      }
+    }
+  </script>
 </body>
 </html>

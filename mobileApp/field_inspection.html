@@ -42,20 +42,20 @@
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
   <!-- Top App Header -->
-  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-20 px-4 flex items-center justify-between gap-3 max-w-[840px] mx-auto">
-      <div class="flex items-center gap-2">
-        <a href="field_tasks.html" aria-label="Go back to tasks" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
-          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200/70 pt-safe">
+    <div class="min-h-[68px] py-2 px-3 sm:px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
+        <a href="field_tasks.html" aria-label="Go back to tasks" class="min-h-[44px] min-w-[44px] sm:min-h-[52px] sm:min-w-[52px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[28px]">arrow_back</span>
         </a>
-        <div class="flex flex-col">
-          <h1 class="font-bold text-on-surface text-[17px] leading-tight">On-Site Inspection</h1>
-          <span class="font-urdu-body-md text-[13px] text-on-surface-variant leading-none">موقع پر تصدیق و تصویری ثبوت</span>
+        <div class="flex flex-col min-w-0">
+          <h1 class="font-bold text-on-surface text-base sm:text-[17px] leading-snug truncate">On-Site Inspection</h1>
+          <span class="text-xs text-on-surface-variant leading-snug truncate">موقع پر تصدیق و تصویری ثبوت</span>
         </div>
       </div>
       
-      <div class="flex items-center gap-2">
-        <span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold whitespace-nowrap">
           ENG-742
         </span>
       </div>
@@ -63,7 +63,7 @@
   </header>
 
   <!-- Main Viewport -->
-  <main class="flex flex-col relative w-full pt-24 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-4">
+  <main class="flex flex-col relative w-full pt-5 pb-28 bg-surface max-w-[840px] mx-auto min-h-screen px-3 sm:px-4">
     <div class="flex flex-col w-full gap-4 pb-6">
       
       <!-- GEO-FENCE REAL-TIME VALIDATION BANNER -->

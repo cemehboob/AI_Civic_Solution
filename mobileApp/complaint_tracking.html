@@ -42,28 +42,28 @@
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
   <!-- Top Header Bar -->
-  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-    <div class="h-20 px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
-      <div class="flex items-center gap-2">
-        <a href="index.html" aria-label="Go home" class="min-h-[56px] min-w-[56px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
-          <span class="material-symbols-outlined text-[28px]">arrow_back</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200/70 pt-safe">
+    <div class="min-h-[68px] py-2 px-3 sm:px-4 flex items-center justify-between gap-2 max-w-[840px] mx-auto">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
+        <a href="index.html" aria-label="Go home" class="min-h-[44px] min-w-[44px] sm:min-h-[52px] sm:min-w-[52px] flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[28px]">arrow_back</span>
         </a>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1">
-            <span class="font-bold text-primary leading-tight tracking-tight text-[18px]">Awami Voice</span>
-            <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-1 min-w-0">
+            <span class="font-bold text-primary leading-snug tracking-tight text-base sm:text-[18px] truncate">Awami Voice</span>
+            <span class="material-symbols-outlined text-primary text-[18px] shrink-0">verified</span>
           </div>
-          <span class="font-urdu-body-md text-[13px] leading-none text-on-surface-variant font-medium">شکایات ٹریکنگ و تفتیش</span>
+          <span class="text-xs leading-snug text-on-surface-variant font-medium truncate">شکایات ٹریکنگ و تفتیش</span>
         </div>
       </div>
       
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <!-- Switch to Web Portal -->
-        <a href="../webApp/index.html" class="min-h-[40px] px-3.5 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm" title="Web Portal / ویب پورٹل">
+        <a href="../webApp/index.html" aria-label="Open Web Portal" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3.5 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm whitespace-nowrap shrink-0" title="Web Portal / ویب پورٹل">
           <span class="material-symbols-outlined text-[18px]">desktop_windows</span>
-          <span>ویب پورٹل</span>
+          <span class="hidden sm:inline">ویب پورٹل</span>
         </a>
-        <button id="lang-toggle-btn" onclick="MobileApp.toggleLanguage()" class="min-h-[40px] px-3.5 py-1 rounded-full bg-primary-fixed/50 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 active:scale-95 shadow-sm" title="Urdu & English Conversion">
+        <button id="lang-toggle-btn" onclick="MobileApp.toggleLanguage()" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3.5 py-1 rounded-full bg-primary-fixed/50 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 active:scale-95 shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion">
           <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary/20 text-primary px-1.5 py-0.5 rounded shadow-sm">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
@@ -76,7 +76,7 @@
   </header>
 
   <!-- Main Scrollable Area -->
-  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-4 pt-24 pb-32 bg-surface flex-grow">
+  <main class="flex flex-col relative w-full max-w-[840px] mx-auto px-3 sm:px-4 pt-5 pb-32 bg-surface flex-grow">
     <div class="flex flex-col w-full space-y-4">
       
       <!-- Friendly Top Audio Guidance Strip -->

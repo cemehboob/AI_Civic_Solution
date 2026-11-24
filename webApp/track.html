@@ -41,30 +41,31 @@
   </script>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
+  <a href="#main-content" class="skip-link">مرکزی مواد پر جائیں (Skip to main content)</a>
   <!-- Top Header -->
-  <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-    <div class="h-20 w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
-          <span class="material-symbols-outlined text-[30px]">account_balance</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200">
+    <div class="min-h-[72px] py-2.5 w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+        <a href="index.html" aria-label="عوامی آواز مرکزی صفحہ | Awami Voice Home" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[30px]" aria-hidden="true">account_balance</span>
         </a>
-        <div class="flex flex-col">
-          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]">عوامی آواز | Awami Voice</span>
-          <span class="font-label-md text-xs text-on-surface-variant">شکایات ٹریکنگ و مانیٹرنگ پورٹل</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-primary tracking-tight text-base sm:text-[22px] leading-snug truncate">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-[11px] sm:text-xs text-on-surface-variant leading-snug truncate">شکایات ٹریکنگ و مانیٹرنگ پورٹل</span>
         </div>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
         <a href="index.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">مرکزی صفحہ (Home)</a>
         <a href="register.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایت درج کروائیں (Register)</a>
-        <a href="track.html" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">شکایات کا حال (Track)</a>
+        <a href="track.html" aria-current="page" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">شکایات کا حال (Track)</a>
         <a href="healthcare.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">ہسپتال و صحت (Healthcare)</a>
         <a href="subsidies.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">امداد و وظائف (Subsidies)</a>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <button id="lang-toggle-btn" onclick="WebPortal.toggleLanguage()" class="min-h-[40px] px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
-          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="lang-toggle-btn" type="button" onclick="WebPortal.toggleLanguage()" aria-pressed="false" aria-label="انگریزی زبان میں تبدیل کریں (Switch language to English)" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm" aria-hidden="true">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
             <span class="font-urdu leading-none text-[11px]">اردو</span>
@@ -72,17 +73,26 @@
           <span id="top-lang-text">English</span>
         </button>
 
-        <a href="index.html" class="min-h-[44px] px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high">
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-          <span>واپسی (Back)</span>
+        <a href="index.html" aria-label="مرکزی صفحہ پر واپس جائیں (Back to Home)" class="min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+          <span class="hidden sm:inline">واپسی (Back)</span>
+          <span class="sm:hidden">واپسی</span>
         </a>
       </div>
     </div>
+    <!-- Mobile Compact Navigation Links -->
+    <nav class="flex lg:hidden items-center gap-1.5 px-3 pb-2.5 overflow-x-auto no-scrollbar border-t border-slate-100 text-xs font-bold" aria-label="Mobile navigation">
+      <a href="index.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">مرکزی صفحہ (Home)</a>
+      <a href="register.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">شکایت درج (Register)</a>
+      <a href="track.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-primary-container text-on-primary whitespace-nowrap shrink-0 flex items-center" aria-current="page">ٹریکنگ (Track)</a>
+      <a href="healthcare.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ہسپتال (Healthcare)</a>
+      <a href="subsidies.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">امداد (Subsidies)</a>
+    </nav>
   </header>
 
   <!-- Main Viewport -->
-  <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
+  <main id="main-content" tabindex="-1" class="w-full pt-5 sm:pt-8 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 py-4 sm:py-6">
       <div class="flex flex-col w-full gap-6">
         
         <!-- Accessibility Notice / Audio Assistance Banner -->
@@ -96,8 +106,8 @@
               <p class="font-urdu-body-md text-xs text-on-surface-variant">اپنی درخواست کا فوری احوال معلوم کریں یا آواز کے ذریعے تلاش کریں</p>
             </div>
           </div>
-          <button class="min-h-[48px] px-5 py-2 rounded-xl bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm flex items-center justify-center gap-2 transition-colors shrink-0" onclick="AppSpeech.speak('شکایت کا حال معلوم کرنے کے لیے اپنا ٹوکن نمبر درج کریں یا مائیک دباکر آواز سے پوچھیں۔')" type="button">
-            <span class="material-symbols-outlined text-[24px]">volume_up</span>
+          <button aria-label="شکایت ٹریکنگ کی صوتی رہنمائی سنیں (Listen to tracking guide)" class="min-h-[48px] px-5 py-2 rounded-xl bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm flex items-center justify-center gap-2 transition-colors shrink-0" onclick="WebPortal.speakLocalized('شکایت کا حال معلوم کرنے کے لیے اپنا ٹوکن نمبر درج کریں یا مائیک دباکر آواز سے پوچھیں۔', 'To check your complaint status, enter your token number or press the microphone button to ask by voice.')" type="button">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">volume_up</span>
             <span class="font-bold text-sm">رہنمائی سنیں (Listen Guide)</span>
           </button>
         </div>
@@ -110,27 +120,27 @@
               <p class="font-urdu-body-md text-xs text-on-surface-variant">ٹوکن نمبر، شناختی کارڈ یا براہِ راست اپنی آواز سے تلاش کریں</p>
             </div>
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold self-start sm:self-center">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" aria-hidden="true"></span>
               آن لائن ڈیٹا بیس فعال ہے
             </span>
           </div>
 
           <!-- Search Methods Tabs -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-surface-container rounded-xl p-1.5">
-            <button class="min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 bg-primary text-on-primary shadow-sm" id="tab-token" onclick="switchWebSearchTab('token')" type="button">
-              <span class="material-symbols-outlined text-[20px]">pin</span>
+          <div role="tablist" aria-label="شکایت تلاش کرنے کے طریقے (Complaint search methods)" class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-surface-container rounded-xl p-1.5">
+            <button role="tab" aria-selected="true" aria-label="ٹوکن نمبر کے ذریعے تلاش (Search by Token Number)" class="track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 bg-primary text-on-primary shadow-sm" id="tab-token" onclick="switchWebSearchTab('token')" type="button">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">pin</span>
               <span>ٹوکن نمبر</span>
             </button>
-            <button class="min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-voice" onclick="switchWebSearchTab('voice')" type="button">
-              <span class="material-symbols-outlined text-[20px]">mic</span>
+            <button role="tab" aria-selected="false" aria-label="آواز کے ذریعے تلاش (Search by Voice)" class="track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-voice" onclick="switchWebSearchTab('voice')" type="button">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mic</span>
               <span>آواز سے تلاش</span>
             </button>
-            <button class="min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-cnic" onclick="switchWebSearchTab('cnic')" type="button">
-              <span class="material-symbols-outlined text-[20px]">badge</span>
+            <button role="tab" aria-selected="false" aria-label="شناختی کارڈ کے ذریعے تلاش (Search by CNIC)" class="track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-cnic" onclick="switchWebSearchTab('cnic')" type="button">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">badge</span>
               <span>شناختی کارڈ</span>
             </button>
-            <button class="min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-qr" onclick="switchWebSearchTab('qr')" type="button">
-              <span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+            <button role="tab" aria-selected="false" aria-label="رسید اسکین کے ذریعے تلاش (Search by QR Receipt)" class="track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high" id="tab-qr" onclick="switchWebSearchTab('qr')" type="button">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">qr_code_scanner</span>
               <span>رسید اسکین</span>
             </button>
           </div>
@@ -139,13 +149,14 @@
           <div class="flex flex-col gap-3" id="view-token">
             <div class="flex flex-col sm:flex-row gap-3 items-stretch">
               <div class="relative flex-1">
+                <label for="tracking-token-input" class="sr-only">شکایت ٹوکن نمبر یا شناختی کارڈ (Complaint token number or CNIC)</label>
                 <input class="w-full h-14 px-4 rounded-xl bg-surface-container-low font-mono font-bold text-left focus:outline-none focus:bg-surface-container-lowest focus:border-primary border border-slate-200" id="tracking-token-input" placeholder="PK-94021" type="text" value="PK-94021"/>
-                <button aria-label="بول کر ٹوکن درج کریں" class="absolute left-2 top-2 h-10 w-10 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors" onclick="dictateToken()" type="button">
-                  <span class="material-symbols-outlined text-[22px]">mic</span>
+                <button aria-label="بول کر ٹوکن درج کریں (Dictate token number)" class="absolute left-2 top-2 h-10 w-10 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors" onclick="dictateToken()" type="button">
+                  <span class="material-symbols-outlined text-[22px]" aria-hidden="true">mic</span>
                 </button>
               </div>
-              <button class="min-h-[56px] px-8 rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold hover:bg-primary-container shadow-md flex items-center justify-center gap-2 transition-transform active:scale-95" onclick="executeSearch()" type="button">
-                <span class="material-symbols-outlined text-[24px]">search</span>
+              <button aria-label="شکایت کا حال تلاش کریں (Search and track complaint status)" class="min-h-[56px] px-8 rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold hover:bg-primary-container shadow-md flex items-center justify-center gap-2 transition-transform active:scale-95" onclick="executeSearch()" type="button">
+                <span class="material-symbols-outlined text-[24px]" aria-hidden="true">search</span>
                 <span>حصولِ معلومات (Track Status)</span>
               </button>
             </div>
@@ -154,8 +165,8 @@
           <!-- Tab View: Voice Search -->
           <div class="hidden flex-col gap-3 bg-surface-container-low p-5 rounded-xl border border-slate-200" id="view-voice">
             <div class="flex flex-col items-center text-center gap-2 py-2">
-              <button onclick="startVoiceQueryTab()" class="studio-mic-btn w-16 h-16 rounded-full text-white flex items-center justify-center shadow-lg active:scale-90 transition-transform cursor-pointer border-2 border-amber-300/50">
-                <span class="material-symbols-outlined text-[36px] animate-pulse">mic</span>
+              <button id="voice-tab-mic-btn" type="button" onclick="startVoiceQueryTab()" aria-label="آواز سے شکایت تلاش کرنے کے لیے مائیک دبائیں (Activate voice complaint lookup)" class="studio-mic-btn w-16 h-16 rounded-full text-white flex items-center justify-center shadow-lg active:scale-90 transition-transform cursor-pointer border-2 border-amber-300/50">
+                <span class="material-symbols-outlined text-[36px] animate-pulse" aria-hidden="true">mic</span>
               </button>
               <p class="font-bold text-on-surface text-sm">آواز سے تلاش کریں (Conversational Voice Query)</p>
               <p class="text-xs text-on-surface-variant max-w-md">مثال بولیں: "میری پانی والی شکایت کیا بنی؟" یا "سڑک کی مرمت کا ٹوکن چیک کرو"</p>
@@ -185,16 +196,34 @@
       const token = urlParams.get("token") || "PK-94021";
       document.getElementById("tracking-token-input").value = token;
       renderCaseDetail(token);
+
+      const tabs = Array.from(document.querySelectorAll(".track-search-tab"));
+      tabs.forEach((tabBtn, idx) => {
+        tabBtn.addEventListener("keydown", (e) => {
+          const isRtl = document.documentElement.dir === "rtl";
+          let nextIdx = -1;
+          if (e.key === "ArrowRight") nextIdx = isRtl ? idx - 1 : idx + 1;
+          if (e.key === "ArrowLeft") nextIdx = isRtl ? idx + 1 : idx - 1;
+          if (e.key === "Home") nextIdx = 0;
+          if (e.key === "End") nextIdx = tabs.length - 1;
+          if (nextIdx >= 0 && nextIdx < tabs.length) {
+            e.preventDefault();
+            tabs[nextIdx].focus();
+            tabs[nextIdx].click();
+          }
+        });
+      });
     });
 
     function switchWebSearchTab(tab) {
       ["token", "voice", "cnic", "qr"].forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
         if (btn) {
+          btn.setAttribute("aria-selected", t === tab ? "true" : "false");
           if (t === tab) {
-            btn.className = "min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 bg-primary text-on-primary shadow-sm";
+            btn.className = "track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 bg-primary text-on-primary shadow-sm";
           } else {
-            btn.className = "min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high";
+            btn.className = "track-search-tab min-h-[48px] rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-1.5 text-on-surface hover:bg-surface-container-high";
           }
         }
       });
@@ -229,7 +258,7 @@
       AppSpeech.startListening((transcript, isFinal) => {
         if (isFinal) {
           AppAIRouter.processQuery(transcript).then(res => {
-            AppSpeech.speak(res.responseUrdu);
+            WebPortal.speakLocalized(res.responseUrdu, res.responseEnglish || res.responseUrdu);
             if (res.extractedData && res.extractedData.token) {
               document.getElementById("tracking-token-input").value = res.extractedData.token;
               renderCaseDetail(res.extractedData.token);
@@ -265,8 +294,8 @@
               </span>
             </div>
 
-            <button onclick="speakCase('${complaint.token}')" class="min-h-[46px] px-5 rounded-xl bg-secondary text-on-secondary flex items-center gap-2 font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
-              <span class="material-symbols-outlined text-[22px]">volume_up</span>
+            <button type="button" onclick="speakCase('${complaint.token}')" aria-label="${isEn ? `Listen to status audio for complaint ${complaint.token}` : `شکایت نمبر ${complaint.token} کا حال آواز میں سنیں`}" class="min-h-[46px] px-5 rounded-xl bg-secondary text-on-secondary flex items-center gap-2 font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">volume_up</span>
               <span>${isEn ? "Listen Status Audio" : "احوال سنیں (Listen Audio)"}</span>
             </button>
           </div>
@@ -298,8 +327,8 @@
                   <span class="text-[11px] font-mono text-on-surface-variant">14 سیکنڈز • تصدیق شدہ</span>
                 </div>
                 <div class="bg-surface-container-lowest p-3 rounded-xl border border-slate-100 flex items-center justify-between">
-                  <button onclick="speakCase('${complaint.token}')" class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 hover:bg-primary-container transition-colors shadow-sm">
-                    <span class="material-symbols-outlined text-[20px]">play_arrow</span>
+                  <button type="button" onclick="speakCase('${complaint.token}')" aria-label="${isEn ? `Play citizen voice note for complaint ${complaint.token}` : `شکایت نمبر ${complaint.token} کا صوتی پیغام چلائیں`}" class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 hover:bg-primary-container transition-colors shadow-sm">
+                    <span class="material-symbols-outlined text-[20px]" aria-hidden="true">play_arrow</span>
                   </button>
                   <div class="flex items-center gap-1 flex-1 mx-3 h-5">
                     <span class="w-1 bg-primary rounded-full h-3"></span>
@@ -360,7 +389,10 @@
       const list = AppSync.getComplaints();
       const c = list.find(x => x.token.toLowerCase() === token.toLowerCase()) || list[0];
       if (c) {
-        AppSpeech.speak(`شکایت نمبر ${token.replace('PK-', 'پی کے ')}۔ مسئلہ: ${c.titleUrdu}۔ موجودہ سٹیٹس: ${c.statusUrdu}۔ فیلڈ ٹیم: ${c.assignedTeam}۔ جلد از جلد مسئلہ حل کرنے کا حکم جاری کیا گیا ہے۔`);
+        WebPortal.speakLocalized(
+          `شکایت نمبر ${token.replace('PK-', 'پی کے ')}۔ مسئلہ: ${c.titleUrdu}۔ موجودہ سٹیٹس: ${c.statusUrdu}۔ فیلڈ ٹیم: ${c.assignedTeam}۔ جلد از جلد مسئلہ حل کرنے کا حکم جاری کیا گیا ہے۔`,
+          `Complaint token ${token}. Issue: ${c.titleEnglish || c.titleUrdu}. Current status: ${c.status || 'In Progress'}. Assigned team: ${c.assignedTeam}.`
+        );
       }
     }
   </script>

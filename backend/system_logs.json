@@ -52,7 +52,7 @@
     "details": {
       "provider": "google-free",
       "model": "gemini-2.0-flash-exp:free",
-      "costUSD": 0.0,
+      "costUSD": 0,
       "latencyMs": 480,
       "predictedCategory": "water_supply",
       "urgency": "high"
@@ -115,7 +115,11 @@
     "details": {
       "device": "Android MobileApp (PWA)",
       "batchSize": 3,
-      "tokens": ["PK-84011", "PK-84012", "PK-84013"],
+      "tokens": [
+        "PK-84011",
+        "PK-84012",
+        "PK-84013"
+      ],
       "networkType": "2G/EDGE (Simulated)"
     },
     "ip": "192.168.1.112",
@@ -143,10 +147,1641 @@
     "category": "SYSTEM",
     "message": "Saraiki (skr-PK) and Hindko (hnd-PK) dialect lexicon bundles loaded successfully into ASR & AI triage pipeline.",
     "details": {
-      "dialectsLoaded": ["ur-PK", "pa-PK", "poth-PK", "skr-PK", "hnd-PK", "en-US"],
+      "dialectsLoaded": [
+        "ur-PK",
+        "pa-PK",
+        "poth-PK",
+        "skr-PK",
+        "hnd-PK",
+        "en-US"
+      ],
       "lexiconEntries": 1420
     },
     "ip": "127.0.0.1",
     "source": "server"
+  },
+  {
+    "id": "log-srv-1795553787314",
+    "timestamp": "2026-11-24T20:56:27.314Z",
+    "level": "INFO",
+    "category": "SYSTEM",
+    "message": "Awami Voice Civic Backend listening on http://0.0.0.0:3000",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553878843",
+    "timestamp": "2026-11-24T20:57:58.843Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 6
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553878867",
+    "timestamp": "2026-11-24T20:57:58.867Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-007)",
+    "details": {
+      "id": "USR-007",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553878873",
+    "timestamp": "2026-11-24T20:57:58.873Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553878875",
+    "timestamp": "2026-11-24T20:57:58.875Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 2
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553878881",
+    "timestamp": "2026-11-24T20:57:58.881Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553882044",
+    "timestamp": "2026-11-24T20:58:02.044Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 3163ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 3163
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553882051",
+    "timestamp": "2026-11-24T20:58:02.051Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795553882071",
+    "timestamp": "2026-11-24T20:58:02.071Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795553939854-062",
+    "timestamp": "2026-11-24T20:58:59.854Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795553969213",
+    "timestamp": "2026-11-24T20:59:29.213Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 7
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553969221",
+    "timestamp": "2026-11-24T20:59:29.221Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-008)",
+    "details": {
+      "id": "USR-008",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553969226",
+    "timestamp": "2026-11-24T20:59:29.226Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553969227",
+    "timestamp": "2026-11-24T20:59:29.227Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553969233",
+    "timestamp": "2026-11-24T20:59:29.233Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553971992",
+    "timestamp": "2026-11-24T20:59:31.992Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2759ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2759
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795553971997",
+    "timestamp": "2026-11-24T20:59:31.997Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795553972012",
+    "timestamp": "2026-11-24T20:59:32.012Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554025019-070",
+    "timestamp": "2026-11-24T21:00:25.019Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554101121",
+    "timestamp": "2026-11-24T21:01:41.121Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 8
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554101129",
+    "timestamp": "2026-11-24T21:01:41.129Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-009)",
+    "details": {
+      "id": "USR-009",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554101134",
+    "timestamp": "2026-11-24T21:01:41.134Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554101134",
+    "timestamp": "2026-11-24T21:01:41.134Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554101139",
+    "timestamp": "2026-11-24T21:01:41.139Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554103923",
+    "timestamp": "2026-11-24T21:01:43.923Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2784ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2784
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554103927",
+    "timestamp": "2026-11-24T21:01:43.927Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554103940",
+    "timestamp": "2026-11-24T21:01:43.940Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554183775",
+    "timestamp": "2026-11-24T21:03:03.775Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 9
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554183783",
+    "timestamp": "2026-11-24T21:03:03.783Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-010)",
+    "details": {
+      "id": "USR-010",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554183789",
+    "timestamp": "2026-11-24T21:03:03.789Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554183789",
+    "timestamp": "2026-11-24T21:03:03.789Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554183795",
+    "timestamp": "2026-11-24T21:03:03.795Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554185480",
+    "timestamp": "2026-11-24T21:03:05.480Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 1684ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 1684
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554185484",
+    "timestamp": "2026-11-24T21:03:05.484Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554185497",
+    "timestamp": "2026-11-24T21:03:05.497Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554234983-304",
+    "timestamp": "2026-11-24T21:03:54.983Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554292885",
+    "timestamp": "2026-11-24T21:04:52.885Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 10
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554292896",
+    "timestamp": "2026-11-24T21:04:52.896Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-011)",
+    "details": {
+      "id": "USR-011",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554292901",
+    "timestamp": "2026-11-24T21:04:52.901Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554292902",
+    "timestamp": "2026-11-24T21:04:52.902Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554292907",
+    "timestamp": "2026-11-24T21:04:52.907Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554295700",
+    "timestamp": "2026-11-24T21:04:55.700Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2793ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2793
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554295705",
+    "timestamp": "2026-11-24T21:04:55.705Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554295716",
+    "timestamp": "2026-11-24T21:04:55.716Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554345992-510",
+    "timestamp": "2026-11-24T21:05:45.992Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554394787",
+    "timestamp": "2026-11-24T21:06:34.787Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 11
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554394796",
+    "timestamp": "2026-11-24T21:06:34.796Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-012)",
+    "details": {
+      "id": "USR-012",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554394803",
+    "timestamp": "2026-11-24T21:06:34.803Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554394803",
+    "timestamp": "2026-11-24T21:06:34.803Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554394808",
+    "timestamp": "2026-11-24T21:06:34.808Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554396954",
+    "timestamp": "2026-11-24T21:06:36.954Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2145ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2145
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554396960",
+    "timestamp": "2026-11-24T21:06:36.960Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554396972",
+    "timestamp": "2026-11-24T21:06:36.972Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554447698-143",
+    "timestamp": "2026-11-24T21:07:27.698Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554501856",
+    "timestamp": "2026-11-24T21:08:21.856Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554511955",
+    "timestamp": "2026-11-24T21:08:31.955Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [roads_infrastructure] in 10099ms",
+    "details": {
+      "category": "roads_infrastructure",
+      "modelUsed": "Awami Deterministic & Verified Knowledge Base (Tier 5)",
+      "costUSD": 0,
+      "latencyMs": 10099
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554518432",
+    "timestamp": "2026-11-24T21:08:38.432Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554518433",
+    "timestamp": "2026-11-24T21:08:38.433Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [roads_infrastructure] in 1ms",
+    "details": {
+      "category": "roads_infrastructure",
+      "modelUsed": "Awami Deterministic & Verified Knowledge Base (Tier 5)",
+      "costUSD": 0,
+      "latencyMs": 1
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548933",
+    "timestamp": "2026-11-24T21:09:08.933Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 12
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548944",
+    "timestamp": "2026-11-24T21:09:08.944Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-013)",
+    "details": {
+      "id": "USR-013",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548950",
+    "timestamp": "2026-11-24T21:09:08.950Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548951",
+    "timestamp": "2026-11-24T21:09:08.951Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548958",
+    "timestamp": "2026-11-24T21:09:08.958Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548959",
+    "timestamp": "2026-11-24T21:09:08.959Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [roads_infrastructure] in 0ms",
+    "details": {
+      "category": "roads_infrastructure",
+      "modelUsed": "Awami Deterministic & Verified Knowledge Base (Tier 5)",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554548964",
+    "timestamp": "2026-11-24T21:09:08.964Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554548984",
+    "timestamp": "2026-11-24T21:09:08.984Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554598038-888",
+    "timestamp": "2026-11-24T21:09:58.038Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554651174",
+    "timestamp": "2026-11-24T21:10:51.174Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 13
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554651182",
+    "timestamp": "2026-11-24T21:10:51.182Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-014)",
+    "details": {
+      "id": "USR-014",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554651187",
+    "timestamp": "2026-11-24T21:10:51.187Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554651188",
+    "timestamp": "2026-11-24T21:10:51.188Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554651192",
+    "timestamp": "2026-11-24T21:10:51.192Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554653685",
+    "timestamp": "2026-11-24T21:10:53.685Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2492ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2492
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554653690",
+    "timestamp": "2026-11-24T21:10:53.690Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554653701",
+    "timestamp": "2026-11-24T21:10:53.701Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554703965-978",
+    "timestamp": "2026-11-24T21:11:43.965Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554762145",
+    "timestamp": "2026-11-24T21:12:42.145Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 14
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554762156",
+    "timestamp": "2026-11-24T21:12:42.156Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-015)",
+    "details": {
+      "id": "USR-015",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554762160",
+    "timestamp": "2026-11-24T21:12:42.160Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554762161",
+    "timestamp": "2026-11-24T21:12:42.161Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554762165",
+    "timestamp": "2026-11-24T21:12:42.165Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554766108",
+    "timestamp": "2026-11-24T21:12:46.108Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 3942ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 3942
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554766118",
+    "timestamp": "2026-11-24T21:12:46.118Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554766150",
+    "timestamp": "2026-11-24T21:12:46.150Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554816329-689",
+    "timestamp": "2026-11-24T21:13:36.329Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554842384",
+    "timestamp": "2026-11-24T21:14:02.384Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554852471",
+    "timestamp": "2026-11-24T21:14:12.471Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [roads_infrastructure] in 10087ms",
+    "details": {
+      "category": "roads_infrastructure",
+      "modelUsed": "Awami Deterministic & Verified Knowledge Base (Tier 5)",
+      "costUSD": 0,
+      "latencyMs": 10087
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554870278",
+    "timestamp": "2026-11-24T21:14:30.278Z",
+    "level": "INFO",
+    "category": "SYSTEM",
+    "message": "Awami Voice Civic Backend listening on http://0.0.0.0:3000",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554875168",
+    "timestamp": "2026-11-24T21:14:35.168Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 15
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554875188",
+    "timestamp": "2026-11-24T21:14:35.188Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-016)",
+    "details": {
+      "id": "USR-016",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554875194",
+    "timestamp": "2026-11-24T21:14:35.194Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554875195",
+    "timestamp": "2026-11-24T21:14:35.195Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554875202",
+    "timestamp": "2026-11-24T21:14:35.202Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554877383",
+    "timestamp": "2026-11-24T21:14:37.383Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 2181ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 2181
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795554877389",
+    "timestamp": "2026-11-24T21:14:37.389Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795554877411",
+    "timestamp": "2026-11-24T21:14:37.411Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795554927375-910",
+    "timestamp": "2026-11-24T21:15:27.375Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795555076370",
+    "timestamp": "2026-11-24T21:17:56.370Z",
+    "level": "INFO",
+    "category": "SYSTEM",
+    "message": "Awami Voice Civic Backend listening on http://0.0.0.0:3000",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555080734",
+    "timestamp": "2026-11-24T21:18:00.734Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 16
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555080755",
+    "timestamp": "2026-11-24T21:18:00.755Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-017)",
+    "details": {
+      "id": "USR-017",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555080761",
+    "timestamp": "2026-11-24T21:18:00.761Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555080762",
+    "timestamp": "2026-11-24T21:18:00.763Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555080768",
+    "timestamp": "2026-11-24T21:18:00.768Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555088913",
+    "timestamp": "2026-11-24T21:18:08.913Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 8145ms",
+    "details": {
+      "modelUsed": "openrouter/free",
+      "costUSD": 0,
+      "latencyMs": 8145
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555094599",
+    "timestamp": "2026-11-24T21:18:14.599Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "User list accessed by admin client from 127.0.0.1",
+    "details": {
+      "count": 17
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555094610",
+    "timestamp": "2026-11-24T21:18:14.610Z",
+    "level": "AUDIT",
+    "category": "SECURITY",
+    "message": "New user registered: QA Smoke Citizen (USR-018)",
+    "details": {
+      "id": "USR-018",
+      "role": "citizen"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555094616",
+    "timestamp": "2026-11-24T21:18:14.616Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 34,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555094617",
+    "timestamp": "2026-11-24T21:18:14.617Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [general] in 0ms",
+    "details": {
+      "modelUsed": "Awami Deterministic & RAG Engine",
+      "costUSD": 0,
+      "latencyMs": 0
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555094623",
+    "timestamp": "2026-11-24T21:18:14.623Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Incoming voice text query for dialect [ur-PK]",
+    "details": {
+      "textLength": 37,
+      "dialect": "ur-PK",
+      "hasApiKey": false
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555099433",
+    "timestamp": "2026-11-24T21:18:19.433Z",
+    "level": "INFO",
+    "category": "AI_ROUTER",
+    "message": "Voice query triaged to category [roads_infrastructure] in 4810ms",
+    "details": {
+      "category": "roads_infrastructure",
+      "modelUsed": "Awami Deterministic & Verified Knowledge Base (Tier 5)",
+      "costUSD": 0,
+      "latencyMs": 4810
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "log-srv-1795555099439",
+    "timestamp": "2026-11-24T21:18:19.439Z",
+    "level": "INFO",
+    "category": "STORAGE_SYNC",
+    "message": "Offline complaint queue sync received 1 items",
+    "details": {
+      "batchCount": 1,
+      "clientIp": "127.0.0.1"
+    },
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "level": "INFO",
+    "category": "AUDIT",
+    "message": "QA suite test log",
+    "details": {
+      "cnic": "37405-*******-1"
+    },
+    "ip": "127.0.0.1",
+    "source": "client_relay"
+  },
+  {
+    "id": "log-srv-1795555099458",
+    "timestamp": "2026-11-24T21:18:19.458Z",
+    "level": "ERROR",
+    "category": "SYSTEM",
+    "message": "Malformed JSON POST payload: Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+    "details": {},
+    "ip": "127.0.0.1",
+    "source": "server"
+  },
+  {
+    "id": "LOG-1795555151452-011",
+    "timestamp": "2026-11-24T21:19:11.452Z",
+    "level": "ERROR",
+    "category": "AI_ROUTER",
+    "message": "Simulated Upstream 429 Rate Limit on free AI Gateway. Switching automatically to Tier 4 Deterministic Rule Engine.",
+    "details": {
+      "simulation": true,
+      "circuitStatus": "TRIPPED_TO_OFFLINE",
+      "errorReason": "HTTP 429 Too Many Requests (Simulated)",
+      "zeroPaidPolicy": "Preserved - 0 USD cost"
+    },
+    "errorStack": null,
+    "url": "/webApp/admin/index.html",
+    "ip": "127.0.0.1",
+    "source": "client_relay"
   }
 ]

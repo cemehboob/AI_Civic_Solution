@@ -43,30 +43,31 @@
   </script>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
+  <a href="#main-content" class="skip-link">مرکزی مواد پر جائیں (Skip to main content)</a>
   <!-- Header -->
-  <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-    <div class="h-20 w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
-          <span class="material-symbols-outlined text-[30px]">account_balance</span>
+  <header class="sticky top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)] border-b border-slate-200">
+    <div class="min-h-[72px] py-2.5 w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+        <a href="index.html" aria-label="عوامی آواز مرکزی صفحہ | Awami Voice Home" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary shrink-0">
+          <span class="material-symbols-outlined text-[24px] sm:text-[30px]" aria-hidden="true">account_balance</span>
         </a>
-        <div class="flex flex-col">
-          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[22px]">عوامی آواز | Awami Voice</span>
-          <span class="font-label-md text-xs text-on-surface-variant">شکایت کا اندراج بذریعہ آواز</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-primary tracking-tight text-base sm:text-[22px] leading-snug truncate">عوامی آواز | Awami Voice</span>
+          <span class="font-label-md text-[11px] sm:text-xs text-on-surface-variant leading-snug truncate">شکایت کا اندراج بذریعہ آواز</span>
         </div>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
         <a href="index.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">مرکزی صفحہ (Home)</a>
-        <a href="register.html" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">شکایت درج کروائیں (Register)</a>
+        <a href="register.html" aria-current="page" class="min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm">شکایت درج کروائیں (Register)</a>
         <a href="track.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">شکایات کا حال (Track)</a>
         <a href="healthcare.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">ہسپتال و صحت (Healthcare)</a>
         <a href="subsidies.html" class="min-h-[48px] px-4 py-2 rounded-lg font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center">امداد و وظائف (Subsidies)</a>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <button id="lang-toggle-btn" onclick="WebPortal.toggleLanguage()" class="min-h-[40px] px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
-          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="lang-toggle-btn" type="button" onclick="WebPortal.toggleLanguage()" aria-pressed="false" aria-label="انگریزی زبان میں تبدیل کریں (Switch language to English)" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3 py-1 rounded-full bg-primary-fixed/40 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+          <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary text-white px-1.5 py-0.5 rounded shadow-sm" aria-hidden="true">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
             <span class="font-urdu leading-none text-[11px]">اردو</span>
@@ -74,17 +75,26 @@
           <span id="top-lang-text">English</span>
         </button>
 
-        <a href="index.html" class="min-h-[44px] px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high">
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-          <span>واپسی (Back)</span>
+        <a href="index.html" aria-label="مرکزی صفحہ پر واپس جائیں (Back to Home)" class="min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center gap-1 hover:bg-surface-container-high whitespace-nowrap shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+          <span class="hidden sm:inline">واپسی (Back)</span>
+          <span class="sm:hidden">واپسی</span>
         </a>
       </div>
     </div>
+    <!-- Mobile Compact Navigation Links -->
+    <nav class="flex lg:hidden items-center gap-1.5 px-3 pb-2.5 overflow-x-auto no-scrollbar border-t border-slate-100 text-xs font-bold" aria-label="Mobile navigation">
+      <a href="index.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">مرکزی صفحہ (Home)</a>
+      <a href="register.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-primary-container text-on-primary whitespace-nowrap shrink-0 flex items-center" aria-current="page">شکایت درج (Register)</a>
+      <a href="track.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ٹریکنگ (Track)</a>
+      <a href="healthcare.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">ہسپتال (Healthcare)</a>
+      <a href="subsidies.html" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high whitespace-nowrap shrink-0 flex items-center">امداد (Subsidies)</a>
+    </nav>
   </header>
 
   <!-- Main Viewport -->
-  <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
+  <main id="main-content" tabindex="-1" class="w-full pt-5 sm:pt-8 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 py-4 sm:py-6">
       <div class="flex flex-col w-full gap-6">
         
         <!-- Audio Assistance Banner -->
@@ -98,8 +108,8 @@
               <span class="font-urdu-body-md text-xs text-on-surface-variant">اگر آپ پڑھ نہیں سکتے تو نارنجی رنگ کا سپیکر بٹن دبائیں اور تمام تفصیل سنیں</span>
             </div>
           </div>
-          <button class="min-h-[48px] px-5 rounded-xl bg-secondary text-on-secondary font-urdu-headline-md font-bold flex items-center justify-center gap-2 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-md" onclick="AppSpeech.speak('شکایت درج کروانے کے لیے بڑا گول مائیک کا بٹن دبائیں اور اپنا مسئلہ بولیں۔ سسٹم خودکار طریقے سے آپ کی تفصیل لکھ لے گا۔')" type="button">
-            <span class="material-symbols-outlined text-[24px]">volume_up</span>
+          <button aria-label="صفحہ کی صوتی رہنمائی سنیں (Listen to page audio instructions)" class="min-h-[48px] px-5 rounded-xl bg-secondary text-on-secondary font-urdu-headline-md font-bold flex items-center justify-center gap-2 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-md" onclick="WebPortal.speakLocalized('شکایت درج کروانے کے لیے بڑا گول مائیک کا بٹن دبائیں اور اپنا مسئلہ بولیں۔ سسٹم خودکار طریقے سے آپ کی تفصیل لکھ لے گا۔', 'To register a complaint, press the big round microphone button and speak your issue. The system will automatically transcribe and fill in the details for you.')" type="button">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">volume_up</span>
             <span>مکمل صفحہ سنیں (Listen All)</span>
           </button>
         </div>
@@ -155,18 +165,19 @@
 
               <!-- Central Recording Orb -->
               <div class="flex flex-col items-center justify-center py-6 relative">
-                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
                   <div class="w-44 h-44 rounded-full border-2 border-rose-500/30 studio-mic-ring-1"></div>
                   <div class="w-32 h-32 rounded-full border-2 border-orange-500/40 studio-mic-ring-2"></div>
                 </div>
-                <button class="studio-mic-btn relative z-10 w-28 h-28 rounded-full text-white flex flex-col items-center justify-center shadow-xl hover:scale-105 transition-all active:scale-95 cursor-pointer border-2 border-amber-300/50" id="web-record-btn" onclick="toggleWebVoiceRecord()" type="button">
-                  <span class="material-symbols-outlined text-[48px] animate-pulse" id="web-record-icon">mic</span>
+                <button aria-label="شکایت ریکارڈ کرنے کے لیے مائیکروفون دبائیں (Press microphone to record grievance)" aria-pressed="false" class="studio-mic-btn relative z-10 w-28 h-28 rounded-full text-white flex flex-col items-center justify-center shadow-xl hover:scale-105 transition-all active:scale-95 cursor-pointer border-2 border-amber-300/50" id="web-record-btn" onclick="toggleWebVoiceRecord()" type="button">
+                  <span class="material-symbols-outlined text-[48px] animate-pulse" id="web-record-icon" aria-hidden="true">mic</span>
                   <span class="font-urdu-headline-md text-xs font-bold mt-1" id="web-record-text">بولیں (Speak)</span>
                 </button>
               </div>
+              <p id="web-record-status" role="status" aria-live="polite" class="text-xs text-center font-bold text-on-surface-variant min-h-[18px]"></p>
 
               <!-- Animated Frequency Waveform -->
-              <div class="flex items-center justify-center gap-1.5 h-12 px-4 bg-surface-container-low rounded-xl">
+              <div class="flex items-center justify-center gap-1.5 h-12 px-4 bg-surface-container-low rounded-xl" aria-hidden="true">
                 <span class="w-1.5 bg-primary rounded-full animate-bounce h-4"></span>
                 <span class="w-1.5 bg-primary rounded-full animate-bounce h-8 [animation-delay:0.15s]"></span>
                 <span class="w-1.5 bg-primary rounded-full animate-bounce h-10 [animation-delay:0.3s]"></span>
@@ -180,23 +191,23 @@
               <!-- Spoken Transcript Box -->
               <div class="flex flex-col gap-1.5">
                 <div class="flex items-center justify-between">
-                  <label class="font-bold text-sm text-on-surface flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-primary text-[20px]">record_voice_over</span>
+                  <span class="font-bold text-sm text-on-surface flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">record_voice_over</span>
                     <span>آپ کی کہی گئی بات (Spoken Transcript):</span>
-                  </label>
-                  <span class="text-xs text-on-surface-variant font-mono">درستگی: 98% (Whisper v3)</span>
+                  </span>
+                  <span class="text-xs text-on-surface-variant font-mono">Gemini 3.5 Transcribe</span>
                 </div>
                 <div class="bg-surface-container-low p-4 rounded-xl min-h-[110px] flex flex-col justify-between border border-slate-200">
-                  <p class="font-urdu-body-lg text-on-surface leading-loose text-right" id="web-transcript-display">
+                  <p class="font-urdu-body-lg text-on-surface leading-loose text-right" id="web-transcript-display" aria-live="polite">
                     "ہمارے گاؤں چک 18 میں پینے کے پانی کا فلٹر پچھلے دو ہفتے سے بند ہے اور گندا پانی آرہا ہے، بچے بیمار ہو رہے ہیں مہربانی کر کے جلدی ٹھیک کروائیں۔"
                   </p>
                   <div class="flex items-center justify-between pt-2 border-t border-slate-200 text-xs">
                     <span class="text-primary font-bold flex items-center gap-1">
-                      <span class="material-symbols-outlined text-[16px]">check</span>
+                      <span class="material-symbols-outlined text-[16px]" aria-hidden="true">check</span>
                       <span>آواز صاف سنی گئی (Voice Captured)</span>
                     </span>
-                    <button onclick="playBackWebTranscript()" class="text-secondary font-bold flex items-center gap-1 hover:underline">
-                      <span class="material-symbols-outlined text-[16px]">play_circle</span>
+                    <button type="button" onclick="playBackWebTranscript()" aria-label="ریکارڈ کی گئی تحریر آواز میں دوبارہ سنیں (Play back spoken transcript)" class="text-secondary font-bold flex items-center gap-1 hover:underline">
+                      <span class="material-symbols-outlined text-[16px]" aria-hidden="true">play_circle</span>
                       <span>دوبارہ سنیں</span>
                     </button>
                   </div>
@@ -216,10 +227,10 @@
                 <span class="px-2.5 py-1 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">صوتی معاونت آن</span>
               </div>
 
-              <form onsubmit="handleFormSubmission(event)" class="flex flex-col gap-3.5">
+              <form onsubmit="handleFormSubmission(event)" class="flex flex-col gap-3.5" aria-label="شکایت اندراج فارم (Complaint registration form)">
                 <!-- Field 1: Category -->
                 <div class="flex flex-col gap-1">
-                  <label class="font-bold text-xs text-on-surface">شکایت کی نوعیت (Category):</label>
+                  <label for="form-category" class="font-bold text-xs text-on-surface">شکایت کی نوعیت (Category):</label>
                   <div class="relative">
                     <select id="form-category" class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold text-sm focus:outline-none focus:border-primary">
                       <option value="water_supply">پانی اور فلٹریشن پلانٹ (Water Supply & Filtration)</option>
@@ -233,11 +244,11 @@
 
                 <!-- Field 2: Complainant Name (with voice dictation button) -->
                 <div class="flex flex-col gap-1">
-                  <label class="font-bold text-xs text-on-surface">درخواست گزار کا نام (Your Name):</label>
+                  <label for="form-name" class="font-bold text-xs text-on-surface">درخواست گزار کا نام (Your Name):</label>
                   <div class="relative flex items-center">
                     <input type="text" id="form-name" value="محمد افضل (Muhammad Afzal)" required class="w-full h-12 pr-4 pl-12 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold text-sm focus:outline-none focus:border-primary"/>
-                    <button type="button" onclick="dictateField('form-name')" aria-label="Dictate name" class="absolute left-1.5 w-9 h-9 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors">
-                      <span class="material-symbols-outlined text-[20px]">mic</span>
+                    <button type="button" onclick="dictateField('form-name')" aria-label="درخواست گزار کا نام بول کر درج کریں (Dictate complainant name)" class="absolute left-1.5 w-9 h-9 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors">
+                      <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mic</span>
                     </button>
                   </div>
                 </div>
@@ -245,35 +256,43 @@
                 <!-- Field 3: CNIC & Mobile -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div class="flex flex-col gap-1">
-                    <label class="font-bold text-xs text-on-surface">شناختی کارڈ (CNIC):</label>
+                    <label for="form-cnic" class="font-bold text-xs text-on-surface">شناختی کارڈ (CNIC):</label>
                     <input type="text" id="form-cnic" value="37405-1849201-3" class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-mono font-bold text-sm focus:outline-none focus:border-primary"/>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <label class="font-bold text-xs text-on-surface">موبائل فون نمبر:</label>
+                    <label for="form-phone" class="font-bold text-xs text-on-surface">موبائل فون نمبر:</label>
                     <input type="tel" id="form-phone" value="0300-5849120" required class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-mono font-bold text-sm focus:outline-none focus:border-primary"/>
                   </div>
                 </div>
 
                 <!-- Field 4: Location / Village -->
                 <div class="flex flex-col gap-1">
-                  <label class="font-bold text-xs text-on-surface">جائے وقوعہ / گاؤں / گلی (Location):</label>
-                  <div class="relative flex items-center">
-                    <input type="text" id="form-location" value="چک نمبر 18 ماندرہ روڈ، تحصیل گوجر خان، راولپنڈی" required class="w-full h-12 pr-4 pl-12 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold text-sm focus:outline-none focus:border-primary"/>
-                    <button type="button" onclick="dictateField('form-location')" aria-label="Dictate location" class="absolute left-1.5 w-9 h-9 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors">
-                      <span class="material-symbols-outlined text-[20px]">mic</span>
+                  <label for="form-location" class="font-bold text-xs text-on-surface">جائے وقوعہ / گاؤں / گلی (Location):</label>
+                  <div class="relative flex items-center gap-2">
+                    <div class="relative flex-1 flex items-center">
+                      <input type="text" id="form-location" value="چک نمبر 18 ماندرہ روڈ، تحصیل گوجر خان، راولپنڈی" required class="w-full h-12 pr-4 pl-12 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-bold text-sm focus:outline-none focus:border-primary"/>
+                      <button type="button" onclick="dictateField('form-location')" aria-label="جائے وقوعہ بول کر درج کریں (Dictate location)" class="absolute left-1.5 w-9 h-9 rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary flex items-center justify-center text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mic</span>
+                      </button>
+                    </div>
+                    <button id="btn-verify-location-maps" type="button" onclick="verifyLocationWithMaps()" aria-label="گوگل میپس سے مقام کی تصدیق کریں (Verify location with Google Maps)" class="min-h-[48px] px-3.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-bold text-xs flex items-center gap-1.5 border border-primary/20 shrink-0 transition-colors">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">location_on</span>
+                      <span>میپس تصدیق (Verify Maps)</span>
                     </button>
                   </div>
+                  <p id="location-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-2.5 rounded-xl mt-1"></p>
+                  <div id="location-maps-results" aria-live="polite" class="hidden bg-surface-container-low p-3 rounded-xl border border-slate-200 mt-1"></div>
                 </div>
 
                 <!-- Field 5: Details / Voice Note Transcript -->
                 <div class="flex flex-col gap-1">
-                  <label class="font-bold text-xs text-on-surface">مسئلے کی تفصیل (Problem Description):</label>
+                  <label for="form-details" class="font-bold text-xs text-on-surface">مسئلے کی تفصیل (Problem Description):</label>
                   <textarea id="form-details" rows="3" class="w-full p-3 rounded-xl bg-surface-container-low border border-slate-200 text-on-surface font-medium text-sm focus:outline-none focus:border-primary">پینے کے پانی کا فلٹر پچھلے دو ہفتے سے بند ہے، گندا پانی آ رہا ہے اور بچے بیمار ہو رہے ہیں۔ فوری مرمت کروائی جائے۔</textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="min-h-[56px] w-full rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-primary-container active:scale-95 transition-all mt-2">
-                  <span class="material-symbols-outlined text-[24px]">verified</span>
+                <button type="submit" aria-label="شکایت حتمی طور پر جمع کروائیں (Confirm and submit official complaint)" class="min-h-[56px] w-full rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-primary-container active:scale-95 transition-all mt-2">
+                  <span class="material-symbols-outlined text-[24px]" aria-hidden="true">verified</span>
                   <span id="reg-submit-btn-text">شکایت حتمی جمع کروائیں (Confirm & Submit)</span>
                 </button>
               </form>
@@ -305,30 +324,124 @@
       }
     });
 
-    function toggleWebVoiceRecord() {
-      const transcriptEl = document.getElementById("web-transcript-display");
-      const detailsEl = document.getElementById("form-details");
+    let regRecorder = null;
+    let regChunks = [];
+    let regRecording = false;
+
+    function setRecordButtonState(active, statusMsg = "") {
       const recordIcon = document.getElementById("web-record-icon");
       const recordBtn = document.getElementById("web-record-btn");
+      const recordText = document.getElementById("web-record-text");
+      const statusEl = document.getElementById("web-record-status");
+      const isEn = typeof WebPortal !== "undefined" && WebPortal.currentLang === "en";
 
-      if (AppSpeech.isListening) {
-        AppSpeech.stopListening();
-        recordIcon.innerText = "mic";
-        if (recordBtn) recordBtn.classList.remove("is-recording");
+      if (recordIcon) recordIcon.innerText = active ? "hearing" : "mic";
+      if (recordBtn) {
+        recordBtn.classList.toggle("is-recording", active);
+        recordBtn.setAttribute("aria-pressed", active ? "true" : "false");
+        recordBtn.setAttribute(
+          "aria-label",
+          active
+            ? (isEn ? "Stop recording audio" : "آواز ریکارڈنگ بند کریں")
+            : (isEn ? "Press microphone to record grievance" : "شکایت ریکارڈ کرنے کے لیے مائیکروفون دبائیں")
+        );
+      }
+      if (recordText) recordText.innerText = active ? (isEn ? "Listening..." : "سن رہا ہے...") : (isEn ? "Speak" : "بولیں (Speak)");
+      if (statusEl && statusMsg !== null) statusEl.textContent = statusMsg;
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && (regRecording || (typeof AppSpeech !== "undefined" && AppSpeech.isListening))) {
+        if (regRecording && regRecorder && regRecorder.state === "recording") {
+          regRecorder.stop();
+        } else if (typeof AppSpeech !== "undefined" && AppSpeech.isListening) {
+          AppSpeech.stopListening();
+          setRecordButtonState(false, "");
+        }
+      }
+    });
+
+    async function toggleWebVoiceRecord() {
+      const transcriptEl = document.getElementById("web-transcript-display");
+      const detailsEl = document.getElementById("form-details");
+      const isEn = typeof WebPortal !== "undefined" && WebPortal.currentLang === "en";
+      const langCode = isEn ? "en-US" : "ur-PK";
+
+      if (regRecording && regRecorder && regRecorder.state === "recording") {
+        regRecorder.stop();
         return;
       }
 
-      recordIcon.innerText = "hearing";
-      if (recordBtn) recordBtn.classList.add("is-recording");
+      if (AppSpeech.isListening) {
+        AppSpeech.stopListening();
+        setRecordButtonState(false, "");
+        return;
+      }
+
+      if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && typeof MediaRecorder !== "undefined" && typeof WebPortal !== "undefined" && typeof WebPortal.transcribeAudioBlob === "function") {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          regChunks = [];
+          const recorder = new MediaRecorder(stream);
+          regRecorder = recorder;
+          regRecording = true;
+          setRecordButtonState(true, isEn ? "Recording audio... Click mic or press Escape to finish." : "ریکارڈنگ جاری ہے... مکمل کرنے کے لیے دوبارہ دبائیں۔");
+          AppSpeech.playChime("start");
+
+          recorder.ondataavailable = (evt) => {
+            if (evt.data && evt.data.size > 0) regChunks.push(evt.data);
+          };
+
+          recorder.onstop = async () => {
+            stream.getTracks().forEach((t) => t.stop());
+            regRecording = false;
+            setRecordButtonState(false, isEn ? "Transcribing audio with Gemini..." : "آواز کو تحریر میں بدلا جا رہا ہے...");
+            AppSpeech.playChime("stop");
+
+            const mimeType = recorder.mimeType || "audio/webm";
+            const blob = new Blob(regChunks, { type: mimeType });
+            try {
+              const transcript = await WebPortal.transcribeAudioBlob(blob, mimeType, langCode);
+              if (transcript) {
+                if (transcriptEl) transcriptEl.innerText = `"${transcript}"`;
+                if (detailsEl) detailsEl.value = transcript;
+                setRecordButtonState(false, isEn ? "Audio transcribed successfully." : "آواز کامیابی سے تحریر ہو گئی۔");
+                AppAIRouter.processQuery(transcript).then(res => {
+                  if (res.extractedData && res.extractedData.category) {
+                    const catSelect = document.getElementById("form-category");
+                    if (catSelect) catSelect.value = res.extractedData.category;
+                  }
+                });
+              } else {
+                setRecordButtonState(false, isEn ? "No speech detected in recording." : "ریکارڈنگ میں کوئی آواز واضح نہیں تھی۔");
+              }
+            } catch (err) {
+              setRecordButtonState(false, err.message);
+            }
+          };
+
+          recorder.start();
+          setTimeout(() => {
+            if (regRecorder === recorder && recorder.state === "recording") {
+              recorder.stop();
+            }
+          }, 8000);
+          return;
+        } catch (micErr) {
+          regRecording = false;
+          console.warn("MediaRecorder unavailable, falling back to speech engine:", micErr.message);
+        }
+      }
+
+      setRecordButtonState(true, isEn ? "Listening..." : "سن رہا ہے...");
 
       AppSpeech.startListening(
         (transcript, isFinal) => {
-          transcriptEl.innerText = `"${transcript}"`;
-          detailsEl.value = transcript;
+          if (transcriptEl) transcriptEl.innerText = `"${transcript}"`;
+          if (detailsEl) detailsEl.value = transcript;
 
           if (isFinal) {
-            recordIcon.innerText = "mic";
-            if (recordBtn) recordBtn.classList.remove("is-recording");
+            setRecordButtonState(false, "");
             AppAIRouter.processQuery(transcript).then(res => {
               if (res.extractedData && res.extractedData.category) {
                 const catSelect = document.getElementById("form-category");
@@ -339,8 +452,7 @@
         },
         (state) => {
           if (state === "idle") {
-            recordIcon.innerText = "mic";
-            if (recordBtn) recordBtn.classList.remove("is-recording");
+            setRecordButtonState(false, "");
           }
         }
       );
@@ -350,7 +462,7 @@
       const field = document.getElementById(fieldId);
       if (!field) return;
 
-      AppSpeech.speak("براہ کرم بولیں");
+      WebPortal.speakLocalized("براہ کرم بولیں", "Please speak now");
       AppSpeech.startListening((transcript, isFinal) => {
         field.value = transcript;
       });
@@ -359,6 +471,36 @@
     function playBackWebTranscript() {
       const text = document.getElementById("web-transcript-display").innerText.replace(/[“”"]/g, "");
       AppSpeech.speak(text);
+    }
+
+    async function verifyLocationWithMaps() {
+      const locInput = document.getElementById("form-location");
+      const resultsEl = document.getElementById("location-maps-results");
+      const errorEl = document.getElementById("location-maps-error");
+      const btnEl = document.getElementById("btn-verify-location-maps");
+      const locText = locInput ? locInput.value.trim() : "";
+      if (!locText || typeof WebPortal === "undefined") return;
+
+      if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+      }
+      if (btnEl) btnEl.disabled = true;
+
+      try {
+        await WebPortal.queryMapsGrounding(
+          `Find exact Google Maps location and nearby municipal or government offices for: ${locText}`,
+          resultsEl
+        );
+      } catch (err) {
+        if (resultsEl) resultsEl.classList.add("hidden");
+        if (errorEl) {
+          errorEl.textContent = err.message;
+          errorEl.classList.remove("hidden");
+        }
+      } finally {
+        if (btnEl) btnEl.disabled = false;
+      }
     }
 
     function handleFormSubmission(e) {
@@ -408,7 +550,10 @@
       }
 
       AppSpeech.playChime("success");
-      AppSpeech.speak(`مبارک ہو! آپ کی شکایت کامیابی سے درج کر لی گئی ہے۔ آپ کا ٹوکن نمبر ہے ${token.replace('PK-', 'پی کے ')}۔`);
+      WebPortal.speakLocalized(
+        `مبارک ہو! آپ کی شکایت کامیابی سے درج کر لی گئی ہے۔ آپ کا ٹوکن نمبر ہے ${token.replace('PK-', 'پی کے ')}۔`,
+        `Congratulations! Your complaint has been submitted successfully. Your tracking token number is ${token}.`
+      );
       
       alert(`شکایت کامیابی سے درج ہو گئی!\nٹوکن نمبر: ${token}\nٹریکنگ صفحہ پر منتقل کیا جا رہا ہے۔`);
       window.location.href = `track.html?token=${token}`;

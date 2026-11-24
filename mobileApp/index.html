@@ -46,11 +46,11 @@
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
   <!-- Top Application Bar (Full Width Responsive) -->
-  <header class="fixed top-0 w-full z-40 bg-surface/90 backdrop-blur-xl shadow-sm pt-safe border-b border-slate-200">
-    <div class="h-20 px-4 sm:px-8 flex items-center justify-between gap-3 max-w-7xl mx-auto">
-      <div class="flex items-center gap-2.5">
+  <header class="sticky top-0 w-full z-40 bg-surface/95 backdrop-blur-xl shadow-sm pt-safe border-b border-slate-200">
+    <div class="min-h-[68px] py-2 px-3 sm:px-8 flex items-center justify-between gap-2 max-w-7xl mx-auto">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
         <!-- Pakistan Monument National Emblem Icon -->
-        <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1" title="Pakistan Monument (اسلام آباد)">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1" title="Pakistan Monument (اسلام آباد)">
           <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="24" cy="24" r="22" fill="#004423" stroke="#ffdcc3" stroke-width="1.5"/>
             <!-- 4 Blooming Province Petals -->
@@ -63,22 +63,22 @@
             <path d="M22 21 C23.5 21 25 22 25 24 C25 26 23.5 27 22 27 C20.5 27 19.5 25.5 19.5 24 C19.5 22.5 20.5 21 22 21 Z" fill="#ffffff"/>
           </svg>
         </div>
-        <div class="flex flex-col">
-          <span class="font-urdu-headline-md font-bold text-primary tracking-tight text-[18px] leading-tight" id="mobile-header-title">عوامی آواز</span>
-          <span class="font-urdu-body-md text-[12px] text-on-surface-variant leading-none" id="mobile-header-subtitle">قومی عوامی آواز پورٹل (حکومتِ پاکستان)</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-primary tracking-tight text-base sm:text-[18px] leading-snug truncate" id="mobile-header-title">عوامی آواز</span>
+          <span class="text-[11px] sm:text-[12px] text-on-surface-variant leading-snug truncate" id="mobile-header-subtitle">قومی عوامی آواز پورٹل (حکومتِ پاکستان)</span>
         </div>
       </div>
       
       <!-- Top Action Bar (Web App Switcher, Language Switcher & Audio Guide) -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <!-- Switch back to Desktop Web Portal Mode -->
-        <a href="../webApp/index.html" id="mobile-to-webapp-btn" class="min-h-[40px] px-3.5 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm" title="Switch to Full-Screen Web App / ویب پورٹل پر جائیں">
-          <span class="material-symbols-outlined text-[18px]">desktop_windows</span>
-          <span id="mobile-to-webapp-text">ویب پورٹل</span>
+        <a href="../webApp/index.html" id="mobile-to-webapp-btn" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3.5 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-[11px] sm:text-xs font-bold flex items-center gap-1 border border-primary-fixed/40 active:scale-95 shadow-sm whitespace-nowrap shrink-0" title="Switch to Full-Screen Web App / ویب پورٹل پر جائیں">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">desktop_windows</span>
+          <span id="mobile-to-webapp-text" class="hidden sm:inline">ویب پورٹل</span>
         </a>
 
         <!-- Persistent Top Header Language Toggle Button (Urdu <-> English Conversion - No Chinese Glyphs) -->
-        <button id="mobile-lang-toggle" onclick="MobileApp.toggleLanguage()" class="min-h-[40px] px-3.5 py-1 rounded-full bg-primary-fixed/50 hover:bg-primary-fixed text-primary transition-all text-xs font-bold flex items-center gap-1.5 border border-primary/20 active:scale-95 shadow-sm" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
+        <button id="mobile-lang-toggle" onclick="MobileApp.toggleLanguage()" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3.5 py-1 rounded-full bg-primary-fixed/50 hover:bg-primary-fixed text-primary transition-all text-[11px] sm:text-xs font-bold flex items-center gap-1.5 border border-primary/20 active:scale-95 shadow-sm whitespace-nowrap shrink-0" title="Urdu & English Conversion / اردو اور انگریزی تبدیلی">
           <span class="inline-flex items-center gap-0.5 text-[10px] font-bold tracking-tight bg-primary/20 text-primary px-1.5 py-0.5 rounded shadow-sm">
             <span>EN</span>
             <span class="text-[10px] leading-none">⇄</span>
@@ -87,7 +87,7 @@
           <span id="mobile-top-lang-label">English</span>
         </button>
 
-        <button aria-label="Listen audio guide" class="min-h-[40px] px-3 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 active:scale-95 transition-all text-xs font-bold" onclick="MobileApp.speakText('خوش آمدید! عوامی آواز حکومتِ پاکستان پورٹل میں آپ کا استقبال ہے۔ مائیک دبائیں اور انگریزی یا اپنی مقامی زبان میں اپنا مسئلہ بولیں۔')" type="button">
+        <button aria-label="Listen audio guide" class="min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-3 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 active:scale-95 transition-all text-xs font-bold whitespace-nowrap shrink-0" onclick="MobileApp.speakLocalized('خوش آمدید! عوامی آواز حکومتِ پاکستان پورٹل میں آپ کا استقبال ہے۔ مائیک دبائیں اور انگریزی یا اپنی مقامی زبان میں اپنا مسئلہ بولیں۔', 'Welcome to Awami Voice Government of Pakistan Portal. Press the microphone button and speak in English or your local language.')" type="button">
           <span class="material-symbols-outlined text-[18px]">volume_up</span>
           <span class="font-label-md hidden sm:inline" id="mobile-audio-guide-text">آواز رہنمائی سنیں</span>
         </button>
@@ -96,7 +96,7 @@
   </header>
 
   <!-- Main Scrollable Content Viewport (Adjusted for Full Screen Responsive) -->
-  <main class="flex flex-col relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 bg-surface flex-grow">
+  <main class="flex flex-col relative w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-5 pb-32 bg-surface flex-grow">
     <div class="flex flex-col w-full gap-5 pb-6">
       
       <!-- Network & Offline Ready Toast Strip -->
@@ -256,7 +256,7 @@
           <div class="flex flex-col justify-between rounded-2xl bg-surface-container-lowest overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
             <div class="flex items-stretch justify-between p-4 gap-3">
               <!-- Audio Guidance Speaker Tap Area -->
-              <button aria-label="Listen details for Complaint registration" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakText('شکایت درج کریں۔ پانی، بجلی، ٹوٹی سڑک، صفائی اور دیگر مسائل کا ازالہ کروانے کے لیے بولیں')" type="button">
+              <button aria-label="Listen details for Complaint registration" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakLocalized('شکایت درج کریں۔ پانی، بجلی، ٹوٹی سڑک، صفائی اور دیگر مسائل کا ازالہ کروانے کے لیے بولیں', 'Register a complaint. Speak to report water, power, broken road, or sanitation issues.')" type="button">
                 <span class="material-symbols-outlined text-[26px] text-secondary">volume_up</span>
                 <span class="font-urdu-body-md text-[11px] font-bold leading-tight" id="card1-listen">سنیں</span>
               </button>
@@ -296,7 +296,7 @@
           <!-- Card 2: Hospitals & Rescue 1122 (Featuring Faisal Mosque Islamabad) -->
           <div class="flex flex-col justify-between rounded-2xl bg-surface-container-lowest overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
             <div class="flex items-stretch justify-between p-4 gap-3">
-              <button aria-label="Listen details for Emergency and Hospital rescue" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakText('قریبی ہسپتال اور ایمرجنسی 1122۔ قریبی بنیادی مرکز صحت، ڈاکٹر اور ایمبولینس کی مفت مدد')" type="button">
+              <button aria-label="Listen details for Emergency and Hospital rescue" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakLocalized('قریبی ہسپتال اور ایمرجنسی 1122۔ قریبی بنیادی مرکز صحت، ڈاکٹر اور ایمبولینس کی مفت مدد', 'Hospitals and Rescue 1122. Find nearby Basic Health Units, doctors on duty, and free ambulance assistance.')" type="button">
                 <span class="material-symbols-outlined text-[26px] text-secondary">volume_up</span>
                 <span class="font-urdu-body-md text-[11px] font-bold leading-tight" id="card2-listen">سنیں</span>
               </button>
@@ -333,7 +333,7 @@
           <!-- Card 3: Subsidies & BISP (Featuring Mazar-e-Quaid Karachi) -->
           <div class="flex flex-col justify-between rounded-2xl bg-surface-container-lowest overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
             <div class="flex items-stretch justify-between p-4 gap-3">
-              <button aria-label="Listen details for Subsidies" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakText('بینظیر انکم سپورٹ، کفالت وظیفہ 10500 روپے، کسان کارڈ اور راشن سبسڈی کی تصدیق')" type="button">
+              <button aria-label="Listen details for Subsidies" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakLocalized('بینظیر انکم سپورٹ، کفالت وظیفہ 10500 روپے، کسان کارڈ اور راشن سبسڈی کی تصدیق', 'Benazir Income Support, Kafalat stipend 10,500 rupees, Kisan Card, and ration subsidy verification.')" type="button">
                 <span class="material-symbols-outlined text-[26px] text-secondary">volume_up</span>
                 <span class="font-urdu-body-md text-[11px] font-bold leading-tight" id="card3-listen">سنیں</span>
               </button>
@@ -367,7 +367,7 @@
           <!-- Card 4: Track Complaints (Featuring Pakistan Monument Islamabad) -->
           <div class="flex flex-col justify-between rounded-2xl bg-surface-container-lowest overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
             <div class="flex items-stretch justify-between p-4 gap-3">
-              <button aria-label="Listen details for Tracking" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakText('شکایات کا احوال معلوم کریں۔ ٹوکن نمبر درج کریں یا آواز سے اپنی شکایت کا سٹیٹس سنیں')" type="button">
+              <button aria-label="Listen details for Tracking" class="min-w-[56px] min-h-[56px] rounded-xl bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center active:scale-95 transition-all self-center shrink-0" onclick="MobileApp.speakLocalized('شکایات کا احوال معلوم کریں۔ ٹوکن نمبر درج کریں یا آواز سے اپنی شکایت کا سٹیٹس سنیں', 'Track complaints. Enter your token number or listen to your complaint status by voice.')" type="button">
                 <span class="material-symbols-outlined text-[26px] text-secondary">volume_up</span>
                 <span class="font-urdu-body-md text-[11px] font-bold leading-tight" id="card4-listen">سنیں</span>
               </button>
@@ -422,12 +422,14 @@
       if (waveBar.classList.contains("hidden")) {
         waveBar.classList.remove("hidden");
         const isEn = MobileApp.currentLang === "en";
-        const text = isEn 
+        const targetLang = isEn ? "en-US" : "ur-PK";
+        const text = isEn
           ? "Welcome to Awami Voice Government of Pakistan Portal. Speak in English or Local Language regarding roads, water, health, or subsidies. Zero typing required."
           : "خوش آمدید! عوامی آواز حکومتِ پاکستان پورٹل میں آپ کا استقبال ہے۔ انگریزی یا اپنی مقامی زبان میں اپنا مسئلہ بولیں۔ لکھائی کی ضرورت نہیں۔ نیچے مائیک بٹن دبائیں اور کھل کر بات کریں۔";
+        AppSpeech.setLanguage(targetLang);
         AppSpeech.speak(text, () => {
           waveBar.classList.add("hidden");
-        });
+        }, { lang: targetLang });
       } else {
         AppSpeech.stopSpeaking();
         waveBar.classList.add("hidden");

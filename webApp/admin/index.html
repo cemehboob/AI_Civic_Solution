@@ -45,13 +45,14 @@
   </script>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
+  <a href="#main-content" class="skip-link">Skip to main admin workspace</a>
   <!-- Executive Command Header (Fixed Sticky Responsive Navigation without Overlap) -->
   <header class="sticky top-0 z-50 bg-surface-container-lowest/98 backdrop-blur-xl shadow-sm border-b border-slate-200">
-    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-2.5 flex flex-col gap-2">
-      <div class="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
+    <div class="w-full max-w-[1780px] mx-auto px-3 sm:px-8 lg:px-12 py-2.5 flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-2 sm:gap-3">
         <!-- Brand / Identity with Pakistan Monument Crest -->
-        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5">
+        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5" aria-hidden="true">
             <!-- Pakistan Monument National Crest SVG -->
             <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="24" r="22" fill="#004423" stroke="#ffdcc3" stroke-width="1.5"/>
@@ -65,14 +66,14 @@
               <path d="M22 21 C23.5 21 25 22 25 24 C25 26 23.5 27 22 27 C20.5 27 19.5 25.5 19.5 24 C19.5 22.5 20.5 21 22 21 Z" fill="#ffffff"/>
             </svg>
           </div>
-          <div>
+          <div class="min-w-0 flex-1">
             <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="font-bold text-primary text-base sm:text-[18px] tracking-tight">Awami Voice Admin</span>
+              <span class="font-bold text-primary text-sm sm:text-[18px] tracking-tight truncate">Awami Voice Admin</span>
               <span class="text-slate-300 hidden sm:inline">|</span>
-              <span class="font-urdu-headline-md text-primary font-bold text-sm sm:text-[16px]">عوامی آواز ایڈمن پورٹل</span>
+              <span class="text-primary font-bold text-xs sm:text-[16px] truncate hidden sm:inline">عوامی آواز ایڈمن پورٹل</span>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center px-2 py-0.2 rounded bg-surface-container text-on-surface-variant text-[11px] font-bold">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="inline-block max-w-full truncate px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px] sm:text-[11px] font-bold">
                 National Civic Administration - All Provinces & Territories (حکومتِ پاکستان)
               </span>
             </div>
@@ -82,14 +83,14 @@
         <!-- Real-Time Telemetry Summary Pills -->
         <div class="hidden xl:flex items-center gap-3.5 bg-surface-container-low px-3.5 py-1.5 rounded-xl border border-slate-200">
           <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" aria-hidden="true"></span>
             <span class="text-xs font-bold text-on-surface">All Services Live</span>
           </div>
-          <span class="text-slate-300">•</span>
+          <span class="text-slate-300" aria-hidden="true">•</span>
           <div class="flex items-center gap-1.5">
             <span class="text-xs text-on-surface-variant font-bold">AI Router: Zero-Paid Locked</span>
           </div>
-          <span class="text-slate-300">•</span>
+          <span class="text-slate-300" aria-hidden="true">•</span>
           <div class="flex items-center gap-1.5">
             <span class="text-xs text-secondary font-bold">Open Cases: 142</span>
           </div>
@@ -97,8 +98,8 @@
 
         <!-- Right User Actions -->
         <div class="flex items-center gap-2.5 shrink-0">
-          <a href="../index.html" class="h-9 px-3 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high flex items-center gap-1 text-xs font-bold transition-colors">
-            <span class="material-symbols-outlined text-[16px]">public</span>
+          <a href="../index.html" aria-label="Open Citizen Portal" class="h-9 px-3 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high flex items-center gap-1 text-xs font-bold transition-colors">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">public</span>
             <span>Citizen Portal</span>
           </a>
           
@@ -107,7 +108,7 @@
               <div class="text-xs font-bold text-on-surface leading-tight">Engr. Tariq Mehmood</div>
               <div class="text-[10px] text-on-surface-variant leading-tight">Deputy Director</div>
             </div>
-            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary" aria-hidden="true">
               <span class="material-symbols-outlined text-[16px]">person</span>
             </div>
           </div>
@@ -115,34 +116,34 @@
       </div>
 
       <!-- Navigation Tabs Strip (Clean, Icon-Driven, Non-Overlapping) -->
-      <nav class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs font-bold scroll-smooth">
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-sm whitespace-nowrap shrink-0 transition-all" data-tab="triage" onclick="AdminPortal.switchTab('triage')">
-          <span class="material-symbols-outlined text-[17px]">fact_check</span>
+      <nav aria-label="Admin workspace sections" role="tablist" class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs font-bold scroll-smooth">
+        <button type="button" role="tab" aria-selected="true" aria-controls="view-triage" aria-label="Triage and Audio review workspace" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-sm whitespace-nowrap shrink-0 transition-all" data-tab="triage" onclick="AdminPortal.switchTab('triage')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">fact_check</span>
           <span>Triage & Audio</span>
           <span class="opacity-80 text-[11px]">(شکایات جائزہ)</span>
         </button>
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="dispatch" onclick="AdminPortal.switchTab('dispatch')">
-          <span class="material-symbols-outlined text-[17px]">local_shipping</span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="view-dispatch" aria-label="Field Dispatch operations view" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="dispatch" onclick="AdminPortal.switchTab('dispatch')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">local_shipping</span>
           <span>Field Dispatch</span>
           <span class="opacity-80 text-[11px]">(فیلڈ روانگی)</span>
         </button>
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="ai-telemetry" onclick="AdminPortal.switchTab('ai-telemetry')">
-          <span class="material-symbols-outlined text-[17px]">neurology</span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="view-ai-telemetry" aria-label="AI Router and Telemetry monitor" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="ai-telemetry" onclick="AdminPortal.switchTab('ai-telemetry')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">neurology</span>
           <span>AI Router & Telemetry</span>
           <span class="opacity-80 text-[11px]">(ماڈل مانیٹرنگ)</span>
         </button>
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="users" onclick="AdminPortal.switchTab('users')">
-          <span class="material-symbols-outlined text-[17px]">groups</span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="view-users" aria-label="Users and Staff management" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="users" onclick="AdminPortal.switchTab('users')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">groups</span>
           <span>Users & Staff</span>
           <span class="opacity-80 text-[11px]">(صارفین و عملہ)</span>
         </button>
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="knowledge" onclick="AdminPortal.switchTab('knowledge')">
-          <span class="material-symbols-outlined text-[17px]">menu_book</span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="view-knowledge" aria-label="Verified RAG knowledge base" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="knowledge" onclick="AdminPortal.switchTab('knowledge')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">menu_book</span>
           <span>Verified RAG</span>
           <span class="opacity-80 text-[11px]">(معلومات)</span>
         </button>
-        <button class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="logs" onclick="AdminPortal.switchTab('logs')">
-          <span class="material-symbols-outlined text-[17px]">receipt_long</span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="view-logs" aria-label="Audit and System Logs" class="admin-nav-item flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface whitespace-nowrap shrink-0 transition-all" data-tab="logs" onclick="AdminPortal.switchTab('logs')">
+          <span class="material-symbols-outlined text-[17px]" aria-hidden="true">receipt_long</span>
           <span>Audit & Logs</span>
           <span class="opacity-80 text-[11px]">(سسٹم لاگز)</span>
         </button>
@@ -151,7 +152,7 @@
   </header>
 
   <!-- Main Viewport (Natural vertical spacing without fixed top overlap) -->
-  <main class="w-full py-6 bg-surface min-h-screen">
+  <main id="main-content" tabindex="-1" class="w-full py-6 bg-surface min-h-screen">
     <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6 space-y-6">
       
       <!-- EXECUTIVE METRICS RIBBON (BENTO HIGHLIGHTS) -->
@@ -278,22 +279,23 @@
 
             <!-- Integrated Search Field -->
             <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[20px]">search</span>
-              <input class="w-full h-10 pl-9 pr-4 rounded-xl bg-surface-container-low text-on-surface text-xs font-bold placeholder:text-outline focus:outline-none focus:bg-surface-container border border-slate-200" placeholder="Search Token, CNIC, Village..." type="text" oninput="AdminPortal.renderQueue()"/>
+              <label for="triage-queue-search" class="sr-only">Search triage queue by token, CNIC, or village</label>
+              <span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[20px]" aria-hidden="true">search</span>
+              <input id="triage-queue-search" aria-label="Search triage queue by token, CNIC, or village" class="w-full h-10 pl-9 pr-4 rounded-xl bg-surface-container-low text-on-surface text-xs font-bold placeholder:text-outline focus:outline-none focus:bg-surface-container border border-slate-200" placeholder="Search Token, CNIC, Village..." type="text" oninput="AdminPortal.renderQueue()"/>
             </div>
 
             <!-- Quick Filters Horizontal Scroll Pills -->
-            <div class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
-              <button onclick="AdminPortal.renderQueue('all')" class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-bold whitespace-nowrap shadow-sm">
+            <div class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs" role="group" aria-label="Filter complaints queue">
+              <button type="button" onclick="AdminPortal.renderQueue('all')" aria-label="Show all complaints" class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-bold whitespace-nowrap shadow-sm">
                 All (تمام)
               </button>
-              <button onclick="AdminPortal.renderQueue('urgent')" class="px-3 py-1.5 rounded-lg bg-error-container text-on-error font-bold whitespace-nowrap">
+              <button type="button" onclick="AdminPortal.renderQueue('urgent')" aria-label="Filter urgent SLA complaints under 4 hours" class="px-3 py-1.5 rounded-lg bg-error-container text-on-error font-bold whitespace-nowrap">
                 Urgent SLA (&lt;4h)
               </button>
-              <button onclick="AdminPortal.renderQueue('water')" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
+              <button type="button" onclick="AdminPortal.renderQueue('water')" aria-label="Filter water PHED complaints" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
                 Water PHED
               </button>
-              <button onclick="AdminPortal.renderQueue('roads')" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
+              <button type="button" onclick="AdminPortal.renderQueue('roads')" aria-label="Filter roads and infrastructure complaints" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-bold whitespace-nowrap">
                 Roads C&W
               </button>
             </div>
@@ -327,8 +329,8 @@
             </div>
 
             <div class="flex items-center gap-2">
-              <button id="btn-play-case-audio" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary font-bold text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
-                <span class="material-symbols-outlined text-[20px]">volume_up</span>
+              <button type="button" id="btn-play-case-audio" aria-label="Play complainant voice recording for selected case" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary font-bold text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
                 <span>Play Voice Recording</span>
               </button>
             </div>
@@ -377,18 +379,18 @@
             <span class="font-bold text-xs text-on-surface block">Executive Triage Actions:</span>
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <button onclick="AdminPortal.approveAndDispatch()" class="min-h-[48px] rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-primary-container active:scale-95 transition-all">
-                <span class="material-symbols-outlined text-[18px]">send</span>
+              <button type="button" onclick="AdminPortal.approveAndDispatch()" aria-label="Approve complaint and dispatch field team" class="min-h-[48px] rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-primary-container active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
                 <span>Approve & Dispatch</span>
               </button>
 
-              <button onclick="AdminPortal.escalateCase()" class="min-h-[48px] rounded-xl bg-error text-on-error font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-red-700 active:scale-95 transition-all">
-                <span class="material-symbols-outlined text-[18px]">warning</span>
+              <button type="button" onclick="AdminPortal.escalateCase()" aria-label="Escalate complaint to Assistant Commissioner Office" class="min-h-[48px] rounded-xl bg-error text-on-error font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:bg-red-700 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">warning</span>
                 <span>Escalate to AC Office</span>
               </button>
 
-              <button onclick="AppSpeech.speak('شہری سے فون پر رابطہ کیا جا رہا ہے'); alert('Connecting VoIP line to 0300-5849120...')" class="min-h-[48px] rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors">
-                <span class="material-symbols-outlined text-[18px]">call</span>
+              <button type="button" onclick="AppSpeech.speak('شہری سے فون پر رابطہ کیا جا رہا ہے')" aria-label="Call citizen complainant" class="min-h-[48px] rounded-xl bg-surface-container text-on-surface font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">call</span>
                 <span>Call Complainant</span>
               </button>
             </div>
@@ -435,6 +437,32 @@
             <p class="text-xs text-on-surface-variant">Lead: Engr. Mir Hasil (0345-7788990)</p>
             <div class="text-xs font-bold text-error">Critical SLA: Tube Well & Feeder Wire</div>
           </div>
+        </div>
+
+        <!-- Google Maps Dispatch Grounding Lookup -->
+        <div class="bg-surface-container-low rounded-2xl p-5 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="font-bold text-on-surface text-base flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">travel_explore</span>
+                <span>Google Maps Field Site & Nearby Infrastructure Lookup</span>
+              </h3>
+              <p class="text-xs text-on-surface-variant">Query live Google Maps places, roads, municipal offices, or health units around any dispatch site</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">Maps Grounding (gemini-4-hydrogen)</span>
+          </div>
+
+          <form onsubmit="AdminPortal.lookupDispatchMaps(event)" class="flex flex-col sm:flex-row gap-2.5">
+            <label for="admin-maps-query" class="sr-only">Search dispatch location or nearby municipal facilities on Google Maps</label>
+            <input id="admin-maps-query" type="text" aria-label="Search dispatch location or nearby municipal facilities on Google Maps" value="Water filtration plants, PHED offices, and THQ hospitals near Mandra Road, Gujar Khan" placeholder="Enter tehsil, road, or landmark to locate nearby civic infrastructure..." class="flex-1 h-11 px-4 rounded-xl bg-surface-container-lowest border border-slate-200 text-xs font-bold text-on-surface focus:outline-none focus:border-primary"/>
+            <button id="admin-maps-btn" type="submit" aria-label="Search Google Maps for dispatch site" class="min-h-[44px] px-5 rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors shadow-sm shrink-0">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">location_on</span>
+              <span>Search Maps Data</span>
+            </button>
+          </form>
+
+          <p id="admin-maps-error" role="alert" class="hidden text-xs font-bold text-error bg-error-container/50 p-3 rounded-xl"></p>
+          <div id="admin-maps-results" aria-live="polite" class="hidden bg-surface-container-lowest p-4 rounded-xl border border-slate-200 space-y-2"></div>
         </div>
       </div>
 
@@ -519,8 +547,8 @@
             <h2 class="font-bold text-on-surface text-lg">User & Staff Management (صارفین و عملہ)</h2>
             <p class="text-xs text-on-surface-variant">Manage Authorized Officers, SDOs, Triage Analysts & Registered Citizens</p>
           </div>
-          <button onclick="alert('نیا عملہ شامل کرنے کا فارم کھولا جا رہا ہے...')" class="min-h-[40px] px-4 rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center gap-1 shadow-sm">
-            <span class="material-symbols-outlined text-[18px]">person_add</span>
+          <button type="button" onclick="AppSpeech.speak('نیا عملہ شامل کرنے کا فارم دستیاب ہے')" aria-label="Add new staff member" class="min-h-[40px] px-4 rounded-xl bg-primary text-on-primary font-bold text-xs flex items-center gap-1 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">person_add</span>
             <span>Add New Staff</span>
           </button>
         </div>
@@ -645,12 +673,13 @@
           <div class="flex flex-1 flex-wrap items-center gap-2.5">
             <!-- Search Text -->
             <div class="relative flex-1 min-w-[200px]">
-              <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">search</span>
-              <input id="log-search-input" oninput="AdminPortal.filterLogs()" type="text" placeholder="Search logs (message, category, token)..." class="w-full h-10 pl-9 pr-3 rounded-xl border border-slate-200 bg-surface text-xs focus:ring-2 focus:ring-primary focus:outline-none"/>
+              <label for="log-search-input" class="sr-only">Search logs by message, category, or token</label>
+              <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline" aria-hidden="true">search</span>
+              <input id="log-search-input" aria-label="Search logs by message, category, or token" oninput="AdminPortal.filterLogs()" type="text" placeholder="Search logs (message, category, token)..." class="w-full h-10 pl-9 pr-3 rounded-xl border border-slate-200 bg-surface text-xs focus:ring-2 focus:ring-primary focus:outline-none"/>
             </div>
 
             <!-- Severity Dropdown -->
-            <select id="log-severity-select" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+            <select id="log-severity-select" aria-label="Filter logs by severity" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
               <option value="ALL">All Severities</option>
               <option value="ERROR">Error / Critical</option>
               <option value="WARN">Warnings</option>
@@ -660,7 +689,7 @@
             </select>
 
             <!-- Category Dropdown -->
-            <select id="log-category-select" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+            <select id="log-category-select" aria-label="Filter logs by category" onchange="AdminPortal.filterLogs()" class="h-10 px-3 rounded-xl border border-slate-200 bg-surface text-xs font-bold text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
               <option value="ALL">All Categories</option>
               <option value="SYSTEM">SYSTEM</option>
               <option value="SECURITY">SECURITY</option>
@@ -674,20 +703,20 @@
 
           <!-- Action Buttons (Responsive Wrapping) -->
           <div class="flex flex-wrap items-center gap-2">
-            <button onclick="AdminPortal.exportLogsJSON()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Download Complete Log Dump (JSON)">
-              <span class="material-symbols-outlined text-[16px]">file_download</span>
+            <button type="button" onclick="AdminPortal.exportLogsJSON()" aria-label="Export logs as JSON file" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Download Complete Log Dump (JSON)">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">file_download</span>
               <span>Export JSON</span>
             </button>
-            <button onclick="AdminPortal.exportLogsCSV()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Export as CSV for Excel">
-              <span class="material-symbols-outlined text-[16px]">table_chart</span>
+            <button type="button" onclick="AdminPortal.exportLogsCSV()" aria-label="Export logs as CSV file" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1.5 transition-colors" title="Export as CSV for Excel">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">table_chart</span>
               <span>Export CSV</span>
             </button>
-            <button onclick="AdminPortal.simulateTestError()" class="h-10 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1 transition-colors" title="Simulate an AI Gateway Error to verify log capture">
-              <span class="material-symbols-outlined text-[16px]">bug_report</span>
+            <button type="button" onclick="AdminPortal.simulateTestError()" aria-label="Simulate AI gateway error log entry" class="h-10 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1 transition-colors" title="Simulate an AI Gateway Error to verify log capture">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">bug_report</span>
               <span>Simulate Error</span>
             </button>
-            <button onclick="AdminPortal.clearLogs()" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-red-50 text-error text-xs font-bold flex items-center gap-1 transition-colors" title="Clear current log buffer">
-              <span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+            <button type="button" onclick="AdminPortal.clearLogs()" aria-label="Clear temporary diagnostic logs" class="h-10 px-3 rounded-xl bg-surface-container hover:bg-red-50 text-error text-xs font-bold flex items-center gap-1 transition-colors" title="Clear current log buffer">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">delete_sweep</span>
               <span>Clear</span>
             </button>
           </div>
@@ -697,12 +726,12 @@
         <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
               <h3 class="font-bold text-on-surface text-sm">Real-Time Diagnostic & Audit Event Stream</h3>
               <span class="px-2 py-0.5 rounded bg-surface-container font-mono text-[11px]" id="logs-showing-count">Showing 0 logs</span>
             </div>
-            <button onclick="AdminPortal.refreshLogsTable()" class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
-              <span class="material-symbols-outlined text-[16px]">refresh</span>
+            <button type="button" onclick="AdminPortal.refreshLogsTable()" aria-label="Refresh diagnostic logs stream" class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">refresh</span>
               <span>Refresh Stream</span>
             </button>
           </div>
@@ -726,22 +755,22 @@
         </div>
 
         <!-- LOG INSPECTION MODAL -->
-        <div id="log-detail-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div id="log-detail-modal" role="dialog" aria-modal="true" aria-labelledby="log-modal-title" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
           <div class="bg-surface-container-lowest max-w-2xl w-full rounded-2xl p-6 shadow-2xl border border-slate-200 space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
               <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary text-[22px]">code</span>
-                <h3 class="font-bold text-on-surface text-base">Sanitized Log Event Details</h3>
+                <span class="material-symbols-outlined text-primary text-[22px]" aria-hidden="true">code</span>
+                <h3 id="log-modal-title" class="font-bold text-on-surface text-base">Sanitized Log Event Details</h3>
               </div>
-              <button onclick="document.getElementById('log-detail-modal').classList.add('hidden')" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-outline">
-                <span class="material-symbols-outlined text-[18px]">close</span>
+              <button type="button" aria-label="Close log details modal" onclick="AdminPortal.closeLogModal()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-outline">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
               </button>
             </div>
             <div>
               <pre id="log-modal-content" class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs font-mono overflow-auto max-h-96 leading-relaxed"></pre>
             </div>
             <div class="flex justify-end pt-2">
-              <button onclick="document.getElementById('log-detail-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold shadow-sm">
+              <button type="button" aria-label="Close log details modal" onclick="AdminPortal.closeLogModal()" class="px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold shadow-sm">
                 Close
               </button>
             </div>
