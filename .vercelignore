@@ -1,0 +1,6 @@
+# Vercel Ignore File
+.system_generated/
+scratch/
+brain/
+__pycache__/
+*.pyc

@@ -585,7 +585,7 @@ const CivicData = {
       offlineBadge: "آف لائن ریکارڈنگ میسر ہے (Offline Ready)",
       offlineSub: "انٹرنیٹ کمزور ہو تو بھی آواز محفوظ ہوگی",
       langSwitchLabel: "English",
-      welcomeNarration: "خوش آمدید! عوامی آواز حکومتِ پاکستان پورٹل میں آپ کا استقبال ہے۔ آپ بغیر لکھے اپنا مسئلہ اردو، پنجابی، سندھی، پشتو، بلوچی، سرائیکی یا ہندکو میں بول کر بتا سکتے ہیں۔ نیچے سبز مائیک بٹن دبائیں اور کھل کر بات کریں۔",
+      welcomeNarration: "خوش آمدید! عوامی آواز حکومتِ پاکستان پورٹل میں آپ کا استقبال ہے۔ آپ بغیر لکھے اپنا مسئلہ اردو، پنجابی، سندھی، پشتو، بلوچی، سرائیکی یا ہندکو میں بول کر بتا سکتے ہیں۔ نیچے مائیک بٹن دبائیں اور کھل کر بات کریں۔",
       
       // Hero & Voice Section
       heroBadge: "قومی صوتی شکایات و رہنمائی پورٹل (حکومتِ پاکستان)",
@@ -593,13 +593,13 @@ const CivicData = {
       heroSub: "انگریزی یا اپنی مقامی زبان میں اپنا مسئلہ بولیں۔ لکھائی کی ضرورت نہیں۔ (Speak in English or Local Language)",
       micInstruction: "مائیک دبائیں اور بولیں",
       micDialectsList: "Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)",
-      micPressToSpeak: "Speak in English or Local Language",
+      micPressToSpeak: "بولیں",
       soundWaveListening: "سسٹم آپ کی آواز سن رہا ہے...",
       
       // Welcome card in MobileApp
       welcomeBadge: "آسان رہنمائی • قومی یادگاریں",
       welcomeTitle: "بولیں اور کام کروائیں!",
-      welcomeDesc: "لکھنے کی ضرورت نہیں، بس سبز مائیک بٹن دبا کر انگریزی یا اپنی مقامی زبان میں مسئلہ بتائیں۔",
+      welcomeDesc: "لکھنے کی ضرورت نہیں، بس مائیک بٹن دبا کر انگریزی یا اپنی مقامی زبان میں مسئلہ بتائیں۔",
       welcomeAudioBtn: "آواز سنیں",
       
       // Quick Spoken Suggestions (Supporting All Regional Accents)
@@ -689,13 +689,13 @@ const CivicData = {
       heroSub: "Speak in English or Local Language regarding roads, water, health, or subsidies. Zero typing required.",
       micInstruction: "Press Mic and Speak",
       micDialectsList: "Speak in English or Local Language",
-      micPressToSpeak: "Speak in English or Local Language",
+      micPressToSpeak: "Speak",
       soundWaveListening: "System is listening to your voice...",
       
       // Welcome card in MobileApp
       welcomeBadge: "Easy Voice Guidance • National Monuments",
       welcomeTitle: "Speak and Get It Done!",
-      welcomeDesc: "No typing required. Just press the green microphone and Speak in English or Local Language.",
+      welcomeDesc: "No typing required. Just press the mic button and Speak in English or Local Language.",
       welcomeAudioBtn: "Listen Guide",
       
       // Quick Spoken Suggestions

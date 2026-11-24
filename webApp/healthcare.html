@@ -43,7 +43,7 @@
 <body class="bg-surface font-body-md text-on-surface antialiased">
   <!-- Header -->
   <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-    <div class="h-20 max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+    <div class="h-20 w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
           <span class="material-symbols-outlined text-[30px]">account_balance</span>
@@ -82,7 +82,7 @@
 
   <!-- Main Viewport -->
   <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-4">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
       <div class="flex flex-col w-full gap-6">
         
         <!-- Urgent Hotlines Ribbon -->
@@ -92,8 +92,8 @@
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-[36px] animate-bounce">emergency</span>
               <div class="flex flex-col">
-                <span class="font-bold text-lg">پنجاب ایمرجنسی سروس 1122</span>
-                <span class="text-xs opacity-90">مفت ایمبولینس، آگ، ریسکیو و حادثات</span>
+                <span class="font-bold text-lg">قومی ایمرجنسی ریسکیو سروس 1122</span>
+                <span class="text-xs opacity-90">مفت ایمبولینس، آگ، ریسکیو و حادثات (All Pakistan)</span>
               </div>
             </div>
             <a href="tel:1122" class="min-h-[48px] px-5 rounded-xl bg-surface text-error font-bold flex items-center gap-2 shadow-md active:scale-95 transition-all">
@@ -142,12 +142,12 @@
           <div class="flex items-center justify-between">
             <div>
               <h2 class="font-urdu-headline-lg font-bold text-on-surface text-[22px]">تصدیق شدہ مراکز صحت و ہسپتال (Verified Directory)</h2>
-              <p class="text-xs text-on-surface-variant">راولپنڈی ڈویژن و دیہی علاقے</p>
+              <p class="text-xs text-on-surface-variant">تمام صوبائی و قومی ہسپتال (All Pakistan Provinces)</p>
             </div>
             <span class="material-symbols-outlined text-primary text-[28px]">domain</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="web-hospitals-grid">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="web-hospitals-grid">
             <!-- Populated from CivicData.hospitals -->
           </div>
         </section>

@@ -89,7 +89,13 @@ const WebPortal = {
     if (heroSub && dict.heroSub) heroSub.innerText = dict.heroSub;
 
     const micStatus = document.getElementById("micStatusText");
-    if (micStatus && dict.micPressToSpeak) micStatus.innerText = dict.micPressToSpeak;
+    if (micStatus) micStatus.innerText = isEn ? "Speak" : "بولیں";
+
+    const micInstructionTitle = document.getElementById("mic-instruction-title");
+    if (micInstructionTitle && dict.micInstruction) micInstructionTitle.innerText = dict.micInstruction;
+
+    const micInstructionSub = document.getElementById("mic-instruction-sub");
+    if (micInstructionSub && dict.micDialectsList) micInstructionSub.innerText = dict.micDialectsList;
 
     // Suggestion Chips
     const chipsHeader = document.getElementById("chips-header-text");
@@ -221,7 +227,7 @@ const WebPortal = {
     }
 
     const dict = (typeof CivicData !== "undefined" && CivicData.i18n && CivicData.i18n[this.currentLang]) || {};
-    const defaultNarration = textToRead || dict.welcomeNarration || "عوامی آواز پنجاب گورنمنٹ پورٹل میں خوش آمدید۔ آپ مائیک کا بڑا بٹن دبا کر بلا جھجھک اپنی زبان میں شکایت درج کروا سکتے ہیں، قریبی ہسپتال تلاش کر سکتے ہیں اور بینظیر وظیفہ کی معلومات حاصل کر سکتے ہیں۔";
+    const defaultNarration = textToRead || dict.welcomeNarration || "عوامی آواز حکومتِ پاکستان پورٹل میں خوش آمدید۔ آپ مائیک کا بڑا بٹن دبا کر بلا جھجھک اپنی زبان میں شکایت درج کروا سکتے ہیں، قریبی ہسپتال تلاش کر سکتے ہیں اور بینظیر وظیفہ کی معلومات حاصل کر سکتے ہیں۔";
     
     this.narrating = true;
     if (icon) icon.innerText = "pause_circle";
@@ -282,7 +288,7 @@ const WebPortal = {
         if (queryText) queryText.innerText = `"${transcript}"`;
 
         if (isFinal) {
-          if (statusText) statusText.innerText = isEn ? "Press to Speak" : "بولیں (Press)";
+          if (statusText) statusText.innerText = isEn ? "Speak" : "بولیں";
           if (visualizer) visualizer.classList.add("hidden");
           if (micPulse1) micPulse1.classList.remove("scale-125", "bg-secondary-container/40");
           if (micPulse2) micPulse2.classList.remove("scale-125", "bg-primary-fixed/40");
@@ -295,7 +301,7 @@ const WebPortal = {
       },
       (state) => {
         if (state === "idle") {
-          if (statusText) statusText.innerText = isEn ? "Press to Speak" : "بولیں (Press)";
+          if (statusText) statusText.innerText = isEn ? "Speak" : "بولیں";
           if (visualizer) visualizer.classList.add("hidden");
           if (micPulse1) micPulse1.classList.remove("scale-125", "bg-secondary-container/40");
           if (micPulse2) micPulse2.classList.remove("scale-125", "bg-primary-fixed/40");

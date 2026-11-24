@@ -47,7 +47,7 @@
 <body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
   <!-- Government Provincial Top Strip -->
   <div class="bg-primary text-on-primary text-xs py-1.5 px-4 sm:px-8 border-b border-primary-container">
-    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto flex items-center justify-between">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
         <span class="font-bold tracking-wide" id="gov-strip-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ای گورننس نظام</span>
@@ -81,7 +81,7 @@
 
   <!-- Primary Header & Global Navigation Strip -->
   <header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-sm border-b border-slate-200">
-    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <!-- Pakistan Monument National Emblem Icon -->
         <div class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0 overflow-hidden p-1.5" title="Pakistan Monument (اسلام آباد)">
@@ -131,8 +131,8 @@
   </header>
 
   <!-- Main Viewport (Full Screen Responsive Layout) -->
-  <main class="w-full flex-grow bg-surface py-6">
-    <div class="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+  <main class="w-full flex-grow bg-surface py-8">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 space-y-8">
       
       <!-- Audio Accessibility & Screen Narrator Bar -->
       <div class="w-full bg-surface-container-high rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 border border-slate-200">
@@ -182,18 +182,38 @@
               Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)
             </p>
 
-            <!-- Central Giant Voice Button Orb -->
-            <div class="relative flex flex-col items-center justify-center my-4">
-              <div class="absolute w-44 h-44 rounded-full bg-secondary-container/20 transition-all pointer-events-none scale-100" id="micPulse1"></div>
-              <div class="absolute w-56 h-56 rounded-full bg-primary-fixed/20 transition-all pointer-events-none scale-100" id="micPulse2"></div>
+            <!-- Central Giant Glowing Studio Voice Button Orb (Always Circular with Vivid Radiant Halo) -->
+            <div class="relative flex flex-col items-center justify-center my-6">
+              <!-- Animated Glowing Studio Halo Pulses (3 Staggered Sonic Wave Rings) -->
+              <div class="absolute w-56 h-56 sm:w-64 sm:h-64 rounded-full border-2 border-rose-500/30 studio-mic-ring-1 pointer-events-none" id="micPulse2"></div>
+              <div class="absolute w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 border-orange-500/40 studio-mic-ring-2 pointer-events-none" id="micPulse1"></div>
+              <div class="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-rose-500/15 studio-mic-ring-3 blur-md pointer-events-none"></div>
               
-              <button aria-label="مائیک دبائیں اور بولیں" class="relative z-20 min-w-[124px] min-h-[124px] rounded-full bg-primary-container text-on-primary hover:bg-primary shadow-2xl flex flex-col items-center justify-center transition-all duration-300 transform active:scale-95 cursor-pointer border-4 border-white" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
-                <span class="material-symbols-outlined text-[56px]" id="micGlyph">mic</span>
-                <span class="font-urdu-body-md text-xs font-bold text-on-primary mt-1" id="micStatusText">Speak in English or Local Language</span>
+              <!-- Perfect Circular Glowing Studio Microphone Button (Strictly aspect-square & non-green vibrant studio gradient) -->
+              <button aria-label="مائیک دبائیں اور بولیں" class="studio-mic-btn relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full text-white shadow-[0_0_55px_rgba(225,29,72,0.7)] hover:shadow-[0_0_80px_rgba(249,115,22,0.85)] ring-4 ring-white/95 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shrink-0 aspect-square select-none group border-2 border-amber-300/50" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
+                <!-- Glowing Ambient Inner Ring -->
+                <div class="absolute inset-1.5 rounded-full border border-white/35 pointer-events-none group-hover:border-white/70 transition-colors"></div>
+                <!-- Studio Mic Icon with Pulsing Animation -->
+                <span class="material-symbols-outlined text-[62px] sm:text-[68px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform animate-pulse" id="micGlyph">mic</span>
+                <!-- Animated Equalizer Bars inside button -->
+                <div class="flex items-center gap-1 mt-0.5">
+                  <span class="w-1 bg-white/90 rounded-full eq-bar-1"></span>
+                  <span class="w-1 bg-white/90 rounded-full eq-bar-2"></span>
+                  <span class="w-1 bg-white/90 rounded-full eq-bar-3"></span>
+                  <span class="w-1 bg-white/90 rounded-full eq-bar-4"></span>
+                </div>
+                <!-- Compact Internal Action Label (Strictly short to never deform the circular button) -->
+                <span class="font-urdu-body-md text-[13px] font-bold text-white/95 leading-none mt-1 drop-shadow" id="micStatusText">بولیں</span>
               </button>
 
+              <!-- Dedicated Voice Instruction Below the Button (Never deforms the circular orb) -->
+              <div class="flex flex-col items-center gap-1 mt-4">
+                <span class="font-urdu-headline-md font-bold text-primary text-xl sm:text-2xl" id="mic-instruction-title">مائیک دبائیں اور بولیں</span>
+                <span class="font-bold text-xs sm:text-sm text-on-surface-variant max-w-xl text-center" id="mic-instruction-sub">Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)</span>
+              </div>
+
               <!-- Frequency Wave Visualizer -->
-              <div class="hidden flex items-end gap-1.5 h-8 mt-4" id="soundWaveVisualizer">
+              <div class="hidden flex items-end gap-1.5 h-8 mt-3" id="soundWaveVisualizer">
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-4"></div>
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-8 [animation-delay:150ms]"></div>
                 <div class="w-1.5 bg-secondary rounded-full animate-bounce h-6 [animation-delay:300ms]"></div>
@@ -498,7 +518,7 @@
 
   <!-- Footer (Full Width) -->
   <footer class="bg-surface-container-high py-8 border-t border-slate-200 text-center text-xs text-on-surface-variant mt-auto">
-    <div class="max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-8 flex flex-col items-center gap-2">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center gap-2">
       <div class="flex items-center gap-2 flex-wrap justify-center">
         <span class="font-bold text-primary" id="footer-gov-text">حکومتِ پاکستان - لوکل گورنمنٹ و قومی ڈیجیٹل سروسز</span>
         <span>•</span>

@@ -254,14 +254,13 @@ It is designed for municipal administrators, triage supervisors, field inspectio
 
 ---
 
-### ACTION 13: Full-Screen Widescreen & Responsive Desktop/Mobile Layout Adjustment
-1. **Full-Screen Web Application (`webApp/index.html`):**
-   - Open on any desktop widescreen monitor (1080p, 2K, 4K).
-   - Observe the interface smoothly expanding across the full screen width (`max-w-[1600px]`), eliminating empty blank side gutters.
-   - The hero voice interface arranges into a balanced 12-column layout: an 8-column giant microphone interaction hub on the left/center paired with a 4-column live dialect telemetry and offline status bento panel on the right.
-   - The key civic service gateways automatically expand into an expansive 4-column responsive grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`).
-2. **Responsive Mobile Application on Desktop (`mobileApp/index.html`):**
-   - When opened in a desktop browser or tablet viewport, the application container expands smoothly up to `max-w-7xl` with 4-column responsive gateway action cards, preventing narrow column clipping while maintaining pure touch-friendly mobile ergonomics on mobile phones.
+### ACTION 13: Full-Screen Maximum Page Size Architecture Across All Web Pages
+1. **Full-Screen Desktop Experience (`max-w-[1780px]`):**
+   - Open on any desktop monitor (1080p, 2K, 4K) or laptop screen.
+   - All web application pages ([webApp/index.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/index.html), [webApp/register.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/register.html), [webApp/track.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/track.html), [webApp/healthcare.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/healthcare.html), [webApp/subsidies.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/subsidies.html), [webApp/admin/index.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/admin/index.html)) dynamically expand across the maximum viewport width (`max-w-[1780px]`), eliminating narrow mobile-like centered columns and empty side gutters.
+   - **Register Page:** Operates as an expansive 12-column recording studio (5-column live recording & frequency deck + 7-column multi-field complaint form).
+   - **Track Page:** Operates as a dual-column command dashboard with a dedicated audio evidence box and a 4-step chronological timeline.
+   - **Healthcare & Subsidies Pages:** Utilize expansive 4-column responsive card grids (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`).
 
 ---
 
@@ -277,24 +276,19 @@ It is designed for municipal administrators, triage supervisors, field inspectio
 
 ---
 
-### ACTION 15: Clean Voice Prompting ("Speak in English or Local Language")
-1. **Observe the Unified Voice Instruction:**
-   - In both Web and Mobile apps, the previous lengthy enumeration of local languages under the microphone has been replaced with the clean, direct instruction:
-     - In English Version: **"Speak in English or Local Language"**
-     - In Urdu Version: **"انگریزی یا اپنی مقامی زبان میں بولیں (Speak in English or Local Language)"**
-2. **All 8 Regional Audio Accents Supported:**
-   - While the user prompt is kept clean, the underlying Speech Engine and AI Router actively recognize:
-     - **Urdu (`ur-PK`)**
-     - **Punjabi (`pa-PK`)**
-     - **Potohari (`poth-PK`)**
-     - **Saraiki (`skr-PK`)**
-     - **Hindko (`hnd-PK`)**
-     - **Sindhi (`sd-PK`)**
-     - **Pashto (`ps-PK`)**
-     - **Balochi (`bal-PK`)**
-     - **English (`en-US`)**
-3. **Strict Two-Version Interface Policy:**
-   - The user interface is strictly maintained in **two versions only**: **Urdu** and **English**, ensuring clean typography and zero visual clutter.
+### ACTION 15: Vibrant Glowing Studio Recording Microphone (Non-Green Animated Studio Palette)
+1. **Perfect Circular Geometry & Radiant Studio Glow (Non-Green):**
+   - Inspect the central Push-to-Talk microphone button on both Web and Mobile apps.
+   - It is strictly locked to a circular aspect ratio (`w-36 h-36` / `w-44 h-44` circular orb) styled with a vibrant studio recording gradient (**Ruby Crimson `#be123c`, Vivid Rose `#e11d48`, Sunset Coral `#ea580c`, and Amber Gold `#f59e0b`**), completely replacing dull green styling.
+   - The button features continuous high-impact animations including multi-tiered radiant sonic halo wave rings (`studio-mic-ring-1`, `studio-mic-ring-2`, `studio-mic-ring-3`) pulsing outwards, dynamic breathing box-shadows (`shadow-[0_0_55px_rgba(225,29,72,0.7)]`), and dancing internal equalizer bars.
+   - Inside the button, only a concise action label (`بولیں` in Urdu, `Speak` in English) is displayed, completely preventing horizontal button deformation or squashing into an oval pill.
+2. **Clean Instructional Prompt Below the Button:**
+   - Directly underneath the glowing orb, clean instructional typography is rendered:
+     - Title: **مائیک دبائیں اور بولیں**
+     - Subtitle: **"Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)"**
+3. **All 8 Regional Spoken Accents Actively Supported:**
+   - Underneath, the Voice AI engine actively recognizes and speaks back in **Urdu (`ur-PK`)**, **Punjabi (`pa-PK`)**, **Potohari (`poth-PK`)**, **Saraiki (`skr-PK`)**, **Hindko (`hnd-PK`)**, **Sindhi (`sd-PK`)**, **Pashto (`ps-PK`)**, and **Balochi (`bal-PK`)**, plus **English (`en-US`)**.
+   - The user interface is strictly maintained in **two versions only** (Urdu and English).
 
 ---
 
@@ -331,18 +325,47 @@ It is designed for municipal administrators, triage supervisors, field inspectio
 
 ---
 
-### ACTION 19: Automated GitHub Repository Synchronization
+### ACTION 19: Automated GitHub Repository Synchronization & AppLocker Workarounds
 1. **Target GitHub Repository:** `https://github.com/cemehboob/AI_Civic_Solution.git`
-2. **Execute Deployment Script:**
-   - In Command Prompt: Run `.\push_to_github.bat`
-   - In PowerShell: Run `.\push_to_github.ps1`
+2. **Execute Deployment via Preferred Method:**
+   - **Method A (Git Bash - Recommended for Windows Domain/Corporate PCs):**
+     Open Git Bash in `c:\AI_Practice\AI_Civic_Solution` and run:
+     ```bash
+     git add -A
+     git commit -m "Update: Glowing mic orb, widescreen full-page layout, EN ⇄ اردو badge, nationwide Pakistan expansion"
+     git push -u origin main
+     ```
+   - **Method B (PowerShell Execution Bypass):**
+     In PowerShell, if `.bat` execution is restricted by AppLocker/WDAC (`Access is denied`), run via PowerShell script with execution policy bypass:
+     ```powershell
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+     .\push_to_github.ps1
+     ```
+   - **Method C (Standard Command Prompt - cmd.exe):**
+     Open Command Prompt (`cmd.exe`) as Administrator:
+     ```cmd
+     cd c:\AI_Practice\AI_Civic_Solution
+     push_to_github.bat
+     ```
 3. **Automated Steps Performed:**
-   - Verifies Git installation.
-   - Initializes local Git repository and points origin to `https://github.com/cemehboob/AI_Civic_Solution.git`.
-   - Creates the `main` branch.
+   - Verifies Git installation and remote origin connection.
+   - Sets default branch to `main`.
    - Stages all application files, designs, and documentation.
-   - Commits with descriptive change metadata.
+   - Commits with comprehensive version metadata.
    - Pushes cleanly to GitHub (`origin/main`).
+
+---
+
+### ACTION 20: Vercel Cloud Production Deployment Configuration
+1. **Live Production Domain:** `https://aicivicsolution.vercel.app/`
+2. **Root Routing & 404 Prevention:**
+   - [vercel.json](file:///c:/AI_Practice/AI_Civic_Solution/vercel.json) at repository root configures seamless redirect from `/` to `/webApp/index.html`.
+   - [index.html](file:///c:/AI_Practice/AI_Civic_Solution/index.html) at repository root provides instant client-side redirection (`<meta http-equiv="refresh">` and `window.location.replace()`) and displays an executive Government of Pakistan gateway card with direct one-click launch buttons to:
+     - **Citizen Web Portal:** `/webApp/index.html`
+     - **Citizen Mobile Application:** `/mobileApp/index.html`
+     - **Admin Command Console:** `/webApp/admin/index.html`
+3. **Automatic Redeployment:**
+   - Every push to the GitHub `main` branch automatically triggers Vercel to rebuild and redeploy the live application within seconds with zero downtime.
 
 ---
 

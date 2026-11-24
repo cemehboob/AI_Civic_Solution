@@ -43,7 +43,7 @@
 <body class="bg-surface font-body-md text-on-surface antialiased">
   <!-- Top Header -->
   <header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-    <div class="h-20 max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+    <div class="h-20 w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="index.html" class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shadow-sm text-on-primary">
           <span class="material-symbols-outlined text-[30px]">account_balance</span>
@@ -82,7 +82,7 @@
 
   <!-- Main Viewport -->
   <main class="w-full pt-28 pb-16 bg-surface min-h-screen">
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-4">
+    <div class="w-full max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
       <div class="flex flex-col w-full gap-6">
         
         <!-- Accessibility Notice / Audio Assistance Banner -->
@@ -154,8 +154,8 @@
           <!-- Tab View: Voice Search -->
           <div class="hidden flex-col gap-3 bg-surface-container-low p-5 rounded-xl border border-slate-200" id="view-voice">
             <div class="flex flex-col items-center text-center gap-2 py-2">
-              <button onclick="startVoiceQueryTab()" class="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg active:scale-90 transition-transform cursor-pointer">
-                <span class="material-symbols-outlined text-[36px]">mic</span>
+              <button onclick="startVoiceQueryTab()" class="studio-mic-btn w-16 h-16 rounded-full text-white flex items-center justify-center shadow-lg active:scale-90 transition-transform cursor-pointer border-2 border-amber-300/50">
+                <span class="material-symbols-outlined text-[36px] animate-pulse">mic</span>
               </button>
               <p class="font-bold text-on-surface text-sm">آواز سے تلاش کریں (Conversational Voice Query)</p>
               <p class="text-xs text-on-surface-variant max-w-md">مثال بولیں: "میری پانی والی شکایت کیا بنی؟" یا "سڑک کی مرمت کا ٹوکن چیک کرو"</p>
@@ -250,64 +250,105 @@
       }
 
       container.innerHTML = `
-        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col gap-4">
+        <div class="bg-surface-container-lowest rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 flex flex-col gap-6">
           <!-- Header Bar -->
-          <div class="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">
-            <div class="flex items-center gap-2">
-              <span class="font-mono text-xl font-bold text-primary">#${complaint.token}</span>
-              <span class="px-3 py-1 rounded-full ${complaint.status === 'resolved' ? 'bg-primary-fixed text-on-primary-fixed' : 'bg-secondary-fixed text-on-secondary-fixed'} text-xs font-bold flex items-center gap-1.5">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-2xl font-bold text-primary tracking-tight">#${complaint.token}</span>
+              <span class="px-3.5 py-1.5 rounded-full ${complaint.status === 'resolved' ? 'bg-primary-fixed text-on-primary-fixed' : 'bg-secondary-fixed text-on-secondary-fixed'} text-xs font-bold flex items-center gap-1.5">
                 <span class="w-2.5 h-2.5 rounded-full ${complaint.status === 'resolved' ? 'bg-primary' : 'bg-secondary animate-pulse'}"></span>
                 ${complaint.statusUrdu || 'زیر جائزہ'}
               </span>
             </div>
 
-            <button onclick="speakCase('${complaint.token}')" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary flex items-center gap-1.5 font-bold text-xs shadow-sm active:scale-95 transition-all">
-              <span class="material-symbols-outlined text-[20px]">volume_up</span>
+            <button onclick="speakCase('${complaint.token}')" class="min-h-[46px] px-5 rounded-xl bg-secondary text-on-secondary flex items-center gap-2 font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
+              <span class="material-symbols-outlined text-[22px]">volume_up</span>
               <span>احوال سنیں (Listen Audio)</span>
             </button>
           </div>
 
-          <!-- Problem Info -->
-          <div>
-            <h3 class="font-urdu-headline-md font-bold text-on-surface text-[20px]">${complaint.titleUrdu}</h3>
-            <p class="text-xs text-on-surface-variant mt-1 flex items-center gap-1">
-              <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
-              <span>${complaint.location}</span>
-              <span class="mx-2">•</span>
-              <span>درخواست گزار: ${complaint.complainantName}</span>
-            </p>
-          </div>
+          <!-- 2-Column Responsive Widescreen Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Left 5 Columns: Case Metadata, Audio Evidence & SLA -->
+            <div class="lg:col-span-5 flex flex-col gap-5">
+              <div>
+                <span class="text-xs font-bold text-on-surface-variant block mb-1">شکایت کی تفصیل و عنوان:</span>
+                <h3 class="font-urdu-headline-md font-bold text-on-surface text-[22px] leading-snug">${complaint.titleUrdu}</h3>
+                <p class="text-xs text-on-surface-variant mt-2 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                  <span>${complaint.location}</span>
+                </p>
+                <p class="text-xs text-on-surface-variant mt-1 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px] text-primary">person</span>
+                  <span>درخواست گزار: <strong>${complaint.complainantName}</strong></span>
+                </p>
+              </div>
 
-          <!-- Step Progression Bar -->
-          <div class="bg-surface-container-low rounded-xl p-4 my-2 border border-slate-100">
-            <span class="font-bold text-xs text-on-surface block mb-3">مرحلہ وار پیشرفت اور ریکارڈ (Chronological Timeline):</span>
-            <div class="flex flex-col gap-3">
-              ${(complaint.timeline || []).map((step, idx) => `
-                <div class="flex items-start gap-3">
-                  <div class="w-7 h-7 rounded-full ${step.done ? 'bg-primary text-on-primary' : 'bg-slate-200 text-slate-500'} flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
-                    ${step.done ? '✓' : idx + 1}
+              <!-- Audio Evidence Player -->
+              <div class="bg-surface-container-low rounded-2xl p-4 border border-slate-200 flex flex-col gap-3">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-primary flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[18px]">record_voice_over</span>
+                    <span>شہری کا اصل صوتی پیغام (Spoken Note):</span>
+                  </span>
+                  <span class="text-[11px] font-mono text-on-surface-variant">14 سیکنڈز • تصدیق شدہ</span>
+                </div>
+                <div class="bg-surface-container-lowest p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                  <button onclick="speakCase('${complaint.token}')" class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 hover:bg-primary-container transition-colors shadow-sm">
+                    <span class="material-symbols-outlined text-[20px]">play_arrow</span>
+                  </button>
+                  <div class="flex items-center gap-1 flex-1 mx-3 h-5">
+                    <span class="w-1 bg-primary rounded-full h-3"></span>
+                    <span class="w-1 bg-primary rounded-full h-5"></span>
+                    <span class="w-1 bg-primary rounded-full h-2"></span>
+                    <span class="w-1 bg-secondary rounded-full h-4"></span>
+                    <span class="w-1 bg-secondary rounded-full h-5"></span>
+                    <span class="w-1 bg-primary rounded-full h-3"></span>
+                    <span class="w-1 bg-primary rounded-full h-1"></span>
+                    <span class="w-1 bg-primary rounded-full h-4"></span>
                   </div>
-                  <div class="flex flex-col flex-1">
-                    <div class="flex items-center justify-between">
-                      <span class="font-bold text-sm ${step.done ? 'text-primary' : 'text-slate-400'}">${step.stepUrdu}</span>
-                      <span class="font-mono text-xs text-slate-400">${step.time}</span>
+                  <span class="text-xs font-mono text-on-surface-variant">0:14</span>
+                </div>
+              </div>
+
+              <!-- Dispatch & SLA Strip -->
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="bg-surface-container-low p-3.5 rounded-xl border border-slate-100">
+                  <span class="text-on-surface-variant text-[11px] block">تفویض کردہ فیلڈ ٹیم:</span>
+                  <strong class="text-primary font-bold text-xs sm:text-sm block mt-0.5">${complaint.assignedTeam || 'SDO Gujar Khan Desk'}</strong>
+                </div>
+                <div class="bg-surface-container-low p-3.5 rounded-xl border border-slate-100">
+                  <span class="text-on-surface-variant text-[11px] block">سروس لیول ایگریمنٹ (SLA):</span>
+                  <strong class="text-secondary font-bold font-mono text-xs sm:text-sm block mt-0.5">${complaint.slaRemaining || '24h Remaining'}</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 7 Columns: Step Chronological Timeline -->
+            <div class="lg:col-span-7 bg-surface-container-low rounded-2xl p-5 sm:p-6 border border-slate-200">
+              <span class="font-bold text-sm text-on-surface block mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[20px]">timeline</span>
+                <span>مرحلہ وار پیشرفت اور ریکارڈ (Chronological Timeline):</span>
+              </span>
+              <div class="flex flex-col gap-4">
+                ${(complaint.timeline || []).map((step, idx) => `
+                  <div class="flex items-start gap-3.5 bg-surface-container-lowest p-3.5 rounded-xl border border-slate-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full ${step.done ? 'bg-primary text-on-primary' : 'bg-slate-200 text-slate-500'} flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
+                      ${step.done ? '✓' : idx + 1}
+                    </div>
+                    <div class="flex flex-col flex-1">
+                      <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm ${step.done ? 'text-primary' : 'text-slate-400'}">${step.stepUrdu}</span>
+                        <span class="font-mono text-xs text-slate-400">${step.time}</span>
+                      </div>
+                      <span class="text-xs text-on-surface-variant mt-0.5">${step.stepEnglish || ''}</span>
                     </div>
                   </div>
-                </div>
-              `).join('')}
+                `).join('')}
+              </div>
             </div>
           </div>
-
-          <!-- Footer Metadata -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs border-t border-slate-100">
-            <div>
-              <span class="text-on-surface-variant block">تفویض کردہ فیلڈ ٹیم:</span>
-              <strong class="text-primary font-bold">${complaint.assignedTeam || 'SDO Gujar Khan Desk'}</strong>
-            </div>
-            <div>
-              <span class="text-on-surface-variant block">سروس لیول ایگریمنٹ (SLA):</span>
-              <strong class="text-secondary font-bold font-mono">${complaint.slaRemaining || '24h Remaining'}</strong>
-            </div>
+        </div>
             <div>
               <span class="text-on-surface-variant block">شہری ہیلپ لائن برائے اپیل:</span>
               <strong class="text-on-surface font-bold">ڈپٹی کمشنر آفس 051-9292510</strong>

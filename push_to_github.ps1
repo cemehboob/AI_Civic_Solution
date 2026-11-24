@@ -1,4 +1,4 @@
-﻿# =========================================================================
+# =========================================================================
 # Awami Voice Civic Solution - Automated Git Deployment Script (PowerShell)
 # Target Repository: https://github.com/cemehboob/AI_Civic_Solution.git
 # =========================================================================
@@ -36,7 +36,7 @@ Write-Host "[3/5] Setting main branch..." -ForegroundColor Yellow
 
 Write-Host "[4/5] Staging files and creating commit..." -ForegroundColor Yellow
 & git add -A
-$commitMessage = "Update: Dedicated EN ⇄ اردو bilingual conversion badge, complete Chinese glyph elimination, nationwide Pakistan expansion across all provinces, clean mic prompt, and updated documentation"
+$commitMessage = "Fix: Replace green mic with animated studio recording button, remove green references, and ensure responsive layout"
 & git commit -m "$commitMessage"
 
 # 5. Push to GitHub

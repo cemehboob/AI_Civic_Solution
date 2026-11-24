@@ -97,10 +97,10 @@
 
         <!-- Orb visualizer with concentric pulses -->
         <div class="relative w-32 h-32 my-3 flex items-center justify-center">
-          <div class="absolute inset-0 rounded-full bg-primary/20 animate-ping" id="main-orb-ping" style="animation-duration: 2.2s;"></div>
-          <div class="absolute inset-2 rounded-full bg-secondary-container/30 animate-pulse" style="animation-duration: 1.4s;"></div>
-          <button id="toggle-voice-rec-btn" onclick="toggleVoiceCapture()" class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-primary-container flex flex-col items-center justify-center text-on-primary shadow-xl hover:scale-105 active:scale-95 transition-transform cursor-pointer">
-            <span class="material-symbols-outlined text-[42px]" id="mic-action-icon">mic</span>
+          <div class="absolute inset-0 rounded-full border-2 border-rose-500/35 studio-mic-ring-1 pointer-events-none"></div>
+          <div class="absolute inset-2 rounded-full border-2 border-orange-500/40 studio-mic-ring-2 pointer-events-none"></div>
+          <button id="toggle-voice-rec-btn" onclick="toggleVoiceCapture()" class="studio-mic-btn relative z-10 w-24 h-24 rounded-full flex flex-col items-center justify-center text-white shadow-xl hover:scale-105 active:scale-95 transition-transform cursor-pointer border-2 border-amber-300/50">
+            <span class="material-symbols-outlined text-[42px] animate-pulse" id="mic-action-icon">mic</span>
           </button>
         </div>
 

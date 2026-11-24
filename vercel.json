@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/webApp/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/admin",
+      "destination": "/webApp/admin/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/mobile",
+      "destination": "/mobileApp/index.html",
+      "permanent": false
+    }
+  ]
+}
