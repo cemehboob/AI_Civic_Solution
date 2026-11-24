@@ -243,11 +243,15 @@
       const container = document.getElementById("tracking-result-section");
       const list = AppSync.getComplaints();
       const complaint = list.find(c => c.token.toLowerCase() === token.toLowerCase()) || list[0];
+      const isEn = WebPortal.currentLang === "en";
 
       if (!complaint) {
-        container.innerHTML = `<p class="p-6 text-center text-sm font-bold bg-surface-container-lowest rounded-xl">کوئی شکایت نہیں ملی۔</p>`;
+        container.innerHTML = `<p class="p-6 text-center text-sm font-bold bg-surface-container-lowest rounded-xl">${isEn ? "No complaint found." : "کوئی شکایت نہیں ملی۔"}</p>`;
         return;
       }
+
+      const displayStatus = isEn ? (complaint.status ? complaint.status.toUpperCase() : "IN PROGRESS") : (complaint.statusUrdu || 'زیر جائزہ');
+      const displayTitle = isEn ? (complaint.titleEnglish || complaint.titleUrdu) : complaint.titleUrdu;
 
       container.innerHTML = `
         <div class="bg-surface-container-lowest rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 flex flex-col gap-6">
@@ -257,13 +261,13 @@
               <span class="font-mono text-2xl font-bold text-primary tracking-tight">#${complaint.token}</span>
               <span class="px-3.5 py-1.5 rounded-full ${complaint.status === 'resolved' ? 'bg-primary-fixed text-on-primary-fixed' : 'bg-secondary-fixed text-on-secondary-fixed'} text-xs font-bold flex items-center gap-1.5">
                 <span class="w-2.5 h-2.5 rounded-full ${complaint.status === 'resolved' ? 'bg-primary' : 'bg-secondary animate-pulse'}"></span>
-                ${complaint.statusUrdu || 'زیر جائزہ'}
+                ${displayStatus}
               </span>
             </div>
 
             <button onclick="speakCase('${complaint.token}')" class="min-h-[46px] px-5 rounded-xl bg-secondary text-on-secondary flex items-center gap-2 font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all">
               <span class="material-symbols-outlined text-[22px]">volume_up</span>
-              <span>احوال سنیں (Listen Audio)</span>
+              <span>${isEn ? "Listen Status Audio" : "احوال سنیں (Listen Audio)"}</span>
             </button>
           </div>
 
@@ -272,15 +276,15 @@
             <!-- Left 5 Columns: Case Metadata, Audio Evidence & SLA -->
             <div class="lg:col-span-5 flex flex-col gap-5">
               <div>
-                <span class="text-xs font-bold text-on-surface-variant block mb-1">شکایت کی تفصیل و عنوان:</span>
-                <h3 class="font-urdu-headline-md font-bold text-on-surface text-[22px] leading-snug">${complaint.titleUrdu}</h3>
+                <span class="text-xs font-bold text-on-surface-variant block mb-1">${isEn ? "Complaint Title & Details:" : "شکایت کی تفصیل و عنوان:"}</span>
+                <h3 class="font-bold text-on-surface text-[20px] leading-snug">${displayTitle}</h3>
                 <p class="text-xs text-on-surface-variant mt-2 flex items-center gap-1.5">
                   <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
                   <span>${complaint.location}</span>
                 </p>
                 <p class="text-xs text-on-surface-variant mt-1 flex items-center gap-1.5">
                   <span class="material-symbols-outlined text-[18px] text-primary">person</span>
-                  <span>درخواست گزار: <strong>${complaint.complainantName}</strong></span>
+                  <span>${isEn ? "Citizen:" : "درخواست گزار:"} <strong>${complaint.complainantName}</strong></span>
                 </p>
               </div>
 

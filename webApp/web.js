@@ -1,13 +1,15 @@
 /**
  * Awami Voice Civic Solution - Citizen Web Portal Shared Script
  * Powers Audio Narration, Real-time Speech Interaction, Full-Page English <-> Urdu Switching,
- * and Multi-Dialect Support (Urdu, Punjabi, Potohari, Saraiki, Hindko, English)
+ * Dynamic Green <-> Red Mic Color Transition upon Click, and Multi-Dialect Conversational AI
  */
 
 const WebPortal = {
   narrating: false,
   narrationSpeed: 1.0,
   currentLang: localStorage.getItem("awami_app_lang") || "ur",
+  lastAiResponse: null,
+  lastUserQuery: null,
 
   init() {
     if (typeof AppSecurity !== "undefined") {
@@ -18,6 +20,10 @@ const WebPortal = {
     }
     this.applyLanguage(this.currentLang);
     this.highlightActiveNav();
+
+    if (typeof AppSpeech !== "undefined") {
+      AppSpeech.setLanguage(this.currentLang === "en" ? "en-US" : "ur-PK");
+    }
   },
 
   toggleLanguage() {
@@ -25,6 +31,18 @@ const WebPortal = {
     localStorage.setItem("awami_app_lang", this.currentLang);
     this.applyLanguage(this.currentLang);
     this.highlightActiveNav();
+
+    if (typeof AppSpeech !== "undefined") {
+      AppSpeech.setLanguage(this.currentLang === "en" ? "en-US" : "ur-PK");
+    }
+
+    // Re-render subpage listings if present
+    if (typeof renderWebHospitals === "function") {
+      renderWebHospitals();
+    }
+    if (typeof renderSubsidies === "function") {
+      renderSubsidies();
+    }
   },
 
   applyLanguage(lang) {
@@ -34,7 +52,7 @@ const WebPortal = {
 
     const dict = (typeof CivicData !== "undefined" && CivicData.i18n && CivicData.i18n[lang]) || {};
 
-    // 1. Header & Navigation
+    // 1. Header & Navigation (Available on All Web Pages)
     const topBtnLabel = document.getElementById("top-lang-text");
     if (topBtnLabel) topBtnLabel.innerText = isEn ? "اردو" : "English";
 
@@ -56,7 +74,11 @@ const WebPortal = {
     const mobileLinkText = document.getElementById("gov-mobile-link-text");
     if (mobileLinkText && dict.viewMobile) mobileLinkText.innerText = dict.viewMobile;
 
-    const navLinks = document.querySelectorAll("nav a");
+    const backBtnText = document.getElementById("nav-back-text");
+    if (backBtnText) backBtnText.innerText = isEn ? "Back (Home)" : "واپسی (Back)";
+
+    // Navigation Links
+    const navLinks = document.querySelectorAll("header nav a");
     if (navLinks.length >= 5) {
       navLinks[0].innerText = dict.navHome || (isEn ? "Home" : "مرکزی صفحہ (Home)");
       navLinks[1].innerText = dict.navRegister || (isEn ? "Register Complaint" : "شکایت درج کروائیں (Register)");
@@ -78,7 +100,7 @@ const WebPortal = {
     const speedLabel = document.getElementById("narrator-speed-label");
     if (speedLabel && dict.narratorSpeedLabel) speedLabel.innerText = dict.narratorSpeedLabel;
 
-    // 3. Hero & Voice Interaction Centerpiece
+    // 3. Hero & Voice Interaction Centerpiece (index.html)
     const heroBadge = document.getElementById("hero-badge-text");
     if (heroBadge && dict.heroBadge) heroBadge.innerText = dict.heroBadge;
 
@@ -89,7 +111,10 @@ const WebPortal = {
     if (heroSub && dict.heroSub) heroSub.innerText = dict.heroSub;
 
     const micStatus = document.getElementById("micStatusText");
-    if (micStatus) micStatus.innerText = isEn ? "Speak" : "بولیں";
+    if (micStatus) {
+      const isListening = typeof AppSpeech !== "undefined" && AppSpeech.isListening;
+      micStatus.innerText = isListening ? (isEn ? "Listening..." : "سن رہا ہے...") : (isEn ? "Speak" : "بولیں");
+    }
 
     const micInstructionTitle = document.getElementById("mic-instruction-title");
     if (micInstructionTitle && dict.micInstruction) micInstructionTitle.innerText = dict.micInstruction;
@@ -125,7 +150,26 @@ const WebPortal = {
     const chipBalochi = document.getElementById("chip-balochi-text");
     if (chipBalochi && dict.chipBalochi) chipBalochi.innerText = dict.chipBalochi;
 
-    // 4. Civic Gateways Bento Section
+    // 4. Conversational Dialogue Box Translations
+    const convoTitle = document.getElementById("convo-status-title");
+    if (convoTitle) convoTitle.innerText = isEn ? "Spoken Conversation & AI Civic Guidance" : "صوتی مکالمہ و رہنمائی (Voice Conversation & AI Response)";
+
+    const convoUserLabel = document.getElementById("convo-user-label");
+    if (convoUserLabel) convoUserLabel.innerText = isEn ? "Your Spoken Input:" : "آپ کا بولا گیا فقرہ (Your Spoken Input):";
+
+    const convoReplayBtn = document.getElementById("convo-replay-btn");
+    if (convoReplayBtn) convoReplayBtn.innerText = isEn ? "Replay" : "سنیں";
+
+    const convoAiLabel = document.getElementById("convo-ai-label");
+    if (convoAiLabel) convoAiLabel.innerText = isEn ? "Awami Voice Guidance & Action:" : "عوامی آواز رہنمائی (AI Response & Action):";
+
+    const convoListenAiBtn = document.getElementById("convo-listen-ai-btn");
+    if (convoListenAiBtn) convoListenAiBtn.innerText = isEn ? "Listen Answer" : "جواب سنیں";
+
+    const convoProceedBtn = document.getElementById("convo-proceed-btn");
+    if (convoProceedBtn) convoProceedBtn.innerText = isEn ? "File Formal Grievance with this Query" : "اس پر باقاعدہ شکایت درج کروائیں (Register Official Grievance)";
+
+    // 5. Civic Gateways Bento Section
     const gwSecTitle = document.getElementById("gateways-section-title");
     if (gwSecTitle && dict.gatewaysTitle) gwSecTitle.innerText = dict.gatewaysTitle;
 
@@ -172,7 +216,7 @@ const WebPortal = {
     const gw4Btn = document.getElementById("gw-subsidy-btn-text");
     if (gw4Btn && dict.gwSubsidyAction) gw4Btn.innerText = dict.gwSubsidyAction;
 
-    // 5. Sidebar Bento Telemetry
+    // 6. Sidebar Bento Telemetry
     const sideDialectsTitle = document.getElementById("side-dialects-title");
     if (sideDialectsTitle && dict.sideDialectsTitle) sideDialectsTitle.innerText = dict.sideDialectsTitle;
     const sideDialectsDesc = document.getElementById("side-dialects-desc");
@@ -188,7 +232,7 @@ const WebPortal = {
     const sideOfflineDesc = document.getElementById("side-offline-desc");
     if (sideOfflineDesc && dict.sideOfflineDesc) sideOfflineDesc.innerText = dict.sideOfflineDesc;
 
-    // 6. Footer
+    // 7. Footer
     const footerGov = document.getElementById("footer-gov-text");
     if (footerGov && dict.footerGov) footerGov.innerText = dict.footerGov;
     const footerDiv = document.getElementById("footer-div-text");
@@ -196,7 +240,23 @@ const WebPortal = {
     const footerTech = document.getElementById("footer-tech-text");
     if (footerTech && dict.footerTech) footerTech.innerText = dict.footerTech;
 
-    // Generic translation for elements with data-i18n attribute
+    // 8. Register Page Specific Localization (register.html)
+    const regStep1 = document.getElementById("reg-step-1");
+    if (regStep1) regStep1.innerText = isEn ? "1. Speak Voice Note" : "1. بولیں (Speak Voice Note)";
+    const regStep2 = document.getElementById("reg-step-2");
+    if (regStep2) regStep2.innerText = isEn ? "2. Review & Edit" : "2. سنیں (Review & Edit)";
+    const regStep3 = document.getElementById("reg-step-3");
+    if (regStep3) regStep3.innerText = isEn ? "3. Confirm & Submit" : "3. تصدیق (Confirm & Submit)";
+
+    const regFormTitle = document.getElementById("reg-form-title");
+    if (regFormTitle) regFormTitle.innerText = isEn ? "Grievance Form (Details & Verification)" : "شکایت فارم (تفصیلات و تصدیق)";
+    const regFormSub = document.getElementById("reg-form-sub");
+    if (regFormSub) regFormSub.innerText = isEn ? "You can speak into the mic next to each field" : "ہر خانے کے ساتھ مائیک کا بٹن دباکر بول بھی سکتے ہیں";
+
+    const regSubmitBtn = document.getElementById("reg-submit-btn-text");
+    if (regSubmitBtn) regSubmitBtn.innerText = isEn ? "Submit Official Grievance (Send to Department)" : "شکایت درج کریں اور کارروائی شروع کروائیں";
+
+    // 9. Generic translation for elements with data-i18n attribute
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) el.innerText = dict[key];
@@ -205,10 +265,12 @@ const WebPortal = {
 
   highlightActiveNav() {
     const current = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("nav a").forEach(link => {
+    document.querySelectorAll("header nav a").forEach(link => {
       const href = link.getAttribute("href");
       if (href && (href === current || (current === "" && href === "index.html"))) {
-        link.className = "min-h-[48px] px-4 py-2 rounded-lg transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm";
+        link.className = "min-h-[44px] px-4 py-2 rounded-xl transition-colors flex items-center bg-primary-container text-on-primary font-bold shadow-sm";
+      } else {
+        link.className = "min-h-[44px] px-4 py-2 rounded-xl font-urdu-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center";
       }
     });
   },
@@ -227,7 +289,7 @@ const WebPortal = {
     }
 
     const dict = (typeof CivicData !== "undefined" && CivicData.i18n && CivicData.i18n[this.currentLang]) || {};
-    const defaultNarration = textToRead || dict.welcomeNarration || "عوامی آواز حکومتِ پاکستان پورٹل میں خوش آمدید۔ آپ مائیک کا بڑا بٹن دبا کر بلا جھجھک اپنی زبان میں شکایت درج کروا سکتے ہیں، قریبی ہسپتال تلاش کر سکتے ہیں اور بینظیر وظیفہ کی معلومات حاصل کر سکتے ہیں۔";
+    const defaultNarration = textToRead || (isEn ? dict.welcomeNarration : (dict.welcomeNarration || "عوامی آواز حکومتِ پاکستان پورٹل میں خوش آمدید۔ آپ مائیک کا بڑا بٹن دبا کر بلا جھجھک اپنی زبان میں شکایت درج کروا سکتے ہیں، قریبی ہسپتال تلاش کر سکتے ہیں اور بینظیر وظیفہ کی معلومات حاصل کر سکتے ہیں۔"));
     
     this.narrating = true;
     if (icon) icon.innerText = "pause_circle";
@@ -247,72 +309,133 @@ const WebPortal = {
       const parent = btnElement.parentElement;
       if (parent) {
         parent.querySelectorAll("button").forEach(b => {
-          b.className = "min-h-[36px] px-3 py-1 rounded-lg text-xs text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors";
+          b.className = "min-h-[34px] px-3 py-1 rounded-lg text-xs text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors";
         });
-        btnElement.className = "min-h-[36px] px-3 py-1 rounded-lg text-xs bg-primary text-on-primary font-bold transition-colors";
+        btnElement.className = "min-h-[34px] px-3 py-1 rounded-lg text-xs bg-primary text-on-primary font-bold transition-colors";
       }
     }
   },
 
+  /**
+   * Spoken Query Execution from Suggestion Chips
+   */
   playVoiceHint(text) {
     AppSpeech.playChime("speechCaptured");
-    AppSpeech.speak(text);
-    const alertBox = document.getElementById("dictationAlert");
-    const queryText = document.getElementById("dictatedQuery");
-    if (alertBox) alertBox.classList.remove("hidden");
-    if (queryText) queryText.innerText = `"${text}"`;
-  },
-
-  triggerMainMic() {
-    const micPulse1 = document.getElementById("micPulse1");
-    const micPulse2 = document.getElementById("micPulse2");
-    const visualizer = document.getElementById("soundWaveVisualizer");
-    const statusText = document.getElementById("micStatusText");
-    const alertBox = document.getElementById("dictationAlert");
-    const queryText = document.getElementById("dictatedQuery");
     const isEn = this.currentLang === "en";
 
+    // Process through AI Router to produce conversational answer
+    AppAIRouter.processQuery(text).then(res => {
+      this.displayConversationResult(text, res, isEn);
+    });
+  },
+
+  /**
+   * Trigger Main Microphone Button
+   * DYNAMIC COLOR TRANSITION:
+   * - Default/Idle: GREEN (Pakistani Emerald Studio Green)
+   * - Clicked/Active: RED/AMBER with fast sonic halo pulse and dancing equalizer
+   * - Finished/Stopped: Flips smoothly back to GREEN
+   */
+  triggerMainMic() {
+    const micBtn = document.getElementById("mainVoiceMic");
+    const orbContainer = document.getElementById("mic-container-orb");
+    const visualizer = document.getElementById("soundWaveVisualizer");
+    const statusText = document.getElementById("micStatusText");
+    const isEn = this.currentLang === "en";
+
+    // If already listening, stop and return color to green
     if (AppSpeech.isListening) {
       AppSpeech.stopListening();
+      if (micBtn) micBtn.classList.remove("is-recording");
+      if (orbContainer) orbContainer.classList.remove("is-recording-wrapper");
+      if (statusText) statusText.innerText = isEn ? "Speak" : "بولیں";
+      if (visualizer) visualizer.classList.add("hidden");
       return;
     }
 
-    if (micPulse1) micPulse1.classList.add("scale-125", "bg-secondary-container/40");
-    if (micPulse2) micPulse2.classList.add("scale-125", "bg-primary-fixed/40");
+    // ACTIVATE RECORDING STATE: Turn Mic RED/AMBER with pulsing animation
+    if (micBtn) micBtn.classList.add("is-recording");
+    if (orbContainer) orbContainer.classList.add("is-recording-wrapper");
     if (visualizer) visualizer.classList.remove("hidden");
     if (statusText) statusText.innerText = isEn ? "Listening..." : "سن رہا ہے...";
 
+    // Ensure speech engine matches active language
+    AppSpeech.setLanguage(isEn ? "en-US" : "ur-PK");
+
     AppSpeech.startListening(
       (transcript, isFinal) => {
-        if (alertBox) alertBox.classList.remove("hidden");
-        if (queryText) queryText.innerText = `"${transcript}"`;
-
         if (isFinal) {
+          // RESTORE GREEN COLOR UPON SPEECH COMPLETION
+          if (micBtn) micBtn.classList.remove("is-recording");
+          if (orbContainer) orbContainer.classList.remove("is-recording-wrapper");
           if (statusText) statusText.innerText = isEn ? "Speak" : "بولیں";
           if (visualizer) visualizer.classList.add("hidden");
-          if (micPulse1) micPulse1.classList.remove("scale-125", "bg-secondary-container/40");
-          if (micPulse2) micPulse2.classList.remove("scale-125", "bg-primary-fixed/40");
-          
+
           AppAIRouter.processQuery(transcript).then(res => {
-            const reply = isEn ? (res.responseEnglish || res.responseUrdu) : res.responseUrdu;
-            AppSpeech.speak(reply);
+            WebPortal.displayConversationResult(transcript, res, isEn);
           });
         }
       },
       (state) => {
         if (state === "idle") {
+          // RESTORE GREEN COLOR WHEN IDLE
+          if (micBtn) micBtn.classList.remove("is-recording");
+          if (orbContainer) orbContainer.classList.remove("is-recording-wrapper");
           if (statusText) statusText.innerText = isEn ? "Speak" : "بولیں";
           if (visualizer) visualizer.classList.add("hidden");
-          if (micPulse1) micPulse1.classList.remove("scale-125", "bg-secondary-container/40");
-          if (micPulse2) micPulse2.classList.remove("scale-125", "bg-primary-fixed/40");
         }
       }
     );
   },
 
+  /**
+   * Display Dual-Language Urdu <-> English Spoken Dialogue
+   */
+  displayConversationResult(userText, aiRes, isEn) {
+    this.lastUserQuery = userText;
+    this.lastAiResponse = aiRes;
+
+    const alertBox = document.getElementById("dictationAlert");
+    const queryText = document.getElementById("dictatedQuery");
+    const aiText = document.getElementById("aiResponseText");
+    const aiTrans = document.getElementById("aiResponseTranslation");
+
+    if (alertBox) alertBox.classList.remove("hidden");
+    if (queryText) queryText.innerText = `"${userText}"`;
+
+    const urduAnswer = aiRes.responseUrdu || "آپ کی شکایت نوٹ کر لی گئی ہے اور متعلقہ محکمے کو روانہ کی جا رہی ہے۔";
+    const englishAnswer = aiRes.responseEnglish || "Your complaint has been logged and assigned to the relevant department.";
+
+    if (aiText) aiText.innerText = urduAnswer;
+    if (aiTrans) aiTrans.innerText = englishAnswer;
+
+    // Speak aloud in the user's active language
+    const spokenReply = isEn ? englishAnswer : urduAnswer;
+    AppSpeech.speak(spokenReply);
+
+    // Scroll conversation into view smoothly
+    if (alertBox) {
+      alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  },
+
+  replayUserQuery() {
+    if (this.lastUserQuery) {
+      AppSpeech.speak(this.lastUserQuery);
+    }
+  },
+
+  replayAiResponse() {
+    if (this.lastAiResponse) {
+      const isEn = this.currentLang === "en";
+      const spokenReply = isEn ? (this.lastAiResponse.responseEnglish || this.lastAiResponse.responseUrdu) : this.lastAiResponse.responseUrdu;
+      AppSpeech.speak(spokenReply);
+    }
+  },
+
   submitSpokenQuery() {
     const queryText = document.getElementById("dictatedQuery");
-    const text = queryText ? queryText.innerText.replace(/[“”"]/g, "") : "";
+    const text = queryText ? queryText.innerText.replace(/[“”"]/g, "").trim() : "";
     if (text) {
       sessionStorage.setItem("awami_web_pending_query", text);
       window.location.href = "register.html";

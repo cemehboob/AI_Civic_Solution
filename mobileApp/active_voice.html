@@ -55,6 +55,10 @@
       </div>
       
       <div class="flex items-center gap-2">
+        <a href="../webApp/index.html" class="min-h-[40px] px-3.5 py-1 rounded-full bg-primary text-white hover:bg-primary-container transition-all text-xs font-bold flex items-center gap-1.5 border border-primary-fixed/40 active:scale-95 shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">desktop_windows</span>
+          <span>ویب پورٹل</span>
+        </a>
         <button aria-label="Hear instructions" class="min-h-[48px] px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1.5 active:scale-95 transition-all" onclick="MobileApp.speakText('آپ مائیک کے سامنے اپنا مسئلہ بولیں۔ سسٹم خودکار طریقے سے آپ کی بات سن کر جواب دے گا۔')" type="button">
           <span class="material-symbols-outlined text-[20px]">volume_up</span>
           <span class="font-label-md text-label-md font-bold">سنیں</span>
@@ -257,30 +261,33 @@
     function startVoiceCaptureFlow() {
       const transcriptEl = document.getElementById("citizen-spoken-transcript");
       const statusEl = document.getElementById("transcription-status");
-      const orbPing = document.getElementById("main-orb-ping");
+      const recBtn = document.getElementById("toggle-voice-rec-btn");
 
-      orbPing.classList.add("animate-ping");
+      if (recBtn) recBtn.classList.add("is-recording");
       statusEl.innerText = "آواز سن رہا ہے...";
 
       AppSpeech.startListening(
         (transcript, isFinal) => {
           transcriptEl.innerText = `“${transcript}”`;
           if (isFinal) {
+            if (recBtn) recBtn.classList.remove("is-recording");
             statusEl.innerText = "آواز کی شناخت مکمل (Whisper v3)";
             executeAIRouting(transcript);
           }
         },
         (state) => {
           if (state === "idle") {
-            orbPing.classList.remove("animate-ping");
+            if (recBtn) recBtn.classList.remove("is-recording");
           }
         }
       );
     }
 
     function toggleVoiceCapture() {
+      const recBtn = document.getElementById("toggle-voice-rec-btn");
       if (AppSpeech.isListening) {
         AppSpeech.stopListening();
+        if (recBtn) recBtn.classList.remove("is-recording");
       } else {
         startVoiceCaptureFlow();
       }

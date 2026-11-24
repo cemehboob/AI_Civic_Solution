@@ -21,6 +21,10 @@ const MobileApp = {
     this.renderBottomNavigation();
     this.updateNetworkBadge();
 
+    if (typeof AppSpeech !== "undefined") {
+      AppSpeech.setLanguage(this.currentLang === "en" ? "en-US" : "ur-PK");
+    }
+
     // Re-check network periodically
     setInterval(() => this.updateNetworkBadge(), 5000);
   },
@@ -30,6 +34,10 @@ const MobileApp = {
     localStorage.setItem("awami_app_lang", this.currentLang);
     this.applyLanguage(this.currentLang);
     this.renderBottomNavigation();
+
+    if (typeof AppSpeech !== "undefined") {
+      AppSpeech.setLanguage(this.currentLang === "en" ? "en-US" : "ur-PK");
+    }
   },
 
   applyLanguage(lang) {
@@ -40,6 +48,9 @@ const MobileApp = {
     const dict = (typeof CivicData !== "undefined" && CivicData.i18n && CivicData.i18n[lang]) || {};
 
     // 1. Header elements
+    const toWebBtn = document.getElementById("mobile-to-webapp-text");
+    if (toWebBtn) toWebBtn.innerText = isEn ? "Web Portal" : "ویب پورٹل";
+
     const label = document.getElementById("mobile-top-lang-label");
     if (label) label.innerText = isEn ? "اردو" : "English";
 

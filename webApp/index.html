@@ -182,19 +182,19 @@
               Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)
             </p>
 
-            <!-- Central Giant Glowing Studio Voice Button Orb (Always Circular with Vivid Radiant Halo) -->
-            <div class="relative flex flex-col items-center justify-center my-6">
-              <!-- Animated Glowing Studio Halo Pulses (3 Staggered Sonic Wave Rings) -->
-              <div class="absolute w-56 h-56 sm:w-64 sm:h-64 rounded-full border-2 border-rose-500/30 studio-mic-ring-1 pointer-events-none" id="micPulse2"></div>
-              <div class="absolute w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 border-orange-500/40 studio-mic-ring-2 pointer-events-none" id="micPulse1"></div>
-              <div class="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-rose-500/15 studio-mic-ring-3 blur-md pointer-events-none"></div>
+            <!-- Central Giant Glowing Studio Voice Button Orb (Always Circular with Dynamic Color Change) -->
+            <div class="relative flex flex-col items-center justify-center my-6" id="mic-container-orb">
+              <!-- Animated Glowing Studio Halo Pulses (3 Staggered Sonic Wave Rings - Green at rest, Red upon click) -->
+              <div class="absolute w-56 h-56 sm:w-64 sm:h-64 rounded-full border-2 studio-mic-ring-1 pointer-events-none" id="micPulse2"></div>
+              <div class="absolute w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 studio-mic-ring-2 pointer-events-none" id="micPulse1"></div>
+              <div class="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full studio-mic-ring-3 blur-md pointer-events-none"></div>
               
-              <!-- Perfect Circular Glowing Studio Microphone Button (Strictly aspect-square & non-green vibrant studio gradient) -->
-              <button aria-label="مائیک دبائیں اور بولیں" class="studio-mic-btn relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full text-white shadow-[0_0_55px_rgba(225,29,72,0.7)] hover:shadow-[0_0_80px_rgba(249,115,22,0.85)] ring-4 ring-white/95 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shrink-0 aspect-square select-none group border-2 border-amber-300/50" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
+              <!-- Perfect Circular Glowing Studio Microphone Button (Green by default, dynamically changes to Red upon click) -->
+              <button aria-label="مائیک دبائیں اور بولیں" class="studio-mic-btn relative z-20 w-36 h-36 sm:w-44 sm:h-44 rounded-full text-white ring-4 ring-white/95 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shrink-0 aspect-square select-none group border-2" id="mainVoiceMic" onclick="WebPortal.triggerMainMic()" type="button">
                 <!-- Glowing Ambient Inner Ring -->
                 <div class="absolute inset-1.5 rounded-full border border-white/35 pointer-events-none group-hover:border-white/70 transition-colors"></div>
                 <!-- Studio Mic Icon with Pulsing Animation -->
-                <span class="material-symbols-outlined text-[62px] sm:text-[68px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform animate-pulse" id="micGlyph">mic</span>
+                <span class="material-symbols-outlined text-[62px] sm:text-[68px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] group-hover:scale-110 transition-transform" id="micGlyph">mic</span>
                 <!-- Animated Equalizer Bars inside button -->
                 <div class="flex items-center gap-1 mt-0.5">
                   <span class="w-1 bg-white/90 rounded-full eq-bar-1"></span>
@@ -202,7 +202,7 @@
                   <span class="w-1 bg-white/90 rounded-full eq-bar-3"></span>
                   <span class="w-1 bg-white/90 rounded-full eq-bar-4"></span>
                 </div>
-                <!-- Compact Internal Action Label (Strictly short to never deform the circular button) -->
+                <!-- Compact Internal Action Label (Strictly short: Speak / بولیں) -->
                 <span class="font-urdu-body-md text-[13px] font-bold text-white/95 leading-none mt-1 drop-shadow" id="micStatusText">بولیں</span>
               </button>
 
@@ -324,21 +324,61 @@
         </div>
       </section>
 
-      <!-- Live Spoken Feedback Notification Tray -->
-      <div class="hidden w-full mb-6 bg-secondary-fixed text-on-secondary-fixed rounded-2xl p-4 shadow-md flex items-center justify-between gap-3 border border-secondary" id="dictationAlert">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-secondary text-[32px]">hearing</span>
-          <div>
-            <div class="font-urdu-headline-md font-bold text-sm">آواز موصول ہوئی (Voice Detected):</div>
-            <div class="font-urdu-body-lg text-[17px] font-bold text-primary" id="dictatedQuery">"کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے"</div>
+      <!-- Live Voice Conversation & AI Assistance Box (Urdu <-> English Dual Dialogue) -->
+      <div class="hidden w-full mb-8 bg-surface-container-lowest rounded-2xl p-5 shadow-lg border-2 border-emerald-500/30 flex flex-col gap-4 transition-all" id="dictationAlert">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-bold text-sm text-primary" id="convo-status-title">صوتی مکالمہ و رہنمائی (Voice Conversation & AI Response)</span>
+          </div>
+          <button class="min-h-[36px] min-w-[36px] rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition-colors" onclick="WebPortal.dismissDictationAlert()" type="button">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Citizen Spoken Input -->
+          <div class="p-4 rounded-xl bg-surface-container-low border border-slate-200 flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary uppercase tracking-wider flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+                <span id="convo-user-label">آپ کا بولا گیا فقرہ (Your Spoken Input):</span>
+              </span>
+              <button onclick="WebPortal.replayUserQuery()" class="text-xs text-secondary hover:underline font-bold flex items-center gap-0.5" title="Replay">
+                <span class="material-symbols-outlined text-[16px]">volume_up</span>
+                <span id="convo-replay-btn">سنیں</span>
+              </button>
+            </div>
+            <div class="font-urdu-body-lg text-[16px] sm:text-[18px] font-bold text-on-surface" id="dictatedQuery">
+              "کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے"
+            </div>
+          </div>
+
+          <!-- AI System Response (Bilingual Urdu & English) -->
+          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+                <span id="convo-ai-label">عوامی آواز رہنمائی (AI Response & Action):</span>
+              </span>
+              <button onclick="WebPortal.replayAiResponse()" class="text-xs text-emerald-800 hover:underline font-bold flex items-center gap-0.5" title="Listen AI Response">
+                <span class="material-symbols-outlined text-[16px]">volume_up</span>
+                <span id="convo-listen-ai-btn">جواب سنیں</span>
+              </button>
+            </div>
+            <div class="font-urdu-body-lg text-[15px] sm:text-[16px] font-bold text-emerald-950 leading-relaxed" id="aiResponseText">
+              آپ کی سڑک اور گلی کی مرمت سے متعلق شکایت نوٹ کر لی گئی ہے۔ محکمہ مواصلات و تعمیرات (C&W) کی فیلڈ ٹیم کو مطلع کیا جا رہا ہے۔
+            </div>
+            <div class="text-xs text-slate-600 italic border-t border-emerald-200/60 pt-1 mt-1 font-sans" id="aiResponseTranslation">
+              Your road infrastructure complaint has been registered for the C&W department.
+            </div>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button class="min-h-[44px] px-4 bg-primary text-on-primary rounded-xl font-bold text-sm hover:bg-primary-container transition-colors shadow" onclick="WebPortal.submitSpokenQuery()" type="button">
-            شکایت درج کریں (Proceed)
-          </button>
-          <button class="min-h-[44px] min-w-[44px] flex items-center justify-center text-on-secondary-fixed hover:bg-secondary-fixed-dim rounded-lg" onclick="WebPortal.dismissDictationAlert()" type="button">
-            <span class="material-symbols-outlined">close</span>
+
+        <div class="flex items-center justify-end gap-3 pt-2">
+          <button class="min-h-[44px] px-5 bg-primary text-on-primary rounded-xl font-bold text-xs sm:text-sm hover:bg-primary-container transition-all shadow flex items-center gap-2 cursor-pointer" onclick="WebPortal.submitSpokenQuery()" type="button">
+            <span class="material-symbols-outlined text-[18px]">post_add</span>
+            <span id="convo-proceed-btn">اس پر باقاعدہ شکایت درج کروائیں (Register Official Grievance)</span>
           </button>
         </div>
       </div>

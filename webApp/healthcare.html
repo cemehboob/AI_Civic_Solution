@@ -171,38 +171,39 @@
     function renderWebHospitals() {
       const container = document.getElementById("web-hospitals-grid");
       const list = CivicData.hospitals || [];
+      const isEn = WebPortal.currentLang === "en";
 
       container.innerHTML = list.map(h => `
         <article class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col justify-between gap-3">
           <div>
             <div class="flex items-start justify-between gap-2 mb-2">
               <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
-                ${h.distanceKm} کلومیٹر دور
+                ${isEn ? `${h.distanceKm} km away` : `${h.distanceKm} کلومیٹر دور`}
               </span>
-              <div class="text-right flex-1" dir="rtl">
-                <h3 class="font-bold text-primary text-[19px]">${h.nameUrdu}</h3>
-                <span class="text-xs text-on-surface-variant">${h.nameEnglish}</span>
+              <div class="${isEn ? 'text-left' : 'text-right'} flex-1">
+                <h3 class="font-bold text-primary text-[19px]">${isEn ? h.nameEnglish : h.nameUrdu}</h3>
+                <span class="text-xs text-on-surface-variant">${isEn ? h.type : h.nameEnglish}</span>
               </div>
               <div class="w-12 h-12 rounded-xl bg-primary-container/10 text-primary flex items-center justify-center shrink-0">
                 <span class="material-symbols-outlined text-[28px]">local_hospital</span>
               </div>
             </div>
 
-            <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-1.5 text-xs text-right" dir="rtl">
-              <div><strong class="text-on-surface">اوقات:</strong> <span class="text-on-surface-variant">${h.operatingHoursUrdu}</span></div>
-              <div><strong class="text-on-surface">طبی عملہ:</strong> <span class="text-on-surface-variant">${h.doctorsUrdu}</span></div>
-              <div><strong class="text-on-surface">خدمات:</strong> <span class="text-on-surface-variant">${h.services.join(' • ')}</span></div>
+            <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-1.5 text-xs ${isEn ? 'text-left' : 'text-right'}">
+              <div><strong class="text-on-surface">${isEn ? "Hours:" : "اوقات:"}</strong> <span class="text-on-surface-variant">${isEn ? h.operatingHoursEnglish : h.operatingHoursUrdu}</span></div>
+              <div><strong class="text-on-surface">${isEn ? "Staff:" : "طبی عملہ:"}</strong> <span class="text-on-surface-variant">${isEn ? h.doctorsEnglish : h.doctorsUrdu}</span></div>
+              <div><strong class="text-on-surface">${isEn ? "Services:" : "خدمات:"}</strong> <span class="text-on-surface-variant">${h.services.join(' • ')}</span></div>
             </div>
           </div>
 
           <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
             <a href="tel:${h.phone}" class="flex-1 min-h-[44px] rounded-xl bg-primary text-on-primary flex items-center justify-center gap-2 text-xs font-bold hover:bg-primary-container transition-colors shadow-sm">
               <span class="material-symbols-outlined text-[18px]">call</span>
-              <span>کال ملائیں (${h.phone})</span>
+              <span>${isEn ? `Call (${h.phone})` : `کال ملائیں (${h.phone})`}</span>
             </a>
             <button onclick="speakHosp('${h.id}')" class="min-h-[44px] px-4 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 text-xs font-bold hover:bg-secondary-container transition-colors">
               <span class="material-symbols-outlined text-[18px]">volume_up</span>
-              <span>تفصیل سنیں</span>
+              <span>${isEn ? "Listen" : "تفصیل سنیں"}</span>
             </button>
           </div>
         </article>

@@ -276,14 +276,16 @@ It is designed for municipal administrators, triage supervisors, field inspectio
 
 ---
 
-### ACTION 15: Vibrant Glowing Studio Recording Microphone (Non-Green Animated Studio Palette)
-1. **Perfect Circular Geometry & Radiant Studio Glow (Non-Green):**
+### ACTION 15: Dynamic Pakistani Emerald Green Microphone with Live Color-Change upon Click (Green at Rest, Radiant Red while Recording)
+1. **Geometric Integrity & Strict Circular Lock:**
    - Inspect the central Push-to-Talk microphone button on both Web and Mobile apps.
-   - It is strictly locked to a circular aspect ratio (`w-36 h-36` / `w-44 h-44` circular orb) styled with a vibrant studio recording gradient (**Ruby Crimson `#be123c`, Vivid Rose `#e11d48`, Sunset Coral `#ea580c`, and Amber Gold `#f59e0b`**), completely replacing dull green styling.
-   - The button features continuous high-impact animations including multi-tiered radiant sonic halo wave rings (`studio-mic-ring-1`, `studio-mic-ring-2`, `studio-mic-ring-3`) pulsing outwards, dynamic breathing box-shadows (`shadow-[0_0_55px_rgba(225,29,72,0.7)]`), and dancing internal equalizer bars.
-   - Inside the button, only a concise action label (`بولیں` in Urdu, `Speak` in English) is displayed, completely preventing horizontal button deformation or squashing into an oval pill.
+   - It is strictly locked to a circular aspect ratio (`w-36 h-36` / `w-44 h-44` / `160px × 160px` circular orb, `aspect-ratio: 1/1 !important`, `border-radius: 9999px !important`), completely preventing horizontal button deformation or squashing into an oval pill.
+   - **Default State (Rest/Idle):** The microphone is styled in vibrant **Pakistani Emerald Studio Green** (`#004423` to `#22c55e`) with ambient emerald sonic halo wave rings (`studio-mic-ring-1`, `studio-mic-ring-2`, `studio-mic-ring-3`) pulsing outwards.
+   - **Active State (Upon Click / While Recording):** Upon clicking the button, the microphone dynamically transforms its color to glowing **Studio Crimson / Red / Amber** (`#be123c` to `#f59e0b`), the ring animations pulse with heightened sonic frequency, and internal equalizer bars dance to citizen voice input.
+   - **Completion State:** As soon as speech finishes, the microphone smoothly flips back to Pakistani Emerald Green.
+   - Inside the button, only a concise action label (`بولیں` in Urdu, `Speak` in English) is displayed.
 2. **Clean Instructional Prompt Below the Button:**
-   - Directly underneath the glowing orb, clean instructional typography is rendered:
+   - Directly underneath the circular orb, clean instructional typography is rendered:
      - Title: **مائیک دبائیں اور بولیں**
      - Subtitle: **"Speak in English or Local Language (انگریزی یا اپنی مقامی زبان میں بولیں)"**
 3. **All 8 Regional Spoken Accents Actively Supported:**
@@ -366,6 +368,17 @@ It is designed for municipal administrators, triage supervisors, field inspectio
      - **Admin Command Console:** `/webApp/admin/index.html`
 3. **Automatic Redeployment:**
    - Every push to the GitHub `main` branch automatically triggers Vercel to rebuild and redeploy the live application within seconds with zero downtime.
+
+---
+
+### ACTION 21: Seamless Two-Way Navigation between Mobile App Mode and Desktop Web Portal Mode
+1. **Return to Web Portal from Mobile App:**
+   - When a citizen or administrator opens mobile mode (`mobileApp/index.html`, `active_voice.html`, `complaint_tracking.html`, `field_tasks.html`, `offline_sync.html`, `user_management.html`), a prominent button is located in the top header:
+     - Icon: `desktop_windows`
+     - Label: **"Web Portal (ویب پورٹل)"**
+   - Clicking this button immediately returns the user to the full-screen desktop Web Portal ([webApp/index.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/index.html)).
+2. **Switch to Mobile App from Web Portal:**
+   - On the Web Portal header ([webApp/index.html](file:///c:/AI_Practice/AI_Civic_Solution/webApp/index.html)), a button labeled **"موبائل ایپ دیکھیں (View Mobile App)"** with a `smartphone` icon enables instant transition to the Mobile App interface.
 
 ---
 

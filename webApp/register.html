@@ -113,21 +113,21 @@
               <div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold shadow-md">
                 <span class="material-symbols-outlined text-[24px]">mic</span>
               </div>
-              <span class="font-urdu-headline-md text-xs sm:text-sm font-bold text-primary">1. بولیں (Speak Voice Note)</span>
+              <span class="font-urdu-headline-md text-xs sm:text-sm font-bold text-primary" id="reg-step-1">1. بولیں (Speak Voice Note)</span>
             </div>
 
             <div class="flex flex-col items-center gap-1.5 relative z-10">
               <div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold shadow-sm">
                 <span class="material-symbols-outlined text-[24px]">headphones</span>
               </div>
-              <span class="font-urdu-headline-md text-xs sm:text-sm font-bold text-primary-container">2. سنیں (Review & Edit)</span>
+              <span class="font-urdu-headline-md text-xs sm:text-sm font-bold text-primary-container" id="reg-step-2">2. سنیں (Review & Edit)</span>
             </div>
 
             <div class="flex flex-col items-center gap-1.5 relative z-10">
               <div class="w-12 h-12 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">
                 <span class="material-symbols-outlined text-[24px]">check_circle</span>
               </div>
-              <span class="font-urdu-body-md text-xs sm:text-sm text-on-surface-variant">3. تصدیق (Confirm & Submit)</span>
+              <span class="font-urdu-body-md text-xs sm:text-sm text-on-surface-variant" id="reg-step-3">3. تصدیق (Confirm & Submit)</span>
             </div>
           </div>
         </div>
@@ -210,8 +210,8 @@
             <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col gap-4">
               <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                 <div>
-                  <h3 class="font-urdu-headline-md font-bold text-on-surface text-[18px]">شکایت فارم (تفصیلات و تصدیق)</h3>
-                  <p class="font-urdu-body-md text-xs text-on-surface-variant">ہر خانے کے ساتھ مائیک کا بٹن دباکر بول بھی سکتے ہیں</p>
+                  <h3 class="font-urdu-headline-md font-bold text-on-surface text-[18px]" id="reg-form-title">شکایت فارم (تفصیلات و تصدیق)</h3>
+                  <p class="font-urdu-body-md text-xs text-on-surface-variant" id="reg-form-sub">ہر خانے کے ساتھ مائیک کا بٹن دباکر بول بھی سکتے ہیں</p>
                 </div>
                 <span class="px-2.5 py-1 rounded bg-primary-fixed text-on-primary-fixed text-xs font-bold">صوتی معاونت آن</span>
               </div>
@@ -274,7 +274,7 @@
                 <!-- Submit Button -->
                 <button type="submit" class="min-h-[56px] w-full rounded-xl bg-primary text-on-primary font-urdu-headline-md font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-primary-container active:scale-95 transition-all mt-2">
                   <span class="material-symbols-outlined text-[24px]">verified</span>
-                  <span>شکایت حتمی جمع کروائیں (Confirm & Submit)</span>
+                  <span id="reg-submit-btn-text">شکایت حتمی جمع کروائیں (Confirm & Submit)</span>
                 </button>
               </form>
             </div>
@@ -309,20 +309,25 @@
       const transcriptEl = document.getElementById("web-transcript-display");
       const detailsEl = document.getElementById("form-details");
       const recordIcon = document.getElementById("web-record-icon");
+      const recordBtn = document.getElementById("web-record-btn");
 
       if (AppSpeech.isListening) {
         AppSpeech.stopListening();
         recordIcon.innerText = "mic";
+        if (recordBtn) recordBtn.classList.remove("is-recording");
         return;
       }
 
       recordIcon.innerText = "hearing";
+      if (recordBtn) recordBtn.classList.add("is-recording");
+
       AppSpeech.startListening((transcript, isFinal) => {
         transcriptEl.innerText = `"${transcript}"`;
         detailsEl.value = transcript;
 
         if (isFinal) {
           recordIcon.innerText = "mic";
+          if (recordBtn) recordBtn.classList.remove("is-recording");
           AppAIRouter.processQuery(transcript).then(res => {
             if (res.extractedData && res.extractedData.category) {
               const catSelect = document.getElementById("form-category");

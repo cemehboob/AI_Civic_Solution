@@ -150,6 +150,7 @@
     function renderSubsidies() {
       const container = document.getElementById("subsidies-grid");
       const list = CivicData.subsidies || [];
+      const isEn = WebPortal.currentLang === "en";
 
       container.innerHTML = list.map(s => `
         <article class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col justify-between gap-3">
@@ -158,9 +159,9 @@
               <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold">
                 ${s.status}
               </span>
-              <div class="text-right flex-1" dir="rtl">
-                <h3 class="font-bold text-primary text-[19px]">${s.nameUrdu}</h3>
-                <span class="text-xs text-on-surface-variant">${s.authority}</span>
+              <div class="${isEn ? 'text-left' : 'text-right'} flex-1">
+                <h3 class="font-bold text-primary text-[19px]">${isEn ? s.nameEnglish : s.nameUrdu}</h3>
+                <span class="text-xs text-on-surface-variant">${isEn ? s.authority : s.authority}</span>
               </div>
               <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
                 <span class="material-symbols-outlined text-[28px]">savings</span>
@@ -168,22 +169,22 @@
             </div>
 
             <!-- Amount Badge -->
-            <div class="p-3 rounded-xl bg-secondary-fixed/30 border border-secondary/20 mb-3 text-right" dir="rtl">
-              <span class="text-xs text-on-surface-variant block">امداد کی رقم / مراعات:</span>
-              <strong class="font-bold text-secondary text-[16px]">${s.amountUrdu}</strong>
+            <div class="p-3 rounded-xl bg-secondary-fixed/30 border border-secondary/20 mb-3 ${isEn ? 'text-left' : 'text-right'}">
+              <span class="text-xs text-on-surface-variant block">${isEn ? "Benefit / Financial Grant:" : "امداد کی رقم / مراعات:"}</span>
+              <strong class="font-bold text-secondary text-[16px]">${isEn ? s.amountEnglish : s.amountUrdu}</strong>
             </div>
 
-            <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-1.5 text-xs text-right" dir="rtl">
-              <div><strong class="text-on-surface">کون اہل ہے؟</strong> <span class="text-on-surface-variant">${s.eligibilityUrdu}</span></div>
-              <div class="mt-1"><strong class="text-on-surface">طریقہ کار:</strong> <span class="text-on-surface-variant">${s.procedureUrdu}</span></div>
+            <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-1.5 text-xs ${isEn ? 'text-left' : 'text-right'}">
+              <div><strong class="text-on-surface">${isEn ? "Eligibility:" : "کون اہل ہے؟"}</strong> <span class="text-on-surface-variant">${isEn ? s.eligibilityEnglish : s.eligibilityUrdu}</span></div>
+              <div class="mt-1"><strong class="text-on-surface">${isEn ? "Procedure:" : "طریقہ کار:"}</strong> <span class="text-on-surface-variant">${isEn ? s.procedureUrdu : s.procedureUrdu}</span></div>
             </div>
           </div>
 
           <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-            <span class="text-on-surface-variant">تصدیق: ${s.verifiedDate}</span>
+            <span class="text-on-surface-variant">${isEn ? "Verified" : "تصدیق"}: ${s.verifiedDate}</span>
             <button onclick="speakScheme('${s.id}')" class="min-h-[44px] px-4 rounded-xl bg-secondary text-on-secondary flex items-center gap-1.5 font-bold hover:bg-secondary-container transition-colors shadow-sm">
               <span class="material-symbols-outlined text-[18px]">volume_up</span>
-              <span>تفصیل سنیں</span>
+              <span>${isEn ? "Listen" : "تفصیل سنیں"}</span>
             </button>
           </div>
         </article>
