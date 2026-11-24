@@ -310,7 +310,7 @@ const AdminPortal = {
 
     container.innerHTML = list.map((item, idx) => `
       <tr class="border-b border-slate-100 hover:bg-slate-50 text-xs">
-        <td class="p-3 font-mono font-bold">KB-${idx + 1:03d}</td>
+        <td class="p-3 font-mono font-bold">KB-${String(idx + 1).padStart(3, "0")}</td>
         <td class="p-3 font-bold text-on-surface">${item.nameUrdu}</td>
         <td class="p-3"><span class="px-2 py-0.5 rounded bg-surface-container font-bold">${item.type}</span></td>
         <td class="p-3 text-on-surface-variant">${item.tehsil}</td>

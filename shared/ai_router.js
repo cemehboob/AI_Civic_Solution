@@ -469,6 +469,7 @@ Never recommend paid services. Keep replyUrdu conversational and easy to underst
    * Deterministic Regex & Pattern Matcher (Tier 5)
    */
   matchDeterministicRules(text, context) {
+    text = String(text || "");
     const lower = text.toLowerCase();
 
     // 1. Complaint Status Inquiry (Token ID e.g. PK-94021, PK-7821)
@@ -531,6 +532,7 @@ Never recommend paid services. Keep replyUrdu conversational and easy to underst
    * Deterministic Fallback Synthesis when Hosted Free models unavailable
    */
   synthesizeCivicResponse(text, context) {
+    text = String(text || "");
     let category = "water_supply";
     let replyUrdu = "";
     let replyEnglish = "";

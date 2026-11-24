@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awami Voice - Full Function & Module Test Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 p-6 font-sans">
+  <div class="max-w-5xl mx-auto space-y-6">
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-[#004423]">Awami Voice — Full Automated Function Test Suite</h1>
+        <p class="text-sm text-slate-500 mt-1">Verifies every module and function across CivicData, Logger, Security, AIRouter, SpeechEngine, StorageSync, WebPortal, MobileApp, and AdminPortal.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="summary-badge" class="px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700">Running tests...</span>
+        <button onclick="runAllTests()" class="px-4 py-2 rounded-xl bg-[#004423] text-white text-sm font-bold hover:bg-[#0b5e34] cursor-pointer">Re-Run Tests</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <table class="w-full text-left border-collapse text-sm">
+        <thead class="bg-slate-100 text-slate-700 text-xs uppercase">
+          <tr>
+            <th class="p-3">#</th>
+            <th class="p-3">Module</th>
+            <th class="p-3">Function / Feature</th>
+            <th class="p-3">Status</th>
+            <th class="p-3">Details</th>
+          </tr>
+        </thead>
+        <tbody id="test-results-body" class="divide-y divide-slate-100"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Hidden DOM fixtures for WebPortal, MobileApp, AdminPortal tests -->
+  <div id="test-fixtures" class="hidden">
+    <span id="top-lang-text">English</span>
+    <span id="gov-strip-text"></span>
+    <span id="brand-portal-name"></span>
+    <span id="brand-portal-sub"></span>
+    <span id="hero-badge-text"></span>
+    <span id="hero-headline-text"></span>
+    <span id="hero-sub-text"></span>
+    <span id="micStatusText">بولیں</span>
+    <span id="mic-instruction-title"></span>
+    <span id="mic-instruction-sub"></span>
+    <div id="mic-container-orb"></div>
+    <button id="mainVoiceMic"></button>
+    <div id="soundWaveVisualizer" class="hidden"></div>
+    <div id="dictationAlert" class="hidden">
+      <div id="dictatedQuery"></div>
+      <div id="dictatedQueryEnglish"></div>
+      <div id="aiResponseText"></div>
+      <div id="aiResponseTranslation"></div>
+    </div>
+    <span id="mobile-top-lang-label">English</span>
+    <span id="mobile-to-webapp-text">ویب پورٹل</span>
+    <div id="mobile-bottom-nav"></div>
+    <div id="network-status-badge"></div>
+    <div id="admin-queue-list"></div>
+    <div id="admin-users-table"></div>
+    <div id="admin-knowledge-table"></div>
+    <div id="admin-logs-table-body"></div>
+    <span id="detail-token"></span><span id="detail-title"></span><span id="detail-status"></span>
+    <span id="detail-location"></span><span id="detail-complainant"></span><span id="detail-cnic"></span>
+    <span id="detail-phone"></span><span id="detail-sla"></span><span id="detail-transcript"></span>
+    <span id="detail-team"></span>
+  </div>
+
+  <!-- Load All Application Scripts in Exact Order -->
+  <script src="../shared/civic_data.js"></script>
+  <script src="../shared/logger.js"></script>
+  <script src="../shared/security.js"></script>
+  <script src="../shared/ai_router.js"></script>
+  <script src="../shared/speech_engine.js"></script>
+  <script src="../shared/storage_sync.js"></script>
+  <script src="../webApp/web.js"></script>
+  <script src="../mobileApp/mobile.js"></script>
+  <script src="../webApp/admin/admin.js"></script>
+
+  <script>
+    const results = [];
+    function record(mod, fn, pass, detail) {
+      results.push({ mod, fn, pass: Boolean(pass), detail: String(detail || "") });
+    }
+
+    async function runAllTests() {
+      results.length = 0;
+
+      // 1. CivicData
+      try {
+        record("CivicData", "provinces & dialects", CivicData.provinces.length >= 7 && CivicData.supportedLanguages.length >= 9,
+          `Provinces=${CivicData.provinces.length}, Dialects=${CivicData.supportedLanguages.length}`);
+        record("CivicData", "i18n (ur & en)", Boolean(CivicData.i18n.ur.heroBadge && CivicData.i18n.en.heroBadge && !CivicData.i18n.en.heroBadge.includes("Punjab")),
+          `en.heroBadge="${CivicData.i18n.en.heroBadge}"`);
+      } catch (e) { record("CivicData", "load", false, e.message); }
+
+      // 2. AppSecurity
+      try {
+        AppSecurity.init();
+        const maskedCnic = AppSecurity.maskCNIC("37405-1849201-3");
+        const maskedPhone = AppSecurity.maskPhone("0300-5849120");
+        const cleanXss = AppSecurity.sanitize("<" + "script>alert(1)</" + "script>");
+        const validCnic = AppSecurity.validateCNIC("37405-1849201-3");
+        const encoded = AppSecurity.encodeSecret({ ok: true });
+        const decoded = AppSecurity.decodeSecret(encoded);
+        record("AppSecurity", "init()", true, "Initialized without error");
+        record("AppSecurity", "maskCNIC() & maskPhone()", maskedCnic === "37405-*******-3" && maskedPhone === "0300-***9120", `${maskedCnic} | ${maskedPhone}`);
+        record("AppSecurity", "sanitize() & validateCNIC()", !cleanXss.includes("<" + "script>") && validCnic, `Sanitized="${cleanXss}"`);
+        record("AppSecurity", "encodeSecret() / decodeSecret()", decoded && decoded.ok === true, "Round-trip JSON secret passed");
+      } catch (e) { record("AppSecurity", "all", false, e.message); }
+
+      // 3. AppLogger
+      try {
+        const hasCat = Boolean(AppLogger.CATEGORIES && AppLogger.CATEGORIES.SYSTEM);
+        record("AppLogger", "CATEGORIES", hasCat, hasCat ? "SYSTEM, SECURITY, AI_ROUTER, SPEECH, SYNC, AUDIT, UI" : "Missing CATEGORIES");
+        const entry = AppLogger.info(AppLogger.CATEGORIES.SYSTEM, "Unit test log", { cnic: "37405-1849201-3" });
+        record("AppLogger", "info() + PII mask", entry && entry.details.cnic === "37405-*******-3", `Masked detail=${entry.details.cnic}`);
+        const csv = AppLogger.exportCSV();
+        const json = AppLogger.exportJSON();
+        record("AppLogger", "exportCSV() & exportJSON()", csv.includes("Timestamp") && json.startsWith("["), `CSV=${csv.length}B, JSON=${json.length}B`);
+      } catch (e) { record("AppLogger", "all", false, e.message); }
+
+      // 4. AppAIRouter
+      try {
+        const bisp = await AppAIRouter.processQuery("بینظیر کفالت 8171 رقم کب ملے گی؟");
+        record("AppAIRouter", "processQuery (BISP rule)", bisp.intent === "subsidy_inquiry" && Boolean(bisp.responseUrdu) && Boolean(bisp.responseEnglish),
+          `tier=${bisp.tier}, intent=${bisp.intent}`);
+        const road = await AppAIRouter.processQuery("کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے");
+        record("AppAIRouter", "processQuery (Roads fallback)", road.intent === "complaint_registration" && Boolean(road.responseEnglish),
+          `tier=${road.tier}, en="${road.responseEnglish}"`);
+      } catch (e) { record("AppAIRouter", "processQuery", false, e.message); }
+
+      // 5. AppSpeech
+      try {
+        AppSpeech.setLanguage("en-US");
+        AppSpeech.setSpeed(1.0);
+        const simPromise = new Promise((resolve) => {
+          AppSpeech.simulateSpeechRecognition(
+            (txt, isFinal) => { if (isFinal) resolve(txt); },
+            () => {}
+          );
+          setTimeout(() => resolve(null), 5000);
+        });
+        const simText = await simPromise;
+        record("AppSpeech", "setLanguage() & simulateSpeechRecognition()", Boolean(simText && simText.length > 5), `Captured="${simText}"`);
+      } catch (e) { record("AppSpeech", "simulateSpeechRecognition", false, e.message); }
+
+      // 6. AppSync
+      try {
+        const profile = AppSync.getUserProfile();
+        const complaints = AppSync.getComplaints();
+        const breakdown = AppSync.getStorageBreakdown();
+        record("AppSync", "getUserProfile() & getComplaints()", Boolean(profile.name) && complaints.length >= 4, `Complaints=${complaints.length}`);
+        record("AppSync", "getStorageBreakdown()", Boolean(breakdown.maxStorageMB === 500), `Estimated=${breakdown.estimatedSizeMB}MB`);
+      } catch (e) { record("AppSync", "all", false, e.message); }
+
+      // 7. WebPortal
+      try {
+        WebPortal.currentLang = "ur";
+        WebPortal.toggleLanguage();
+        const toEn = WebPortal.currentLang === "en" && document.documentElement.dir === "ltr";
+        const trans = WebPortal.getQueryTranslation("کھیتوں کی رابطہ سڑک ٹوٹ پھوٹ کا شکار ہے");
+        WebPortal.displayConversationResult("کھیتوں کی رابطہ سڑک ٹوٹی ہوئی ہے", { responseUrdu: "نوٹ کر لی گئی", responseEnglish: "Logged for C&W" }, true);
+        const boxVisible = !document.getElementById("dictationAlert").classList.contains("hidden");
+        WebPortal.toggleLanguage(); // restore ur
+        record("WebPortal", "toggleLanguage() (ur <-> en)", toEn && WebPortal.currentLang === "ur", "Switched ur->en (LTR) and en->ur (RTL)");
+        record("WebPortal", "getQueryTranslation()", trans.toLowerCase().includes("road"), trans);
+        record("WebPortal", "displayConversationResult()", boxVisible, "Dialogue box visible with Urdu + English translation");
+      } catch (e) { record("WebPortal", "all", false, e.message); }
+
+      // 8. MobileApp
+      try {
+        MobileApp.currentLang = "ur";
+        MobileApp.toggleLanguage();
+        const mobEn = MobileApp.currentLang === "en";
+        MobileApp.renderBottomNavigation();
+        const navHtml = document.getElementById("mobile-bottom-nav").innerHTML;
+        MobileApp.toggleLanguage();
+        record("MobileApp", "toggleLanguage() & renderBottomNavigation()", mobEn && navHtml.includes("active_voice.html"), "Mobile nav & language toggle verified");
+      } catch (e) { record("MobileApp", "all", false, e.message); }
+
+      // 9. AdminPortal
+      try {
+        AdminPortal.loadUsers();
+        AdminPortal.renderQueue();
+        AdminPortal.renderUsersTable();
+        AdminPortal.renderKnowledgeTable();
+        AdminPortal.renderLogsView();
+        const kbHtml = document.getElementById("admin-knowledge-table").innerHTML;
+        record("AdminPortal", "renderKnowledgeTable() (KB-001 fix)", kbHtml.includes("KB-001"), "No syntax error; KB-001 rendered");
+        record("AdminPortal", "renderQueue(), renderUsersTable(), renderLogsView()",
+          document.getElementById("admin-queue-list").innerHTML.length > 0 && document.getElementById("admin-users-table").innerHTML.length > 0,
+          "All admin tables populated");
+      } catch (e) { record("AdminPortal", "all", false, e.message); }
+
+      // Render table
+      const tbody = document.getElementById("test-results-body");
+      const passed = results.filter(r => r.pass).length;
+      const badge = document.getElementById("summary-badge");
+      badge.innerText = `${passed} / ${results.length} Passed`;
+      badge.className = passed === results.length
+        ? "px-4 py-2 rounded-full text-sm font-bold bg-emerald-100 text-emerald-800"
+        : "px-4 py-2 rounded-full text-sm font-bold bg-red-100 text-red-800";
+
+      tbody.innerHTML = results.map((r, i) => `
+        <tr>
+          <td class="p-3 font-mono text-xs text-slate-400">${i + 1}</td>
+          <td class="p-3 font-bold text-slate-800">${r.mod}</td>
+          <td class="p-3 font-mono text-xs">${r.fn}</td>
+          <td class="p-3">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${r.pass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">
+              ${r.pass ? 'PASS' : 'FAIL'}
+            </span>
+          </td>
+          <td class="p-3 text-xs text-slate-600">${r.detail}</td>
+        </tr>
+      `).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", runAllTests);
+  </script>
+</body>
+</html>

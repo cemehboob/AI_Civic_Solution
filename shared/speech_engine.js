@@ -122,9 +122,10 @@ class SpeechEngine {
       };
 
       this.recognition.onend = () => {
+        if (this.simulationRunning) return;
         this.isListening = false;
         this.playChime("stop");
-        if (!this.hadSpeechResult && !this.simulationRunning) {
+        if (!this.hadSpeechResult) {
           console.info("Speech recognition ended with no speech result. Triggering resilient simulation.");
           this.simulateSpeechRecognition(this.onTranscriptCallback, this.onStateChangeCallback);
           return;

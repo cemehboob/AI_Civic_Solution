@@ -321,21 +321,29 @@
       recordIcon.innerText = "hearing";
       if (recordBtn) recordBtn.classList.add("is-recording");
 
-      AppSpeech.startListening((transcript, isFinal) => {
-        transcriptEl.innerText = `"${transcript}"`;
-        detailsEl.value = transcript;
+      AppSpeech.startListening(
+        (transcript, isFinal) => {
+          transcriptEl.innerText = `"${transcript}"`;
+          detailsEl.value = transcript;
 
-        if (isFinal) {
-          recordIcon.innerText = "mic";
-          if (recordBtn) recordBtn.classList.remove("is-recording");
-          AppAIRouter.processQuery(transcript).then(res => {
-            if (res.extractedData && res.extractedData.category) {
-              const catSelect = document.getElementById("form-category");
-              if (catSelect) catSelect.value = res.extractedData.category;
-            }
-          });
+          if (isFinal) {
+            recordIcon.innerText = "mic";
+            if (recordBtn) recordBtn.classList.remove("is-recording");
+            AppAIRouter.processQuery(transcript).then(res => {
+              if (res.extractedData && res.extractedData.category) {
+                const catSelect = document.getElementById("form-category");
+                if (catSelect) catSelect.value = res.extractedData.category;
+              }
+            });
+          }
+        },
+        (state) => {
+          if (state === "idle") {
+            recordIcon.innerText = "mic";
+            if (recordBtn) recordBtn.classList.remove("is-recording");
+          }
         }
-      });
+      );
     }
 
     function dictateField(fieldId) {
